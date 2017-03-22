@@ -26,8 +26,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             fatalError("The dequeued cell is not an instance of PlayerTableViewCell.")
         }
         
-        
-        
         // Fetches the appropriate player for the data source layout.
         let player = game.players[indexPath.row]
         

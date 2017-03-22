@@ -40,7 +40,7 @@ class Player: Account {
     
     required convenience init?(coder aDecoder: NSCoder) {
         guard let name = aDecoder.decodeObject(forKey: "name") as? String else {
-            os_log("Unable to decode the name for a Account object.", log: OSLog.default, type: .debug)
+            os_log("Unable to decode the name for a Player object.", log: OSLog.default, type: .debug)
             return nil
         }
         

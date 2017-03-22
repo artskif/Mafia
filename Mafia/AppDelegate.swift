@@ -8,7 +8,7 @@
 
 import UIKit
 
-var game = Game()
+var game = Game() // глобальная переменная куда будут записываться все промежуточные итоги игры
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -35,6 +35,18 @@
                                     <segue destination="Cvo-3B-IHr" kind="show" id="AAr-vf-6bi"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yj7-Q1-dJw" userLabel="Начало игры">
+                                <rect key="frame" x="16" y="282" width="343" height="103"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.34897816180000002" green="0.34904351830000002" blue="0.34897404910000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <state key="normal" title="Рейтинг">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="1Vj-GG-RNM" kind="presentation" identifier="ShowRating" id="fk3-oQ-LxB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -63,6 +75,12 @@
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="K7v-lS-eMm" kind="presentation" identifier="AddItem" id="kzv-YA-sJC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="icon_action4" id="tZ9-rt-7WP">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="P8I-yl-Pn7" kind="show" id="vTJ-mO-T9X"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -190,7 +208,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y38-Xb-jv6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zK6-YP-Wg8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3383" y="36"/>
+            <point key="canvasLocation" x="3506" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X2L-47-tzq">
@@ -214,12 +232,73 @@
             </objects>
             <point key="canvasLocation" x="890" y="36"/>
         </scene>
+        <!--Рейтинг-->
+        <scene sceneID="c08-Y9-rnQ">
+            <objects>
+                <tableViewController id="P8I-yl-Pn7" customClass="RatingController" customModule="Mafia" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gU1-lU-gqj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RatingViewCell" id="xSE-T2-KuY" customClass="RatingTableViewCell" customModule="Mafia" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xSE-T2-KuY" id="IJH-Jh-4zS">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDm-Zw-qjX">
+                                            <rect key="frame" x="8" y="11" width="137" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RatingLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VL2-N4-JHU">
+                                            <rect key="frame" x="267" y="11" width="100" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="GDm-Zw-qjX" id="a6x-JJ-4ro"/>
+                                    <outlet property="ratingLabel" destination="VL2-N4-JHU" id="mCu-OA-ING"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="P8I-yl-Pn7" id="ThI-QL-LJW"/>
+                            <outlet property="delegate" destination="P8I-yl-Pn7" id="x9q-T8-Qjg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Рейтинг" id="HL7-J6-sR6">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8pS-8V-O9p">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelTab:" destination="P8I-yl-Pn7" id="ZS7-4d-Vij"/>
+                                <segue destination="EQ6-23-D11" kind="unwind" unwindAction="unwindCancelToMainScreenWithSender:" id="v8f-xi-GAN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="8pS-8V-O9p" id="JqC-6C-J1t"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3QW-Xk-pef" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="EQ6-23-D11" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1749.5999999999999" y="784.85757121439292"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="A0N-vY-J4a">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K7v-lS-eMm" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="BT0-kv-rWe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="BT0-kv-rWe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -230,15 +309,35 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKA-9m-7c8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2570" y="404"/>
+            <point key="canvasLocation" x="2666" y="537"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Zg3-Hu-vMU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Vj-GG-RNM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="J7W-lS-ftV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="P8I-yl-Pn7" kind="relationship" relationship="rootViewController" id="1W5-uq-RV5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0tf-3r-bIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="888.79999999999995" y="784.85757121439292"/>
         </scene>
     </scenes>
     <resources>
         <image name="icon_action2" width="44" height="44"/>
+        <image name="icon_action4" width="43" height="44"/>
         <image name="icon_kill" width="44" height="44"/>
         <image name="icon_people" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="vTJ-mO-T9X"/>
         <segue reference="s11-xN-jG5"/>
     </inferredMetricsTieBreakers>
 </document>
