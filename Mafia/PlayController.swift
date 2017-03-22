@@ -13,10 +13,10 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var playersTableView: UITableView!
     
-    var arrayPlayers = [Player]()
+    //var arrayPlayers = [Player]()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayPlayers.count
+        return game.players.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -29,7 +29,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         
         // Fetches the appropriate player for the data source layout.
-        let player = arrayPlayers[indexPath.row]
+        let player = game.players[indexPath.row]
         
         cell.killButton.tag = indexPath.row
         cell.nameLabel.text = player.name
@@ -41,7 +41,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            arrayPlayers.remove(at: indexPath.row)
+            game.players.remove(at: indexPath.row)
             savePlayers()
             playersTableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -65,7 +65,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Load any saved players, otherwise load sample data.
         if let savedPlayers = loadPlayers() {
-            arrayPlayers += savedPlayers
+            game.players += savedPlayers
         } else {
             // Load the sample data.
             loadSamplePlayers()
@@ -100,7 +100,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
                 fatalError("The selected cell is not being displayed by the table")
             }
             
-            let selectedPlayer = arrayPlayers[indexPath.row]
+            let selectedPlayer = game.players[indexPath.row]
             playerDetailViewController.player = selectedPlayer
         default:
             break            
@@ -113,14 +113,14 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
                 // Update an existing meal.
-                arrayPlayers[selectedIndexPath.row] = player
+                game.players[selectedIndexPath.row] = player
                 playersTableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
             else {
                 // Add a new meal.
-                let newIndexPath = IndexPath(row: arrayPlayers.count, section: 0)
+                let newIndexPath = IndexPath(row: game.players.count, section: 0)
                 
-                arrayPlayers.append(player)
+                game.players.append(player)
                 playersTableView.insertRows(at: [newIndexPath], with: .automatic)
             }
             savePlayers()
@@ -136,7 +136,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func pushMafiaKill(_ sender: UIButton) {
         let indexPath = IndexPath(item: sender.tag, section: 0)
-        arrayPlayers.remove(at: sender.tag)
+        game.players.remove(at: sender.tag)
         savePlayers()
         playersTableView.deleteRows(at: [indexPath], with: .fade)
     }
@@ -159,13 +159,13 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
                 fatalError("Unable to instantiate player3")
         }
         
-        arrayPlayers += [player1, player2, player3]
+        game.players += [player1, player2, player3]
     }
     
     //MARK: Private Methods
     
     private func savePlayers() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(arrayPlayers, toFile: Account.ArchiveURL.path)
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(game.players, toFile: Account.ArchiveURL.path)
         
         if isSuccessfulSave {
             os_log("Players successfully saved.", log: OSLog.default, type: .debug)

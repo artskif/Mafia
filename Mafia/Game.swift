@@ -10,11 +10,11 @@
 class Game {
     var state:DayNightState
     var players:[Player]
+    var turns:[Turn]
     
     init(){
         self.state = DayNightState.Day
         self.players = []
+        self.turns = []
     }
-    
-    
 }

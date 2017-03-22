@@ -36,7 +36,6 @@ class Player: Account {
     public override func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
         aCoder.encode(rating, forKey: "rating")
-        aCoder.encode(role, forKey: "role")
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
