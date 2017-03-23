@@ -77,6 +77,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         cell.killButton.tag = indexPath.row
         cell.nameLabel.text = player.name
+        cell.roleLabel.text = ""
         if game.state == DayNightState.Day{
             cell.healButton.isHidden = true
             cell.checkButton.isHidden = true
@@ -143,6 +144,10 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         let indexPath = IndexPath(item: sender.tag, section: 0)
         game.players.remove(at: sender.tag)
         playersTableView.deleteRows(at: [indexPath], with: .fade)
+    }
+    
+    // Нажали кнопку "Выбор роли" в таблице
+    @IBAction func pushSetRole(_ sender: UIButton) {
     }
     
     // Нажали кнопку "Смена дня и ночи" в панели инструментов
