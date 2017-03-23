@@ -22,14 +22,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Загружаем/сохраняем пользователя или заполняем таблицу тестовыми данными
-        if let savedPlayers = loadPlayers() {
-            game.players = savedPlayers
-        } else {
-            // Загружаем тестовые данные при отладке
-            // loadSamplePlayers()
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -103,7 +95,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         if editingStyle == .delete {
             // Удаляем элемент массива данных участников игры
             game.players.remove(at: indexPath.row)
-            savePlayers()
             playersTableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -136,7 +127,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
                 game.players.append(player)
                 playersTableView.insertRows(at: [newIndexPath], with: .automatic)
             }
-            savePlayers()
         }               
     }
     
@@ -152,7 +142,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func pushMafiaKill(_ sender: UIButton) {
         let indexPath = IndexPath(item: sender.tag, section: 0)
         game.players.remove(at: sender.tag)
-        savePlayers()
         playersTableView.deleteRows(at: [indexPath], with: .fade)
     }
     
@@ -172,43 +161,5 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Нажали кнопку "Закончить игру" в панели инструментов
     @IBAction func tapEndOfTheGameButton(_ sender: UIBarButtonItem) {
-    }
-    
-    // MARK: - Управление данными контроллера
-    
-    // Загрузка тестовых данных таблицы участников игры
-    private func loadSamplePlayers() {
-        guard let player1 = Player(name: "Игрок 1")
-        else {
-            fatalError("Unable to instantiate player1")
-        }
-        
-        guard let player2 = Player(name: "Игрок 2")
-            else {
-                fatalError("Unable to instantiate player2")
-        }
-        
-        guard let player3 = Player(name: "Игрок 3")
-            else {
-                fatalError("Unable to instantiate player3")
-        }
-        
-        game.players += [player1, player2, player3]
-    }
-    
-    // Сохранение участников игры в постоянное хранилище телефона
-    private func savePlayers() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(game.players, toFile: Account.ArchiveURL.path)
-        
-        if isSuccessfulSave {
-            os_log("Players successfully saved.", log: OSLog.default, type: .debug)
-        } else {
-            os_log("Failed to save players...", log: OSLog.default, type: .error)
-        }
-    }
-    
-    // Выгрузка участников игры из хранилища телефона
-    private func loadPlayers() -> [Player]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Player.ArchiveURL.path) as? [Player]
     }
 }

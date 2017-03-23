@@ -85,9 +85,6 @@
                                     </barButtonItem>
                                     <barButtonItem image="icon_action4" width="60" id="tZ9-rt-7WP">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="P8I-yl-Pn7" kind="show" id="vTJ-mO-T9X"/>
-                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem image="icon_action3" width="60" id="I7d-Fu-rbj">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -379,7 +376,6 @@
         <image name="icon_people" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vTJ-mO-T9X"/>
         <segue reference="s11-xN-jG5"/>
     </inferredMetricsTieBreakers>
 </document>
