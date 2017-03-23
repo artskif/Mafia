@@ -158,6 +158,7 @@
                     <connections>
                         <outlet property="dayNightButton" destination="ap6-I2-6Du" id="hD4-Jd-tcR"/>
                         <outlet property="endOfTheGameButton" destination="I7d-Fu-rbj" id="uMo-SR-BDR"/>
+                        <outlet property="mainView" destination="LDo-YX-gZU" id="TYD-cs-DHh"/>
                         <outlet property="playersTableView" destination="cge-AA-EFm" id="hhU-Ea-7yY"/>
                     </connections>
                 </viewController>

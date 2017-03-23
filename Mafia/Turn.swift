@@ -14,4 +14,9 @@ class Turn{
         self.number = 0
         self.actions = []
     }
+    
+    init(turnNumber:Int) {
+        self.number = turnNumber
+        self.actions = []
+    }
 }

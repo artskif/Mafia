@@ -109,7 +109,7 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		252390F41E814B9E00474341 /* Business */ = {
+		252390F41E814B9E00474341 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				25C865701E76AF1000B8134B /* Player.swift */,
@@ -119,7 +119,7 @@
 				25F0E4471E8296D800B0F17B /* Turn.swift */,
 				25F0E4491E82972500B0F17B /* Action.swift */,
 			);
-			name = Business;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		25C865301E72968E00B8134B = {
@@ -145,7 +145,7 @@
 		25C8653B1E72968F00B8134B /* Mafia */ = {
 			isa = PBXGroup;
 			children = (
-				252390F41E814B9E00474341 /* Business */,
+				252390F41E814B9E00474341 /* Model */,
 				252390F31E814B2A00474341 /* Controllers */,
 				25C8653C1E72968F00B8134B /* AppDelegate.swift */,
 				25C865401E72968F00B8134B /* Main.storyboard */,

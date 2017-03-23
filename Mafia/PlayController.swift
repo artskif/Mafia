@@ -16,6 +16,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var playersTableView: UITableView!
     @IBOutlet weak var dayNightButton: UIBarButtonItem!
     @IBOutlet weak var endOfTheGameButton: UIBarButtonItem!
+    @IBOutlet var mainView: UIView!
     
     // MARK: - События контроллера
     
@@ -26,8 +27,8 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         if let savedPlayers = loadPlayers() {
             game.players = savedPlayers
         } else {
-            // Загружаем тестовые данные
-            loadSamplePlayers()
+            // Загружаем тестовые данные при отладке
+            // loadSamplePlayers()
         }
     }
     
@@ -148,6 +149,15 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Нажали кнопку "Смена дня и ночи" в панели инструментов
     @IBAction func tapDayNightButton(_ sender: UIBarButtonItem) {
+        game.startNewTurn()
+
+        if game.state == DayNightState.Night {
+            mainView.backgroundColor = UIColor.white
+            game.state = DayNightState.Day
+        } else {
+            mainView.backgroundColor = UIColor.black
+            game.state = DayNightState.Night
+        }
     }
     
     // Нажали кнопку "Закончить игру" в панели инструментов
