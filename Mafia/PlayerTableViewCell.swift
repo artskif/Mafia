@@ -12,9 +12,12 @@ class PlayerTableViewCell: UITableViewCell {
 
     // MARK: - Элементы управления ячейкой
     
-    @IBOutlet weak var killButton: UIButton!
     @IBOutlet weak var roleLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var healButton: UIButton!
+    @IBOutlet weak var killButton: UIButton!
+    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var silenceButton: UIButton!
 
     // MARK: - События ячейки
     

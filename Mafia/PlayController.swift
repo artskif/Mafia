@@ -85,6 +85,15 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         cell.killButton.tag = indexPath.row
         cell.nameLabel.text = player.name
+        if game.state == DayNightState.Day{
+            cell.healButton.isHidden = true
+            cell.checkButton.isHidden = true
+            cell.silenceButton.isHidden = true
+        } else {
+            cell.healButton.isHidden = false
+            cell.checkButton.isHidden = false
+            cell.silenceButton.isHidden = false
+        }
         
         return cell
     }
@@ -158,6 +167,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             mainView.backgroundColor = UIColor.black
             game.state = DayNightState.Night
         }
+        playersTableView.reloadData()
     }
     
     // Нажали кнопку "Закончить игру" в панели инструментов

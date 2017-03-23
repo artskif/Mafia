@@ -127,20 +127,42 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8u-Ti-dA5">
-                                                    <rect key="frame" x="291" y="7" width="44" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="icon_kill"/>
-                                                    <connections>
-                                                        <action selector="pushMafiaKill:" destination="oNQ-Ax-mL0" eventType="touchUpInside" id="YdK-Lb-T8o"/>
-                                                    </connections>
-                                                </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="sSg-6A-T35">
+                                                    <rect key="frame" x="159" y="7" width="182" height="44"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e81-jS-gMK" userLabel="Heal Button">
+                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                            <state key="normal" image="icon_medic"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8u-Ti-dA5" userLabel="Kill Button">
+                                                            <rect key="frame" x="46" y="0.0" width="44" height="44"/>
+                                                            <state key="normal" image="icon_kill"/>
+                                                            <connections>
+                                                                <action selector="pushMafiaKill:" destination="oNQ-Ax-mL0" eventType="touchUpInside" id="YdK-Lb-T8o"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7EV-AD-wZE" userLabel="Check Button">
+                                                            <rect key="frame" x="92" y="0.0" width="44" height="44"/>
+                                                            <state key="normal" image="icon_loop"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXa-iy-R50" userLabel="Silence Button">
+                                                            <rect key="frame" x="138" y="0.0" width="44" height="44"/>
+                                                            <state key="normal" image="icon_night_love"/>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="sSg-6A-T35" secondAttribute="trailing" constant="8" id="yPL-9M-tlc"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="killButton" destination="W8u-Ti-dA5" id="eme-it-Yuk"/>
+                                            <outlet property="checkButton" destination="7EV-AD-wZE" id="BHc-WM-G89"/>
+                                            <outlet property="healButton" destination="e81-jS-gMK" id="DFB-ED-P9z"/>
+                                            <outlet property="killButton" destination="W8u-Ti-dA5" id="C1z-gW-THf"/>
                                             <outlet property="nameLabel" destination="G0i-4V-J3e" id="JTC-j3-rP4"/>
                                             <outlet property="roleLabel" destination="1Ag-Ee-Aup" id="Soz-kw-Vkn"/>
+                                            <outlet property="silenceButton" destination="cXa-iy-R50" id="I1Z-2s-Ojp"/>
                                             <segue destination="XN1-Lj-Oc9" kind="show" identifier="ShowDetail" id="s11-xN-jG5"/>
                                         </connections>
                                     </tableViewCell>
@@ -351,6 +373,9 @@
         <image name="icon_action3" width="44" height="43"/>
         <image name="icon_action4" width="43" height="44"/>
         <image name="icon_kill" width="44" height="44"/>
+        <image name="icon_loop" width="44" height="44"/>
+        <image name="icon_medic" width="44" height="44"/>
+        <image name="icon_night_love" width="44" height="44"/>
         <image name="icon_people" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
