@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		252390F61E817CCF00474341 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252390F51E817CCF00474341 /* Account.swift */; };
 		25C8653D1E72968F00B8134B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C8653C1E72968F00B8134B /* AppDelegate.swift */; };
-		25C8653F1E72968F00B8134B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C8653E1E72968F00B8134B /* ViewController.swift */; };
+		25C8653F1E72968F00B8134B /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C8653E1E72968F00B8134B /* StartController.swift */; };
 		25C865421E72968F00B8134B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25C865401E72968F00B8134B /* Main.storyboard */; };
 		25C865441E72968F00B8134B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25C865431E72968F00B8134B /* Assets.xcassets */; };
 		25C865471E72968F00B8134B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25C865451E72968F00B8134B /* LaunchScreen.storyboard */; };
@@ -48,7 +48,7 @@
 		252390F51E817CCF00474341 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		25C865391E72968F00B8134B /* Mafia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mafia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C8653C1E72968F00B8134B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		25C8653E1E72968F00B8134B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		25C8653E1E72968F00B8134B /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		25C865411E72968F00B8134B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25C865431E72968F00B8134B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25C865461E72968F00B8134B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				25C865721E76D5F400B8134B /* PlayerTableViewCell.swift */,
-				25C8653E1E72968F00B8134B /* ViewController.swift */,
+				25C8653E1E72968F00B8134B /* StartController.swift */,
 				25C8656E1E76A1B500B8134B /* AddController.swift */,
 				25C8656A1E74554600B8134B /* PlayController.swift */,
 				25F0E44B1E82B35500B0F17B /* RatingController.swift */,
@@ -316,7 +316,7 @@
 				25F0E44C1E82B35500B0F17B /* RatingController.swift in Sources */,
 				25F0E4441E8291B300B0F17B /* Game.swift in Sources */,
 				25F0E4461E8291F100B0F17B /* Enums.swift in Sources */,
-				25C8653F1E72968F00B8134B /* ViewController.swift in Sources */,
+				25C8653F1E72968F00B8134B /* StartController.swift in Sources */,
 				25C8656F1E76A1B500B8134B /* AddController.swift in Sources */,
 				25C8656B1E74554600B8134B /* PlayController.swift in Sources */,
 				252390F61E817CCF00474341 /* Account.swift in Sources */,

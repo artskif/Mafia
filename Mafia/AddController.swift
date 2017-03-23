@@ -11,75 +11,38 @@ import os.log
 
 class AddController: UIViewController, UITextFieldDelegate {
     
+    // MARK: - Элементы управления контроллера
+    
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
     
-    /*
-     This value is either passed by `PlayController` in `prepare(for:sender:)`
-     or constructed as part of adding a new player.
-     */
+    // MARK: - Свойства контроллера
+    
     var player: Player?
+    
+    // MARK: - События контроллера
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Handle the text field’s user input through delegate callbacks.
+        // Обрабатывать текстовое поле с помощью делегата которым является текущий контроллер
         nameTextField.delegate = self
         
-        // Set up views if editing an existing Meal.
+        // Настройка текстового поля если мы редактируем, а не добавляем пользователя
         if let player = player {
             nameTextField.text   = player.name
         }
         
-        // Enable the Save button only if the text field has a valid Player name.
+        // Включить кнопку Save только если контроллер содержит валидные данные для сохранения
         updateSaveButtonState()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        // Disable the Save button while editing.
-        saveButton.isEnabled = false
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        updateSaveButtonState()
-        return true
-    }
-    
-    // Action on write something in Name textfield
-    @IBAction func editingChanged(_ sender: UITextField) {
-        updateSaveButtonState()
-    }
-    
-    // Update save button state when we do something with text of name
-    private func updateSaveButtonState() {
-        // Disable the Save button if the text field is empty.
-        let text = nameTextField.text ?? ""
-        saveButton.isEnabled = !text.isEmpty
-    }
-    
-    
-    //MARK: Navigation
-    
-    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
-        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
-        let isPresentingInAddPlayerMode = presentingViewController is UINavigationController
-        
-        if isPresentingInAddPlayerMode {
-            dismiss(animated: true, completion: nil)
-        } else if let owningNavigationController = navigationController{
-            owningNavigationController.popViewController(animated: true)
-        } else {
-            fatalError("The AddController is not inside a navigation controller.")
-        }
-    }
-    
-    // This method lets you configure a view controller before it's presented.
+    // Этот метод дает возможность сконфигурировать контроллер до того как он покажется пользователю
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
@@ -94,4 +57,35 @@ class AddController: UIViewController, UITextFieldDelegate {
         player = Player(name: name)
     }
     
+    //MARK: - Обработка действий пользователя
+    
+    // кнопка "Готово" на клавиатуре
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    // Событие на печать текста внутри текстового поля имени пользователя
+    @IBAction func editingChanged(_ sender: UITextField) {
+        updateSaveButtonState()
+    }
+    
+    // Нажали кнопку Cancel в навигационной панели страницы
+    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
+        // Обработка нажатия зависит от способа вызова контроллера (modal or push presentation), данные контроллер будет уничтожен 2 разными способами
+        let isPresentingInAddPlayerMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddPlayerMode {
+            dismiss(animated: true, completion: nil)
+        } else if let owningNavigationController = navigationController{
+            owningNavigationController.popViewController(animated: true)
+        } else {
+            fatalError("The AddController is not inside a navigation controller.")
+        }
+    }
+    
+    // Обновить состояние кнопки Save в зависимости от состояния тектового поля имени пользователя
+    private func updateSaveButtonState() {
+        let text = nameTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
+    }
 }

@@ -11,10 +11,58 @@ import os.log
 
 class PlayController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    // MARK: - Элементы управления страницей
+    // MARK: - Элементы управления контроллера
+    
     @IBOutlet weak var playersTableView: UITableView!
     @IBOutlet weak var dayNightButton: UIBarButtonItem!
     @IBOutlet weak var endOfTheGameButton: UIBarButtonItem!
+    
+    // MARK: - События контроллера
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Загружаем/сохраняем пользователя или заполняем таблицу тестовыми данными
+        if let savedPlayers = loadPlayers() {
+            game.players = savedPlayers
+        } else {
+            // Загружаем тестовые данные
+            loadSamplePlayers()
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    // Метод вызываемый непосредственно перед навигацией по контроллерам
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        // обработка поведения нового контроллера в зависимости от того каким переходом(segue) мы пользуемся
+        switch(segue.identifier ?? "") {
+        case "AddItem":
+            os_log("Adding a new player.", log: OSLog.default, type: .debug)
+            
+        case "ShowDetail":
+            guard let playerDetailViewController = segue.destination as? AddController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedPlayerCell = sender as? PlayerTableViewCell else {
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let indexPath = playersTableView.indexPath(for: selectedPlayerCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedPlayer = game.players[indexPath.row]
+            playerDetailViewController.player = selectedPlayer
+        default:
+            break
+        }
+    }
     
     // MARK: - Методы инициализации таблицы участников
     
@@ -23,7 +71,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         return game.players.count
     }
     
-    // Обрабатываем внешний вид и содержимое ячейки таблицы
+    // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifer = "PlayerTableViewCell"
         
@@ -60,55 +108,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         return 1
     }
     
-    // MARK: - События контроллера
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        // Load any saved players, otherwise load sample data.
-        if let savedPlayers = loadPlayers() {
-            game.players = savedPlayers
-        } else {
-            // Load the sample data.
-            loadSamplePlayers()
-        }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // Метод вызываемый непосредственно перед навигацией по контроллерам
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        switch(segue.identifier ?? "") {
-        case "AddItem":
-            os_log("Adding a new player.", log: OSLog.default, type: .debug)
-            
-        case "ShowDetail":
-            guard let playerDetailViewController = segue.destination as? AddController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            
-            guard let selectedPlayerCell = sender as? PlayerTableViewCell else {
-                fatalError("Unexpected sender: \(sender)")
-            }
-            
-            guard let indexPath = playersTableView.indexPath(for: selectedPlayerCell) else {
-                fatalError("The selected cell is not being displayed by the table")
-            }
-            
-            let selectedPlayer = game.players[indexPath.row]
-            playerDetailViewController.player = selectedPlayer
-        default:
-            break            
-        }
-    }
-    
     //MARK: - Обработка действий пользователя
     
     // Нажали кнопку Save на странице добавления пользователя в игру
@@ -116,12 +115,12 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         if let sourceViewController = sender.source as? AddController, let player = sourceViewController.player {
             
             if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
-                // Update an existing meal.
+                // Обновляем пользователя в таблице
                 game.players[selectedIndexPath.row] = player
                 playersTableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
             else {
-                // Add a new meal.
+                // Добавляем нового пользователя в таблицу
                 let newIndexPath = IndexPath(row: game.players.count, section: 0)
                 
                 game.players.append(player)
@@ -134,7 +133,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     // Нажали кнопку Cancel на странице добавления пользователя в игру
     @IBAction func unwindCancelToPlayerList(sender: UIStoryboardSegue) {
         if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
-            // Deselect a selected row on cancel.
+            // Сбрасываем выбранную ячейку в таблице при нажатии на кнопку Cancel
             playersTableView.deselectRow(at: selectedIndexPath, animated: false)
         }
     }

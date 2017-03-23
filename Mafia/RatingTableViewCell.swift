@@ -9,18 +9,20 @@
 import UIKit
 
 class RatingTableViewCell: UITableViewCell {
+
+    // MARK: - Элементы управления ячейкой
+
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
 
+    // MARK: - События ячейки
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
