@@ -11,14 +11,19 @@ import os.log
 
 class PlayController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
+    // MARK: - Элементы управления страницей
     @IBOutlet weak var playersTableView: UITableView!
+    @IBOutlet weak var dayNightButton: UIBarButtonItem!
+    @IBOutlet weak var endOfTheGameButton: UIBarButtonItem!
     
-    //var arrayPlayers = [Player]()
+    // MARK: - Методы инициализации таблицы участников
     
+    // Кличесто элементов в одной секции таблицы
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return game.players.count
     }
     
+    // Обрабатываем внешний вид и содержимое ячейки таблицы
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifer = "PlayerTableViewCell"
         
@@ -26,7 +31,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             fatalError("The dequeued cell is not an instance of PlayerTableViewCell.")
         }
         
-        // Fetches the appropriate player for the data source layout.
+        // Определяем дынные для заполнения ячейки таблицы
         let player = game.players[indexPath.row]
         
         cell.killButton.tag = indexPath.row
@@ -35,27 +40,27 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    // Override to support editing the table view.
+    // Обрабатываем события редактирования над таблицей участников
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            // Удаляем элемент массива данных участников игры
             game.players.remove(at: indexPath.row)
             savePlayers()
             playersTableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
     
-    // Override to support conditional editing of the table view.
+    // Определяем возможность редактировать таблицу участников
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
     
+    // Количество секций в таблице
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    // MARK: - События контроллера
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +68,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Load any saved players, otherwise load sample data.
         if let savedPlayers = loadPlayers() {
-            game.players += savedPlayers
+            game.players = savedPlayers
         } else {
             // Load the sample data.
             loadSamplePlayers()
@@ -75,8 +80,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // Метод вызываемый непосредственно перед навигацией по контроллерам
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         // Get the new view controller using segue.destinationViewController.
@@ -105,7 +109,9 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    //MARK: Actions
+    //MARK: - Обработка действий пользователя
+    
+    // Нажали кнопку Save на странице добавления пользователя в игру
     @IBAction func unwindToPlayerList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddController, let player = sourceViewController.player {
             
@@ -125,6 +131,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         }               
     }
     
+    // Нажали кнопку Cancel на странице добавления пользователя в игру
     @IBAction func unwindCancelToPlayerList(sender: UIStoryboardSegue) {
         if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
             // Deselect a selected row on cancel.
@@ -132,6 +139,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    // Нажали кнопку "Мафия убивает" в таблице
     @IBAction func pushMafiaKill(_ sender: UIButton) {
         let indexPath = IndexPath(item: sender.tag, section: 0)
         game.players.remove(at: sender.tag)
@@ -139,8 +147,17 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         playersTableView.deleteRows(at: [indexPath], with: .fade)
     }
     
+    // Нажали кнопку "Смена дня и ночи" в панели инструментов
+    @IBAction func tapDayNightButton(_ sender: UIBarButtonItem) {
+    }
     
-    // Load testing debug data for Player table view 
+    // Нажали кнопку "Закончить игру" в панели инструментов
+    @IBAction func tapEndOfTheGameButton(_ sender: UIBarButtonItem) {
+    }
+    
+    // MARK: - Управление данными контроллера
+    
+    // Загрузка тестовых данных таблицы участников игры
     private func loadSamplePlayers() {
         guard let player1 = Player(name: "Игрок 1")
         else {
@@ -160,8 +177,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         game.players += [player1, player2, player3]
     }
     
-    //MARK: Private Methods
-    
+    // Сохранение участников игры в постоянное хранилище телефона
     private func savePlayers() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(game.players, toFile: Account.ArchiveURL.path)
         
@@ -172,6 +188,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    // Выгрузка участников игры из хранилища телефона
     private func loadPlayers() -> [Player]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Player.ArchiveURL.path) as? [Player]
     }

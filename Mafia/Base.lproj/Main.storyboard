@@ -71,16 +71,28 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem image="icon_action2" width="85" id="ups-YX-46y">
-                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <barButtonItem image="icon_action2" width="60" id="ups-YX-46y">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="K7v-lS-eMm" kind="presentation" identifier="AddItem" id="kzv-YA-sJC"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem image="icon_action4" id="tZ9-rt-7WP">
+                                    <barButtonItem image="icon_action1" width="60" id="ap6-I2-6Du">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="tapDayNightButton:" destination="oNQ-Ax-mL0" id="zY3-oJ-Zhl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="icon_action4" width="60" id="tZ9-rt-7WP">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="P8I-yl-Pn7" kind="show" id="vTJ-mO-T9X"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="icon_action3" width="60" id="I7d-Fu-rbj">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="tapEndOfTheGameButton:" destination="oNQ-Ax-mL0" id="aE0-Vx-L5I"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -144,6 +156,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Игра МАФИЯ" id="uiW-uU-I3i"/>
                     <connections>
+                        <outlet property="dayNightButton" destination="ap6-I2-6Du" id="hD4-Jd-tcR"/>
+                        <outlet property="endOfTheGameButton" destination="I7d-Fu-rbj" id="uMo-SR-BDR"/>
                         <outlet property="playersTableView" destination="cge-AA-EFm" id="hhU-Ea-7yY"/>
                     </connections>
                 </viewController>
@@ -316,7 +330,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Vj-GG-RNM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="J7W-lS-ftV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="J7W-lS-ftV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -331,7 +345,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_action1" width="42" height="43"/>
         <image name="icon_action2" width="44" height="44"/>
+        <image name="icon_action3" width="44" height="43"/>
         <image name="icon_action4" width="43" height="44"/>
         <image name="icon_kill" width="44" height="44"/>
         <image name="icon_people" width="44" height="44"/>
