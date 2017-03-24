@@ -22,6 +22,9 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Начинаем новую игру
+        game = Game()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,7 +53,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
                 fatalError("The selected cell is not being displayed by the table")
             }
             
-            let selectedPlayer = game.players[indexPath.row]
+            let selectedPlayer = game.getPlayer(at: indexPath.row)
             playerDetailViewController.player = selectedPlayer
         default:
             break
@@ -61,7 +64,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Кличесто элементов в одной секции таблицы
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return game.players.count
+        return game.countPlayers()
     }
     
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
@@ -73,7 +76,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         // Определяем дынные для заполнения ячейки таблицы
-        let player = game.players[indexPath.row]
+        let player = game.getPlayer(at: indexPath.row)
         
         cell.killButton.tag = indexPath.row
         cell.nameLabel.text = player.name
@@ -83,9 +86,10 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.checkButton.isHidden = true
             cell.silenceButton.isHidden = true
         } else {
-            cell.healButton.isHidden = false
-            cell.checkButton.isHidden = false
-            cell.silenceButton.isHidden = false
+            cell.healButton.isHidden = game.roles[Role.Doctor.rawValue] == nil
+            cell.checkButton.isHidden = game.roles[Role.Sherif.rawValue] == nil
+            cell.silenceButton.isHidden = game.roles[Role.Prostitute.rawValue] == nil
+            cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil
         }
         
         return cell
@@ -95,7 +99,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Удаляем элемент массива данных участников игры
-            game.players.remove(at: indexPath.row)
+            game.removePlayer(at: indexPath.row)
             playersTableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -118,14 +122,14 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
                 // Обновляем пользователя в таблице
-                game.players[selectedIndexPath.row] = player
+                game.setPlayer(at: selectedIndexPath.row, element: player)
                 playersTableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
             else {
                 // Добавляем нового пользователя в таблицу
-                let newIndexPath = IndexPath(row: game.players.count, section: 0)
+                let newIndexPath = IndexPath(row: game.countPlayers(), section: 0)
                 
-                game.players.append(player)
+                game.addPlayer(player: player)
                 playersTableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }               
@@ -142,12 +146,8 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     // Нажали кнопку "Мафия убивает" в таблице
     @IBAction func pushMafiaKill(_ sender: UIButton) {
         let indexPath = IndexPath(item: sender.tag, section: 0)
-        game.players.remove(at: sender.tag)
+        game.removePlayer(at: sender.tag)
         playersTableView.deleteRows(at: [indexPath], with: .fade)
-    }
-    
-    // Нажали кнопку "Выбор роли" в таблице
-    @IBAction func pushSetRole(_ sender: UIButton) {
     }
     
     // Нажали кнопку "Смена дня и ночи" в панели инструментов
