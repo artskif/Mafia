@@ -68,7 +68,7 @@ class Game {
     
     // Выгрузка игроков из хранилища телефона
     class func loadAccounts() -> [Account] {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Player.ArchiveURL.path) as? [Account] ?? []
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Account.ArchiveURL.path) as? [Account] ?? []
     }
     
     // Загрузка тестовых данных участников игры
