@@ -17,13 +17,13 @@ enum AliveState {
     case Dead
 }
 
-enum Role {
-    case Mafia
-    case Citizen
-    case Sherif
-    case Doctor
-    case Prostitute
-    case Undead
+enum Role:String {
+    case Mafia = "Мафия"
+    case Citizen = "Мирный"
+    case Sherif = "Коммисар"
+    case Doctor = "Доктор"
+    case Prostitute = "Проститутка"
+    case Undead = "Бессмертный"
 }
 
 enum ActionType {

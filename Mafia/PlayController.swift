@@ -77,7 +77,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         cell.killButton.tag = indexPath.row
         cell.nameLabel.text = player.name
-        cell.roleLabel.text = ""
+        cell.roleLabel.text = player.role.rawValue
         if game.state == DayNightState.Day{
             cell.healButton.isHidden = true
             cell.checkButton.isHidden = true
