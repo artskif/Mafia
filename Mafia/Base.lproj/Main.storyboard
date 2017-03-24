@@ -238,7 +238,7 @@
                                     <constraint firstAttribute="width" secondItem="hTs-0E-AWg" secondAttribute="height" multiplier="343:508" id="G2X-Wb-9dg"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="P75-aI-TnT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChooseTableViewCell" id="P75-aI-TnT" customClass="ChooseTableViewCell" customModule="Mafia" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P75-aI-TnT" id="EYe-km-Ag4">
@@ -248,6 +248,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fA-HY-7m0">
                                                     <rect key="frame" x="253" y="8" width="82" height="30"/>
                                                     <state key="normal" title="Выбрать"/>
+                                                    <connections>
+                                                        <action selector="chooseButton:" destination="XN1-Lj-Oc9" eventType="touchUpInside" id="mTx-dm-hwN"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Имя игрока" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBo-Lr-hgo">
                                                     <rect key="frame" x="8" y="12" width="114" height="21"/>
@@ -263,8 +266,16 @@
                                                 <constraint firstItem="mBo-Lr-hgo" firstAttribute="leading" secondItem="EYe-km-Ag4" secondAttribute="leadingMargin" id="c7q-uh-Fo8"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="accountName" destination="mBo-Lr-hgo" id="pyk-kn-SQW"/>
+                                            <outlet property="chooseButton" destination="4fA-HY-7m0" id="rkb-9K-vaa"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="XN1-Lj-Oc9" id="1Yd-lm-krD"/>
+                                    <outlet property="delegate" destination="XN1-Lj-Oc9" id="suf-nD-m8p"/>
+                                </connections>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя игрока" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Lv-qH-zmP">
                                 <rect key="frame" x="16" y="101" width="343" height="30"/>

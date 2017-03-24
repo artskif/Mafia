@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class AddController: UIViewController, UITextFieldDelegate {
+class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Элементы управления контроллера
     
@@ -57,6 +57,40 @@ class AddController: UIViewController, UITextFieldDelegate {
         player = Player(name: name)
     }
     
+    // MARK: - Методы инициализации таблицы выбора участников
+    
+    // Кличесто элементов в одной секции таблицы
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return game.accounts.count
+    }
+    
+    // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifer = "ChooseTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifer, for: indexPath) as? ChooseTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of PlayerTableViewCell.")
+        }
+        
+        // Определяем дынные для заполнения ячейки таблицы
+        let account = game.accounts[indexPath.row]
+        
+        cell.chooseButton.tag = indexPath.row
+        cell.accountName.text = account.name
+        
+        return cell
+    }
+    
+    // Определяем возможность редактировать таблицу выбора участников
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    // Количество секций в таблице
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     //MARK: - Обработка действий пользователя
     
     // кнопка "Готово" на клавиатуре
@@ -67,6 +101,10 @@ class AddController: UIViewController, UITextFieldDelegate {
     // Событие на печать текста внутри текстового поля имени пользователя
     @IBAction func editingChanged(_ sender: UITextField) {
         updateSaveButtonState()
+    }
+    
+    // Нажата кнопка "Выбрать" в таблице выбора участников игры
+    @IBAction func chooseButton(_ sender: UIButton) {
     }
     
     // Нажали кнопку Cancel в навигационной панели страницы
