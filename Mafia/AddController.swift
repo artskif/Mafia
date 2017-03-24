@@ -16,10 +16,12 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var chooseTableView: UITableView!
     
     // MARK: - Свойства контроллера
     
     var player: Player?
+    var choosedAccountNumber:Int?
     
     // MARK: - События контроллера
     
@@ -32,6 +34,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         // Настройка текстового поля если мы редактируем, а не добавляем пользователя
         if let player = player {
             nameTextField.text   = player.name
+            chooseTableView.isHidden = true
         }
         
         // Включить кнопку Save только если контроллер содержит валидные данные для сохранения
@@ -54,7 +57,14 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         
         let name = nameTextField.text ?? ""
         
-        player = Player(name: name)
+        if let currentChoosed = choosedAccountNumber {
+            let newPlayer = game.accounts[currentChoosed]
+            player = Player(baseObject: newPlayer)
+        } else if let editPlayer = player {
+            editPlayer.name = name
+        } else {
+            player = Player(name: name)
+        }
     }
     
     // MARK: - Методы инициализации таблицы выбора участников
@@ -77,6 +87,10 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         
         cell.chooseButton.tag = indexPath.row
         cell.accountName.text = account.name
+        
+        if let currentChoosed = choosedAccountNumber {
+            cell.chooseButton.isEnabled = currentChoosed != cell.chooseButton.tag
+        }
         
         return cell
     }
@@ -105,6 +119,10 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     
     // Нажата кнопка "Выбрать" в таблице выбора участников игры
     @IBAction func chooseButton(_ sender: UIButton) {
+        choosedAccountNumber = sender.tag
+        saveButton.isEnabled = true
+        nameTextField.isEnabled = false
+        chooseTableView.reloadData()
     }
     
     // Нажали кнопку Cancel в навигационной панели страницы

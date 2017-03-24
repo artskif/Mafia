@@ -246,7 +246,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fA-HY-7m0">
-                                                    <rect key="frame" x="253" y="8" width="82" height="30"/>
+                                                    <rect key="frame" x="237" y="8" width="98" height="30"/>
                                                     <state key="normal" title="Выбрать"/>
                                                     <connections>
                                                         <action selector="chooseButton:" destination="XN1-Lj-Oc9" eventType="touchUpInside" id="mTx-dm-hwN"/>
@@ -321,6 +321,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="vlu-GW-5tS" id="oOH-Oe-LNF"/>
+                        <outlet property="chooseTableView" destination="hTs-0E-AWg" id="OUp-lw-YR9"/>
                         <outlet property="nameTextField" destination="6Lv-qH-zmP" id="SLw-FV-WYc"/>
                         <outlet property="saveButton" destination="pG3-vD-Mwn" id="Zwm-Xt-6CR"/>
                     </connections>

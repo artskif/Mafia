@@ -31,6 +31,14 @@ class Player: Account {
         super.init(name: name, rating: rating)
     }
     
+    init?(baseObject: Account) {
+        self.role = Role.Citizen
+        self.currentRating = []
+        self.stateAlive = AliveState.Live
+        
+        super.init(name: baseObject.name, rating: baseObject.rating)
+    }
+    
     // здесь мы сохраняем данные(в хранилище сотового телефона) для дальнейшего использования при закрытии приложения
     // данные сохраняются при помощи библиотеки NSCoding
     public override func encode(with aCoder: NSCoder) {
