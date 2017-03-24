@@ -105,9 +105,8 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="cge-AA-EFm">
-                                <rect key="frame" x="16" y="64" width="343" height="559"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="cge-AA-EFm">
+                                <rect key="frame" x="16" y="72" width="343" height="522"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlayerTableViewCell" rowHeight="60" id="ahD-Uq-fpa" customClass="PlayerTableViewCell" customModule="Mafia" customModuleProvider="target">
@@ -190,8 +189,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="XYU-Ow-JOM" firstAttribute="top" secondItem="cge-AA-EFm" secondAttribute="bottom" constant="29" id="JMJ-uW-Wed"/>
                             <constraint firstItem="XYU-Ow-JOM" firstAttribute="leading" secondItem="LDo-YX-gZU" secondAttribute="leading" id="Y9o-WN-Fjw"/>
                             <constraint firstItem="BbS-iF-QQF" firstAttribute="top" secondItem="XYU-Ow-JOM" secondAttribute="bottom" id="YXf-Re-wR6"/>
+                            <constraint firstItem="cge-AA-EFm" firstAttribute="leading" secondItem="LDo-YX-gZU" secondAttribute="leadingMargin" id="oHP-fW-pRi"/>
+                            <constraint firstItem="cge-AA-EFm" firstAttribute="trailing" secondItem="LDo-YX-gZU" secondAttribute="trailingMargin" id="oJ3-qa-XaC"/>
+                            <constraint firstItem="cge-AA-EFm" firstAttribute="top" secondItem="Ry8-rd-x5f" secondAttribute="bottom" constant="8" id="tBt-t0-oc3"/>
                             <constraint firstAttribute="trailing" secondItem="XYU-Ow-JOM" secondAttribute="trailing" id="xZW-WY-j8M"/>
                         </constraints>
                     </view>
