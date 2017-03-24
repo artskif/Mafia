@@ -12,7 +12,7 @@ class ChooseTableViewCell: UITableViewCell {
     
     // MARK: - Элементы управления ячейкой
     
-    @IBOutlet weak var accountName: UILabel!
+    @IBOutlet weak var cellName: UILabel!
     @IBOutlet weak var chooseButton: UIButton!
 
     // MARK: - События ячейки

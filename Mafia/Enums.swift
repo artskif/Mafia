@@ -17,13 +17,34 @@ enum AliveState {
     case Dead
 }
 
-enum Role:String {
-    case Mafia = "Мафия"
-    case Citizen = "Мирный"
-    case Sherif = "Коммисар"
-    case Doctor = "Доктор"
-    case Prostitute = "Проститутка"
-    case Undead = "Бессмертный"
+enum Role:Int, CustomStringConvertible {
+    case Mafia = 0
+    case Citizen = 1
+    case Sherif = 2
+    case Doctor = 3
+    case Prostitute = 4
+    case Undead = 5
+    
+    static var count:Int {return Role.Undead.hashValue + 1}
+    
+    var description: String {
+        switch self {
+        case .Citizen:
+            return "Мирный"
+        case .Doctor:
+            return "Доктор"
+        case .Mafia:
+            return "Мафия"
+        case .Prostitute:
+            return "Проститутка"
+        case .Sherif:
+            return "Коммисар"
+        case .Undead:
+            return "Бессмертный"
+        default:
+            return ""
+        }
+    }
 }
 
 enum ActionType {

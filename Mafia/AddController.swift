@@ -21,7 +21,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     // MARK: - Свойства контроллера
     
     var player: Player?
-    var choosedAccountNumber:Int?
+    var choosedNumber:Int?
     
     // MARK: - События контроллера
     
@@ -34,7 +34,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         // Настройка текстового поля если мы редактируем, а не добавляем пользователя
         if let player = player {
             nameTextField.text   = player.name
-            chooseTableView.isHidden = true
+            choosedNumber = player.role.hashValue
         }
         
         // Включить кнопку Save только если контроллер содержит валидные данные для сохранения
@@ -57,12 +57,15 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         
         let name = nameTextField.text ?? ""
         
-        if let currentChoosed = choosedAccountNumber {
-            let newPlayer = game.accounts[currentChoosed]
-            player = Player(baseObject: newPlayer)
-        } else if let editPlayer = player {
-            editPlayer.name = name
-        } else {
+        if let currentChoosed = choosedNumber {
+            if let editPlayer = player {
+                editPlayer.name = name
+                editPlayer.role = Role(rawValue: currentChoosed)!
+            } else {
+                let newPlayer = game.accounts[currentChoosed]
+                player = Player(baseObject: newPlayer)
+            }
+        } else  {
             player = Player(name: name)
         }
     }
@@ -71,7 +74,12 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     
     // Кличесто элементов в одной секции таблицы
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return game.accounts.count
+        // У нас в таблице или аккаунты пользователей или роли пользователя
+        if player == nil {
+            return game.accounts.count
+        } else {
+            return Role.count
+        }
     }
     
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
@@ -82,13 +90,19 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             fatalError("The dequeued cell is not an instance of PlayerTableViewCell.")
         }
         
-        // Определяем дынные для заполнения ячейки таблицы
-        let account = game.accounts[indexPath.row]
-        
         cell.chooseButton.tag = indexPath.row
-        cell.accountName.text = account.name
+
         
-        if let currentChoosed = choosedAccountNumber {
+        if player == nil {
+            // Определяем дынные для заполнения ячейки таблицы
+            let account = game.accounts[indexPath.row]
+            cell.cellName.text = account.name
+        } else {
+            // Если мы редактируем ячейку то мы выбираем роль
+            cell.cellName.text = Role(rawValue: indexPath.row)?.description
+        }
+        
+        if let currentChoosed = choosedNumber {
             cell.chooseButton.isEnabled = currentChoosed != cell.chooseButton.tag
         }
         
@@ -119,7 +133,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     
     // Нажата кнопка "Выбрать" в таблице выбора участников игры
     @IBAction func chooseButton(_ sender: UIButton) {
-        choosedAccountNumber = sender.tag
+        choosedNumber = sender.tag
         saveButton.isEnabled = true
         nameTextField.isEnabled = false
         chooseTableView.reloadData()
