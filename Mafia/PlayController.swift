@@ -161,21 +161,29 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     // Нажали кнопку "Мафия убивает" в таблице
     @IBAction func pushMafiaKill(_ sender: UIButton) {
         let indexPath = IndexPath(item: sender.tag, section: 0)
-        game.getPlayer(at: indexPath.row).stateAlive = AliveState.Dead
-        self.startNewGame() // Стартуем!
+        let actionPlayer = game.getPlayer(at: indexPath.row)
+        // Если днем убили то горожане(с мафией) если ночью то мафия
+        let actionType = game.state == DayNightState.Day ? ActionType.CitizenKill : ActionType.MafiaKill
+        let action = Action(actionType: actionType, player: actionPlayer)
+        
+        game.getCurrentTurn().actions.append(action)
+        if !game.isStarted {self.startNewGame()} // Стартуем!
         playersTableView.reloadData()
     }
     
     // Нажали кнопку "Доктор вылечил" в таблице
     @IBAction func pushDoctorHeal(_ sender: UIButton) {
+        self.createAction(newAction: ActionType.Heal, cellRow: sender.tag, ifState: DayNightState.Night)
     }
     
     // Нажали кнопку "Комисар проверил" в таблице
     @IBAction func pushSherifCheck(_ sender: UIButton) {
+        self.createAction(newAction: ActionType.SherifCheck, cellRow: sender.tag, ifState: DayNightState.Night)
     }
     
     // Нажали кнопку "Проститутка заткнула" в таблице
     @IBAction func pushProstituteSilence(_ sender: UIButton) {
+        self.createAction(newAction: ActionType.ProstituteSilence, cellRow: sender.tag, ifState: DayNightState.Night)
     }
     
     // Нажали кнопку "Смена дня и ночи" в панели инструментов
@@ -203,6 +211,23 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         game.isStarted = true
         addNewPlayerButton.isEnabled = false
         addNewPlayerButton.tintColor = UIColor.lightGray
+        playersTableView.reloadData()
+    }
+    
+    // Выполняем новое действие над пользователем (убить, вылечить, проверить и тд.)
+    func createAction(newAction: ActionType, cellRow: Int, ifState: DayNightState? = nil) {
+        guard ifState == nil || game.state == ifState else {
+            os_log("Bad state for create action", log: OSLog.default, type: .error)
+            return
+        }
+        
+        let indexPath = IndexPath(item: cellRow, section: 0) // Индекс хода
+        let actionPlayer = game.getPlayer(at: indexPath.row) // Над кем(игрок) действие
+        let actionType = ActionType.Heal
+        let action = Action(actionType: actionType, player: actionPlayer)
+        
+        game.getCurrentTurn().actions.append(action) // Добавлем новое выполненное действие в массив совершенных действий
+        
         playersTableView.reloadData()
     }
 }

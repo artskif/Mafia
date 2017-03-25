@@ -52,4 +52,5 @@ enum ActionType {
     case SherifCheck
     case Heal
     case CitizenKill
+    case ProstituteSilence
 }

@@ -78,7 +78,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     
     // Кличесто элементов в одной секции таблицы
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // У нас в таблице или аккаунты пользователей или роли пользователя
+        // У нас в таблице или аккаунты пользователей или роли пользователя(если мы редактируем пользователя)
         if player == nil {
             return game.accounts.count
         } else {
@@ -86,7 +86,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         }
     }
     
-    // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
+    // Обрабатываем внешний вид и содержимое каждой ячейки таблицы выбора поочередно
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifer = "ChooseTableViewCell"
         
@@ -107,9 +107,9 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         }
         
         if let currentChoosed = choosedNumber {
-            // Имеется выбранный вариант тыблицы выбора пользователей или ролей
+            // Имеется выбранный вариант тыблицы (выбора пользователей или ролей)
 
-            // если нажата кнопка выбора то мы ее отключаем
+            // если нажата кнопка выбора то мы ее отключаем (во избежании дальнейших нажатий этой кнопки)
             cell.chooseButton.isEnabled = currentChoosed != cell.chooseButton.tag
             
             // Если мы выбираем нового пользователя и дошли до ячейки выбранного пользователя,
