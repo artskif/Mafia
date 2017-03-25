@@ -120,7 +120,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Определяем возможность редактировать таблицу участников
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return !game.isStarted
     }
     
     // Количество секций в таблице
@@ -146,7 +146,8 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
                 game.addPlayer(player: player)
                 playersTableView.insertRows(at: [newIndexPath], with: .automatic)
             }
-        }               
+            playersTableView.reloadData()
+        }
     }
     
     // Нажали кнопку Cancel на странице добавления пользователя в игру
@@ -188,7 +189,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             mainView.backgroundColor = UIColor.black
             game.state = DayNightState.Night
         }
-        self.startNewGame() // Стартуем!
         playersTableView.reloadData()
     }
     
@@ -203,5 +203,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         game.isStarted = true
         addNewPlayerButton.isEnabled = false
         addNewPlayerButton.tintColor = UIColor.lightGray
+        playersTableView.reloadData()
     }
 }

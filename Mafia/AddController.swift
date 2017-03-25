@@ -39,6 +39,10 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         
         // Включить кнопку Save только если контроллер содержит валидные данные для сохранения
         updateSaveButtonState()
+        
+        if game.isStarted {
+            chooseTableView.isHidden = true
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,18 +96,27 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         
         cell.chooseButton.tag = indexPath.row
 
-        
         if player == nil {
-            // Определяем дынные для заполнения ячейки таблицы
+            // В данном варианте мы не редактируем пользователя - мы выбираем нового
             let account = game.accounts[indexPath.row]
             cell.cellName.text = account.name
         } else {
-            // Если мы редактируем ячейку то мы выбираем роль
+            // В данном варианте мы редактируем пользователя,
+            // следовательно должны показать роли для возможности сменить роль(выбранного персонажа)
             cell.cellName.text = Role(rawValue: indexPath.row)?.description
         }
         
         if let currentChoosed = choosedNumber {
+            // Имеется выбранный вариант тыблицы выбора пользователей или ролей
+
+            // если нажата кнопка выбора то мы ее отключаем
             cell.chooseButton.isEnabled = currentChoosed != cell.chooseButton.tag
+            
+            // Если мы выбираем нового пользователя и дошли до ячейки выбранного пользователя,
+            // то для красоты запишем его имя в текстовое поле выбора имени
+            if player == nil && currentChoosed == indexPath.row {
+                nameTextField.text = cell.cellName.text
+            }
         }
         
         return cell
