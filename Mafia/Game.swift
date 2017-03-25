@@ -18,6 +18,7 @@ class Game {
     var turns:[Turn]
     var accounts:[Account]
     var roles:Dictionary<Int, Role>
+    var isStarted:Bool
     
     
     init(){
@@ -26,6 +27,7 @@ class Game {
         let firstTurn = Turn(turnNumber: 1)
         self.turns = [firstTurn]
         self.roles = [:]
+        self.isStarted = false
         
         // Достаем из хранилища сохраненные аккаунты если имеются
         self.accounts =  Game.loadAccounts()

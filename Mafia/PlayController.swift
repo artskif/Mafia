@@ -16,6 +16,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var playersTableView: UITableView!
     @IBOutlet weak var dayNightButton: UIBarButtonItem!
     @IBOutlet weak var endOfTheGameButton: UIBarButtonItem!
+    @IBOutlet weak var addNewPlayerButton: UIBarButtonItem!
     @IBOutlet var mainView: UIView!
     
     // MARK: - События контроллера
@@ -78,18 +79,31 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Определяем дынные для заполнения ячейки таблицы
         let player = game.getPlayer(at: indexPath.row)
         
-        cell.killButton.tag = indexPath.row
-        cell.nameLabel.text = player.name
-        cell.roleLabel.text = player.role.description
-        if game.state == DayNightState.Day{
-            cell.healButton.isHidden = true
-            cell.checkButton.isHidden = true
-            cell.silenceButton.isHidden = true
+        
+        if player.stateAlive == AliveState.Dead {
+            if !cell.roleLabel.text!.hasSuffix("Мертв"){
+                cell.isUserInteractionEnabled = false
+                cell.backgroundColor = UIColor.lightGray
+                cell.roleLabel.text = cell.roleLabel.text! + " - Мертв"
+                cell.healButton.isHidden = true
+                cell.checkButton.isHidden = true
+                cell.silenceButton.isHidden = true
+                cell.killButton.isHidden = true
+            }
         } else {
-            cell.healButton.isHidden = game.roles[Role.Doctor.rawValue] == nil
-            cell.checkButton.isHidden = game.roles[Role.Sherif.rawValue] == nil
-            cell.silenceButton.isHidden = game.roles[Role.Prostitute.rawValue] == nil
-            cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil
+            cell.killButton.tag = indexPath.row
+            cell.nameLabel.text = player.name
+            cell.roleLabel.text = player.role.description
+            if game.state == DayNightState.Day{
+                cell.healButton.isHidden = true
+                cell.checkButton.isHidden = true
+                cell.silenceButton.isHidden = true
+            } else {
+                cell.healButton.isHidden = game.roles[Role.Doctor.rawValue] == nil
+                cell.checkButton.isHidden = game.roles[Role.Sherif.rawValue] == nil
+                cell.silenceButton.isHidden = game.roles[Role.Prostitute.rawValue] == nil
+                cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil
+            }
         }
         
         return cell
@@ -146,8 +160,21 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     // Нажали кнопку "Мафия убивает" в таблице
     @IBAction func pushMafiaKill(_ sender: UIButton) {
         let indexPath = IndexPath(item: sender.tag, section: 0)
-        game.removePlayer(at: sender.tag)
-        playersTableView.deleteRows(at: [indexPath], with: .fade)
+        game.getPlayer(at: indexPath.row).stateAlive = AliveState.Dead
+        self.startNewGame() // Стартуем!
+        playersTableView.reloadData()
+    }
+    
+    // Нажали кнопку "Доктор вылечил" в таблице
+    @IBAction func pushDoctorHeal(_ sender: UIButton) {
+    }
+    
+    // Нажали кнопку "Комисар проверил" в таблице
+    @IBAction func pushSherifCheck(_ sender: UIButton) {
+    }
+    
+    // Нажали кнопку "Проститутка заткнула" в таблице
+    @IBAction func pushProstituteSilence(_ sender: UIButton) {
     }
     
     // Нажали кнопку "Смена дня и ночи" в панели инструментов
@@ -161,10 +188,20 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             mainView.backgroundColor = UIColor.black
             game.state = DayNightState.Night
         }
+        self.startNewGame() // Стартуем!
         playersTableView.reloadData()
     }
     
     // Нажали кнопку "Закончить игру" в панели инструментов
     @IBAction func tapEndOfTheGameButton(_ sender: UIBarButtonItem) {
+    }
+    
+    //MARK: - Методы управления страницей
+    
+    // Начали новую игру(сделали первый ход)
+    func startNewGame(){
+        game.isStarted = true
+        addNewPlayerButton.isEnabled = false
+        addNewPlayerButton.tintColor = UIColor.lightGray
     }
 }

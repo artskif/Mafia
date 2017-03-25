@@ -129,6 +129,9 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e81-jS-gMK" userLabel="Heal Button">
                                                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                                             <state key="normal" image="icon_medic"/>
+                                                            <connections>
+                                                                <action selector="pushDoctorHeal:" destination="oNQ-Ax-mL0" eventType="touchUpInside" id="9c4-M3-QJ2"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8u-Ti-dA5" userLabel="Kill Button">
                                                             <rect key="frame" x="46" y="0.0" width="44" height="44"/>
@@ -140,15 +143,21 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7EV-AD-wZE" userLabel="Check Button">
                                                             <rect key="frame" x="92" y="0.0" width="44" height="44"/>
                                                             <state key="normal" image="icon_loop"/>
+                                                            <connections>
+                                                                <action selector="pushSherifCheck:" destination="oNQ-Ax-mL0" eventType="touchUpInside" id="2F0-CT-fdl"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXa-iy-R50" userLabel="Silence Button">
                                                             <rect key="frame" x="138" y="0.0" width="44" height="44"/>
                                                             <state key="normal" image="icon_night_love"/>
+                                                            <connections>
+                                                                <action selector="pushProstituteSilence:" destination="oNQ-Ax-mL0" eventType="touchUpInside" id="DxA-eB-df8"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Роль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ag-Ee-Aup">
-                                                    <rect key="frame" x="11" y="30" width="90" height="21"/>
+                                                    <rect key="frame" x="11" y="30" width="207" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -191,6 +200,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Игра МАФИЯ" id="uiW-uU-I3i"/>
                     <connections>
+                        <outlet property="addNewPlayerButton" destination="ups-YX-46y" id="CgA-UO-Ojy"/>
                         <outlet property="dayNightButton" destination="ap6-I2-6Du" id="hD4-Jd-tcR"/>
                         <outlet property="endOfTheGameButton" destination="I7d-Fu-rbj" id="uMo-SR-BDR"/>
                         <outlet property="mainView" destination="LDo-YX-gZU" id="TYD-cs-DHh"/>
