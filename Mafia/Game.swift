@@ -13,6 +13,7 @@ import os.log
 class Game {
     
     // MARK: - Поля класса
+    
     var state:DayNightState
     private var _players:[Player]
     var accounts:[Account]
@@ -20,6 +21,8 @@ class Game {
     var isStarted:Bool
     var turnNumber:Int
     var turnTextMessage:String
+    var rating:Rating
+    var currentTurnDead:Player?
     
     
     init(){
@@ -29,6 +32,8 @@ class Game {
         self.isStarted = false
         self.turnNumber = 1
         self.turnTextMessage = "Никто не умер"
+        self.rating = Rating(players: self._players)
+        self.currentTurnDead = nil
         
         // Достаем из хранилища сохраненные аккаунты если имеются
         self.accounts =  Game.loadAccounts()
@@ -66,14 +71,21 @@ class Game {
     
     // Обработать конец хода (высчитываем кто убит, кто молчит и тд)
     func handleTurnActions() {
-        self.turnTextMessage = ""
+        
+        self.turnTextMessage = "" // Сбрасываем сообщения в конце хода
+        self.currentTurnDead = nil // Сбрасываем текущего умершего игрока
+        
+        // Проверим каждого игрока, что с ним произошло за текущий ход
+        // (и изменим его статус, а так же сформируем сообщения о том что произошло за ход)
         for player in _players {
             if player.actionCheck(action: ActionType.CitizenKill) {
                 player.stateAlive = AliveState.Dead
+                self.currentTurnDead = player
                 self.turnTextMessage += "Горожане убили \(player.name) (\(player.role.description))\n"
             }
             if player.actionCheck(action: ActionType.MafiaKill) && !player.actionCheck(action: ActionType.Heal) && player.role != Role.Undead {
                 player.stateAlive = AliveState.Dead
+                self.currentTurnDead = player
                 self.turnTextMessage += "Мафия убила \(player.name) (\(player.role.description)\n"
             }
             if player.actionCheck(action: ActionType.ProstituteSilence) {
@@ -82,7 +94,20 @@ class Game {
         }
         if self.turnTextMessage.isEmpty {self.turnTextMessage = "Никто не умер"}
         
+        // Подсчитываем рейтинг в конце хода
+        self.rating.calculateTurnRating(turnNumber: self.getCurrentTurnNumber(), whoDead: self.currentTurnDead, dayState: self.state)
+        
         self.reloadRoles() // Если кто-то умер нужно пересчитать существующие в игре роли
+
+        // Проверяем не закончилась ли игра
+        if self.checkEndOfGame() {
+            self.turnTextMessage += "Игра окончена"
+        }
+    }
+    
+    // Проверяем не закончилась ли игра
+    func checkEndOfGame() -> Bool {
+        return false
     }
     
     // MARK: - Методы Ролей(Role)
@@ -113,6 +138,13 @@ class Game {
     // Начинаем новый ход
     func startNewTurn(){
         self.turnNumber += 1
+        
+        // Меняем время суток (день/ночь)
+        if self.state == DayNightState.Night {
+            self.state = DayNightState.Day
+        } else {
+            self.state = DayNightState.Night
+        }
     }
     
     // Получить порядковый номер следующего хода

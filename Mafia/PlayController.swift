@@ -241,12 +241,11 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Меняем интерфейс приложения для обозначения смены дня и ночи
         if game.state == DayNightState.Night {
             mainView.backgroundColor = UIColor.white
-            game.state = DayNightState.Day
         } else {
             mainView.backgroundColor = UIColor.black
-            game.state = DayNightState.Night
         }
-        game.startNewTurn()
+        game.startNewTurn() // Начинаем новый ход
+        
         playersTableView.reloadData()
     }
     
