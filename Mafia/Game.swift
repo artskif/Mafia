@@ -21,7 +21,6 @@ class Game {
     var isStarted:Bool
     var turnNumber:Int
     var turnTextMessage:String
-    var rating:Rating
     var currentTurnDead:Player?
     
     
@@ -32,7 +31,6 @@ class Game {
         self.isStarted = false
         self.turnNumber = 1
         self.turnTextMessage = "Никто не умер"
-        self.rating = Rating(players: self._players)
         self.currentTurnDead = nil
         
         // Достаем из хранилища сохраненные аккаунты если имеются
@@ -95,7 +93,7 @@ class Game {
         if self.turnTextMessage.isEmpty {self.turnTextMessage = "Никто не умер"}
         
         // Подсчитываем рейтинг в конце хода
-        self.rating.calculateTurnRating(turnNumber: self.getCurrentTurnNumber(), whoDead: self.currentTurnDead, dayState: self.state)
+        Rating.calculateTurnRating(players: &self._players, turnNumber: self.getCurrentTurnNumber(), whoDead: self.currentTurnDead, dayState: self.state)
         
         self.reloadRoles() // Если кто-то умер нужно пересчитать существующие в игре роли
 

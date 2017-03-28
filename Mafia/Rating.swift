@@ -11,23 +11,13 @@ import Foundation
 // Класс подсчитывающий рейтинг игроков
 class Rating {
     
-    // MARK: - Поля класса
-    
-    private var _players:[Player]
-    
-    // MARK: - Инициализаторы класса
-    
-    init (players:[Player]) {
-        self._players = players
-    }
-    
     // Подсчитываем рейтинг в конце игры
-    func calculateGameRating() {
+    static func calculateGameRating() {
         
     }
     
     // Подсчитываем рейтинг в конце хода
-    func calculateTurnRating(turnNumber: Int, whoDead: Player?, dayState: DayNightState) {
+    static func calculateTurnRating(players:inout [Player], turnNumber: Int, whoDead: Player?, dayState: DayNightState) {
         
         // Стартовые значения начисляемых очков
         var pointForSherif = 0
@@ -42,17 +32,17 @@ class Rating {
         // Вас убили днем -1
         if whoDead != nil && dayState == DayNightState.Day {
             whoDead!.currentRating.append(-1)
+            
+            // Бессмертный умер днем еще -1
+            if whoDead?.role == Role.Undead {whoDead!.currentRating.append(-1)}
         }
         
-        // Бессмертный умер днем -2
-        if whoDead != nil && dayState == DayNightState.Day && whoDead?.role == Role.Undead {whoDead!.currentRating.append(-2)}
-        
-        for p in self._players {
+        for p in players {
             if p.role == Role.Sherif && p.stateAlive == AliveState.Live {
                 sherif = p // запомнили живого комиссара
             }
             
-            if p.role == Role.Sherif && p.stateAlive == AliveState.Live {
+            if p.role == Role.Doctor && p.stateAlive == AliveState.Live {
                 doctor = p // запомнили живого доктора
             }
             
@@ -67,13 +57,13 @@ class Rating {
             }
             
             if whoDead != nil {
-                // Убили мирного всей живой мафии +1
-                if whoDead?.role != Role.Mafia && p.role == Role.Mafia && p.stateAlive == AliveState.Live {
+                // Убили мирного всей живой мафии днем +1
+                if whoDead?.role != Role.Mafia && p.role == Role.Mafia && p.stateAlive == AliveState.Live && dayState == DayNightState.Day {
                     p.currentRating.append(1)
                 }
                 
-                // Убили мафию всем живым мирным +1
-                if whoDead?.role == Role.Mafia && p.role != Role.Mafia && p.stateAlive == AliveState.Live {
+                // Убили мафию всем живым мирным днем +1
+                if whoDead?.role == Role.Mafia && p.role != Role.Mafia && p.stateAlive == AliveState.Live && dayState == DayNightState.Day {
                     p.currentRating.append(1)
                 }
             }

@@ -26,6 +26,7 @@
 		25FA28021E84FD8D00CDF81F /* ChooseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA28011E84FD8D00CDF81F /* ChooseTableViewCell.swift */; };
 		25FA28041E8A96D000CDF81F /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA28031E8A96D000CDF81F /* PopupViewController.swift */; };
 		25FA28061E8AD61000CDF81F /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA28051E8AD61000CDF81F /* Rating.swift */; };
+		25FA28081E8AEFD400CDF81F /* GameRatingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA28071E8AEFD400CDF81F /* GameRatingTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		25FA28011E84FD8D00CDF81F /* ChooseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTableViewCell.swift; sourceTree = "<group>"; };
 		25FA28031E8A96D000CDF81F /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		25FA28051E8AD61000CDF81F /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		25FA28071E8AEFD400CDF81F /* GameRatingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRatingTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				25F0E44D1E82B6A100B0F17B /* RatingTableViewCell.swift */,
 				25FA28011E84FD8D00CDF81F /* ChooseTableViewCell.swift */,
 				25FA28031E8A96D000CDF81F /* PopupViewController.swift */,
+				25FA28071E8AEFD400CDF81F /* GameRatingTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25C865731E76D5F400B8134B /* PlayerTableViewCell.swift in Sources */,
+				25FA28081E8AEFD400CDF81F /* GameRatingTableViewController.swift in Sources */,
 				25F0E44C1E82B35500B0F17B /* RatingController.swift in Sources */,
 				25F0E4441E8291B300B0F17B /* Game.swift in Sources */,
 				25F0E4461E8291F100B0F17B /* Enums.swift in Sources */,

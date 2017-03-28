@@ -14,7 +14,7 @@ class RatingTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
-
+    
     // MARK: - События ячейки
 
     override func awakeFromNib() {
