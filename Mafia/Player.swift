@@ -45,6 +45,40 @@ class Player: Account {
         super.init(name: baseObject.name, rating: baseObject.rating)
     }
     
+    // MARK: - Методы управления Действиями(Action)
+    
+    // Добавляем новое выполненное действие для пользователя
+    func addAction(action: ActionType, turn: Int) {
+        self.actions[action] = [turn:true]
+    }
+    
+    // Удаляем действие пользователя для текущего хода
+    func removeAction(action: ActionType, turn: Int) {
+        self.actions[action] = [turn:false]
+    }
+    
+    // Переключаем новое выполненное действие для пользователя
+    func toggleAction(action: ActionType, turn: Int) {
+        if self.actionCheck(action: action) {
+            self.removeAction(action: action, turn: turn)
+        } else {
+            self.addAction(action: action, turn: turn)
+        }
+    }
+    
+    // Проверяем выполнено ли указанное действие для пользователя на текущем ходу
+    func actionCheck(action: ActionType) -> Bool{
+        if self.actions[action] != nil {
+            if self.actions[action]![game.getCurrentTurnNumber()] != nil {
+                return self.actions[action]![game.getCurrentTurnNumber()]!
+            }
+        }
+        return false
+    }
+    
+    
+    // MARK: - Методы сохранения данных
+    
     // здесь мы сохраняем данные(в хранилище сотового телефона) для дальнейшего использования при закрытии приложения
     // данные сохраняются при помощи библиотеки NSCoding
     public override func encode(with aCoder: NSCoder) {

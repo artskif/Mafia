@@ -23,7 +23,7 @@ class Account: NSObject, NSCoding{
         self.name = name
     }
     
-    //MARK: NSCoding
+    // MARK: - Методы сохранения данных
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
@@ -42,7 +42,7 @@ class Account: NSObject, NSCoding{
         self.init(name: name, rating: rating)
     }
     
-    //MARK: Archiving Paths
+    //MARK: Директории хранения данных
     
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("accounts")

@@ -80,6 +80,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         let player = game.getPlayer(at: indexPath.row)
         
         
+        
         if player.stateAlive == AliveState.Dead {
             if !cell.roleLabel.text!.hasSuffix("Мертв"){
                 cell.isUserInteractionEnabled = false
@@ -92,13 +93,55 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         } else {
             cell.killButton.tag = indexPath.row
+            cell.healButton.tag = indexPath.row
+            cell.checkButton.tag = indexPath.row
+            cell.silenceButton.tag = indexPath.row
             cell.nameLabel.text = player.name
             cell.roleLabel.text = player.role.description
+            
+            
+            
             if game.state == DayNightState.Day{
                 cell.healButton.isHidden = true
                 cell.checkButton.isHidden = true
                 cell.silenceButton.isHidden = true
+                cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil
+                
+                // Отрисовываем нажатие кнопки "Убить"
+                if player.actionCheck(action: ActionType.CitizenKill) {
+                   cell.killButton.alpha = 0.5
+                } else {
+                   cell.killButton.alpha = 1
+                }
             } else {
+                // Отрисовываем нажатие кнопки "Полечить"
+                if player.actionCheck(action: ActionType.Heal) {
+                    cell.healButton.alpha = 0.5
+                } else {
+                    cell.healButton.alpha = 1
+                }
+                
+                // Отрисовываем нажатие кнопки "Полечить"
+                if player.actionCheck(action: ActionType.MafiaKill) {
+                    cell.killButton.alpha = 0.5
+                } else {
+                    cell.killButton.alpha = 1
+                }
+                
+                // Отрисовываем нажатие кнопки "Заткнули"
+                if player.actionCheck(action: ActionType.ProstituteSilence) {
+                    cell.silenceButton.alpha = 0.5
+                } else {
+                    cell.silenceButton.alpha = 1
+                }
+                
+                // Отрисовываем нажатие кнопки "Проверили"
+                if player.actionCheck(action: ActionType.SherifCheck) {
+                    cell.checkButton.alpha = 0.5
+                } else {
+                    cell.checkButton.alpha = 1
+                }
+
                 cell.healButton.isHidden = game.roles[Role.Doctor.rawValue] == nil
                 cell.checkButton.isHidden = game.roles[Role.Sherif.rawValue] == nil
                 cell.silenceButton.isHidden = game.roles[Role.Prostitute.rawValue] == nil
@@ -160,15 +203,12 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Нажали кнопку "Мафия убивает" в таблице
     @IBAction func pushMafiaKill(_ sender: UIButton) {
-        let indexPath = IndexPath(item: sender.tag, section: 0)
-        let actionPlayer = game.getPlayer(at: indexPath.row)
         // Если днем убили то горожане(с мафией) если ночью то мафия
         let actionType = game.state == DayNightState.Day ? ActionType.CitizenKill : ActionType.MafiaKill
-        let action = Action(actionType: actionType, player: actionPlayer)
         
-        game.getCurrentTurn().actions.append(action)
+        self.createAction(newAction: actionType, cellRow: sender.tag)
+
         if !game.isStarted {self.startNewGame()} // Стартуем!
-        playersTableView.reloadData()
     }
     
     // Нажали кнопку "Доктор вылечил" в таблице
@@ -223,10 +263,8 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let indexPath = IndexPath(item: cellRow, section: 0) // Индекс хода
         let actionPlayer = game.getPlayer(at: indexPath.row) // Над кем(игрок) действие
-        let actionType = ActionType.Heal
-        let action = Action(actionType: actionType, player: actionPlayer)
         
-        game.getCurrentTurn().actions.append(action) // Добавлем новое выполненное действие в массив совершенных действий
+        actionPlayer.toggleAction(action: newAction, turn: game.getCurrentTurnNumber())
         
         playersTableView.reloadData()
     }

@@ -15,24 +15,23 @@ class Game {
     // MARK: - Поля класса
     var state:DayNightState
     private var _players:[Player]
-    var turns:[Turn]
     var accounts:[Account]
     var roles:Dictionary<Int, Role>
     var isStarted:Bool
+    var turnNumber:Int
     
     
     init(){
         self.state = DayNightState.Day
         self._players = []
-        let firstTurn = Turn(turnNumber: 1)
-        self.turns = [firstTurn]
         self.roles = [:]
         self.isStarted = false
+        self.turnNumber = 1
         
         // Достаем из хранилища сохраненные аккаунты если имеются
         self.accounts =  Game.loadAccounts()
     }
-
+   
     // MARK: - Методы Игроков(Players)
     
     // Добавляем нового участника игры
@@ -82,28 +81,18 @@ class Game {
     // MARK: - Методы Ходов(Turn)
     
     // Вернуть текущий ход
-    func getCurrentTurn() -> Turn {
-        guard let currentTurn = self.turns.last else {
-            fatalError("The game have't current turn.")
-        }
-        
-        return currentTurn
+    func getCurrentTurnNumber() -> Int {
+        return self.turnNumber
     }
     
     // Начинаем новый ход
     func startNewTurn(){
-        let newTurn = Turn(turnNumber: game.getNextTurnNumber())
-        self.turns.append(newTurn)
-    }
-    
-    // Получить порядковый номер текущего хода
-    func getTurnNumber() -> Int {
-        return self.getCurrentTurn().number
+        self.turnNumber += 1
     }
     
     // Получить порядковый номер следующего хода
     func getNextTurnNumber() -> Int {
-        return self.getTurnNumber()+1
+        return self.turnNumber+1
     }
     
     // MARK: - Методы хранения данных
