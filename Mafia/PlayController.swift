@@ -228,8 +228,15 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Нажали кнопку "Смена дня и ночи" в панели инструментов
     @IBAction func tapDayNightButton(_ sender: UIBarButtonItem) {
-
+        let popOverVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popupStoriboardID") as! PopupViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
+        
         game.handleTurnActions() // Обрабатываем событие окончания хода
+        
+        popOverVC.textMessageLabel.text = game.turnTextMessage // Показываем игровые собщения окончания хода
         
         // Меняем интерфейс приложения для обозначения смены дня и ночи
         if game.state == DayNightState.Night {

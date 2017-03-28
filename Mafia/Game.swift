@@ -19,6 +19,7 @@ class Game {
     var roles:Dictionary<Int, Role>
     var isStarted:Bool
     var turnNumber:Int
+    var turnTextMessage:String
     
     
     init(){
@@ -27,6 +28,7 @@ class Game {
         self.roles = [:]
         self.isStarted = false
         self.turnNumber = 1
+        self.turnTextMessage = "Никто не умер"
         
         // Достаем из хранилища сохраненные аккаунты если имеются
         self.accounts =  Game.loadAccounts()
@@ -64,14 +66,23 @@ class Game {
     
     // Обработать конец хода (высчитываем кто убит, кто молчит и тд)
     func handleTurnActions() {
+        self.turnTextMessage = ""
         for player in _players {
             if player.actionCheck(action: ActionType.CitizenKill) {
                 player.stateAlive = AliveState.Dead
+                self.turnTextMessage += "Горожане убили \(player.name) (\(player.role.description))\n"
             }
             if player.actionCheck(action: ActionType.MafiaKill) && !player.actionCheck(action: ActionType.Heal) && player.role != Role.Undead {
                 player.stateAlive = AliveState.Dead
+                self.turnTextMessage += "Мафия убила \(player.name) (\(player.role.description)\n"
+            }
+            if player.actionCheck(action: ActionType.ProstituteSilence) {
+                self.turnTextMessage += "Молчит \(player.name)\n"
             }
         }
+        if self.turnTextMessage.isEmpty {self.turnTextMessage = "Никто не умер"}
+        
+        self.reloadRoles() // Если кто-то умер нужно пересчитать существующие в игре роли
     }
     
     // MARK: - Методы Ролей(Role)
@@ -80,7 +91,9 @@ class Game {
     func getGameRoles() -> Dictionary<Int, Role> {
         var newRoles: Dictionary<Int, Role> = [:]
         for p in self._players {
-            newRoles[p.role.rawValue] = Role(rawValue: p.role.rawValue)
+            if p.stateAlive == AliveState.Live {
+                newRoles[p.role.rawValue] = Role(rawValue: p.role.rawValue)
+            }
         }
         return newRoles
     }

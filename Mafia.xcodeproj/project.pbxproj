@@ -24,6 +24,7 @@
 		25F0E44C1E82B35500B0F17B /* RatingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F0E44B1E82B35500B0F17B /* RatingController.swift */; };
 		25F0E44E1E82B6A100B0F17B /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F0E44D1E82B6A100B0F17B /* RatingTableViewCell.swift */; };
 		25FA28021E84FD8D00CDF81F /* ChooseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA28011E84FD8D00CDF81F /* ChooseTableViewCell.swift */; };
+		25FA28041E8A96D000CDF81F /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA28031E8A96D000CDF81F /* PopupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		25F0E44B1E82B35500B0F17B /* RatingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingController.swift; sourceTree = "<group>"; };
 		25F0E44D1E82B6A100B0F17B /* RatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		25FA28011E84FD8D00CDF81F /* ChooseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTableViewCell.swift; sourceTree = "<group>"; };
+		25FA28031E8A96D000CDF81F /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				25F0E44B1E82B35500B0F17B /* RatingController.swift */,
 				25F0E44D1E82B6A100B0F17B /* RatingTableViewCell.swift */,
 				25FA28011E84FD8D00CDF81F /* ChooseTableViewCell.swift */,
+				25FA28031E8A96D000CDF81F /* PopupViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				25C865711E76AF1000B8134B /* Player.swift in Sources */,
 				25F0E44E1E82B6A100B0F17B /* RatingTableViewCell.swift in Sources */,
 				25C8653D1E72968F00B8134B /* AppDelegate.swift in Sources */,
+				25FA28041E8A96D000CDF81F /* PopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -67,6 +67,73 @@
             </objects>
             <point key="canvasLocation" x="24.800000000000001" y="35.532233883058474"/>
         </scene>
+        <!--Popup View Controller-->
+        <scene sceneID="lsU-9O-bhE">
+            <objects>
+                <viewController storyboardIdentifier="popupStoriboardID" id="iR9-iS-BC4" customClass="PopupViewController" customModule="Mafia" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wlf-nd-AaI"/>
+                        <viewControllerLayoutGuide type="bottom" id="hMb-IP-rcN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yfj-Fe-7DX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDe-xa-HWO">
+                                <rect key="frame" x="61" y="205" width="252" height="257"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDU-tQ-ya5">
+                                        <rect key="frame" x="8" y="208" width="236" height="41"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.095923195422535218" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="aCr-hD-b1W"/>
+                                            <constraint firstAttribute="width" constant="236" id="jem-i2-Lzu"/>
+                                        </constraints>
+                                        <state key="normal" title="Закрыть">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closePopup:" destination="iR9-iS-BC4" eventType="touchUpInside" id="4no-FU-lRU"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Никто не умер" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hjj-Er-mLy">
+                                        <rect key="frame" x="8" y="15" width="236" height="185"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="236" id="C0z-sR-OxY"/>
+                                            <constraint firstAttribute="height" constant="185" id="pUf-gN-NgC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="JDU-tQ-ya5" secondAttribute="trailing" constant="8" id="DyL-wF-Jpq"/>
+                                    <constraint firstItem="Hjj-Er-mLy" firstAttribute="leading" secondItem="bDe-xa-HWO" secondAttribute="leading" constant="8" id="F2T-SY-i46"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hjj-Er-mLy" secondAttribute="trailing" constant="8" id="HZM-bT-xbn"/>
+                                    <constraint firstAttribute="width" constant="252" id="IsO-W2-zfi"/>
+                                    <constraint firstItem="JDU-tQ-ya5" firstAttribute="leading" secondItem="bDe-xa-HWO" secondAttribute="leading" constant="8" id="U3V-nO-cRa"/>
+                                    <constraint firstAttribute="bottom" secondItem="JDU-tQ-ya5" secondAttribute="bottom" constant="8" id="bhf-hs-Jc0"/>
+                                    <constraint firstAttribute="height" constant="257" id="ffL-oy-y3g"/>
+                                    <constraint firstItem="Hjj-Er-mLy" firstAttribute="top" secondItem="bDe-xa-HWO" secondAttribute="top" constant="15" id="xhm-6T-aZ4"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bDe-xa-HWO" firstAttribute="centerX" secondItem="Yfj-Fe-7DX" secondAttribute="centerX" id="BoI-A2-tMB"/>
+                            <constraint firstItem="bDe-xa-HWO" firstAttribute="centerY" secondItem="Yfj-Fe-7DX" secondAttribute="centerY" id="WGR-Wg-j5F"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textMessageLabel" destination="Hjj-Er-mLy" id="a1L-V7-cBJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ypI-oI-oZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1749.5999999999999" y="-633.73313343328346"/>
+        </scene>
         <!--Игра МАФИЯ-->
         <scene sceneID="3IL-xU-IR5">
             <objects>
