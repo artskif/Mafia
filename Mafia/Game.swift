@@ -39,7 +39,7 @@ class Game {
         self._players.append(player)
         self.reloadRoles()
     }
-
+    
     // Получить одного игрока
     func getPlayer(at: Int) -> Player {
         return self._players[at]
@@ -60,6 +60,18 @@ class Game {
     // Текущее количество участников игры
     func countPlayers() -> Int {
         return self._players.count
+    }
+    
+    // Обработать конец хода (высчитываем кто убит, кто молчит и тд)
+    func handleTurnActions() {
+        for player in _players {
+            if player.actionCheck(action: ActionType.CitizenKill) {
+                player.stateAlive = AliveState.Dead
+            }
+            if player.actionCheck(action: ActionType.MafiaKill) && !player.actionCheck(action: ActionType.Heal) && player.role != Role.Undead {
+                player.stateAlive = AliveState.Dead
+            }
+        }
     }
     
     // MARK: - Методы Ролей(Role)

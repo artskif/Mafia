@@ -228,8 +228,10 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Нажали кнопку "Смена дня и ночи" в панели инструментов
     @IBAction func tapDayNightButton(_ sender: UIBarButtonItem) {
-        game.startNewTurn()
 
+        game.handleTurnActions() // Обрабатываем событие окончания хода
+        
+        // Меняем интерфейс приложения для обозначения смены дня и ночи
         if game.state == DayNightState.Night {
             mainView.backgroundColor = UIColor.white
             game.state = DayNightState.Day
@@ -237,6 +239,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             mainView.backgroundColor = UIColor.black
             game.state = DayNightState.Night
         }
+        game.startNewTurn()
         playersTableView.reloadData()
     }
     
