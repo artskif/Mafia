@@ -30,7 +30,7 @@
                                     <constraint firstAttribute="width" secondItem="Ooa-aY-LRU" secondAttribute="height" multiplier="343:103" id="l1M-H0-X2N"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                                <state key="normal" title="Начало игры">
+                                <state key="normal" title="Новая игра">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>

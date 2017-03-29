@@ -261,6 +261,17 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Нажали кнопку "Закончить игру" в панели инструментов
     @IBAction func tapEndOfTheGameButton(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Завершение игры", message: "Хотите сохранить рейтинг?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Да", style: UIAlertActionStyle.default, handler: { (action) in
+            self.finishCurrentGame(saveRating: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Нет", style: UIAlertActionStyle.default, handler: { (action) in
+            self.finishCurrentGame(saveRating: false)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     //MARK: - Методы управления страницей
@@ -271,6 +282,15 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         addNewPlayerButton.isEnabled = false
         playersTableView.isEditing = false
         playersTableView.reloadData()
+    }
+    
+    // Завершаем текущую игру
+    func finishCurrentGame(saveRating: Bool) {
+        if let owningNavigationController = self.navigationController {
+            owningNavigationController.popViewController(animated: true)
+        } else {
+            os_log("Can't dismiss controller", log: OSLog.default, type: OSLogType.error)
+        }
     }
     
     // Выполняем новое действие над пользователем (убить, вылечить, проверить и тд.)
