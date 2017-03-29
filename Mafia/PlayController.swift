@@ -286,11 +286,18 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Завершаем текущую игру
     func finishCurrentGame(saveRating: Bool) {
-        if let owningNavigationController = self.navigationController {
+        self.performSegue(withIdentifier: "unwindToMainScreen", sender: self)
+        
+        let isPresentingInAddPlayerMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddPlayerMode {
+            dismiss(animated: true, completion: nil)
+        } else if let owningNavigationController = navigationController{
             owningNavigationController.popViewController(animated: true)
         } else {
-            os_log("Can't dismiss controller", log: OSLog.default, type: OSLogType.error)
+            fatalError("The PlayController is not inside a navigation controller.")
         }
+
     }
     
     // Выполняем новое действие над пользователем (убить, вылечить, проверить и тд.)

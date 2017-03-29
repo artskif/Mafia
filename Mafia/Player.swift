@@ -23,17 +23,18 @@ class Player: Account {
         self.currentRating = [1]
         self.stateAlive = AliveState.Live
         self.actions = [:]
+        self.id = 0
         
-        super.init(name: name)
+        super.init(id: 0, name: name)
     }
     
-    override init?(name:String, rating: Int){
+    override init?(id: Int, name:String, rating: Int){
         self.role = Role.Citizen
         self.currentRating = [1]
         self.stateAlive = AliveState.Live
         self.actions = [:]
         
-        super.init(name: name, rating: rating)
+        super.init(id: id, name: name, rating: rating)
     }
     
     init?(baseObject: Account) {
@@ -42,7 +43,7 @@ class Player: Account {
         self.stateAlive = AliveState.Live
         self.actions = [:]
         
-        super.init(name: baseObject.name, rating: baseObject.rating)
+        super.init(id: baseObject.id, name: baseObject.name, rating: baseObject.rating)
     }
     
     // MARK: - Методы управления Действиями(Action)

@@ -186,6 +186,11 @@ class Game {
     
     // MARK: - Методы хранения данных
     
+    // Сохранить рейтинг
+    func saveRating() {
+        self._players
+    }
+    
     // Сохранение игроков в постоянное хранилище телефона
     func saveAccounts() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(game.accounts, toFile: Account.ArchiveURL.path)

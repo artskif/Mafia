@@ -275,9 +275,11 @@
                         <outlet property="endOfTheGameButton" destination="I7d-Fu-rbj" id="uMo-SR-BDR"/>
                         <outlet property="mainView" destination="LDo-YX-gZU" id="TYD-cs-DHh"/>
                         <outlet property="playersTableView" destination="cge-AA-EFm" id="hhU-Ea-7yY"/>
+                        <segue destination="FzV-ee-t8s" kind="unwind" identifier="unwindToMainScreen" unwindAction="unwindCancelToMainScreenWithSender:" id="lSj-JX-Jfz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szG-dh-KKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="FzV-ee-t8s" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1749.5999999999999" y="35.532233883058474"/>
         </scene>
