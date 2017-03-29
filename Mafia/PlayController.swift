@@ -288,6 +288,8 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     func finishCurrentGame(saveRating: Bool) {
         self.performSegue(withIdentifier: "unwindToMainScreen", sender: self)
         
+        if saveRating {game.saveRating()}
+        
         let isPresentingInAddPlayerMode = presentingViewController is UINavigationController
         
         if isPresentingInAddPlayerMode {

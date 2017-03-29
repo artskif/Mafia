@@ -14,6 +14,8 @@ class StartController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        game.accounts = Game.loadAccounts() // Подгружаем данные статичным методом
     }
 
     override func didReceiveMemoryWarning() {

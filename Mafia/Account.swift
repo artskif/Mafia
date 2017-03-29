@@ -34,20 +34,15 @@ class Account: NSObject, NSCoding{
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        // The name is required. If we cannot decode a name string, the initializer should fail.
-        guard let id = aDecoder.decodeObject(forKey: "id") as? Int else {
-            os_log("Unable to decode the id for a Account object.", log: OSLog.default, type: .debug)
-            return nil
-        }
-
         guard let name = aDecoder.decodeObject(forKey: "name") as? String else {
             os_log("Unable to decode the name for a Account object.", log: OSLog.default, type: .debug)
             return nil
         }
 
+        let id = aDecoder.decodeInteger(forKey: "id")
         let rating = aDecoder.decodeInteger(forKey: "rating")
         
-        self.init(name: name, rating: rating, id: id)
+        self.init(id: id, name: name, rating: rating)
     }
     
     //MARK: Директории хранения данных

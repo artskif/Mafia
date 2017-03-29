@@ -36,6 +36,7 @@ class Game {
         self.isFinished = false
         
         // Достаем из хранилища сохраненные аккаунты если имеются
+        // (используем статичный метод тк вызываем в инициализаторе)
         self.accounts =  Game.loadAccounts()
     }
    
@@ -188,7 +189,30 @@ class Game {
     
     // Сохранить рейтинг
     func saveRating() {
-        self._players
+        for p in self._players {
+            // Подсчитываем рейтинг игрока текущей законченной игры(не может быть меньше 1)
+            var sumRatingOfGame = p.currentRating.reduce(0, { x, y in x + y})
+            sumRatingOfGame = sumRatingOfGame < 1 ? 1 : sumRatingOfGame
+            
+            if p.id > 0 {
+                if let findedAccount = self.findAccountById(id: p.id) {
+                    findedAccount.name = p.name
+                    findedAccount.rating += sumRatingOfGame
+                }
+            } else {
+                if let maxAccount = self.accounts.max(by: { (a1, a2) -> Bool in a1.id < a2.id}) {
+                    self.accounts.append(Account(id: maxAccount.id + 1, name: p.name, rating: sumRatingOfGame)!)
+                } else {
+                    self.accounts.append(Account(id: 1, name: p.name, rating: sumRatingOfGame)!)
+                }
+            }
+        }
+        
+        self.saveAccounts() // Сохраняем в постоянное хранилище
+    }
+    
+    func findAccountById(id: Int) -> Account? {
+        return self.accounts.first(where: { $0.id == id })
     }
     
     // Сохранение игроков в постоянное хранилище телефона

@@ -23,7 +23,6 @@ class Player: Account {
         self.currentRating = [1]
         self.stateAlive = AliveState.Live
         self.actions = [:]
-        self.id = 0
         
         super.init(id: 0, name: name)
     }
@@ -93,8 +92,9 @@ class Player: Account {
             return nil
         }
         
+        let id = aDecoder.decodeInteger(forKey: "id")
         let rating = aDecoder.decodeInteger(forKey: "rating")
         
-        self.init(name: name, rating: rating)
+        self.init(id: id, name: name, rating: rating)
     }
 }
