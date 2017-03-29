@@ -12,8 +12,18 @@ import Foundation
 class Rating {
     
     // Подсчитываем рейтинг в конце игры
-    static func calculateGameRating() {
-        
+    static func calculateGameRating(players:inout [Player], whoWins: Role) {
+        for p in players {
+            // Записываем очки мафии если победили +2
+            if whoWins == Role.Mafia && p.role == Role.Mafia {
+                p.currentRating.append(2)
+            }
+
+            // Записываем очки мирным если победили +2
+            if whoWins == Role.Citizen && p.role != Role.Mafia {
+                p.currentRating.append(2)
+            }
+        }
     }
     
     // Подсчитываем рейтинг в конце хода

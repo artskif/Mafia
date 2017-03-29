@@ -20,7 +20,7 @@ class Player: Account {
     
     init?(name:String){
         self.role = Role.Citizen
-        self.currentRating = []
+        self.currentRating = [1]
         self.stateAlive = AliveState.Live
         self.actions = [:]
         
@@ -29,7 +29,7 @@ class Player: Account {
     
     override init?(name:String, rating: Int){
         self.role = Role.Citizen
-        self.currentRating = []
+        self.currentRating = [1]
         self.stateAlive = AliveState.Live
         self.actions = [:]
         
@@ -38,7 +38,7 @@ class Player: Account {
     
     init?(baseObject: Account) {
         self.role = Role.Citizen
-        self.currentRating = []
+        self.currentRating = [1]
         self.stateAlive = AliveState.Live
         self.actions = [:]
         

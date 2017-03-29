@@ -14,14 +14,15 @@ class Game {
     
     // MARK: - Поля класса
     
-    var state:DayNightState
-    private var _players:[Player]
-    var accounts:[Account]
-    var roles:Dictionary<Int, Role>
-    var isStarted:Bool
-    var turnNumber:Int
-    var turnTextMessage:String
-    var currentTurnDead:Player?
+    var state:DayNightState // Состояние игры День/Ночь
+    private var _players:[Player] // Участники игры
+    var accounts:[Account] // Зарегистрированные пользователи игры
+    var roles:Dictionary<Int, Role> // Роли игры
+    var isStarted:Bool // Игра началась
+    var isFinished:Bool // Игра закончилась
+    var turnNumber:Int // Номер хода
+    var turnTextMessage:String // Сообщение конца хода
+    var currentTurnDead:Player? // Текущий мертвый пользователь
     
     
     init(){
@@ -32,6 +33,7 @@ class Game {
         self.turnNumber = 1
         self.turnTextMessage = "Никто не умер"
         self.currentTurnDead = nil
+        self.isFinished = false
         
         // Достаем из хранилища сохраненные аккаунты если имеются
         self.accounts =  Game.loadAccounts()
@@ -84,13 +86,13 @@ class Game {
             if player.actionCheck(action: ActionType.MafiaKill) && !player.actionCheck(action: ActionType.Heal) && player.role != Role.Undead {
                 player.stateAlive = AliveState.Dead
                 self.currentTurnDead = player
-                self.turnTextMessage += "Мафия убила \(player.name) (\(player.role.description)\n"
+                self.turnTextMessage += "Мафия убила \(player.name) (\(player.role.description))\n"
             }
             if player.actionCheck(action: ActionType.ProstituteSilence) {
                 self.turnTextMessage += "Молчит \(player.name)\n"
             }
         }
-        if self.turnTextMessage.isEmpty {self.turnTextMessage = "Никто не умер"}
+        if self.turnTextMessage.isEmpty {self.turnTextMessage = "Никто не умер\n"}
         
         // Подсчитываем рейтинг в конце хода
         Rating.calculateTurnRating(players: &self._players, turnNumber: self.getCurrentTurnNumber(), whoDead: self.currentTurnDead, dayState: self.state)
@@ -98,14 +100,46 @@ class Game {
         self.reloadRoles() // Если кто-то умер нужно пересчитать существующие в игре роли
 
         // Проверяем не закончилась ли игра
-        if self.checkEndOfGame() {
-            self.turnTextMessage += "Игра окончена"
+        if let whoWin = self.checkEndOfGame() {
+            var textOfWin = ""
+            switch whoWin {
+            case .Citizen:
+                textOfWin = "победили Мирные"
+            case .Mafia:
+                textOfWin = "победила Мафия"
+            default:
+                os_log("Incorrect type of wins", log: OSLog.default, type: OSLogType.error)
+                break
+            }
+            self.turnTextMessage += "Игра окончена \(textOfWin)\n"
+            self.isFinished = true
+            
+            // Подсчитываем рейтинг конца игры
+            Rating.calculateGameRating(players: &self._players, whoWins:whoWin)
         }
     }
     
     // Проверяем не закончилась ли игра
-    func checkEndOfGame() -> Bool {
-        return false
+    func checkEndOfGame() -> Role? {
+        var countMafia = 0 // Количество живой мафии в игре
+        var countCitizen = 0 // Количество живых мирных
+        
+        for p in self._players {
+            if p.stateAlive == AliveState.Live {
+                if p.role == Role.Mafia {
+                    countMafia += 1
+                } else {
+                    countCitizen += 1
+                }
+            }
+        }
+        
+        if countMafia < 1 {return Role.Citizen} // Мирные победили
+        if countCitizen > countMafia {
+            return nil // Игра продолжается
+        } else {
+            return Role.Mafia // Мафия победила
+        }
     }
     
     // MARK: - Методы Ролей(Role)
