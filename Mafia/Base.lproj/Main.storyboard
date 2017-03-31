@@ -439,29 +439,30 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xSE-T2-KuY" id="IJH-Jh-4zS">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="NameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDm-Zw-qjX">
-                                            <rect key="frame" x="8" y="11" width="137" height="21"/>
+                                            <rect key="frame" x="17" y="11" width="137" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RatingLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VL2-N4-JHU">
-                                            <rect key="frame" x="267" y="11" width="100" height="21"/>
+                                            <rect key="frame" x="258" y="11" width="100" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="VL2-N4-JHU" firstAttribute="trailing" secondItem="IJH-Jh-4zS" secondAttribute="trailingMargin" id="2dh-R2-lIn"/>
-                                        <constraint firstItem="VL2-N4-JHU" firstAttribute="top" secondItem="IJH-Jh-4zS" secondAttribute="topMargin" constant="3" id="3ZW-NI-yr8"/>
-                                        <constraint firstItem="GDm-Zw-qjX" firstAttribute="leading" secondItem="IJH-Jh-4zS" secondAttribute="leadingMargin" id="rFY-nZ-c61"/>
-                                        <constraint firstItem="GDm-Zw-qjX" firstAttribute="top" secondItem="IJH-Jh-4zS" secondAttribute="topMargin" constant="3" id="tnj-Gs-ZJC"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="VL2-N4-JHU" secondAttribute="trailing" constant="9" id="4RZ-2o-Rhw"/>
+                                        <constraint firstItem="GDm-Zw-qjX" firstAttribute="top" secondItem="IJH-Jh-4zS" secondAttribute="topMargin" constant="3" id="8EI-5M-2Cg"/>
+                                        <constraint firstItem="GDm-Zw-qjX" firstAttribute="leading" secondItem="IJH-Jh-4zS" secondAttribute="leadingMargin" constant="9" id="mdR-bC-ymn"/>
+                                        <constraint firstItem="VL2-N4-JHU" firstAttribute="top" secondItem="IJH-Jh-4zS" secondAttribute="topMargin" constant="3" id="qOV-HX-Xqw"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <connections>
                                     <outlet property="nameLabel" destination="GDm-Zw-qjX" id="a6x-JJ-4ro"/>
                                     <outlet property="ratingLabel" destination="VL2-N4-JHU" id="mCu-OA-ING"/>
@@ -474,7 +475,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Общий рейтинг" id="HL7-J6-sR6">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8pS-8V-O9p">
+                        <barButtonItem key="leftBarButtonItem" title="Назад" id="8pS-8V-O9p">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="cancelTab:" destination="P8I-yl-Pn7" id="ZS7-4d-Vij"/>
@@ -508,25 +509,26 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="NameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a09-P3-m2J">
-                                            <rect key="frame" x="8" y="11" width="114" height="21"/>
+                                            <rect key="frame" x="18" y="11" width="114" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RatingLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xN-bH-Flq">
-                                            <rect key="frame" x="242" y="11" width="125" height="21"/>
+                                            <rect key="frame" x="232" y="11" width="125" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="a09-P3-m2J" firstAttribute="leading" secondItem="O45-YS-EeM" secondAttribute="leadingMargin" id="Qha-zM-B2L"/>
-                                        <constraint firstItem="9xN-bH-Flq" firstAttribute="trailing" secondItem="O45-YS-EeM" secondAttribute="trailingMargin" id="edt-K9-p4U"/>
-                                        <constraint firstItem="a09-P3-m2J" firstAttribute="top" secondItem="O45-YS-EeM" secondAttribute="topMargin" constant="3" id="rGm-1c-xij"/>
-                                        <constraint firstItem="9xN-bH-Flq" firstAttribute="top" secondItem="O45-YS-EeM" secondAttribute="topMargin" constant="3" id="vyl-o1-wAF"/>
+                                        <constraint firstItem="a09-P3-m2J" firstAttribute="top" secondItem="O45-YS-EeM" secondAttribute="topMargin" constant="3" id="9El-xL-mOD"/>
+                                        <constraint firstItem="a09-P3-m2J" firstAttribute="leading" secondItem="O45-YS-EeM" secondAttribute="leadingMargin" constant="9" id="E2e-Ql-7ig"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="9xN-bH-Flq" secondAttribute="trailing" constant="9" id="TFR-h8-aks"/>
+                                        <constraint firstItem="9xN-bH-Flq" firstAttribute="top" secondItem="O45-YS-EeM" secondAttribute="topMargin" constant="3" id="XGD-Nf-qLf"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <connections>
                                     <outlet property="nameLabel" destination="a09-P3-m2J" id="alL-4Y-3W3"/>
                                     <outlet property="ratingLabel" destination="9xN-bH-Flq" id="tx1-qz-jH1"/>
@@ -607,10 +609,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_action1" width="42" height="43"/>
-        <image name="icon_action2" width="44" height="44"/>
-        <image name="icon_action3" width="44" height="43"/>
-        <image name="icon_action4" width="43" height="44"/>
+        <image name="icon_action1" width="37" height="38"/>
+        <image name="icon_action2" width="38" height="39"/>
+        <image name="icon_action3" width="39" height="39"/>
+        <image name="icon_action4" width="39" height="39"/>
         <image name="icon_kill" width="44" height="44"/>
         <image name="icon_loop" width="44" height="44"/>
         <image name="icon_medic" width="44" height="44"/>
