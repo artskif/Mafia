@@ -47,7 +47,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             
             guard let selectedPlayerCell = sender as? PlayerTableViewCell else {
-                fatalError("Unexpected sender: \(sender)")
+                fatalError("Unexpected sender")
             }
             
             guard let indexPath = playersTableView.indexPath(for: selectedPlayerCell) else {
@@ -79,27 +79,24 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Определяем дынные для заполнения ячейки таблицы
         let player = game.getPlayer(at: indexPath.row)
         
-        // Мертвый игрок отрисовываем ячейку
-        guard player.stateAlive != AliveState.Dead else {
-            if !cell.roleLabel.text!.hasSuffix("Мертв") {
-                cell.isUserInteractionEnabled = false
-                cell.backgroundColor = UIColor.lightGray
-                cell.roleLabel.text = cell.roleLabel.text! + " - Мертв"
-                cell.healButton.isHidden = true
-                cell.checkButton.isHidden = true
-                cell.silenceButton.isHidden = true
-                cell.killButton.isHidden = true
-            }
-            return cell
-        }
+        // Ячейка мертвого пользователя
+        if player.stateAlive == AliveState.Dead {
+            cell.backgroundColor = UIColor.darkGray
+            cell.isUserInteractionEnabled = false
 
-        // Если игра закончилась скрываем все кнопки действий
-        guard !game.isFinished else {
             cell.healButton.isHidden = true
             cell.checkButton.isHidden = true
             cell.silenceButton.isHidden = true
             cell.killButton.isHidden = true
+            
+            if !cell.roleLabel.text!.hasSuffix("Мертв") {
+                cell.roleLabel.text = cell.roleLabel.text! + " - Мертв"
+            }
+            
             return cell
+        } else {
+            cell.backgroundColor = UIColor.clear
+            cell.isUserInteractionEnabled = true
         }
         
         // Сохраним данные для кнопок
@@ -255,6 +252,8 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             mainView.backgroundColor = UIColor.black
         }
         game.startNewTurn() // Начинаем новый ход
+        
+        playersTableView.reloadData() // Обновляем таблицу
         
         if !game.isStarted {self.startNewGame()} // Стартуем игру!
     	}
