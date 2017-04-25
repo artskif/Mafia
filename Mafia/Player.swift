@@ -15,7 +15,7 @@ class Player: Account {
     var stateAlive:AliveState
     var currentRating:[Int]
     // TODO: Возможны варианты совершенствования конструкции
-    // Конструкция вида [Действие(проверен, убит, исцелен): На каких хода(1 - да, 3 - нет, 6 - да)] - многомерный массив
+    // Конструкция вида [Действие(проверен, убит, исцелен): На каких ходах(1 - да, 3 - нет, 6 - да)] - многомерный массив
     var actions:Dictionary<ActionType, Dictionary<Int,Bool>>
     
     init?(name:String){

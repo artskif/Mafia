@@ -48,6 +48,18 @@ class Game {
         self.reloadRoles()
     }
     
+    // Проверить существование игрока по id
+    func checkPlayerId(idItem:Int) -> Bool {
+        let playersCheck =  self._players.contains { $0.id == idItem }
+        return playersCheck
+    }
+    
+    // Добавляем новых участников игры
+    func addPlayers(players:[Player]) {
+        self._players.append(contentsOf: players)
+        self.reloadRoles()
+    }
+    
     // Получить одного игрока
     func getPlayer(at: Int) -> Player {
         return self._players[at]
@@ -96,7 +108,7 @@ class Game {
         if self.turnTextMessage.isEmpty {self.turnTextMessage = "Никто не умер\n"}
         
         // Подсчитываем рейтинг в конце хода
-        Rating.calculateTurnRating(players: &self._players, turnNumber: self.getCurrentTurnNumber(), whoDead: self.currentTurnDead, dayState: self.state)
+        RatingUtilites.calculateTurnRating(players: &self._players, turnNumber: self.getCurrentTurnNumber(), whoDead: self.currentTurnDead, dayState: self.state)
         
         self.reloadRoles() // Если кто-то умер нужно пересчитать существующие в игре роли
 
@@ -116,7 +128,7 @@ class Game {
             self.isFinished = true
             
             // Подсчитываем рейтинг конца игры
-            Rating.calculateGameRating(players: &self._players, whoWins:whoWin)
+            RatingUtilites.calculateGameRating(players: &self._players, whoWins:whoWin)
         }
     }
     

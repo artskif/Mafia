@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -351,10 +351,7 @@
                                 </connections>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя игрока" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Lv-qH-zmP">
-                                <rect key="frame" x="16" y="101" width="343" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="6Lv-qH-zmP" secondAttribute="height" multiplier="343:30" id="u4C-Gm-tIk"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="101" width="313" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -363,15 +360,26 @@
                                     <outlet property="delegate" destination="XN1-Lj-Oc9" id="uvn-hz-We4"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGI-qB-AjB">
+                                <rect key="frame" x="337" y="105" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eGI-qB-AjB" secondAttribute="height" multiplier="1:1" id="tjB-ux-F6f"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="addNewPlayer:" destination="XN1-Lj-Oc9" eventType="touchUpInside" id="BoM-0g-VBg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6Lv-qH-zmP" firstAttribute="leading" secondItem="Mco-0r-6X0" secondAttribute="leadingMargin" id="0Wz-vH-Fxf"/>
                             <constraint firstItem="hTs-0E-AWg" firstAttribute="top" secondItem="6Lv-qH-zmP" secondAttribute="bottom" constant="8" id="9Au-dY-lxJ"/>
                             <constraint firstItem="6Lv-qH-zmP" firstAttribute="top" secondItem="9KR-YA-JId" secondAttribute="bottom" constant="8" id="GLj-1l-uM9"/>
+                            <constraint firstItem="eGI-qB-AjB" firstAttribute="trailing" secondItem="Mco-0r-6X0" secondAttribute="trailingMargin" id="JGD-zt-BLE"/>
+                            <constraint firstItem="eGI-qB-AjB" firstAttribute="top" secondItem="9KR-YA-JId" secondAttribute="bottom" constant="12" id="b9O-9k-iNk"/>
                             <constraint firstItem="hTs-0E-AWg" firstAttribute="trailing" secondItem="Mco-0r-6X0" secondAttribute="trailingMargin" id="ers-x2-FfT"/>
+                            <constraint firstItem="eGI-qB-AjB" firstAttribute="leading" secondItem="6Lv-qH-zmP" secondAttribute="trailing" constant="8" id="fHO-O9-UwU"/>
                             <constraint firstItem="9KR-YA-JId" firstAttribute="top" secondItem="wNB-hb-fes" secondAttribute="bottom" constant="8" id="hQZ-pb-RyO"/>
-                            <constraint firstItem="6Lv-qH-zmP" firstAttribute="trailing" secondItem="Mco-0r-6X0" secondAttribute="trailingMargin" id="kIe-Sm-lzi"/>
                             <constraint firstItem="hTs-0E-AWg" firstAttribute="leading" secondItem="Mco-0r-6X0" secondAttribute="leadingMargin" id="naD-hD-tJt"/>
                             <constraint firstItem="9KR-YA-JId" firstAttribute="trailing" secondItem="Mco-0r-6X0" secondAttribute="trailingMargin" id="nlR-qN-VIO"/>
                             <constraint firstItem="9KR-YA-JId" firstAttribute="leading" secondItem="Mco-0r-6X0" secondAttribute="leadingMargin" id="vwE-2X-bvR"/>
@@ -393,6 +401,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addNewPlayer" destination="eGI-qB-AjB" id="MXK-TM-c8o"/>
                         <outlet property="cancelButton" destination="vlu-GW-5tS" id="oOH-Oe-LNF"/>
                         <outlet property="chooseTableView" destination="hTs-0E-AWg" id="OUp-lw-YR9"/>
                         <outlet property="nameTextField" destination="6Lv-qH-zmP" id="SLw-FV-WYc"/>
@@ -439,7 +448,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xSE-T2-KuY" id="IJH-Jh-4zS">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="NameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDm-Zw-qjX">

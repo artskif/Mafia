@@ -55,7 +55,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             
             let selectedPlayer = game.getPlayer(at: indexPath.row)
-            playerDetailViewController.player = selectedPlayer
+            playerDetailViewController.editPlayer = selectedPlayer
         default:
             break
         }
@@ -79,6 +79,14 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Определяем дынные для заполнения ячейки таблицы
         let player = game.getPlayer(at: indexPath.row)
         
+        // Заполним данные для кнопок
+        cell.killButton.tag = indexPath.row
+        cell.healButton.tag = indexPath.row
+        cell.checkButton.tag = indexPath.row
+        cell.silenceButton.tag = indexPath.row
+        cell.nameLabel.text = player.name
+        cell.roleLabel.text = player.role.description
+        
         // Ячейка мертвого пользователя
         if player.stateAlive == AliveState.Dead {
             cell.backgroundColor = UIColor.darkGray
@@ -98,14 +106,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.backgroundColor = UIColor.clear
             cell.isUserInteractionEnabled = true
         }
-        
-        // Сохраним данные для кнопок
-        cell.killButton.tag = indexPath.row
-        cell.healButton.tag = indexPath.row
-        cell.checkButton.tag = indexPath.row
-        cell.silenceButton.tag = indexPath.row
-        cell.nameLabel.text = player.name
-        cell.roleLabel.text = player.role.description
         
         if game.state == DayNightState.Day { // Что показываем в ячейке Днем
             cell.healButton.isHidden = true
@@ -180,19 +180,27 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Нажали кнопку Save на странице добавления пользователя в игру
     @IBAction func unwindToPlayerList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? AddController, let player = sourceViewController.player {
+        if let sourceViewController = sender.source as? AddController{
+            
+            //let newPlayers =
             
             if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
                 // Обновляем пользователя в таблице
-                game.setPlayer(at: selectedIndexPath.row, element: player)
-                playersTableView.reloadRows(at: [selectedIndexPath], with: .none)
+                if let editPlayer = sourceViewController.editPlayer {
+                    game.setPlayer(at: selectedIndexPath.row, element: editPlayer)
+                    playersTableView.reloadRows(at: [selectedIndexPath], with: .none)
+                }
             }
             else {
                 // Добавляем нового пользователя в таблицу
-                let newIndexPath = IndexPath(row: game.countPlayers(), section: 0)
+                //let newIndexPath = IndexPath(row: game.countPlayers(), section: 0)
                 
-                game.addPlayer(player: player)
-                playersTableView.insertRows(at: [newIndexPath], with: .automatic)
+                let newPlayers = sourceViewController.newPlayers
+                
+                if newPlayers.count > 0 {
+                    game.addPlayers(players: newPlayers)
+                }
+                //playersTableView.insertRows(at: [newIndexPath], with: .automatic)
             }
             playersTableView.reloadData()
         }

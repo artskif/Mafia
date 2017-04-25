@@ -17,11 +17,17 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var chooseTableView: UITableView!
+    @IBOutlet weak var addNewPlayer: UIButton!
     
     // MARK: - Свойства контроллера
     
-    var player: Player?
-    var choosedNumber:Int?
+    var playersForChoose: [Account] = []
+    
+    var editPlayer: Player? // сюда записываем пользователя которого редактируем
+    var newPlayers: [Player] = [] // а сюда запишем пользователей которых хотим добавить в таблицу
+    
+    var choosedRole:Int?
+    var choosedUsers:[Int] = []
     
     // MARK: - События контроллера
     
@@ -31,14 +37,17 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         // Обрабатывать текстовое поле с помощью делегата которым является текущий контроллер
         nameTextField.delegate = self
         
+        self.playersForChoose = game.accounts
+        
         // Настройка текстового поля если мы редактируем, а не добавляем пользователя
-        if let player = player {
-            nameTextField.text   = player.name
-            choosedNumber = player.role.hashValue
+        if let editPlayer = self.editPlayer {
+            nameTextField.text   = editPlayer.name
+            choosedRole = editPlayer.role.rawValue
+            addNewPlayer.isEnabled = false
         }
         
         // Включить кнопку Save только если контроллер содержит валидные данные для сохранения
-        updateSaveButtonState()
+        updateAddButtonState()
         
         if game.isStarted {
             chooseTableView.isHidden = true
@@ -61,16 +70,15 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         
         let name = nameTextField.text ?? ""
         
-        if let currentChoosed = choosedNumber {
-            if let editPlayer = player {
-                editPlayer.name = name
-                editPlayer.role = Role(rawValue: currentChoosed)!
-            } else {
-                let newPlayer = game.accounts[currentChoosed]
-                player = Player(baseObject: newPlayer)
+        // заполняем данные для возврата их из контроллера
+        if let editPlayer = editPlayer {
+            editPlayer.name = name
+            editPlayer.role = Role(rawValue: choosedRole!)!
+        } else {
+            for selected in choosedUsers {
+                let newPlayer = playersForChoose[selected]
+                newPlayers.append(Player(baseObject: newPlayer)!)
             }
-        } else  {
-            player = Player(name: name)
         }
     }
     
@@ -79,8 +87,8 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     // Кличесто элементов в одной секции таблицы
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // У нас в таблице или аккаунты пользователей или роли пользователя(если мы редактируем пользователя)
-        if player == nil {
-            return game.accounts.count
+        if editPlayer == nil {
+            return playersForChoose.count
         } else {
             return Role.count
         }
@@ -96,28 +104,34 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         
         cell.chooseButton.tag = indexPath.row
 
-        if player == nil {
+        if editPlayer == nil {
             // В данном варианте мы не редактируем пользователя - мы выбираем нового
-            let account = game.accounts[indexPath.row]
+            let account = playersForChoose[indexPath.row]
+            
+            // если мы уже добавили подобного игрока то его добавлять уже не нужно
+            if game.checkPlayerId(idItem: account.id) {
+                cell.chooseButton.isEnabled = false
+            }
+            
+            // выбранных игроков выбирать не нужно
+            if choosedUsers.contains(indexPath.row) {
+                cell.chooseButton.isEnabled = false
+            }
             cell.cellName.text = account.name
         } else {
             // В данном варианте мы редактируем пользователя,
             // следовательно должны показать роли для возможности сменить роль(выбранного персонажа)
             cell.cellName.text = Role(rawValue: indexPath.row)?.description
-        }
-        
-        if let currentChoosed = choosedNumber {
-            // Имеется выбранный вариант тыблицы (выбора пользователей или ролей)
-
-            // если нажата кнопка выбора то мы ее отключаем (во избежании дальнейших нажатий этой кнопки)
-            cell.chooseButton.isEnabled = currentChoosed != cell.chooseButton.tag
             
-            // Если мы выбираем нового пользователя и дошли до ячейки выбранного пользователя,
-            // то для красоты запишем его имя в текстовое поле выбора имени
-            if player == nil && currentChoosed == indexPath.row {
-                nameTextField.text = cell.cellName.text
+            if let currentChoosedRole = choosedRole {
+                // Имеется выбранный вариант тыблицы (выбора ролей)
+                
+                // если нажата кнопка выбора то мы ее отключаем (во избежании дальнейших нажатий этой кнопки)
+                cell.chooseButton.isEnabled = currentChoosedRole != cell.chooseButton.tag
             }
         }
+        
+        
         
         return cell
     }
@@ -141,14 +155,27 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     
     // Событие на печать текста внутри текстового поля имени пользователя
     @IBAction func editingChanged(_ sender: UITextField) {
-        updateSaveButtonState()
+        updateAddButtonState()
     }
     
-    // Нажата кнопка "Выбрать" в таблице выбора участников игры
+    // Нажата кнопка "Выбрать" в таблице выбора участников/ролей игры
     @IBAction func chooseButton(_ sender: UIButton) {
-        choosedNumber = sender.tag
+        if editPlayer == nil {
+            choosedUsers.append(sender.tag)
+        } else {
+            choosedRole = sender.tag
+        }
         saveButton.isEnabled = true
-        nameTextField.isEnabled = false
+        chooseTableView.reloadData()
+    }
+    
+    // Добавляем нового участника в список для выбора
+    @IBAction func addNewPlayer(_ sender: UIButton) {
+        if let newName = nameTextField.text {
+            let newAccountForChoose = Account(id: 0, name: newName)
+            playersForChoose.append(newAccountForChoose!)
+            nameTextField.text = ""
+        }
         chooseTableView.reloadData()
     }
     
@@ -167,8 +194,9 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     }
     
     // Обновить состояние кнопки Save в зависимости от состояния тектового поля имени пользователя
-    private func updateSaveButtonState() {
-        let text = nameTextField.text ?? ""
-        saveButton.isEnabled = !text.isEmpty
+    private func updateAddButtonState() {
+        if choosedUsers.count > 0 || choosedRole != nil {
+            saveButton.isEnabled = true
+        }
     }
 }
