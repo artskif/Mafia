@@ -332,17 +332,8 @@
                                                         <action selector="chooseButton:" destination="XN1-Lj-Oc9" eventType="touchUpInside" id="mTx-dm-hwN"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zub-cn-Zgf">
-                                                    <rect key="frame" x="8" y="17" width="28" height="16"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="zub-cn-Zgf" secondAttribute="height" multiplier="7:4" id="Sn8-wG-n2A"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Заголовок" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBo-Lr-hgo">
-                                                    <rect key="frame" x="38" y="12" width="174" height="21"/>
+                                                    <rect key="frame" x="25" y="12" width="174" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="mBo-Lr-hgo" secondAttribute="height" multiplier="58:7" id="b5a-cs-CRH"/>
                                                         <constraint firstAttribute="width" constant="174" id="jJP-Hd-1U6"/>
@@ -351,14 +342,25 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zub-cn-Zgf">
+                                                    <rect key="frame" x="8" y="16" width="15" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="15" id="Fg8-SG-1rK"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="4fA-HY-7m0" secondAttribute="trailing" constant="8" id="JXQ-Qz-ncy"/>
-                                                <constraint firstItem="zub-cn-Zgf" firstAttribute="top" secondItem="EYe-km-Ag4" secondAttribute="topMargin" constant="9" id="JYr-UW-NKY"/>
                                                 <constraint firstItem="4fA-HY-7m0" firstAttribute="top" secondItem="EYe-km-Ag4" secondAttribute="top" constant="8" id="QPF-sH-r7r"/>
+                                                <constraint firstItem="zub-cn-Zgf" firstAttribute="centerY" secondItem="EYe-km-Ag4" secondAttribute="centerY" id="TlL-ez-jjA"/>
                                                 <constraint firstItem="mBo-Lr-hgo" firstAttribute="top" secondItem="EYe-km-Ag4" secondAttribute="topMargin" constant="4" id="Zxe-Xn-WW8"/>
-                                                <constraint firstItem="mBo-Lr-hgo" firstAttribute="leading" secondItem="zub-cn-Zgf" secondAttribute="trailing" constant="2" id="gDQ-ti-nkT"/>
-                                                <constraint firstItem="zub-cn-Zgf" firstAttribute="leading" secondItem="EYe-km-Ag4" secondAttribute="leadingMargin" id="kD5-gs-V0h"/>
+                                                <constraint firstItem="mBo-Lr-hgo" firstAttribute="leading" secondItem="zub-cn-Zgf" secondAttribute="trailing" constant="5" id="eus-M6-wrW"/>
+                                                <constraint firstItem="mBo-Lr-hgo" firstAttribute="leading" secondItem="zub-cn-Zgf" secondAttribute="trailing" constant="2" id="pr8-ab-sg6"/>
+                                                <constraint firstItem="mBo-Lr-hgo" firstAttribute="centerY" secondItem="EYe-km-Ag4" secondAttribute="centerY" id="xtS-Yz-eU3"/>
+                                                <constraint firstItem="zub-cn-Zgf" firstAttribute="leading" secondItem="EYe-km-Ag4" secondAttribute="leadingMargin" id="ymC-Pe-s7m"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
