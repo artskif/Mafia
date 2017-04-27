@@ -182,8 +182,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func unwindToPlayerList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddController{
             
-            //let newPlayers =
-            
             if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
                 // Обновляем пользователя в таблице
                 if let editPlayer = sourceViewController.editPlayer {
@@ -193,14 +191,11 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             else {
                 // Добавляем нового пользователя в таблицу
-                //let newIndexPath = IndexPath(row: game.countPlayers(), section: 0)
-                
                 let newPlayers = sourceViewController.newPlayers
                 
                 if newPlayers.count > 0 {
                     game.addPlayers(players: newPlayers)
                 }
-                //playersTableView.insertRows(at: [newIndexPath], with: .automatic)
             }
             playersTableView.reloadData()
         }

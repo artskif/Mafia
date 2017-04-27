@@ -50,6 +50,7 @@ class Game {
     
     // Проверить существование игрока по id
     func checkPlayerId(idItem:Int) -> Bool {
+        if idItem < 1 { return false }
         let playersCheck =  self._players.contains { $0.id == idItem }
         return playersCheck
     }

@@ -14,6 +14,7 @@ class ChooseTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cellName: UILabel!
     @IBOutlet weak var chooseButton: UIButton!
+    @IBOutlet weak var numbelLabel: UILabel!
 
     // MARK: - События ячейки
     

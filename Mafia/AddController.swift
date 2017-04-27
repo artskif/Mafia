@@ -18,6 +18,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var chooseTableView: UITableView!
     @IBOutlet weak var addNewPlayer: UIButton!
+    @IBOutlet weak var addUserTableView: UITableView!
     
     // MARK: - Свойства контроллера
     
@@ -46,7 +47,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             addNewPlayer.isEnabled = false
         }
         
-        // Включить кнопку Save только если контроллер содержит валидные данные для сохранения
+        // Включить кнопку Add только если контроллер содержит валидные данные для сохранения
         updateAddButtonState()
         
         if game.isStarted {
@@ -103,10 +104,15 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         }
         
         cell.chooseButton.tag = indexPath.row
-
+        cell.chooseButton.isEnabled = true
+        
         if editPlayer == nil {
             // В данном варианте мы не редактируем пользователя - мы выбираем нового
             let account = playersForChoose[indexPath.row]
+
+            // Задаем имена для ячейки
+            cell.cellName.text = "\(account.name)"
+            cell.numbelLabel.text = "\(indexPath.row + 1)"
             
             // если мы уже добавили подобного игрока то его добавлять уже не нужно
             if game.checkPlayerId(idItem: account.id) {
@@ -117,7 +123,6 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             if choosedUsers.contains(indexPath.row) {
                 cell.chooseButton.isEnabled = false
             }
-            cell.cellName.text = account.name
         } else {
             // В данном варианте мы редактируем пользователя,
             // следовательно должны показать роли для возможности сменить роль(выбранного персонажа)
@@ -172,11 +177,26 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     // Добавляем нового участника в список для выбора
     @IBAction func addNewPlayer(_ sender: UIButton) {
         if let newName = nameTextField.text {
-            let newAccountForChoose = Account(id: 0, name: newName)
-            playersForChoose.append(newAccountForChoose!)
-            nameTextField.text = ""
+            if !newName.isEmpty {
+                let newAccountForChoose = Account(id: 0, name: newName)
+                playersForChoose.insert(newAccountForChoose!, at: 0)
+                nameTextField.text = ""
+                updateAddButtonState()
+                for (key, value) in choosedUsers.enumerated() {
+                    choosedUsers[key] = value + 1
+                }
+                //choosedUsers = []
+                
+                // Анимированно обновляем строки таблицы
+                let othersIndexPaths = chooseTableView.indexPathsForVisibleRows!
+                let newIndexPath = IndexPath(row: 0, section: 0)
+                chooseTableView.beginUpdates()
+                addUserTableView.insertRows(at: [newIndexPath], with: .automatic)
+                chooseTableView.reloadRows(at: othersIndexPaths, with: .fade)
+                chooseTableView.endUpdates()
+            }
         }
-        chooseTableView.reloadData()
+        
     }
     
     // Нажали кнопку Cancel в навигационной панели страницы
@@ -193,10 +213,16 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         }
     }
     
-    // Обновить состояние кнопки Save в зависимости от состояния тектового поля имени пользователя
+    // Обновить состояние кнопки Add в зависимости от состояния тектового поля имени пользователя
     private func updateAddButtonState() {
-        if choosedUsers.count > 0 || choosedRole != nil {
-            saveButton.isEnabled = true
+        if (nameTextField.text?.isEmpty)! {
+            addNewPlayer.isEnabled = false
+        } else {
+            addNewPlayer.isEnabled = true
+        }
+        
+        if self.editPlayer != nil {
+            addNewPlayer.isEnabled = false
         }
     }
 }
