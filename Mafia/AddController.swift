@@ -38,8 +38,8 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         // Обрабатывать текстовое поле с помощью делегата которым является текущий контроллер
         nameTextField.delegate = self
         
-        self.playersForChoose = game.accounts
-        
+        self.playersForChoose = game.accounts.sorted{$0.name < $1.name}
+
         // Настройка текстового поля если мы редактируем, а не добавляем пользователя
         if let editPlayer = self.editPlayer {
             nameTextField.text   = editPlayer.name

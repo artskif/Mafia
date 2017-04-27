@@ -26,6 +26,9 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Начинаем новую игру
         game = Game()
+        
+        // Сортируем участников игры
+        game.sortPlayers()
     }
     
     override func didReceiveMemoryWarning() {
@@ -198,6 +201,10 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
                     game.addPlayers(players: newPlayers)
                 }
             }
+            
+            // Сортируем участников игры
+            game.sortPlayers()
+            
             playersTableView.reloadData()
         }
     }

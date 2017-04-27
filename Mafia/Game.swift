@@ -83,6 +83,11 @@ class Game {
         return self._players.count
     }
     
+    // Отсортировать игроков
+    func sortPlayers() {
+        self._players = self._players.sorted(by: {$0.name < $1.name})
+    }
+    
     // Обработать конец хода (высчитываем кто убит, кто молчит и тд)
     func handleTurnActions() {
         

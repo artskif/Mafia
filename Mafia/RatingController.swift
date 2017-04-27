@@ -18,6 +18,8 @@ class RatingController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        game.accounts = game.accounts.sorted{$0.rating > $1.rating}
     }
 
     override func didReceiveMemoryWarning() {
