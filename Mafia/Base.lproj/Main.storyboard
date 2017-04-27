@@ -175,36 +175,30 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="cge-AA-EFm">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="47" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="cge-AA-EFm">
                                 <rect key="frame" x="16" y="72" width="343" height="522"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlayerTableViewCell" rowHeight="53" id="ahD-Uq-fpa" customClass="PlayerTableViewCell" customModule="Mafia" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1" width="343" height="53"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlayerTableViewCell" rowHeight="47" id="ahD-Uq-fpa" customClass="PlayerTableViewCell" customModule="Mafia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1" width="343" height="47"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ahD-Uq-fpa" id="Qm7-rL-tWm">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="52.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="46.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Без имени" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0i-4V-J3e">
-                                                    <rect key="frame" x="11" y="13" width="101" height="16"/>
+                                                    <rect key="frame" x="11" y="8" width="95" height="16"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="101" id="EYb-tw-2OQ"/>
-                                                        <constraint firstAttribute="width" secondItem="G0i-4V-J3e" secondAttribute="height" multiplier="101:16" id="eJv-LO-mEX"/>
+                                                        <constraint firstAttribute="width" secondItem="G0i-4V-J3e" secondAttribute="height" multiplier="95:16" id="geT-pI-Ner"/>
+                                                        <constraint firstAttribute="width" constant="95" id="lCB-es-vfa"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Роль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ag-Ee-Aup">
-                                                    <rect key="frame" x="11" y="30" width="140" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="sSg-6A-T35">
-                                                    <rect key="frame" x="153" y="4" width="182" height="44"/>
+                                                    <rect key="frame" x="153" y="1" width="182" height="44"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e81-jS-gMK" userLabel="Heal Button">
                                                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -236,10 +230,17 @@
                                                         </button>
                                                     </subviews>
                                                 </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Роль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ag-Ee-Aup">
+                                                    <rect key="frame" x="11" y="23" width="140" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="G0i-4V-J3e" firstAttribute="top" secondItem="Qm7-rL-tWm" secondAttribute="topMargin" constant="5" id="OLt-Yx-CxR"/>
-                                                <constraint firstItem="sSg-6A-T35" firstAttribute="top" secondItem="Qm7-rL-tWm" secondAttribute="top" constant="4" id="RSd-y0-eff"/>
+                                                <constraint firstItem="G0i-4V-J3e" firstAttribute="top" secondItem="Qm7-rL-tWm" secondAttribute="topMargin" id="bjV-EK-2xg"/>
+                                                <constraint firstItem="sSg-6A-T35" firstAttribute="top" secondItem="Qm7-rL-tWm" secondAttribute="top" constant="1" id="fxU-30-tKM"/>
                                                 <constraint firstItem="G0i-4V-J3e" firstAttribute="leading" secondItem="Qm7-rL-tWm" secondAttribute="leadingMargin" constant="3" id="gvO-Qb-Axo"/>
                                                 <constraint firstAttribute="trailing" secondItem="sSg-6A-T35" secondAttribute="trailing" constant="8" id="yPL-9M-tlc"/>
                                             </constraints>
