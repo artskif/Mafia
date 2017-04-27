@@ -86,6 +86,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.silenceButton.tag = indexPath.row
         cell.nameLabel.text = player.name
         cell.roleLabel.text = player.role.description
+        cell.numberLaber.text = "\(indexPath.row + 1)"
         
         // Ячейка мертвого пользователя
         if player.stateAlive == AliveState.Dead {

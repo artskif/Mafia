@@ -19,6 +19,7 @@ class PlayerTableViewCell: UITableViewCell {
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var silenceButton: UIButton!
     @IBOutlet weak var setRoleButton: UIButton!
+    @IBOutlet weak var numberLaber: UILabel!
 
     // MARK: - События ячейки
     
