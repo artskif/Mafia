@@ -280,6 +280,10 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         alert.addAction(UIAlertAction(title: "Нет", style: UIAlertActionStyle.default, handler: { (action) in
             self.finishCurrentGame(saveRating: false)
         }))
+
+        alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertActionStyle.default, handler: { (action) in
+            
+        }))
         
         self.present(alert, animated: true, completion: nil)
     }
