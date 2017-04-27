@@ -14,6 +14,7 @@ class RatingTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
     
     // MARK: - События ячейки
 

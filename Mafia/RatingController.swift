@@ -47,6 +47,7 @@ class RatingController: UITableViewController {
         
         cell.nameLabel.text = account.name
         cell.ratingLabel.text = "\(account.rating)"
+        cell.numberLabel.text = "\(indexPath.row + 1)"
         
         return cell
     }

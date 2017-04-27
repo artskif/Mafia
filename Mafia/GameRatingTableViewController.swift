@@ -45,6 +45,7 @@ class GameRatingTableViewController: UITableViewController {
         
         cell.nameLabel.text = player.name
         cell.ratingLabel.text = "\(sum < 1 ? 1 : sum)"
+        cell.numberLabel.text = "\(indexPath.row + 1)"
         
         return cell
     }
