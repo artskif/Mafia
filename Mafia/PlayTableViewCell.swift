@@ -1,26 +1,31 @@
 //
-//  PlayerTableViewCell.swift
+//  PlayTableViewCell.swift
 //  Mafia
 //
-//  Created by Vadim Kamyshnikov on 13.03.17.
+//  Created by Vadim Kamyshnikov on 12.05.17.
 //  Copyright © 2017 Vadim Kamyshnikov. All rights reserved.
 //
 
 import UIKit
 
-class PlayerTableViewCell: UITableViewCell {
+@IBDesignable class PlayTableViewCell: UITableViewCell {
 
     // MARK: - Элементы управления ячейкой
-    
-    @IBOutlet weak var roleLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var numberLaber: UILabel!
     @IBOutlet weak var healButton: UIButton!
     @IBOutlet weak var killButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var silenceButton: UIButton!
-    @IBOutlet weak var numberLaber: UILabel!
-
+    
     // MARK: - События ячейки
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,5 +35,4 @@ class PlayerTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Конфигурируем сотояние выбранной ячейки
     }
-
 }

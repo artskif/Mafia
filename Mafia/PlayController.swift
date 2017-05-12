@@ -24,6 +24,10 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Регистрируем собственную ячейку(cell) в таблице
+        let nib = UINib(nibName: "PlayTableViewCell", bundle: nil)
+        playersTableView.register(nib, forCellReuseIdentifier: "PlayTableViewCell")
+        
         // Начинаем новую игру
         game = Game()
         
@@ -49,7 +53,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
-            guard let selectedPlayerCell = sender as? PlayerTableViewCell else {
+            guard let selectedPlayerCell = sender as? PlayTableViewCell else {
                 fatalError("Unexpected sender")
             }
             
@@ -89,12 +93,14 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifer = "PlayerTableViewCell"
+        let cellIdentifer = "PlayTableViewCell"
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifer, for: indexPath) as? PlayerTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of PlayerTableViewCell.")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifer, for: indexPath) as? PlayTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of PlayTableViewCell.")
         }
         
+        
+        //let cell = Bundle.main.loadNibNamed(cellIdentifer, owner: self, options: nil)?.first as! PlayTableViewCell
         // Определяем дынные для заполнения ячейки таблицы
         let player = game.getPlayer(at: indexPath.row)
         
@@ -104,7 +110,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.checkButton.tag = indexPath.row
         cell.silenceButton.tag = indexPath.row
         cell.nameLabel.text = player.name
-        cell.roleLabel.text = player.role.description
+        //cell.roleLabel.text = player.role.description
         cell.numberLaber.text = "\(indexPath.row + 1)"
         
         // Ячейка мертвого пользователя
@@ -117,9 +123,9 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.silenceButton.isHidden = true
             cell.killButton.isHidden = true
             
-            if !cell.roleLabel.text!.hasSuffix("Мертв") {
-                cell.roleLabel.text = cell.roleLabel.text! + " - Мертв"
-            }
+            //if !cell.roleLabel.text!.hasSuffix("Мертв") {
+            //    cell.roleLabel.text = cell.roleLabel.text! + " - Мертв"
+            //}
             
             return cell
         } else {

@@ -100,7 +100,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         let cellIdentifer = "ChooseTableViewCell"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifer, for: indexPath) as? ChooseTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of PlayerTableViewCell.")
+            fatalError("The dequeued cell is not an instance of ChooseTableViewCell.")
         }
         
         cell.chooseButton.tag = indexPath.row

@@ -41,7 +41,7 @@ class RatingController: UITableViewController {
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RatingViewCell", for: indexPath) as? RatingTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of PlayerTableViewCell.")
+            fatalError("The dequeued cell is not an instance of RatingViewCell.")
         }
         
         // Какие данные будем использовать для текущей обрабатываемой ячейки
