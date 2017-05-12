@@ -99,19 +99,24 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             fatalError("The dequeued cell is not an instance of PlayTableViewCell.")
         }
         
+        cell.killButton.addTarget(self, action: #selector(pushMafiaKill), for: UIControlEvents.touchUpInside)
+        cell.healButton.addTarget(self, action: #selector(pushDoctorHeal), for: UIControlEvents.touchUpInside)
+        cell.checkButton.addTarget(self, action: #selector(pushSherifCheck), for: UIControlEvents.touchUpInside)
+        cell.silenceButton.addTarget(self, action: #selector(pushProstituteSilence), for: UIControlEvents.touchUpInside)
         
-        //let cell = Bundle.main.loadNibNamed(cellIdentifer, owner: self, options: nil)?.first as! PlayTableViewCell
+        
+        
         // Определяем дынные для заполнения ячейки таблицы
-        let player = game.getPlayer(at: indexPath.row)
+        let player = game.getPlayer(at: indexPath.section)
         
         // Заполним данные для кнопок
-        cell.killButton.tag = indexPath.row
-        cell.healButton.tag = indexPath.row
-        cell.checkButton.tag = indexPath.row
-        cell.silenceButton.tag = indexPath.row
+        cell.killButton.tag = indexPath.section
+        cell.healButton.tag = indexPath.section
+        cell.checkButton.tag = indexPath.section
+        cell.silenceButton.tag = indexPath.section
         cell.nameLabel.text = player.name
         //cell.roleLabel.text = player.role.description
-        cell.numberLaber.text = "\(indexPath.row + 1)"
+        cell.numberLaber.text = "\(indexPath.section + 1)"
         
         // Ячейка мертвого пользователя
         if player.stateAlive == AliveState.Dead {
@@ -235,7 +240,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // Нажали кнопку "Мафия убивает" в таблице
-    @IBAction func pushMafiaKill(_ sender: UIButton) {
+    func pushMafiaKill(_ sender: UIButton) {
         // Если днем убили то горожане(с мафией) если ночью то мафия
         let actionType = game.state == DayNightState.Day ? ActionType.CitizenKill : ActionType.MafiaKill
         
