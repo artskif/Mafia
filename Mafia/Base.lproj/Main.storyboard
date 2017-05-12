@@ -239,6 +239,7 @@
                         <outlet property="mainView" destination="LDo-YX-gZU" id="TYD-cs-DHh"/>
                         <outlet property="playersTableView" destination="cge-AA-EFm" id="hhU-Ea-7yY"/>
                         <segue destination="FzV-ee-t8s" kind="unwind" identifier="unwindToMainScreen" unwindAction="unwindCancelToMainScreenWithSender:" id="lSj-JX-Jfz"/>
+                        <segue destination="XN1-Lj-Oc9" kind="show" identifier="ShowDetail" id="s5s-Go-K6O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szG-dh-KKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -646,4 +647,7 @@
         <image name="icon_action3" width="39" height="39"/>
         <image name="icon_action4" width="39" height="39"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="s5s-Go-K6O"/>
+    </inferredMetricsTieBreakers>
 </document>

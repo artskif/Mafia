@@ -53,16 +53,11 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
-            guard let selectedPlayerCell = sender as? PlayTableViewCell else {
-                fatalError("Unexpected sender")
+            if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
+                let selectedPlayer = game.getPlayer(at: selectedIndexPath.section)
+                playerDetailViewController.editPlayer = selectedPlayer
             }
             
-            guard let indexPath = playersTableView.indexPath(for: selectedPlayerCell) else {
-                fatalError("The selected cell is not being displayed by the table")
-            }
-            
-            let selectedPlayer = game.getPlayer(at: indexPath.row)
-            playerDetailViewController.editPlayer = selectedPlayer
         default:
             break
         }
@@ -85,10 +80,15 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         return 10
     }
     
+    // Описываем состояние заголовка секции
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clear
         return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "ShowDetail", sender: self)
     }
     
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
@@ -192,7 +192,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Удаляем элемент массива данных участников игры
-            game.removePlayer(at: indexPath.row)
+            game.removePlayer(at: indexPath.section)
             playersTableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -211,7 +211,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
                 // Обновляем пользователя в таблице
                 if let editPlayer = sourceViewController.editPlayer {
-                    game.setPlayer(at: selectedIndexPath.row, element: editPlayer)
+                    game.setPlayer(at: selectedIndexPath.section, element: editPlayer)
                     playersTableView.reloadRows(at: [selectedIndexPath], with: .none)
                 }
             }
@@ -346,7 +346,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         let indexPath = IndexPath(item: cellRow, section: 0) // Индекс хода
-        let actionPlayer = game.getPlayer(at: indexPath.row) // Над кем(игрок) действие
+        let actionPlayer = game.getPlayer(at: indexPath.section) // Над кем(игрок) действие
         
         actionPlayer.toggleAction(action: newAction, turn: game.getCurrentTurnNumber())
         
