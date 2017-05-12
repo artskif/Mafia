@@ -68,7 +68,23 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Кличесто элементов в одной секции таблицы
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    // Количество секций в таблице
+    func numberOfSections(in tableView: UITableView) -> Int {
         return game.countPlayers()
+    }
+    
+    // Расстояние между ячейками(секциями)
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
@@ -173,11 +189,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     // Определяем возможность редактировать таблицу участников
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return !game.isStarted
-    }
-    
-    // Количество секций в таблице
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
     }
     
     //MARK: - Обработка действий пользователя

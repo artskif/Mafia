@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,19 +22,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title" translatesAutoresizingMaskIntoConstraints="NO" id="XYR-6r-RgH">
-                                <rect key="frame" x="-35" y="16" width="445" height="635"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Title logo" translatesAutoresizingMaskIntoConstraints="NO" id="UpH-Ew-WgQ">
+                                <rect key="frame" x="67" y="137" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="445" id="578-oE-SbE"/>
-                                    <constraint firstAttribute="height" constant="635" id="hCs-Mz-sSi"/>
-                                    <constraint firstAttribute="width" secondItem="XYR-6r-RgH" secondAttribute="height" multiplier="89:127" id="xsU-8a-62q"/>
+                                    <constraint firstAttribute="width" constant="240" id="L8G-NN-HUz"/>
+                                    <constraint firstAttribute="width" secondItem="UpH-Ew-WgQ" secondAttribute="height" multiplier="15:8" id="bWT-CI-C19"/>
+                                    <constraint firstAttribute="height" constant="128" id="s7n-EW-tVN"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bottom people" translatesAutoresizingMaskIntoConstraints="NO" id="eCe-ca-yEJ">
+                                <rect key="frame" x="0.0" y="490" width="375" height="177"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eCe-ca-yEJ" secondAttribute="height" multiplier="125:59" id="JV5-gj-XdW"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="XYR-6r-RgH" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="NQC-Ab-zL8"/>
-                            <constraint firstItem="XYR-6r-RgH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fKU-MU-dJQ"/>
+                            <constraint firstItem="UpH-Ew-WgQ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="117" id="75I-Ph-4u9"/>
+                            <constraint firstItem="eCe-ca-yEJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="VLC-Vp-x9x"/>
+                            <constraint firstItem="UpH-Ew-WgQ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fsx-lb-czO"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="eCe-ca-yEJ" secondAttribute="bottom" id="iRQ-eZ-0ha"/>
+                            <constraint firstAttribute="trailing" secondItem="eCe-ca-yEJ" secondAttribute="trailing" id="jjG-5i-wiH"/>
+                            <constraint firstItem="eCe-ca-yEJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qNh-hb-T7n"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -44,6 +54,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="title" width="638" height="1017"/>
+        <image name="Bottom people" width="375" height="152"/>
+        <image name="Title logo" width="221" height="87"/>
     </resources>
 </document>
