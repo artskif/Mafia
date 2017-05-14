@@ -106,6 +106,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         
         
+        
         // Определяем дынные для заполнения ячейки таблицы
         let player = game.getPlayer(at: indexPath.section)
         
@@ -128,13 +129,8 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.silenceButton.isHidden = true
             cell.killButton.isHidden = true
             
-            //if !cell.roleLabel.text!.hasSuffix("Мертв") {
-            //    cell.roleLabel.text = cell.roleLabel.text! + " - Мертв"
-            //}
-            
             return cell
         } else {
-            cell.backgroundColor = UIColor.clear
             cell.isUserInteractionEnabled = true
         }
         
