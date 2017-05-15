@@ -42,7 +42,7 @@
                             <constraint firstAttribute="width" constant="1" id="hcv-wT-CY0"/>
                         </constraints>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="ABd-NU-ukh">
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="ABd-NU-ukh">
                         <rect key="frame" x="75" y="34" width="192" height="26"/>
                         <subviews>
                             <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHi-Kd-01W">
@@ -129,7 +129,6 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ABd-NU-ukh" firstAttribute="leading" secondItem="ae7-53-l9H" secondAttribute="trailing" constant="5" id="1IX-dn-goM"/>
                     <constraint firstItem="Bf7-wW-1cd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="3H7-X2-Eel"/>
                     <constraint firstItem="xgV-MG-a1Y" firstAttribute="top" secondItem="cpC-VJ-2dk" secondAttribute="bottom" constant="5" id="3h9-OX-nzU"/>
                     <constraint firstAttribute="trailing" secondItem="m8S-Xc-W8o" secondAttribute="trailing" constant="17" id="5Gr-6z-bDY"/>
