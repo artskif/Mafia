@@ -18,8 +18,8 @@ enum AliveState {
 }
 
 enum Role:Int, CustomStringConvertible {
-    case Mafia = 0
-    case Citizen = 1
+    case Citizen = 0
+    case Mafia = 1
     case Sherif = 2
     case Doctor = 3
     case Prostitute = 4
@@ -27,7 +27,7 @@ enum Role:Int, CustomStringConvertible {
     case Don = 6
     case Maniac = 7
     
-    static var count:Int {return Role.Undead.hashValue + 1}
+    static var count:Int {return Role.Maniac.hashValue + 1}
     
     var description: String {
         switch self {
