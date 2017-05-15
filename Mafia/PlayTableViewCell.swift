@@ -20,20 +20,13 @@ import UIKit
     @IBOutlet weak var maniacButton: UIButton!
     @IBOutlet weak var donmaffiaButton: UIButton!
     @IBOutlet weak var roleImage: UIImageView!
+    @IBOutlet weak var killImage: UIImageView!
     
     
     @IBOutlet weak var currentRating: UILabel!
     @IBOutlet weak var globalRating: UILabel!
     
     // MARK: - События ячейки
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

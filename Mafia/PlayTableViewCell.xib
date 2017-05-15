@@ -100,16 +100,6 @@
                             <constraint firstAttribute="height" constant="9" id="xxm-1Q-rXM"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mee-tX-5aq">
-                        <rect key="frame" x="274" y="50" width="16" height="14"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="16" id="LLA-im-9x2"/>
-                            <constraint firstAttribute="height" constant="14" id="azE-Fb-843"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                        <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpC-VJ-2dk">
                         <rect key="frame" x="274" y="18" width="16" height="14"/>
                         <constraints>
@@ -120,9 +110,27 @@
                         <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mee-tX-5aq">
+                        <rect key="frame" x="274" y="50" width="16" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="LLA-im-9x2"/>
+                            <constraint firstAttribute="height" constant="14" id="azE-Fb-843"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                        <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Combined Shape Copy 5" translatesAutoresizingMaskIntoConstraints="NO" id="Bf7-wW-1cd">
+                        <rect key="frame" x="5" y="5" width="56" height="53"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="56" id="18s-tu-icv"/>
+                            <constraint firstAttribute="height" constant="53" id="au2-xN-d2E"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ABd-NU-ukh" firstAttribute="leading" secondItem="ae7-53-l9H" secondAttribute="trailing" constant="5" id="1IX-dn-goM"/>
+                    <constraint firstItem="Bf7-wW-1cd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="3H7-X2-Eel"/>
                     <constraint firstItem="xgV-MG-a1Y" firstAttribute="top" secondItem="cpC-VJ-2dk" secondAttribute="bottom" constant="5" id="3h9-OX-nzU"/>
                     <constraint firstAttribute="trailing" secondItem="m8S-Xc-W8o" secondAttribute="trailing" constant="17" id="5Gr-6z-bDY"/>
                     <constraint firstItem="cpC-VJ-2dk" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="trailing" constant="-8" id="5dC-14-vVV"/>
@@ -131,6 +139,7 @@
                     <constraint firstItem="58D-fy-uXv" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="trailing" constant="-8" id="E6e-7A-gmB"/>
                     <constraint firstItem="ae7-53-l9H" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IXq-WB-y6k"/>
                     <constraint firstItem="ae7-53-l9H" firstAttribute="leading" secondItem="ua6-s5-tQN" secondAttribute="trailing" constant="5" id="LsP-0h-1tE"/>
+                    <constraint firstItem="Bf7-wW-1cd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="MAB-Z1-25y"/>
                     <constraint firstAttribute="bottom" secondItem="ae7-53-l9H" secondAttribute="bottom" id="PQz-Tt-xzZ"/>
                     <constraint firstItem="ua6-s5-tQN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-0.75" id="SON-De-2vE"/>
                     <constraint firstItem="E4d-Xw-hc8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="Tcl-HH-Kw1"/>
@@ -156,6 +165,7 @@
                 <outlet property="globalRating" destination="Mee-tX-5aq" id="8Dw-v0-HYE"/>
                 <outlet property="healButton" destination="O51-Ut-LpD" id="uvE-2y-2V5"/>
                 <outlet property="killButton" destination="ijN-ej-izS" id="nXM-fE-dsd"/>
+                <outlet property="killImage" destination="Bf7-wW-1cd" id="D9Z-09-62a"/>
                 <outlet property="maniacButton" destination="lPh-dv-P0F" id="tDm-OL-heO"/>
                 <outlet property="nameLabel" destination="E4d-Xw-hc8" id="mAD-OR-6fB"/>
                 <outlet property="numberLaber" destination="hL8-9W-9ro" id="OmH-NF-CzZ"/>
@@ -166,6 +176,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Combined Shape Copy 5" width="56" height="53"/>
         <image name="Role icon sitizen" width="59" height="59"/>
         <image name="icon Rating global" width="5" height="9"/>
         <image name="icon boss check" width="29" height="23"/>

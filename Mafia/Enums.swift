@@ -24,6 +24,8 @@ enum Role:Int, CustomStringConvertible {
     case Doctor = 3
     case Prostitute = 4
     case Undead = 5
+    case Don = 6
+    case Maniac = 7
     
     static var count:Int {return Role.Undead.hashValue + 1}
     
@@ -38,11 +40,13 @@ enum Role:Int, CustomStringConvertible {
         case .Prostitute:
             return "Проститутка"
         case .Sherif:
-            return "Коммисар"
+            return "Комиссар"
         case .Undead:
             return "Бессмертный"
-        default:
-            return ""
+        case .Don:
+            return "Дон мафии"
+        case .Maniac:
+            return "Маньяк"
         }
     }
 }
@@ -53,4 +57,6 @@ enum ActionType {
     case Heal
     case CitizenKill
     case ProstituteSilence
+    case ManiacKill
+    case DonCheck
 }
