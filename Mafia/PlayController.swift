@@ -123,9 +123,25 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.killImage.isHidden = true
         
         // Меняем иконку текущей роли игрока
-        //cell.roleLabel.text = player.role.description
-
-        
+        switch player.role {
+        case .Citizen:
+            cell.roleImage.image = UIImage(named: "Role icon sitizen")
+        case .Doctor:
+            cell.roleImage.image = UIImage(named: "Role icon medic")
+        case .Mafia:
+            cell.roleImage.image = UIImage(named: "Role icon mafia")
+        case .Don:
+            cell.roleImage.image = UIImage(named: "Role icon don maffia")
+        case .Maniac:
+            cell.roleImage.image = UIImage(named: "Role icon maniac")
+        case .Prostitute:
+            cell.roleImage.image = UIImage(named: "Role icon putana")
+        case .Sherif:
+            cell.roleImage.image = UIImage(named: "Role icon sheriff")
+        case .Undead:
+            cell.roleImage.image = UIImage(named: "Role icon undead")
+        }
+                
         // Ячейка мертвого пользователя
         if player.stateAlive == AliveState.Dead {
             cell.killImage.isHidden = false
