@@ -338,7 +338,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         playersTableView.reloadData() // Обновляем таблицу
         
         if !game.isStarted {self.startNewGame()} // Стартуем игру!
-    	}
+    }
     
     // Нажали кнопку "Закончить игру" в панели инструментов
     @IBAction func tapEndOfTheGameButton(_ sender: UIBarButtonItem) {

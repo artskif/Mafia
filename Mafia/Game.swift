@@ -22,7 +22,7 @@ class Game {
     var isFinished:Bool // Игра закончилась
     var turnNumber:Int // Номер хода
     var turnTextMessage:String // Сообщение конца хода
-    var currentTurnDead:Player? // Текущий мертвый пользователь
+    var currentTurnDead:[Player] // Текущие мертвые пользователи
     
     
     init(){
@@ -32,7 +32,7 @@ class Game {
         self.isStarted = false
         self.turnNumber = 1
         self.turnTextMessage = "Никто не умер"
-        self.currentTurnDead = nil
+        self.currentTurnDead = []
         self.isFinished = false
         
         // Достаем из хранилища сохраненные аккаунты если имеются
@@ -92,20 +92,25 @@ class Game {
     func handleTurnActions() {
         
         self.turnTextMessage = "" // Сбрасываем сообщения в конце хода
-        self.currentTurnDead = nil // Сбрасываем текущего умершего игрока
+        self.currentTurnDead = [] // Сбрасываем текущего умершего игрока
         
         // Проверим каждого игрока, что с ним произошло за текущий ход
         // (и изменим его статус, а так же сформируем сообщения о том что произошло за ход)
         for player in _players {
             if player.actionCheck(action: ActionType.CitizenKill) {
                 player.stateAlive = AliveState.Dead
-                self.currentTurnDead = player
+                self.currentTurnDead.append(player)
                 self.turnTextMessage += "Горожане убили \(player.name) (\(player.role.description))\n"
             }
             if player.actionCheck(action: ActionType.MafiaKill) && !player.actionCheck(action: ActionType.Heal) && player.role != Role.Undead {
                 player.stateAlive = AliveState.Dead
-                self.currentTurnDead = player
+                self.currentTurnDead.append(player)
                 self.turnTextMessage += "Мафия убила \(player.name) (\(player.role.description))\n"
+            }
+            if player.actionCheck(action: ActionType.ManiacKill) && !player.actionCheck(action: ActionType.Heal) && player.role != Role.Undead {
+                player.stateAlive = AliveState.Dead
+                self.currentTurnDead.append(player)
+                self.turnTextMessage += "Маньяк убил \(player.name) (\(player.role.description))\n"
             }
             if player.actionCheck(action: ActionType.ProstituteSilence) {
                 self.turnTextMessage += "Молчит \(player.name)\n"
@@ -126,8 +131,9 @@ class Game {
                 textOfWin = "победили Мирные"
             case .Mafia:
                 textOfWin = "победила Мафия"
+            case .Maniac:
+                textOfWin = "победил Маньяк"
             default:
-                os_log("Incorrect type of wins", log: OSLog.default, type: OSLogType.error)
                 break
             }
             self.turnTextMessage += "Игра окончена \(textOfWin)\n"
@@ -142,23 +148,30 @@ class Game {
     func checkEndOfGame() -> Role? {
         var countMafia = 0 // Количество живой мафии в игре
         var countCitizen = 0 // Количество живых мирных
+        var countManiac = 0 // Количество живых маньяков
         
         for p in self._players {
             if p.stateAlive == AliveState.Live {
                 if p.role == Role.Mafia {
                     countMafia += 1
+                } else if p.role == Role.Maniac {
+                    countManiac += 1
                 } else {
                     countCitizen += 1
                 }
             }
         }
         
-        if countMafia < 1 {return Role.Citizen} // Мирные победили
-        if countCitizen > countMafia {
-            return nil // Игра продолжается
-        } else {
-            return Role.Mafia // Мафия победила
+        if countCitizen > countMafia + countManiac {
+            return nil // Игра продолжается горожан больше убивашек
         }
+        if countMafia > 1 && countManiac > 1 {
+            return nil // Игра продолжается маньяк и мафия еще живы
+        }
+        if countMafia >= countCitizen && countManiac < 1 {return Role.Mafia} // Мафия победила
+        if countManiac >= countCitizen && countMafia < 1 {return Role.Maniac} // Маньяк победил
+        if countMafia < 1 && countManiac < 1 {return Role.Citizen} // Мирные победили
+        return nil
     }
     
     // MARK: - Методы Ролей(Role)
