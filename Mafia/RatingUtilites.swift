@@ -15,7 +15,7 @@ class RatingUtilites {
     static func calculateGameRating(players:inout [Player], whoWins: Role) {
         for p in players {
             // Записываем очки мафии если победили +2
-            if whoWins == Role.Mafia && p.role == Role.Mafia {
+            if whoWins == Role.Mafia && (p.role == Role.Mafia || p.role == Role.Don) {
                 p.currentRating.append(2)
             }
 
@@ -25,7 +25,7 @@ class RatingUtilites {
             }
 
             // Записываем очки мирным если победили +2
-            if whoWins == Role.Citizen && p.role != Role.Mafia {
+            if whoWins == Role.Citizen && p.role != Role.Mafia && p.role != Role.Don && p.role != Role.Maniac{
                 p.currentRating.append(2)
             }
         }
@@ -55,6 +55,9 @@ class RatingUtilites {
 
                 // Бессмертный умер днем еще -1
                 if whoDeadPerson.role == Role.Undead {whoDeadPerson.currentRating.append(-1)}
+
+                // Дон мафии умер днем еще -1
+                if whoDeadPerson.role == Role.Don {whoDeadPerson.currentRating.append(-1)}
             }
         }
         
@@ -91,27 +94,27 @@ class RatingUtilites {
                 p.currentRating.append(-1)
             }
             
-            // Доктор вылечил, доктору +3
-            if p.actionCheck(action: ActionType.Heal) && p.actionCheck(action: ActionType.MafiaKill) && p.actionCheck(action: ActionType.ManiacKill) {
-                pointForDoctor = 3
+            // Доктор вылечил не себя, доктору +2
+            if p.actionCheck(action: ActionType.Heal) && (p.actionCheck(action: ActionType.MafiaKill) || p.actionCheck(action: ActionType.ManiacKill)) && p.role != Role.Doctor {
+                pointForDoctor = 2
             }
 
             if (whoDead?.count)! > 0 {
                 for whoDeadPerson in whoDead! {
                     
-                    // Убили мирного или маньяка всей живой мафии днем +1
-                    if whoDeadPerson.role != Role.Mafia && p.role == Role.Mafia && p.stateAlive == AliveState.Live && dayState == DayNightState.Day {
+                    // Убили мирного или маньяка всей живой мафии и дону днем +1
+                    if whoDeadPerson.role != Role.Mafia && whoDeadPerson.role != Role.Don  && (p.role == Role.Mafia || p.role == Role.Don) && p.stateAlive == AliveState.Live && dayState == DayNightState.Day {
                         p.currentRating.append(1)
                     }
                     
-                    // Убили мафию всем живым мирным кроме маньяка днем +1
-                    if whoDeadPerson.role == Role.Mafia && p.role != Role.Mafia && p.role != Role.Maniac && p.stateAlive == AliveState.Live && dayState == DayNightState.Day {
+                    // Убили мафию или дона всем живым мирным кроме маньяка днем +1
+                    if (whoDeadPerson.role == Role.Mafia || whoDeadPerson.role == Role.Don) && p.role != Role.Mafia && p.role != Role.Don && p.role != Role.Maniac && p.stateAlive == AliveState.Live && dayState == DayNightState.Day {
                         p.currentRating.append(1)
                     }
 
-                    // Маньяк ночью убил кого угодно +2 маньяку
+                    // Маньяк ночью убил кого угодно +1 маньяку
                     if whoDeadPerson.actionCheck(action: ActionType.ManiacKill) && dayState == DayNightState.Night {
-                        pointForManiac = 2
+                        pointForManiac = 1
                     }
 
                 }

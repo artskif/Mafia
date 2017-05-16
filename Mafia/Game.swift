@@ -152,7 +152,7 @@ class Game {
         
         for p in self._players {
             if p.stateAlive == AliveState.Live {
-                if p.role == Role.Mafia {
+                if p.role == Role.Mafia || p.role == Role.Don {
                     countMafia += 1
                 } else if p.role == Role.Maniac {
                     countManiac += 1
@@ -162,9 +162,6 @@ class Game {
             }
         }
         
-        if countCitizen > countMafia + countManiac {
-            return nil // Игра продолжается горожан больше убивашек
-        }
         if countMafia > 1 && countManiac > 1 {
             return nil // Игра продолжается маньяк и мафия еще живы
         }

@@ -111,6 +111,11 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Определяем дынные для заполнения ячейки таблицы
         let player = game.getPlayer(at: indexPath.section)
         
+        // Заполняем рейтинг ячейки
+        let sum = player.currentRating.reduce(0, { x, y in x + y})
+        cell.currentRating.text = "\(sum < 1 ? 1 : sum)"
+        cell.globalRating.text = "\(player.rating)"
+        
         // Заполним данные для кнопок
         cell.killButton.tag = indexPath.section
         cell.healButton.tag = indexPath.section
@@ -165,7 +170,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.silenceButton.isHidden = true
             cell.donmaffiaButton.isHidden = true
             cell.maniacButton.isHidden = true
-            cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil
+            cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil && game.roles[Role.Don.rawValue] == nil
             
             // Отрисовываем нажатие кнопки "Убить"
             if player.actionCheck(action: ActionType.CitizenKill) {
@@ -328,11 +333,11 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         popOverVC.textMessageLabel.text = game.turnTextMessage // Показываем игровые собщения окончания хода
         
         // Меняем интерфейс приложения для обозначения смены дня и ночи
-        if game.state == DayNightState.Night {
-            mainView.backgroundColor = UIColor.white
-        } else {
-            mainView.backgroundColor = UIColor.black
-        }
+        //if game.state == DayNightState.Night {
+        //    mainView.backgroundColor = UIColor.white
+        //} else {
+        //    mainView.backgroundColor = UIColor.black
+        //}
         game.startNewTurn() // Начинаем новый ход
         
         playersTableView.reloadData() // Обновляем таблицу
