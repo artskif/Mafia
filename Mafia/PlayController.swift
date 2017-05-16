@@ -170,7 +170,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.silenceButton.isHidden = true
             cell.donmaffiaButton.isHidden = true
             cell.maniacButton.isHidden = true
-            cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil && game.roles[Role.Don.rawValue] == nil
+            cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil && game.roles[Role.Don.rawValue] == nil && game.roles[Role.Maniac.rawValue] == nil
             
             // Отрисовываем нажатие кнопки "Убить"
             if player.actionCheck(action: ActionType.CitizenKill) {
@@ -223,10 +223,10 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
 
             cell.healButton.isHidden = game.roles[Role.Doctor.rawValue] == nil
             cell.maniacButton.isHidden = game.roles[Role.Maniac.rawValue] == nil || player.role == Role.Maniac
-            cell.donmaffiaButton.isHidden = game.roles[Role.Don.rawValue] == nil || player.role == Role.Don
+            cell.donmaffiaButton.isHidden = game.roles[Role.Don.rawValue] == nil || player.role == Role.Mafia || player.role == Role.Don
             cell.checkButton.isHidden = game.roles[Role.Sherif.rawValue] == nil || player.role == Role.Sherif
             cell.silenceButton.isHidden = game.roles[Role.Prostitute.rawValue] == nil && game.roles[Role.Maniac.rawValue] == nil
-            cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil || player.role == Role.Mafia
+            cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil || player.role == Role.Mafia || player.role == Role.Don
         }
 
         return cell
@@ -237,7 +237,9 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         if editingStyle == .delete {
             // Удаляем элемент массива данных участников игры
             game.removePlayer(at: indexPath.section)
-            playersTableView.deleteRows(at: [indexPath], with: .fade)
+            //playersTableView.deleteRows(at: [indexPath], with: .fade)
+            let indexes = IndexSet(integer: indexPath.section)
+            playersTableView.deleteSections(indexes, with: .fade)
         }
     }
     
