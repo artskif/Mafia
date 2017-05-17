@@ -19,6 +19,8 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var addNewPlayerButton: UIBarButtonItem!
     @IBOutlet var mainView: UIView!
     
+    @IBOutlet weak var itemDayNightToolbar: UIBarButtonItem!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
     // MARK: - События контроллера
     
     override func viewDidLoad() {
@@ -237,9 +239,9 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         if editingStyle == .delete {
             // Удаляем элемент массива данных участников игры
             game.removePlayer(at: indexPath.section)
-            //playersTableView.deleteRows(at: [indexPath], with: .fade)
             let indexes = IndexSet(integer: indexPath.section)
             playersTableView.deleteSections(indexes, with: .fade)
+            playersTableView.reloadData()
         }
     }
     
@@ -335,11 +337,15 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         popOverVC.textMessageLabel.text = game.turnTextMessage // Показываем игровые собщения окончания хода
         
         // Меняем интерфейс приложения для обозначения смены дня и ночи
-        //if game.state == DayNightState.Night {
-        //    mainView.backgroundColor = UIColor.white
-        //} else {
-        //    mainView.backgroundColor = UIColor.black
-        //}
+        if game.state == DayNightState.Night {
+            bottomToolbar.barTintColor = UIColor(rgb: 0xF6F6F6)
+            itemDayNightToolbar.tintColor = UIColor(rgb: 0x333333)
+            itemDayNightToolbar.title = "Наступает ночь"
+        } else {
+            bottomToolbar.barTintColor = UIColor(rgb: 0x333333)
+            itemDayNightToolbar.tintColor = UIColor(rgb: 0xF6F6F6)
+            itemDayNightToolbar.title = "Наступает день"
+        }
         game.startNewTurn() // Начинаем новый ход
         
         playersTableView.reloadData() // Обновляем таблицу

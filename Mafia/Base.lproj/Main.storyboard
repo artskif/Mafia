@@ -156,7 +156,7 @@
             </objects>
             <point key="canvasLocation" x="1749.5999999999999" y="-633.73313343328346"/>
         </scene>
-        <!--Игра МАФИЯ-->
+        <!--МАФИЯ-->
         <scene sceneID="3IL-xU-IR5">
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" id="oNQ-Ax-mL0" customClass="PlayController" customModule="Mafia" customModuleProvider="target" sceneMemberID="viewController">
@@ -174,8 +174,9 @@
                                     <constraint firstAttribute="width" secondItem="mMH-H9-nnY" secondAttribute="height" multiplier="125:206" id="BK1-FY-pCQ"/>
                                 </constraints>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="XYU-Ow-JOM">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYU-Ow-JOM">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <barButtonItem image="icon_action2" width="60" id="ups-YX-46y">
                                         <color key="tintColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -183,18 +184,14 @@
                                             <segue destination="K7v-lS-eMm" kind="presentation" identifier="AddItem" id="kzv-YA-sJC"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem image="icon_action1" width="60" id="ap6-I2-6Du">
-                                        <color key="tintColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eBp-xj-OiD"/>
+                                    <barButtonItem title="Наступает ночь" width="60" id="ap6-I2-6Du">
+                                        <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="tapDayNightButton:" destination="oNQ-Ax-mL0" id="zY3-oJ-Zhl"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem image="icon_action4" width="60" id="tZ9-rt-7WP">
-                                        <color key="tintColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="Ypl-Ld-Hzc" kind="presentation" identifier="ShowGameRating" id="39n-Im-Jdv"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="VGj-a0-NAY"/>
                                     <barButtonItem image="icon_action3" width="60" id="I7d-Fu-rbj">
                                         <color key="tintColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
@@ -231,11 +228,13 @@
                             <constraint firstAttribute="trailing" secondItem="XYU-Ow-JOM" secondAttribute="trailing" id="xZW-WY-j8M"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Игра МАФИЯ" id="uiW-uU-I3i"/>
+                    <navigationItem key="navigationItem" title="МАФИЯ" id="uiW-uU-I3i"/>
                     <connections>
                         <outlet property="addNewPlayerButton" destination="ups-YX-46y" id="CgA-UO-Ojy"/>
+                        <outlet property="bottomToolbar" destination="XYU-Ow-JOM" id="yUA-Cm-zMg"/>
                         <outlet property="dayNightButton" destination="ap6-I2-6Du" id="hD4-Jd-tcR"/>
                         <outlet property="endOfTheGameButton" destination="I7d-Fu-rbj" id="uMo-SR-BDR"/>
+                        <outlet property="itemDayNightToolbar" destination="ap6-I2-6Du" id="zgm-9j-DlJ"/>
                         <outlet property="mainView" destination="LDo-YX-gZU" id="TYD-cs-DHh"/>
                         <outlet property="playersTableView" destination="cge-AA-EFm" id="hhU-Ea-7yY"/>
                         <segue destination="FzV-ee-t8s" kind="unwind" identifier="unwindToMainScreen" unwindAction="unwindCancelToMainScreenWithSender:" id="lSj-JX-Jfz"/>
@@ -247,7 +246,7 @@
             </objects>
             <point key="canvasLocation" x="1749.5999999999999" y="35.532233883058474"/>
         </scene>
-        <!--Редактировать-->
+        <!--МАФИЯ-->
         <scene sceneID="CvP-XR-Qwy">
             <objects>
                 <viewController id="XN1-Lj-Oc9" customClass="AddController" customModule="Mafia" customModuleProvider="target" sceneMemberID="viewController">
@@ -371,16 +370,16 @@
                             <constraint firstItem="9KR-YA-JId" firstAttribute="leading" secondItem="Mco-0r-6X0" secondAttribute="leadingMargin" id="vwE-2X-bvR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Редактировать" id="kW1-hf-RDV">
+                    <navigationItem key="navigationItem" title="МАФИЯ" id="kW1-hf-RDV">
                         <barButtonItem key="leftBarButtonItem" title="Отмена" id="vlu-GW-5tS">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="cancelButton:" destination="XN1-Lj-Oc9" id="gxk-uf-DB5"/>
                                 <segue destination="zK6-YP-Wg8" kind="unwind" unwindAction="unwindCancelToPlayerListWithSender:" id="jdq-3f-6w9"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" id="pG3-vD-Mwn">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="zK6-YP-Wg8" kind="unwind" unwindAction="unwindToPlayerListWithSender:" id="vac-Ix-Y7B"/>
                             </connections>
@@ -405,12 +404,12 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" id="Cvo-3B-IHr" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="SxL-RR-xZj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SxL-RR-xZj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.72549019607843135" green="0.019607843137254902" blue="0.015686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -422,7 +421,7 @@
             </objects>
             <point key="canvasLocation" x="890" y="36"/>
         </scene>
-        <!--Общий рейтинг-->
+        <!--МАФИЯ-->
         <scene sceneID="c08-Y9-rnQ">
             <objects>
                 <tableViewController id="P8I-yl-Pn7" customClass="RatingController" customModule="Mafia" customModuleProvider="target" sceneMemberID="viewController">
@@ -488,9 +487,9 @@
                             <outlet property="delegate" destination="P8I-yl-Pn7" id="x9q-T8-Qjg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Общий рейтинг" id="HL7-J6-sR6">
+                    <navigationItem key="navigationItem" title="МАФИЯ" id="HL7-J6-sR6">
                         <barButtonItem key="leftBarButtonItem" title="Назад" id="8pS-8V-O9p">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="cancelTab:" destination="P8I-yl-Pn7" id="ZS7-4d-Vij"/>
                                 <segue destination="EQ6-23-D11" kind="unwind" unwindAction="unwindCancelToMainScreenWithSender:" id="v8f-xi-GAN"/>
@@ -506,91 +505,18 @@
             </objects>
             <point key="canvasLocation" x="889" y="804"/>
         </scene>
-        <!--Рейтинг игры-->
-        <scene sceneID="qld-gc-gjf">
-            <objects>
-                <tableViewController id="5ik-f6-eLY" customClass="GameRatingTableViewController" customModule="Mafia" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qlh-Y6-2yf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameRatingTableViewCell" id="nNp-zX-geN" customClass="RatingTableViewCell" customModule="Mafia" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nNp-zX-geN" id="O45-YS-EeM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RatingLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xN-bH-Flq">
-                                            <rect key="frame" x="267.5" y="11" width="90.5" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="1" green="0.35589174639999999" blue="0.2884042268" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4r-Y0-UjE">
-                                            <rect key="frame" x="17" y="16" width="14" height="12"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="a4r-Y0-UjE" secondAttribute="height" multiplier="7:6" id="SYQ-KH-hne"/>
-                                                <constraint firstAttribute="width" constant="14" id="so4-2I-ww6"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a09-P3-m2J">
-                                            <rect key="frame" x="33" y="11" width="86.5" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="a09-P3-m2J" firstAttribute="top" secondItem="O45-YS-EeM" secondAttribute="topMargin" constant="3" id="9El-xL-mOD"/>
-                                        <constraint firstItem="a4r-Y0-UjE" firstAttribute="centerY" secondItem="O45-YS-EeM" secondAttribute="centerY" id="AxJ-fC-k30"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="9xN-bH-Flq" secondAttribute="trailing" constant="9" id="TFR-h8-aks"/>
-                                        <constraint firstItem="a09-P3-m2J" firstAttribute="leading" secondItem="a4r-Y0-UjE" secondAttribute="trailing" constant="2" id="VWp-aj-Fx4"/>
-                                        <constraint firstItem="9xN-bH-Flq" firstAttribute="top" secondItem="O45-YS-EeM" secondAttribute="topMargin" constant="3" id="XGD-Nf-qLf"/>
-                                        <constraint firstItem="a4r-Y0-UjE" firstAttribute="leading" secondItem="O45-YS-EeM" secondAttribute="leadingMargin" constant="9" id="ZAG-fi-ZPo"/>
-                                        <constraint firstItem="9xN-bH-Flq" firstAttribute="centerY" secondItem="O45-YS-EeM" secondAttribute="centerY" id="xla-Mk-Yjv"/>
-                                        <constraint firstItem="a09-P3-m2J" firstAttribute="centerY" secondItem="O45-YS-EeM" secondAttribute="centerY" id="zZa-cW-4jG"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                <connections>
-                                    <outlet property="nameLabel" destination="a09-P3-m2J" id="alL-4Y-3W3"/>
-                                    <outlet property="numberLabel" destination="a4r-Y0-UjE" id="FwU-0i-jf4"/>
-                                    <outlet property="ratingLabel" destination="9xN-bH-Flq" id="tx1-qz-jH1"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="5ik-f6-eLY" id="INc-kz-Wbu"/>
-                            <outlet property="delegate" destination="5ik-f6-eLY" id="zEh-hi-0xX"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Рейтинг игры" id="Ua6-aq-rLy">
-                        <barButtonItem key="leftBarButtonItem" title="Назад" id="osb-TT-NHM">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="pushCancelButton:" destination="5ik-f6-eLY" id="Ph7-Wa-zcZ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BJr-Od-VVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2677.5999999999999" y="1113.1934032983509"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="A0N-vY-J4a">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K7v-lS-eMm" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="BT0-kv-rWe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="BT0-kv-rWe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.72549019609999998" green="0.019607843140000001" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -606,9 +532,12 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Vj-GG-RNM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="J7W-lS-ftV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="J7W-lS-ftV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.72549019609999998" green="0.019607843140000001" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -619,33 +548,13 @@
             </objects>
             <point key="canvasLocation" x="25" y="804"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="GB0-CF-pcU">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ypl-Ld-Hzc" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="XKh-sP-esN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="5ik-f6-eLY" kind="relationship" relationship="rootViewController" id="tmN-ql-bhq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jQ5-Wt-Dso" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1750" y="804"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Bottom people" width="375" height="152"/>
         <image name="Rain" width="375" height="618"/>
         <image name="Rectangle 3" width="343" height="75"/>
-        <image name="icon_action1" width="37" height="38"/>
         <image name="icon_action2" width="38" height="39"/>
         <image name="icon_action3" width="39" height="39"/>
-        <image name="icon_action4" width="39" height="39"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="s5s-Go-K6O"/>
