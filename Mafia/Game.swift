@@ -100,17 +100,17 @@ class Game {
             if player.actionCheck(action: ActionType.CitizenKill) {
                 player.stateAlive = AliveState.Dead
                 self.currentTurnDead.append(player)
-                self.turnTextMessage += "Горожане убили \(player.name) (\(player.role.description))\n"
+                self.turnTextMessage += "Горожане убили \(player.name) (\(player.role.title))\n"
             }
             if player.actionCheck(action: ActionType.MafiaKill) && !player.actionCheck(action: ActionType.Heal) && player.role != Role.Undead {
                 player.stateAlive = AliveState.Dead
                 self.currentTurnDead.append(player)
-                self.turnTextMessage += "Мафия убила \(player.name) (\(player.role.description))\n"
+                self.turnTextMessage += "Мафия убила \(player.name) (\(player.role.title))\n"
             }
             if player.actionCheck(action: ActionType.ManiacKill) && !player.actionCheck(action: ActionType.Heal) && player.role != Role.Undead {
                 player.stateAlive = AliveState.Dead
                 self.currentTurnDead.append(player)
-                self.turnTextMessage += "Маньяк убил \(player.name) (\(player.role.description))\n"
+                self.turnTextMessage += "Маньяк убил \(player.name) (\(player.role.title))\n"
             }
             if player.actionCheck(action: ActionType.ProstituteSilence) {
                 self.turnTextMessage += "Молчит \(player.name)\n"

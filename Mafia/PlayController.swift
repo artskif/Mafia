@@ -334,7 +334,9 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         if game.isFinished {self.dayNightButton.isEnabled = false} // Если игра закончилась нет смысла начинать новый ход
         
-        popOverVC.textMessageLabel.text = game.turnTextMessage // Показываем игровые собщения окончания хода
+        // Показываем игровые собщения окончания хода
+        popOverVC.textMessageLabel.text = game.turnTextMessage
+        popOverVC.titleLabel.text = game.state == DayNightState.Day ? "НАСТУПИЛА НОЧЬ" : "НАСТУПИЛ ДЕНЬ"
         
         // Меняем интерфейс приложения для обозначения смены дня и ночи
         if game.state == DayNightState.Night {

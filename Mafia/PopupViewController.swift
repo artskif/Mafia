@@ -13,6 +13,7 @@ class PopupViewController: UIViewController {
     // MARK: - Элементы управления контроллера
     
     @IBOutlet weak var textMessageLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     
     // MARK: - События контроллера
     
