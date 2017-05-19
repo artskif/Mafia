@@ -98,18 +98,19 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы выбора поочередно
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifer = "ChooseTableViewCell"
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifer, for: indexPath) as? ChooseTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of ChooseTableViewCell.")
-        }
-        
-        cell.chooseButton.tag = indexPath.row
-        cell.chooseButton.isEnabled = true
+        let cellRoleIdentifer = "ChooseRatingTableViewCell"
         
         if editPlayer == nil {
-            // В данном варианте мы не редактируем пользователя - мы выбираем нового
+            // В данном варианте мы не редактируем пользователя - мы выбираем  нового
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifer, for: indexPath) as? ChooseTableViewCell  else {
+                fatalError("The dequeued cell is not an instance of ChooseTableViewCell.")
+            }
+
             let account = playersForChoose[indexPath.row]
 
+            cell.chooseButton.tag = indexPath.row
+            cell.chooseButton.isEnabled = true
+            
             // Задаем имена для ячейки
             cell.cellName.text = "\(account.name)"
             cell.numbelLabel.text = "\(indexPath.row + 1)"
@@ -123,22 +124,28 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             if choosedUsers.contains(indexPath.row) {
                 cell.chooseButton.isEnabled = false
             }
+            return cell
         } else {
             // В данном варианте мы редактируем пользователя,
             // следовательно должны показать роли для возможности сменить роль(выбранного персонажа)
-            cell.cellName.text = Role(rawValue: indexPath.row)?.description
             
+            guard let cellRole = tableView.dequeueReusableCell(withIdentifier: cellRoleIdentifer, for: indexPath) as? ChooseRatingTableViewCell  else {
+                fatalError("The dequeued cell is not an instance of ChooseRatingTableViewCell.")
+            }
+
+            cellRole.cellName.text = Role(rawValue: indexPath.row)?.description
+            
+            cellRole.chooseButton.tag = indexPath.row
+            cellRole.chooseButton.isEnabled = true
+        
             if let currentChoosedRole = choosedRole {
-                // Имеется выбранный вариант тыблицы (выбора ролей)
+                // Имеется выбранный вариант таблицы (выбора ролей)
                 
                 // если нажата кнопка выбора то мы ее отключаем (во избежании дальнейших нажатий этой кнопки)
-                cell.chooseButton.isEnabled = currentChoosedRole != cell.chooseButton.tag
+                cellRole.chooseButton.isEnabled = currentChoosedRole != cellRole.chooseButton.tag
             }
+            return cellRole
         }
-        
-        
-        
-        return cell
     }
     
     // Определяем возможность редактировать таблицу выбора участников

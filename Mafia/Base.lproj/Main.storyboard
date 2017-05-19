@@ -328,6 +328,41 @@
                                             <outlet property="numbelLabel" destination="zub-cn-Zgf" id="lD4-fD-enc"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChooseRatingTableViewCell" id="wzK-tb-ea9" customClass="ChooseRatingTableViewCell" customModule="Mafia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wzK-tb-ea9" id="FGV-ag-Fd5">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqC-7K-CvA">
+                                                    <rect key="frame" x="237" y="8" width="98" height="30"/>
+                                                    <color key="tintColor" red="1" green="0.35589174639999999" blue="0.2884042268" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Выбрать"/>
+                                                    <connections>
+                                                        <action selector="chooseButton:" destination="XN1-Lj-Oc9" eventType="touchUpInside" id="SNI-2T-gpP"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Заголовок" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3E-Pa-XZf">
+                                                    <rect key="frame" x="8" y="12" width="83" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="QqC-7K-CvA" firstAttribute="top" secondItem="FGV-ag-Fd5" secondAttribute="top" constant="8" id="QaI-Jo-dh8"/>
+                                                <constraint firstItem="E3E-Pa-XZf" firstAttribute="centerY" secondItem="FGV-ag-Fd5" secondAttribute="centerY" id="Wdv-gY-cJf"/>
+                                                <constraint firstAttribute="trailing" secondItem="QqC-7K-CvA" secondAttribute="trailing" constant="8" id="b2Q-JJ-olp"/>
+                                                <constraint firstItem="E3E-Pa-XZf" firstAttribute="leading" secondItem="FGV-ag-Fd5" secondAttribute="leadingMargin" id="eAq-ES-r9S"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="cellName" destination="E3E-Pa-XZf" id="0Fs-Yf-13f"/>
+                                            <outlet property="chooseButton" destination="QqC-7K-CvA" id="kWy-5g-yq9"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="XN1-Lj-Oc9" id="1Yd-lm-krD"/>
@@ -397,7 +432,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y38-Xb-jv6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zK6-YP-Wg8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3504.8000000000002" y="35.532233883058474"/>
+            <point key="canvasLocation" x="3506" y="74"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X2L-47-tzq">
@@ -441,7 +476,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKA-9m-7c8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3616.8000000000002" y="384.55772113943033"/>
+            <point key="canvasLocation" x="2636" y="383"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="W2K-nK-Mu7">
@@ -573,6 +608,6 @@
         <image name="icon_action3" width="39" height="39"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s5s-Go-K6O"/>
+        <segue reference="Lcv-6o-hxh"/>
     </inferredMetricsTieBreakers>
 </document>

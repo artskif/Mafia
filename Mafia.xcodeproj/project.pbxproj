@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		251221D81ECC7BB700C626C3 /* GlobalRatingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251221D71ECC7BB700C626C3 /* GlobalRatingController.swift */; };
+		251221DA1ECF1A5400C626C3 /* ChooseRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251221D91ECF1A5400C626C3 /* ChooseRatingTableViewCell.swift */; };
 		252390F61E817CCF00474341 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252390F51E817CCF00474341 /* Account.swift */; };
 		254E05161EC5B11B00ACF890 /* PlayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254E05141EC5B11B00ACF890 /* PlayTableViewCell.swift */; };
 		254E05171EC5B11B00ACF890 /* PlayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254E05151EC5B11B00ACF890 /* PlayTableViewCell.xib */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		251221D71ECC7BB700C626C3 /* GlobalRatingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalRatingController.swift; sourceTree = "<group>"; };
+		251221D91ECF1A5400C626C3 /* ChooseRatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseRatingTableViewCell.swift; sourceTree = "<group>"; };
 		252390F51E817CCF00474341 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		254E05141EC5B11B00ACF890 /* PlayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayTableViewCell.swift; sourceTree = "<group>"; };
 		254E05151EC5B11B00ACF890 /* PlayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayTableViewCell.xib; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				25F0E44D1E82B6A100B0F17B /* RatingTableViewCell.swift */,
 				25FA28011E84FD8D00CDF81F /* ChooseTableViewCell.swift */,
+				251221D91ECF1A5400C626C3 /* ChooseRatingTableViewCell.swift */,
 				254E05141EC5B11B00ACF890 /* PlayTableViewCell.swift */,
 				254E05151EC5B11B00ACF890 /* PlayTableViewCell.xib */,
 			);
@@ -331,6 +334,7 @@
 				25F0E4461E8291F100B0F17B /* Enums.swift in Sources */,
 				25C8653F1E72968F00B8134B /* StartController.swift in Sources */,
 				25C8656F1E76A1B500B8134B /* AddController.swift in Sources */,
+				251221DA1ECF1A5400C626C3 /* ChooseRatingTableViewCell.swift in Sources */,
 				25FA28061E8AD61000CDF81F /* RatingUtilites.swift in Sources */,
 				25C8656B1E74554600B8134B /* PlayController.swift in Sources */,
 				25FA28021E84FD8D00CDF81F /* ChooseTableViewCell.swift in Sources */,
