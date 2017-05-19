@@ -139,6 +139,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             let evenColor = UIColor(rgb: 0xD8D8D8, alpha: 0.1).cgColor
             let oddColor = UIColor(rgb: 0xD8D8D8, alpha: 0.4).cgColor
             
+            // Разноцвет между соседними ячейками
             if indexPath.section % 2 == 0 {
                 cell.layer.backgroundColor = oddColor
             } else {
@@ -148,12 +149,11 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             
             let account = playersForChoose[indexPath.section]
 
-            cell.chooseButton.tag = indexPath.section
-            cell.chooseButton.isEnabled = true
-            
-            // Задаем имена для ячейки
+            // Задаем данные для ячейки
             cell.cellName.text = "\(account.name)"
             cell.numbelLabel.text = "\(indexPath.section + 1)"
+            cell.chooseButton.tag = indexPath.section
+            cell.chooseButton.isEnabled = true
             
             // если мы уже добавили подобного игрока то его добавлять уже не нужно
             if game.checkPlayerId(idItem: account.id) {
@@ -210,7 +210,6 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             
             if let currentChoosedRole = choosedRole {
                 // Имеется выбранный вариант таблицы (выбора ролей)
-                
                 // если нажата кнопка выбора то мы ее отключаем (во избежании дальнейших нажатий этой кнопки)
                 cellRole.checkButton.isHidden = currentChoosedRole != cellRole.chooseButton.tag
             }
