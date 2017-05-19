@@ -228,7 +228,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.donmaffiaButton.isHidden = game.roles[Role.Don.rawValue] == nil || player.role == Role.Mafia || player.role == Role.Don
             cell.checkButton.isHidden = game.roles[Role.Sherif.rawValue] == nil || player.role == Role.Sherif
             cell.silenceButton.isHidden = game.roles[Role.Prostitute.rawValue] == nil && game.roles[Role.Maniac.rawValue] == nil
-            cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil || player.role == Role.Mafia || player.role == Role.Don
+            cell.killButton.isHidden = (game.roles[Role.Mafia.rawValue] == nil && game.roles[Role.Don.rawValue] == nil) || player.role == Role.Mafia || player.role == Role.Don
         }
 
         return cell
