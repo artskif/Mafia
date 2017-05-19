@@ -19,6 +19,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     @IBOutlet weak var chooseTableView: UITableView!
     @IBOutlet weak var addNewPlayer: UIButton!
     @IBOutlet weak var addUserTableView: UITableView!
+    @IBOutlet weak var checkImage: UIImageView!
     
     // MARK: - Свойства контроллера
     
@@ -87,12 +88,33 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     
     // Кличесто элементов в одной секции таблицы
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    // Количество секций в таблице
+    func numberOfSections(in tableView: UITableView) -> Int {
         // У нас в таблице или аккаунты пользователей или роли пользователя(если мы редактируем пользователя)
         if editPlayer == nil {
             return playersForChoose.count
         } else {
             return Role.count
         }
+    }
+    
+    // Расстояние между ячейками(секциями)
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    // Описываем состояние заголовка секции
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //self.performSegue(withIdentifier: "ShowDetail", sender: self)
     }
     
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы выбора поочередно
@@ -106,23 +128,37 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
                 fatalError("The dequeued cell is not an instance of ChooseTableViewCell.")
             }
 
-            let account = playersForChoose[indexPath.row]
+            // Визуально оформляем ячейку
+            cell.layer.cornerRadius = 8
+            let evenColor = UIColor(rgb: 0xD8D8D8, alpha: 0.1).cgColor
+            let oddColor = UIColor(rgb: 0xD8D8D8, alpha: 0.4).cgColor
+            
+            if indexPath.section % 2 == 0 {
+                cell.layer.backgroundColor = oddColor
+            } else {
+                cell.layer.backgroundColor = evenColor
+            }
+            cell.checkImage.isHidden = true
+            
+            let account = playersForChoose[indexPath.section]
 
-            cell.chooseButton.tag = indexPath.row
+            cell.chooseButton.tag = indexPath.section
             cell.chooseButton.isEnabled = true
             
             // Задаем имена для ячейки
             cell.cellName.text = "\(account.name)"
-            cell.numbelLabel.text = "\(indexPath.row + 1)"
+            cell.numbelLabel.text = "\(indexPath.section + 1)"
             
             // если мы уже добавили подобного игрока то его добавлять уже не нужно
             if game.checkPlayerId(idItem: account.id) {
                 cell.chooseButton.isEnabled = false
+                cell.checkImage.isHidden = false
             }
             
             // выбранных игроков выбирать не нужно
-            if choosedUsers.contains(indexPath.row) {
+            if choosedUsers.contains(indexPath.section) {
                 cell.chooseButton.isEnabled = false
+                cell.checkImage.isHidden = false
             }
             return cell
         } else {
@@ -133,9 +169,9 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
                 fatalError("The dequeued cell is not an instance of ChooseRatingTableViewCell.")
             }
 
-            cellRole.cellName.text = Role(rawValue: indexPath.row)?.description
+            cellRole.cellName.text = Role(rawValue: indexPath.section)?.description
             
-            cellRole.chooseButton.tag = indexPath.row
+            cellRole.chooseButton.tag = indexPath.section
             cellRole.chooseButton.isEnabled = true
         
             if let currentChoosedRole = choosedRole {
@@ -151,11 +187,6 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     // Определяем возможность редактировать таблицу выбора участников
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
-    }
-    
-    // Количество секций в таблице
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
     }
     
     //MARK: - Обработка действий пользователя
@@ -196,9 +227,9 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
                 
                 // Анимированно обновляем строки таблицы
                 let othersIndexPaths = chooseTableView.indexPathsForVisibleRows!
-                let newIndexPath = IndexPath(row: 0, section: 0)
                 chooseTableView.beginUpdates()
-                addUserTableView.insertRows(at: [newIndexPath], with: .automatic)
+                let indexes = IndexSet(integer: 0)
+                addUserTableView.insertSections(indexes, with: .automatic)
                 chooseTableView.reloadRows(at: othersIndexPaths, with: .fade)
                 chooseTableView.endUpdates()
             }

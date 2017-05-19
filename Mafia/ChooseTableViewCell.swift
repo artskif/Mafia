@@ -15,6 +15,8 @@ class ChooseTableViewCell: UITableViewCell {
     @IBOutlet weak var cellName: UILabel!
     @IBOutlet weak var chooseButton: UIButton!
     @IBOutlet weak var numbelLabel: UILabel!
+    @IBOutlet weak var checkImage: UIImageView!
+    @IBOutlet weak var rectangleImage: UIImageView!
 
     // MARK: - События ячейки
     

@@ -26,6 +26,7 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     // MARK: - Методы инициализации таблицы рейтинга
+    
     // Количество секций в таблице
     func numberOfSections(in tableView: UITableView) -> Int {
         return game.accounts.count
@@ -48,6 +49,11 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
         return headerView
     }
     
+    // Определяем возможность редактировать таблицу участников
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RatingViewCell", for: indexPath) as? RatingTableViewCell  else {
@@ -57,6 +63,7 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
         // Какие данные будем использовать для текущей обрабатываемой ячейки
         let account = game.accounts[indexPath.section]
         
+        // Визуально оформляем ячейку
         cell.layer.cornerRadius = 8
         let evenColor = UIColor(rgb: 0xD8D8D8, alpha: 0.1).cgColor
         let oddColor = UIColor(rgb: 0xD8D8D8, alpha: 0.4).cgColor
@@ -75,23 +82,17 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
 
     }
     
-    // Определяем возможность редактировать таблицу участников
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-    
     //MARK: - Обработка действий пользователя
     
-    //@IBAction func cancelTab(_ sender: UIBarButtonItem) {
-        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
-    //    let isPresentingInAddPlayerMode = presentingViewController is UINavigationController
+    @IBAction func cancelButtonPush(_ sender: Any) {
+        let isPresentingInAddPlayerMode = presentingViewController is UINavigationController
         
-     //   if isPresentingInAddPlayerMode {
-    //        dismiss(animated: true, completion: nil)
-    //    } else if let owningNavigationController = navigationController{
-    //        owningNavigationController.popViewController(animated: true)
-    //    } else {
-    //        fatalError("The RatingController is not inside a navigation controller.")
-    //    }
-    //}
+        if isPresentingInAddPlayerMode {
+            dismiss(animated: true, completion: nil)
+        } else if let owningNavigationController = navigationController{
+            owningNavigationController.popViewController(animated: true)
+        } else {
+            fatalError("The GlobalRatingController is not inside a navigation controller.")
+        }
+    }
 }
