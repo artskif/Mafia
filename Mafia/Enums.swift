@@ -32,13 +32,34 @@ enum Role:Int, CustomStringConvertible {
     var description: String {
         switch self {
         case .Citizen:
+            return "Не имеет специальных возможностей, активно проявляет гражданскую позицию днем"
+        case .Doctor:
+            return "Может лечить одного из игроков, а так же лечит себя, но не более 2 раз за игру"
+        case .Mafia:
+            return "Часть преступной группировки. Ночью со своими сообщниками убивает горожан"
+        case .Prostitute:
+            return "Ночью дарит наслаждение одному из игроков, так что игрок днем не может говорить"
+        case .Sherif:
+            return "Каждую ночь проверяет одного из игроков, пытаясь обнаружить мафию"
+        case .Undead:
+            return "Бессмертного нельзя убить ночью, можно спать спокойно"
+        case .Don:
+            return "Дон мафии решает, кто умрет ночью. Так же ночью пытается найти комиссара"
+        case .Maniac:
+            return "Безумен, ночью может заткнуть(днем молчит) или убить одного из игроков"
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .Citizen:
             return "Мирный"
         case .Doctor:
             return "Доктор"
         case .Mafia:
             return "Мафия"
         case .Prostitute:
-            return "Проститутка"
+            return "Путана"
         case .Sherif:
             return "Комиссар"
         case .Undead:

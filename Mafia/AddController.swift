@@ -182,7 +182,8 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             cellRole.layer.backgroundColor = bgColor
             
             // Данные ячейки
-            cellRole.cellName.text = currentRole.description
+            cellRole.cellName.text = currentRole.title
+            cellRole.descriptionLabel.text = currentRole.description
             cellRole.checkButton.isHidden = true
             cellRole.chooseButton.tag = indexPath.section
             cellRole.chooseButton.isEnabled = true
