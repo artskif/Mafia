@@ -11,10 +11,11 @@ import UIKit
 class RatingTableViewCell: UITableViewCell {
 
     // MARK: - Элементы управления ячейкой
+    @IBOutlet weak var iconPeople: UIImageView!
+    @IBOutlet weak var labelPosition: UILabel!
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var labelRating: UILabel!
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var numberLabel: UILabel!
     
     // MARK: - События ячейки
 

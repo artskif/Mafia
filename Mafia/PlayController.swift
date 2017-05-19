@@ -338,12 +338,12 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Меняем интерфейс приложения для обозначения смены дня и ночи
         if game.state == DayNightState.Night {
-            bottomToolbar.barTintColor = UIColor(rgb: 0xF6F6F6)
-            itemDayNightToolbar.tintColor = UIColor(rgb: 0x333333)
+            bottomToolbar.barTintColor = UIColor(rgb: 0xF6F6F6, alpha: 1)
+            itemDayNightToolbar.tintColor = UIColor(rgb: 0x333333, alpha: 1)
             itemDayNightToolbar.title = "Наступает ночь"
         } else {
-            bottomToolbar.barTintColor = UIColor(rgb: 0x333333)
-            itemDayNightToolbar.tintColor = UIColor(rgb: 0xF6F6F6)
+            bottomToolbar.barTintColor = UIColor(rgb: 0x333333, alpha: 1)
+            itemDayNightToolbar.tintColor = UIColor(rgb: 0xF6F6F6, alpha: 1)
             itemDayNightToolbar.title = "Наступает день"
         }
         game.startNewTurn() // Начинаем новый ход
