@@ -59,7 +59,7 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
         
         cell.layer.cornerRadius = 8
         let evenColor = UIColor(rgb: 0xD8D8D8, alpha: 0.1).cgColor
-        let oddColor = UIColor(rgb: 0xD8D8D8, alpha: 0.6).cgColor
+        let oddColor = UIColor(rgb: 0xD8D8D8, alpha: 0.4).cgColor
         
         if indexPath.section % 2 == 0 {
             cell.layer.backgroundColor = oddColor

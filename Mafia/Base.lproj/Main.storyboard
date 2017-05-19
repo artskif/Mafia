@@ -526,9 +526,17 @@
                             <constraint firstItem="Twk-F6-aew" firstAttribute="leading" secondItem="waF-qr-R3c" secondAttribute="leadingMargin" id="wfF-UZ-PBy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="МАФИЯ" id="NmY-rm-AN1"/>
+                    <navigationItem key="navigationItem" title="МАФИЯ" id="NmY-rm-AN1">
+                        <barButtonItem key="leftBarButtonItem" title="Назад" id="yyc-0R-Ii4">
+                            <color key="tintColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="0Xm-RQ-06J" kind="unwind" unwindAction="unwindCancelToMainScreenWithSender:" id="jEW-Oo-yVJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdc-nN-2Ab" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0Xm-RQ-06J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="888.79999999999995" y="762.36881559220399"/>
         </scene>
