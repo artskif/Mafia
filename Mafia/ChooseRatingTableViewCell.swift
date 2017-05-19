@@ -13,6 +13,9 @@ class ChooseRatingTableViewCell: UITableViewCell {
     // MARK: - Элементы управления ячейкой
     @IBOutlet weak var cellName: UILabel!
     @IBOutlet weak var chooseButton: UIButton!
+    @IBOutlet weak var roleImage: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var checkButton: UIImageView!
     
     
     // MARK: - События ячейки

@@ -54,6 +54,12 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         if game.isStarted {
             chooseTableView.isHidden = true
         }
+        
+        if editPlayer == nil {
+            chooseTableView.rowHeight = 50.0
+        } else {
+            chooseTableView.rowHeight = 68.0
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -169,16 +175,43 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
                 fatalError("The dequeued cell is not an instance of ChooseRatingTableViewCell.")
             }
 
-            cellRole.cellName.text = Role(rawValue: indexPath.section)?.description
+            let currentRole = Role(rawValue: indexPath.section)!
+
+            // Визуальное оформление ячейки
+            let bgColor = UIColor(rgb: 0xE8E8E8, alpha: 0.6).cgColor
+            cellRole.layer.backgroundColor = bgColor
             
+            // Данные ячейки
+            cellRole.cellName.text = currentRole.description
+            cellRole.checkButton.isHidden = true
             cellRole.chooseButton.tag = indexPath.section
             cellRole.chooseButton.isEnabled = true
         
+            // Меняем иконку текущей роли игрока
+            switch currentRole {
+            case .Citizen:
+                cellRole.roleImage.image = UIImage(named: "Role icon sitizen")
+            case .Doctor:
+                cellRole.roleImage.image = UIImage(named: "Role icon medic")
+            case .Mafia:
+                cellRole.roleImage.image = UIImage(named: "Role icon mafia")
+            case .Don:
+                cellRole.roleImage.image = UIImage(named: "Role icon don maffia")
+            case .Maniac:
+                cellRole.roleImage.image = UIImage(named: "Role icon maniac")
+            case .Prostitute:
+                cellRole.roleImage.image = UIImage(named: "Role icon putana")
+            case .Sherif:
+                cellRole.roleImage.image = UIImage(named: "Role icon sheriff")
+            case .Undead:
+                cellRole.roleImage.image = UIImage(named: "Role icon undead")
+            }
+            
             if let currentChoosedRole = choosedRole {
                 // Имеется выбранный вариант таблицы (выбора ролей)
                 
                 // если нажата кнопка выбора то мы ее отключаем (во избежании дальнейших нажатий этой кнопки)
-                cellRole.chooseButton.isEnabled = currentChoosedRole != cellRole.chooseButton.tag
+                cellRole.checkButton.isHidden = currentChoosedRole != cellRole.chooseButton.tag
             }
             return cellRole
         }
