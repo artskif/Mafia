@@ -10,6 +10,22 @@ import UIKit
 
 class GlobalRatingController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    // MARK: - Элементы управления контроллера
+    
+    
+    // MARK: - События контроллера
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        game.accounts = game.accounts.sorted{$0.rating > $1.rating}
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: - Методы инициализации таблицы рейтинга
     // Количество секций в таблице
     func numberOfSections(in tableView: UITableView) -> Int {
         return game.accounts.count
@@ -42,7 +58,7 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
         let account = game.accounts[indexPath.section]
         
         cell.layer.cornerRadius = 8
-        let evenColor = UIColor(rgb: 0xD8D8D8, alpha: 0.3).cgColor
+        let evenColor = UIColor(rgb: 0xD8D8D8, alpha: 0.1).cgColor
         let oddColor = UIColor(rgb: 0xD8D8D8, alpha: 0.6).cgColor
         
         if indexPath.section % 2 == 0 {
