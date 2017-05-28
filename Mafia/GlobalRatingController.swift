@@ -12,6 +12,7 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
 
     // MARK: - Элементы управления контроллера
     
+    @IBOutlet weak var ratingTable: UITableView!
     
     // MARK: - События контроллера
     
@@ -83,6 +84,14 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: - Обработка действий пользователя
+    
+    @IBAction func clearStatistics(_ sender: Any) {
+        for acc in game.accounts {
+            acc.rating = 0
+        }
+        game.saveRating()
+        self.ratingTable.reloadData()
+    }
     
     @IBAction func cancelButtonPush(_ sender: Any) {
         let isPresentingInAddPlayerMode = presentingViewController is UINavigationController
