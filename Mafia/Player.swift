@@ -10,7 +10,10 @@ import UIKit
 import os.log
 
 // класс описывающий одного игрока приложения Мафия
-class Player: Account {
+class Player {
+    var name:String
+    var rating:Int32
+    var id:Int32
     var role:Role
     var stateAlive:AliveState
     var currentRating:[Int]
@@ -23,26 +26,29 @@ class Player: Account {
         self.currentRating = [1]
         self.stateAlive = AliveState.Live
         self.actions = [:]
-        
-        super.init(id: 0, name: name)
+        self.id = 0
+        self.rating = 0
+        self.name = name
     }
     
-    override init?(id: Int, name:String, rating: Int){
+    init?(id: Int32, name:String, rating: Int32){
         self.role = Role.Citizen
         self.currentRating = [1]
         self.stateAlive = AliveState.Live
         self.actions = [:]
         
-        super.init(id: id, name: name, rating: rating)
+        self.id = id
+        self.rating = rating
+        self.name = name
     }
     
-    init?(baseObject: Account) {
+    convenience init?(baseObject: UserAccount) {
+        self.init(id: baseObject.id, name: baseObject.name!, rating: baseObject.rating)
+        
         self.role = Role.Citizen
         self.currentRating = [1]
         self.stateAlive = AliveState.Live
         self.actions = [:]
-        
-        super.init(id: baseObject.id, name: baseObject.name, rating: baseObject.rating)
     }
     
     // MARK: - Методы управления Действиями(Action)
@@ -74,27 +80,5 @@ class Player: Account {
             }
         }
         return false
-    }
-    
-    
-    // MARK: - Методы сохранения данных
-    
-    // здесь мы сохраняем данные(в хранилище сотового телефона) для дальнейшего использования при закрытии приложения
-    // данные сохраняются при помощи библиотеки NSCoding
-    public override func encode(with aCoder: NSCoder) {
-        aCoder.encode(name, forKey: "name")
-        aCoder.encode(rating, forKey: "rating")
-    }
-    
-    required convenience init?(coder aDecoder: NSCoder) {
-        guard let name = aDecoder.decodeObject(forKey: "name") as? String else {
-            os_log("Unable to decode the name for a Player object.", log: OSLog.default, type: .debug)
-            return nil
-        }
-        
-        let id = aDecoder.decodeInteger(forKey: "id")
-        let rating = aDecoder.decodeInteger(forKey: "rating")
-        
-        self.init(id: id, name: name, rating: rating)
     }
 }

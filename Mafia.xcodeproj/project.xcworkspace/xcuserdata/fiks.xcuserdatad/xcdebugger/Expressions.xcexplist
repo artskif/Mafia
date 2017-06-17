@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Game.checkEndOfGame() -&gt; Role?:Game.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddController.viewDidLoad() -&gt; ():AddController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PlayController.tableView(UITableView, commit : UITableViewCellEditingStyle, forRowAt : IndexPath) -&gt; ():PlayController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "playersTableView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Account.encode(with : NSCoder) -&gt; ():Account.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddController.prepare(for : UIStoryboardSegue, sender : Any?) -&gt; ():AddController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddController.chooseButton(UIButton) -&gt; ():AddController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Game.reloadRoles() -&gt; ():Game.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PlayController.createAction(newAction : ActionType, cellRow : Int, ifState : DayNightState?) -&gt; ():PlayController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "ifState != nil &amp;&amp; game.state != ifState">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Game.init() -&gt; Game:Game.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Player.init(name : String, rating : Int) -&gt; Player?:Player.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Player.encode(with : NSCoder) -&gt; ():Player.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "rating2">
+            </PersistentString>
+            <PersistentString
+               value = "rating">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Game.saveRating() -&gt; ():Game.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "game">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:AddController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Game.getGameRoles() -&gt; [Int : Role]:Game.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static Rating.calculateTurnRating(players : inout [Player], turnNumber : Int, whoDead : Player?, dayState : DayNightState) -&gt; ():Rating.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "p.role">
+            </PersistentString>
+            <PersistentString
+               value = "whoDead?.role != Role.Mafia &amp;&amp; p.role == Role.Mafia &amp;&amp; p.stateAlive == AliveState.Live &amp;&amp; dayState == DayNightState.Day">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PlayController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:PlayController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.roleLabel.text!.hasSufix(&quot;&#x41c;&#x435;&#x440;&#x442;&#x432;&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "cell.roleLabel.text">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.section">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+            <PersistentString
+               value = "player.name">
+            </PersistentString>
+            <PersistentString
+               value = "game">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PlayController.unwindToPlayerList(sender : UIStoryboardSegue) -&gt; ():PlayController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PlayController.pushSherifCheck(UIButton) -&gt; ():PlayController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddController.addNewPlayer(UIButton) -&gt; ():AddController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "choosedUsers">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Player.init(name : String) -&gt; Player?:Player.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PlayController.tapDayNightButton(UIBarButtonItem) -&gt; ():PlayController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "game.turns">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Player.actionCheck(action : ActionType) -&gt; Bool:Player.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.actions[action]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RatingController.cancelTab(UIBarButtonItem) -&gt; ():RatingController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "presentingViewController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PlayController.savePlayers() -&gt; ():PlayController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Account.ArchiveURL.path">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Player.init(coder : NSCoder) -&gt; Player?:Player.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "aDecoder.decodeObject(forKey: &quot;rating&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "aDecoder.decodeObject(forKey: &quot;name&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static Game.loadAccounts() -&gt; ():Game.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "game">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

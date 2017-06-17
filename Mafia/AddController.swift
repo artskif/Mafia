@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import CoreData
 
 class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
@@ -23,7 +24,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     
     // MARK: - Свойства контроллера
     
-    var playersForChoose: [Account] = []
+    var playersForChoose: [Player] = []
     
     var editPlayer: Player? // сюда записываем пользователя которого редактируем
     var newPlayers: [Player] = [] // а сюда запишем пользователей которых хотим добавить в таблицу
@@ -39,7 +40,11 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         // Обрабатывать текстовое поле с помощью делегата которым является текущий контроллер
         nameTextField.delegate = self
         
-        self.playersForChoose = game.accounts.sorted{$0.name < $1.name}
+        let accounts = game.accounts.sorted{$0.name! < $1.name!}
+        for acc in accounts {
+            self.playersForChoose.append(Player(baseObject: acc)!)
+        }
+        
 
         // Настройка текстового поля если мы редактируем, а не добавляем пользователя
         if let editPlayer = self.editPlayer {
@@ -85,7 +90,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         } else {
             for selected in choosedUsers {
                 let newPlayer = playersForChoose[selected]
-                newPlayers.append(Player(baseObject: newPlayer)!)
+                newPlayers.append(newPlayer)
             }
         }
     }
@@ -150,7 +155,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             let account = playersForChoose[indexPath.section]
 
             // Задаем данные для ячейки
-            cell.cellName.text = "\(account.name)"
+            cell.cellName.text = account.name
             cell.numbelLabel.text = "\(indexPath.section + 1)"
             cell.chooseButton.tag = indexPath.section
             cell.chooseButton.isEnabled = true
@@ -249,8 +254,9 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     @IBAction func addNewPlayer(_ sender: UIButton) {
         if let newName = nameTextField.text {
             if !newName.isEmpty {
-                let newAccountForChoose = Account(id: 0, name: newName)
-                playersForChoose.insert(newAccountForChoose!, at: 0)
+                let newAccountForChoose:Player = Player(id: 0, name: newName, rating: 0)!
+                
+                playersForChoose.insert(newAccountForChoose, at: 0)
                 nameTextField.text = ""
                 updateAddButtonState()
                 for (key, value) in choosedUsers.enumerated() {

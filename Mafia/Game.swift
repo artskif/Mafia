@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import CoreData
 
 // класс описывающий состояние сеанса одной игры в Мафию
 class Game {
@@ -16,7 +17,7 @@ class Game {
     
     var state:DayNightState // Состояние игры День/Ночь
     private var _players:[Player] // Участники игры
-    var accounts:[Account] // Зарегистрированные пользователи игры
+    var accounts:[UserAccount] // Зарегистрированные пользователи игры
     var roles:Dictionary<Int, Role> // Роли игры
     var isStarted:Bool // Игра началась
     var isFinished:Bool // Игра закончилась
@@ -34,10 +35,18 @@ class Game {
         self.turnTextMessage = "Никто не умер"
         self.currentTurnDead = []
         self.isFinished = false
+        self.accounts = []
         
         // Достаем из хранилища сохраненные аккаунты если имеются
         // (используем статичный метод тк вызываем в инициализаторе)
-        self.accounts =  Game.loadAccounts()
+        let fetchRequest:NSFetchRequest<UserAccount> = UserAccount.fetchRequest()
+        
+        do {
+            self.accounts = try DatabaseInit.getContext().fetch(fetchRequest)
+        } catch {
+            print("Could't load data from database \(error.localizedDescription)")
+        }
+
     }
    
     // MARK: - Методы Игроков(Players)
@@ -49,7 +58,7 @@ class Game {
     }
     
     // Проверить существование игрока по id
-    func checkPlayerId(idItem:Int) -> Bool {
+    func checkPlayerId(idItem:Int32) -> Bool {
         if idItem < 1 { return false }
         let playersCheck =  self._players.contains { $0.id == idItem }
         return playersCheck
@@ -225,38 +234,43 @@ class Game {
             if p.id > 0 {
                 if let findedAccount = self.findAccountById(id: p.id) {
                     findedAccount.name = p.name
-                    findedAccount.rating += sumRatingOfGame
+                    findedAccount.rating += Int32(sumRatingOfGame)
                 }
             } else {
+                var newId:Int32 = 1
                 if let maxAccount = self.accounts.max(by: { (a1, a2) -> Bool in a1.id < a2.id}) {
-                    self.accounts.append(Account(id: maxAccount.id + 1, name: p.name, rating: sumRatingOfGame)!)
-                } else {
-                    self.accounts.append(Account(id: 1, name: p.name, rating: sumRatingOfGame)!)
+                    newId = maxAccount.id + 1
                 }
+                let account:UserAccount = NSEntityDescription.insertNewObject(forEntityName: "UserAccount", into: DatabaseInit.getContext()) as! UserAccount
+                account.id = newId
+                account.name = p.name
+                account.rating = Int32(sumRatingOfGame)
+                self.accounts.append(account)
             }
         }
         
         self.saveAccounts() // Сохраняем в постоянное хранилище
+        //Game.loadAccounts() // Загружаем новые аккаунты из сохраненного хранилища
     }
     
-    func findAccountById(id: Int) -> Account? {
+    func findAccountById(id: Int32) -> UserAccount? {
         return self.accounts.first(where: { $0.id == id })
     }
     
     // Сохранение игроков в постоянное хранилище телефона
     func saveAccounts() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(game.accounts, toFile: Account.ArchiveURL.path)
-        
-        if isSuccessfulSave {
-            os_log("Accounts successfully saved.", log: OSLog.default, type: .debug)
-        } else {
-            os_log("Failed to save accounts...", log: OSLog.default, type: .error)
-        }
+        DatabaseInit.saveContext()
     }
     
     // Выгрузка игроков из хранилища телефона
-    class func loadAccounts() -> [Account] {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Account.ArchiveURL.path) as? [Account] ?? []
+    class func loadAccounts() {
+        let fetchRequest:NSFetchRequest<UserAccount> = UserAccount.fetchRequest()
+        
+        do {
+            game.accounts = try DatabaseInit.getContext().fetch(fetchRequest)
+        } catch {
+            print("Could't load data from database \(error.localizedDescription)")
+        }
     }
     
     // Загрузка тестовых данных участников игры

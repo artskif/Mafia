@@ -89,7 +89,7 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
         for acc in game.accounts {
             acc.rating = 0
         }
-        game.saveRating()
+        game.saveAccounts()
         self.ratingTable.reloadData()
     }
     
