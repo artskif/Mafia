@@ -23,7 +23,7 @@ class Game {
     var isFinished:Bool // Игра закончилась
     var turnNumber:Int // Номер хода
     var turnTextMessage:String // Сообщение конца хода
-    var currentTurnDead:[Player] // Текущие мертвые пользователи
+    var currentTurnDead:[Player] // Текущие мертвые пользователи(для подсчета рейтинга текущего хода, в конце хода)
     
     
     init(){
@@ -250,7 +250,6 @@ class Game {
         }
         
         self.saveAccounts() // Сохраняем в постоянное хранилище
-        //Game.loadAccounts() // Загружаем новые аккаунты из сохраненного хранилища
     }
     
     func findAccountById(id: Int32) -> UserAccount? {
@@ -271,25 +270,5 @@ class Game {
         } catch {
             print("Could't load data from database \(error.localizedDescription)")
         }
-    }
-    
-    // Загрузка тестовых данных участников игры
-    private func loadSamplePlayers() {
-        guard let player1 = Player(name: "Игрок 1")
-            else {
-                fatalError("Unable to instantiate player1")
-        }
-        
-        guard let player2 = Player(name: "Игрок 2")
-            else {
-                fatalError("Unable to instantiate player2")
-        }
-        
-        guard let player3 = Player(name: "Игрок 3")
-            else {
-                fatalError("Unable to instantiate player3")
-        }
-        
-        game._players += [player1, player2, player3]
     }
 }

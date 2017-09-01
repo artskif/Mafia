@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,30 +43,30 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="ABd-NU-ukh">
-                        <rect key="frame" x="75" y="34" width="192" height="26"/>
+                        <rect key="frame" x="73" y="36" width="194" height="24"/>
                         <subviews>
                             <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHi-Kd-01W">
-                                <rect key="frame" x="0.0" y="0.0" width="28" height="26"/>
+                                <rect key="frame" x="0.0" y="0.0" width="28" height="24"/>
                                 <state key="normal" image="icon night love"/>
                             </button>
                             <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Cv-3I-Pqz">
-                                <rect key="frame" x="37" y="0.0" width="23" height="26"/>
+                                <rect key="frame" x="37" y="0.0" width="25" height="24"/>
                                 <state key="normal" image="icon loop"/>
                             </button>
                             <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijN-ej-izS">
-                                <rect key="frame" x="69" y="0.0" width="24" height="26"/>
+                                <rect key="frame" x="71" y="0.0" width="24" height="24"/>
                                 <state key="normal" image="icon kill"/>
                             </button>
                             <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O51-Ut-LpD">
-                                <rect key="frame" x="102" y="0.0" width="24" height="26"/>
+                                <rect key="frame" x="104" y="0.0" width="24" height="24"/>
                                 <state key="normal" image="icon medic"/>
                             </button>
                             <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPh-dv-P0F">
-                                <rect key="frame" x="135" y="0.0" width="19" height="26"/>
+                                <rect key="frame" x="137" y="0.0" width="19" height="24"/>
                                 <state key="normal" image="icon maniac"/>
                             </button>
                             <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="raQ-9Z-PSN">
-                                <rect key="frame" x="163" y="0.0" width="29" height="26"/>
+                                <rect key="frame" x="165" y="0.0" width="29" height="24"/>
                                 <state key="normal" image="icon boss check"/>
                             </button>
                         </subviews>
@@ -120,7 +120,7 @@
                         <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Combined Shape Copy 5" translatesAutoresizingMaskIntoConstraints="NO" id="Bf7-wW-1cd">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross icon" translatesAutoresizingMaskIntoConstraints="NO" id="Bf7-wW-1cd">
                         <rect key="frame" x="5" y="5" width="56" height="53"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="56" id="18s-tu-icv"/>
@@ -175,12 +175,12 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Combined Shape Copy 5" width="56" height="53"/>
         <image name="Role icon sitizen" width="59" height="59"/>
+        <image name="cross icon" width="56" height="53"/>
         <image name="icon Rating global" width="5" height="9"/>
         <image name="icon boss check" width="29" height="23"/>
         <image name="icon kill" width="24" height="23"/>
-        <image name="icon loop" width="23" height="26"/>
+        <image name="icon loop" width="25" height="24"/>
         <image name="icon maniac" width="19" height="24"/>
         <image name="icon medic" width="24" height="23"/>
         <image name="icon night love" width="28" height="23"/>
