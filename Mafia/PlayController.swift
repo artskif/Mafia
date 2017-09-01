@@ -9,6 +9,9 @@
 import UIKit
 import os.log
 
+//
+//  Контроллер окна главного игрового процесса(окно где выведены списки игроков с действиями)
+//
 class PlayController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     // MARK: - Элементы управления контроллера

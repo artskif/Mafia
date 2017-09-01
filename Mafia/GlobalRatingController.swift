@@ -8,6 +8,9 @@
 
 import UIKit
 
+//
+//  Контроллер экрана общего рейтинга (Кнопка Рейтинг в меню главного окна)
+//
 class GlobalRatingController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Элементы управления контроллера

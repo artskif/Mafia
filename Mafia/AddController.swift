@@ -10,6 +10,9 @@ import UIKit
 import os.log
 import CoreData
 
+//
+// Это контроллер добавления новых игроков, а так же выбора роли в случае если игра началась
+//
 class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Элементы управления контроллера

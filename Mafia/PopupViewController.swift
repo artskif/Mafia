@@ -8,6 +8,9 @@
 
 import UIKit
 
+//
+//  Модальное окно вывода сообщений
+//
 class PopupViewController: UIViewController {
 
     // MARK: - Элементы управления контроллера

@@ -8,6 +8,9 @@
 
 import UIKit
 
+//
+//  Стартовый контроллер, экран меню (Новая игра, Рейтинг)
+//
 class StartController: UIViewController {
     
     // MARK: - События контроллера
