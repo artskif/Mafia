@@ -214,6 +214,10 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
                 cellRole.roleImage.image = UIImage(named: "Role icon sheriff")
             case .Undead:
                 cellRole.roleImage.image = UIImage(named: "Role icon undead")
+            case .Yacuza:
+                cellRole.roleImage.image = UIImage(named: "Role icon yacuza")
+            case .Lawyer:
+                cellRole.roleImage.image = UIImage(named: "Role icon loyer")
             }
             
             if let currentChoosedRole = choosedRole {

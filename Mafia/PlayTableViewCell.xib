@@ -19,12 +19,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="290" height="68.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4d-Xw-hc8">
-                        <rect key="frame" x="95" y="4" width="172" height="21"/>
-                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
-                        <color key="textColor" red="0.20392156862745098" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hL8-9W-9ro">
                         <rect key="frame" x="75" y="7" width="17" height="16.5"/>
                         <constraints>
@@ -35,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m8S-Xc-W8o">
-                        <rect key="frame" x="272" y="0.0" width="1" height="68.5"/>
+                        <rect key="frame" x="272" y="0.0" width="1" height="69"/>
                         <color key="backgroundColor" red="0.74901960779999999" green="0.74901960779999999" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="1" id="Ol0-BX-7rk"/>
@@ -79,7 +73,7 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ae7-53-l9H">
-                        <rect key="frame" x="69" y="0.0" width="1" height="68.5"/>
+                        <rect key="frame" x="69" y="0.0" width="1" height="69"/>
                         <color key="backgroundColor" red="0.74901960779999999" green="0.74901960779999999" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="1" id="FTa-kD-0e1"/>
@@ -94,7 +88,7 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon Rating global" translatesAutoresizingMaskIntoConstraints="NO" id="xgV-MG-a1Y">
-                        <rect key="frame" x="279.5" y="37" width="5" height="9"/>
+                        <rect key="frame" x="280" y="37" width="5" height="9"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="5" id="nNK-pd-Ej5"/>
                             <constraint firstAttribute="height" constant="9" id="xxm-1Q-rXM"/>
@@ -127,6 +121,33 @@
                             <constraint firstAttribute="height" constant="53" id="au2-xN-d2E"/>
                         </constraints>
                     </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="a9D-wo-8JK">
+                        <rect key="frame" x="214" y="5" width="55" height="23"/>
+                        <subviews>
+                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PpV-Xv-5xv" userLabel="Lawer Button">
+                                <rect key="frame" x="0.0" y="0.0" width="23" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="KHr-7k-EP2"/>
+                                    <constraint firstAttribute="width" constant="23" id="X2E-MV-HEs"/>
+                                </constraints>
+                                <state key="normal" image="icon loyer"/>
+                            </button>
+                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nj6-bx-Fxt" userLabel="Yacuza Button">
+                                <rect key="frame" x="32" y="0.0" width="23" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="KiN-vo-ZIh"/>
+                                    <constraint firstAttribute="width" constant="23" id="kL3-dc-HB8"/>
+                                </constraints>
+                                <state key="normal" image="icon yacuza kill"/>
+                            </button>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4d-Xw-hc8">
+                        <rect key="frame" x="93" y="4" width="115" height="21"/>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
+                        <color key="textColor" red="0.20392156862745098" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Bf7-wW-1cd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="3H7-X2-Eel"/>
@@ -136,23 +157,25 @@
                     <constraint firstItem="cpC-VJ-2dk" firstAttribute="top" secondItem="58D-fy-uXv" secondAttribute="bottom" constant="4" id="8Aw-Lo-oKq"/>
                     <constraint firstItem="m8S-Xc-W8o" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="CQ5-RP-G2a"/>
                     <constraint firstItem="58D-fy-uXv" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="trailing" constant="-8" id="E6e-7A-gmB"/>
+                    <constraint firstItem="E4d-Xw-hc8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="EY5-6x-doW"/>
                     <constraint firstItem="ae7-53-l9H" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IXq-WB-y6k"/>
                     <constraint firstItem="ae7-53-l9H" firstAttribute="leading" secondItem="ua6-s5-tQN" secondAttribute="trailing" constant="5" id="LsP-0h-1tE"/>
                     <constraint firstItem="Bf7-wW-1cd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="MAB-Z1-25y"/>
                     <constraint firstAttribute="bottom" secondItem="ae7-53-l9H" secondAttribute="bottom" id="PQz-Tt-xzZ"/>
                     <constraint firstItem="ua6-s5-tQN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-0.75" id="SON-De-2vE"/>
-                    <constraint firstItem="E4d-Xw-hc8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="Tcl-HH-Kw1"/>
+                    <constraint firstItem="a9D-wo-8JK" firstAttribute="leading" secondItem="E4d-Xw-hc8" secondAttribute="trailing" constant="6" id="TXh-xm-U4W"/>
+                    <constraint firstItem="a9D-wo-8JK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="WOW-0z-vj1"/>
                     <constraint firstItem="hL8-9W-9ro" firstAttribute="leading" secondItem="ae7-53-l9H" secondAttribute="trailing" constant="5" id="X7J-ox-qIs"/>
                     <constraint firstItem="hL8-9W-9ro" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="XWG-15-Tmh"/>
+                    <constraint firstItem="E4d-Xw-hc8" firstAttribute="leading" secondItem="hL8-9W-9ro" secondAttribute="trailing" constant="1" id="YWz-Lq-x7a"/>
                     <constraint firstItem="Mee-tX-5aq" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="trailing" constant="-8" id="Z47-RM-Y0w"/>
                     <constraint firstItem="ua6-s5-tQN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="gtK-gf-qjN"/>
                     <constraint firstItem="Mee-tX-5aq" firstAttribute="top" secondItem="xgV-MG-a1Y" secondAttribute="bottom" constant="4" id="h2g-jp-17A"/>
                     <constraint firstItem="m8S-Xc-W8o" firstAttribute="leading" secondItem="ABd-NU-ukh" secondAttribute="trailing" constant="5" id="hTg-0K-ho2"/>
                     <constraint firstAttribute="bottom" secondItem="ABd-NU-ukh" secondAttribute="bottom" constant="8" id="hUX-1t-0wD"/>
                     <constraint firstAttribute="bottom" secondItem="m8S-Xc-W8o" secondAttribute="bottom" id="hvm-EC-LIV"/>
+                    <constraint firstItem="m8S-Xc-W8o" firstAttribute="leading" secondItem="a9D-wo-8JK" secondAttribute="trailing" constant="3" id="kb6-qw-NvR"/>
                     <constraint firstItem="xgV-MG-a1Y" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="trailing" constant="-8" id="ktQ-YY-JzN"/>
-                    <constraint firstItem="E4d-Xw-hc8" firstAttribute="leading" secondItem="hL8-9W-9ro" secondAttribute="trailing" constant="3" id="nek-8x-QZK"/>
-                    <constraint firstItem="m8S-Xc-W8o" firstAttribute="leading" secondItem="E4d-Xw-hc8" secondAttribute="trailing" constant="5" id="oaF-WK-kUg"/>
                     <constraint firstItem="58D-fy-uXv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="uHy-NN-2sd"/>
                 </constraints>
             </tableViewCellContentView>
@@ -165,11 +188,13 @@
                 <outlet property="healButton" destination="O51-Ut-LpD" id="uvE-2y-2V5"/>
                 <outlet property="killButton" destination="ijN-ej-izS" id="nXM-fE-dsd"/>
                 <outlet property="killImage" destination="Bf7-wW-1cd" id="D9Z-09-62a"/>
+                <outlet property="lawerButton" destination="PpV-Xv-5xv" id="lxw-Og-yIw"/>
                 <outlet property="maniacButton" destination="lPh-dv-P0F" id="tDm-OL-heO"/>
                 <outlet property="nameLabel" destination="E4d-Xw-hc8" id="mAD-OR-6fB"/>
                 <outlet property="numberLaber" destination="hL8-9W-9ro" id="OmH-NF-CzZ"/>
                 <outlet property="roleImage" destination="ua6-s5-tQN" id="bbM-55-6GT"/>
                 <outlet property="silenceButton" destination="xHi-Kd-01W" id="j8q-sg-4SH"/>
+                <outlet property="yacuzaButton" destination="Nj6-bx-Fxt" id="l17-hx-qxl"/>
             </connections>
             <point key="canvasLocation" x="-172" y="20.5"/>
         </tableViewCell>
@@ -181,9 +206,11 @@
         <image name="icon boss check" width="29" height="23"/>
         <image name="icon kill" width="24" height="23"/>
         <image name="icon loop" width="25" height="24"/>
+        <image name="icon loyer" width="20" height="22"/>
         <image name="icon maniac" width="19" height="24"/>
         <image name="icon medic" width="24" height="23"/>
         <image name="icon night love" width="28" height="23"/>
         <image name="icon star" width="10" height="10"/>
+        <image name="icon yacuza kill" width="23" height="23"/>
     </resources>
 </document>

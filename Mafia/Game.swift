@@ -116,6 +116,11 @@ class Game {
                 self.currentTurnDead.append(player)
                 self.turnTextMessage += "Мафия убила \(player.name) (\(player.role.title))\n"
             }
+            if player.actionCheck(action: ActionType.YacuzaKill) && !player.actionCheck(action: ActionType.Heal) && player.role != Role.Undead {
+                player.stateAlive = AliveState.Dead
+                self.currentTurnDead.append(player)
+                self.turnTextMessage += "Якудза убили \(player.name) (\(player.role.title))\n"
+            }
             if player.actionCheck(action: ActionType.ManiacKill) && !player.actionCheck(action: ActionType.Heal) && player.role != Role.Undead {
                 player.stateAlive = AliveState.Dead
                 self.currentTurnDead.append(player)
@@ -123,6 +128,9 @@ class Game {
             }
             if player.actionCheck(action: ActionType.ProstituteSilence) {
                 self.turnTextMessage += "Молчит \(player.name)\n"
+            }
+            if player.actionCheck(action: ActionType.LawyerGet) {
+                self.turnTextMessage += "Алиби у \(player.name)\n"
             }
         }
         if self.turnTextMessage.isEmpty {self.turnTextMessage = "Никто не умер\n"}
@@ -138,6 +146,8 @@ class Game {
             switch whoWin {
             case .Citizen:
                 textOfWin = "победили Мирные"
+            case .Yacuza:
+                textOfWin = "победили Якудза"
             case .Mafia:
                 textOfWin = "победила Мафия"
             case .Maniac:
@@ -158,6 +168,7 @@ class Game {
         var countMafia = 0 // Количество живой мафии в игре
         var countCitizen = 0 // Количество живых мирных
         var countManiac = 0 // Количество живых маньяков
+        var countYacuza = 0 // Количество живых якудза
         
         for p in self._players {
             if p.stateAlive == AliveState.Live {
@@ -165,18 +176,26 @@ class Game {
                     countMafia += 1
                 } else if p.role == Role.Maniac {
                     countManiac += 1
+                } else if p.role == Role.Yacuza {
+                    countYacuza += 1
                 } else {
                     countCitizen += 1
                 }
             }
         }
         
-        if countMafia > 1 && countManiac > 1 {
-            return nil // Игра продолжается маньяк и мафия еще живы
-        }
-        if countMafia >= countCitizen && countManiac < 1 {return Role.Mafia} // Мафия победила
-        if countManiac >= countCitizen && countMafia < 1 {return Role.Maniac} // Маньяк победил
-        if countMafia < 1 && countManiac < 1 {return Role.Citizen} // Мирные победили
+        //if countMafia > 1 && countManiac > 1 {
+        //    return nil // Игра продолжается маньяк и мафия еще живы
+        //}
+        if countMafia == countManiac && countCitizen < 1 {return Role.Maniac} // Маньяк победил
+        if countMafia == countYacuza && countCitizen < 1 {return Role.Mafia} // Мафия победила
+        if countManiac == countYacuza && countCitizen < 1 {return Role.Maniac} // Маньяк победил
+
+        if countMafia >= countCitizen && countManiac < 1  && countYacuza < 1 {return Role.Mafia} // Мафия победила
+        if countManiac >= countCitizen && countMafia < 1  && countYacuza < 1 {return Role.Maniac} // Маньяк победил
+        if countYacuza >= countCitizen && countMafia < 1  && countManiac < 1 {return Role.Yacuza} // Якудза победили
+        
+        if countMafia < 1 && countManiac < 1 && countYacuza < 1 {return Role.Citizen} // Мирные победили
         return nil
     }
     
@@ -256,7 +275,7 @@ class Game {
         return self.accounts.first(where: { $0.id == id })
     }
     
-    // Сохранение игроков в постоянное хранилище телефона
+    // Сохранение игроков в постоянное хранилище
     func saveAccounts() {
         DatabaseInit.saveContext()
     }

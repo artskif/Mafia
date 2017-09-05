@@ -111,6 +111,8 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.silenceButton.addTarget(self, action: #selector(pushProstituteSilence), for: UIControlEvents.touchUpInside)
         cell.donmaffiaButton.addTarget(self, action: #selector(pushDonMaffia), for: UIControlEvents.touchUpInside)
         cell.maniacButton.addTarget(self, action: #selector(pushManiacKill), for: UIControlEvents.touchUpInside)
+        cell.yacuzaButton.addTarget(self, action: #selector(pushYacuzaKill), for: UIControlEvents.touchUpInside)
+        cell.lawerButton.addTarget(self, action: #selector(pushLawyerGet), for: UIControlEvents.touchUpInside)
         
         
         // Определяем дынные для заполнения ячейки таблицы
@@ -128,6 +130,8 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.silenceButton.tag = indexPath.section
         cell.donmaffiaButton.tag = indexPath.section
         cell.maniacButton.tag = indexPath.section
+        cell.yacuzaButton.tag = indexPath.section
+        cell.lawerButton.tag = indexPath.section
         cell.nameLabel.text = player.name
         cell.numberLaber.text = "\(indexPath.section + 1)"
         cell.killImage.isHidden = true
@@ -150,6 +154,10 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.roleImage.image = UIImage(named: "Role icon sheriff")
         case .Undead:
             cell.roleImage.image = UIImage(named: "Role icon undead")
+        case .Yacuza:
+            cell.roleImage.image = UIImage(named: "Role icon yacuza")
+        case .Lawyer:
+            cell.roleImage.image = UIImage(named: "Role icon loyer")
         }
                 
         // Ячейка мертвого пользователя
@@ -163,6 +171,8 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.killButton.isHidden = true
             cell.maniacButton.isHidden = true
             cell.donmaffiaButton.isHidden = true
+            cell.yacuzaButton.isHidden = true
+            cell.lawerButton.isHidden = true
             
             return cell
         } else {
@@ -175,6 +185,8 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.silenceButton.isHidden = true
             cell.donmaffiaButton.isHidden = true
             cell.maniacButton.isHidden = true
+            cell.yacuzaButton.isHidden = true
+            cell.lawerButton.isHidden = true
             cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil && game.roles[Role.Don.rawValue] == nil && game.roles[Role.Maniac.rawValue] == nil
             
             // Отрисовываем нажатие кнопки "Убить"
@@ -226,12 +238,28 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
                 cell.donmaffiaButton.alpha = 0.3
             }
 
+            // Отрисовываем нажатие кнопки "Убили Якудза"
+            if player.actionCheck(action: ActionType.YacuzaKill) {
+                cell.yacuzaButton.alpha = 1
+            } else {
+                cell.yacuzaButton.alpha = 0.3
+            }
+
+            // Отрисовываем нажатие кнопки "Адвокат алиби"
+            if player.actionCheck(action: ActionType.LawyerGet) {
+                cell.lawerButton.alpha = 1
+            } else {
+                cell.lawerButton.alpha = 0.3
+            }
+
             cell.healButton.isHidden = game.roles[Role.Doctor.rawValue] == nil
             cell.maniacButton.isHidden = game.roles[Role.Maniac.rawValue] == nil || player.role == Role.Maniac
             cell.donmaffiaButton.isHidden = game.roles[Role.Don.rawValue] == nil || player.role == Role.Mafia || player.role == Role.Don
             cell.checkButton.isHidden = game.roles[Role.Sherif.rawValue] == nil || player.role == Role.Sherif
             cell.silenceButton.isHidden = game.roles[Role.Prostitute.rawValue] == nil && game.roles[Role.Maniac.rawValue] == nil
             cell.killButton.isHidden = (game.roles[Role.Mafia.rawValue] == nil && game.roles[Role.Don.rawValue] == nil) || player.role == Role.Mafia || player.role == Role.Don
+            cell.yacuzaButton.isHidden = game.roles[Role.Yacuza.rawValue] == nil || player.role == Role.Yacuza
+            cell.lawerButton.isHidden = game.roles[Role.Lawyer.rawValue] == nil || player.role == Role.Lawyer
         }
 
         return cell
@@ -304,7 +332,17 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func pushDoctorHeal(_ sender: UIButton) {
         self.createAction(newAction: ActionType.Heal, cellRow: sender.tag, ifState: DayNightState.Night)
     }
-    
+
+    // Нажали кнопку "Якудза убила" в таблице
+    @IBAction func pushYacuzaKill(_ sender: UIButton) {
+        self.createAction(newAction: ActionType.YacuzaKill, cellRow: sender.tag, ifState: DayNightState.Night)
+    }
+
+    // Нажали кнопку "Адвокат дал алиби" в таблице
+    @IBAction func pushLawyerGet(_ sender: UIButton) {
+        self.createAction(newAction: ActionType.LawyerGet, cellRow: sender.tag, ifState: DayNightState.Night)
+    }
+
     // Нажали кнопку "Комисар проверил" в таблице
     @IBAction func pushSherifCheck(_ sender: UIButton) {
         self.createAction(newAction: ActionType.SherifCheck, cellRow: sender.tag, ifState: DayNightState.Night)

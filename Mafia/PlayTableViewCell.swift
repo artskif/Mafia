@@ -21,6 +21,8 @@ import UIKit
     @IBOutlet weak var donmaffiaButton: UIButton!
     @IBOutlet weak var roleImage: UIImageView!
     @IBOutlet weak var killImage: UIImageView!
+    @IBOutlet weak var yacuzaButton: UIButton!
+    @IBOutlet weak var lawerButton: UIButton!
     
     
     @IBOutlet weak var currentRating: UILabel!

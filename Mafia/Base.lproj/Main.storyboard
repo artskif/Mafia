@@ -521,7 +521,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y38-Xb-jv6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zK6-YP-Wg8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3504.8000000000002" y="73.313343328335833"/>
+            <point key="canvasLocation" x="3396" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X2L-47-tzq">
@@ -565,7 +565,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKA-9m-7c8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2636" y="383"/>
+            <point key="canvasLocation" x="2585" y="36"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="W2K-nK-Mu7">
@@ -706,7 +706,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdc-nN-2Ab" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="0Xm-RQ-06J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="888.79999999999995" y="762.36881559220399"/>
+            <point key="canvasLocation" x="1750" y="742"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xz7-jz-g8e">
@@ -728,7 +728,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbF-2i-LjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="25" y="763"/>
+            <point key="canvasLocation" x="889" y="742"/>
         </scene>
     </scenes>
     <resources>
@@ -745,6 +745,6 @@
         <image name="icon ratin global big" width="8" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s5s-Go-K6O"/>
+        <segue reference="Lcv-6o-hxh"/>
     </inferredMetricsTieBreakers>
 </document>

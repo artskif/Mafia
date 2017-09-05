@@ -26,8 +26,10 @@ enum Role:Int, CustomStringConvertible {
     case Undead = 5
     case Don = 6
     case Maniac = 7
+    case Yacuza = 8
+    case Lawyer = 9
     
-    static var count:Int {return Role.Maniac.hashValue + 1}
+    static var count:Int {return Role.Lawyer.hashValue + 1}
     
     var description: String {
         switch self {
@@ -47,6 +49,10 @@ enum Role:Int, CustomStringConvertible {
             return "Дон мафии решает, кто умрет ночью. Так же ночью пытается найти комиссара"
         case .Maniac:
             return "Безумен, ночью может заткнуть(днем молчит) или убить одного из игроков"
+        case .Yacuza:
+            return "Вы воюете со всеми. Ваша задача истребить всех: мирных жителей, мафию, маньяка"
+        case .Lawyer:
+            return "Ночью ты обеспечиваешь одному из игроков алиби. За него не могут голосовать днем"
         }
     }
     
@@ -68,6 +74,10 @@ enum Role:Int, CustomStringConvertible {
             return "Дон мафии"
         case .Maniac:
             return "Маньяк"
+        case .Yacuza:
+            return "Якудза"
+        case .Lawyer:
+            return "Адвокат"
         }
     }
 }
@@ -80,4 +90,6 @@ enum ActionType {
     case ProstituteSilence
     case ManiacKill
     case DonCheck
+    case YacuzaKill
+    case LawyerGet
 }
