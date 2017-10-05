@@ -89,11 +89,22 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
     //MARK: - Обработка действий пользователя
     
     @IBAction func clearStatistics(_ sender: Any) {
-        for acc in game.accounts {
-            acc.rating = 0
-        }
-        game.saveAccounts()
-        self.ratingTable.reloadData()
+        
+        let alert = UIAlertController(title: "Сброс статистики", message: "Хотите Сбросить статистику?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Да", style: UIAlertActionStyle.default, handler: { (action) in
+            for acc in game.accounts {
+                acc.rating = 0
+            }
+            game.saveAccounts()
+            self.ratingTable.reloadData()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertActionStyle.default, handler: { (action) in
+            
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func cancelButtonPush(_ sender: Any) {

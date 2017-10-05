@@ -187,7 +187,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.maniacButton.isHidden = true
             cell.yacuzaButton.isHidden = true
             cell.lawerButton.isHidden = true
-            cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil && game.roles[Role.Don.rawValue] == nil && game.roles[Role.Maniac.rawValue] == nil
+            cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil && game.roles[Role.Yacuza.rawValue] == nil && game.roles[Role.Don.rawValue] == nil && game.roles[Role.Maniac.rawValue] == nil
             
             // Отрисовываем нажатие кнопки "Убить"
             if player.actionCheck(action: ActionType.CitizenKill) {
