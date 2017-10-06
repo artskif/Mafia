@@ -87,6 +87,12 @@ class Game {
         self.reloadRoles()
     }
     
+    // Обновляем роль участника игры
+    func setPlayerRole(at: Int, element: Role) {
+        self._players[at].role = element
+        self.reloadRoles()
+    }
+    
     // Текущее количество участников игры
     func countPlayers() -> Int {
         return self._players.count

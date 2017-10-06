@@ -93,7 +93,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "ShowDetail", sender: self)
+        self.performSegue(withIdentifier: "ShowRoles", sender: self)
     }
     
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
@@ -300,6 +300,25 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
                 if newPlayers.count > 0 {
                     game.addPlayers(players: newPlayers)
+                }
+            }
+            
+            // Сортируем участников игры
+            game.sortPlayers()
+            
+            playersTableView.reloadData()
+        }
+    }
+    
+    // Выбрали роль на странице выбора ролей
+    @IBAction func unwindRolesToPlayerList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? ChooseRoleViewController{
+            
+            if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
+                // Обновляем пользователя в таблице
+                if let newRole = sourceViewController.choosedRole {
+                    game.setPlayerRole(at: selectedIndexPath.section, element: Role(rawValue: newRole)!)
+                    playersTableView.reloadRows(at: [selectedIndexPath], with: .none)
                 }
             }
             

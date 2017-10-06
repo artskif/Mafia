@@ -107,15 +107,5 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func cancelButtonPush(_ sender: Any) {
-        let isPresentingInAddPlayerMode = presentingViewController is UINavigationController
-        
-        if isPresentingInAddPlayerMode {
-            dismiss(animated: true, completion: nil)
-        } else if let owningNavigationController = navigationController{
-            owningNavigationController.popViewController(animated: true)
-        } else {
-            fatalError("The GlobalRatingController is not inside a navigation controller.")
-        }
-    }
+    
 }

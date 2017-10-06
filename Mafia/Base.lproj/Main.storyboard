@@ -165,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ypI-oI-oZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="793" y="-756"/>
+            <point key="canvasLocation" x="-802" y="-678"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="3IL-xU-IR5">
@@ -248,13 +248,13 @@
                         <outlet property="mainView" destination="LDo-YX-gZU" id="TYD-cs-DHh"/>
                         <outlet property="playersTableView" destination="cge-AA-EFm" id="hhU-Ea-7yY"/>
                         <segue destination="FzV-ee-t8s" kind="unwind" identifier="unwindToMainScreen" unwindAction="unwindCancelToMainScreenWithSender:" id="lSj-JX-Jfz"/>
-                        <segue destination="XN1-Lj-Oc9" kind="show" identifier="ShowDetail" id="s5s-Go-K6O"/>
+                        <segue destination="pEc-ei-Lpq" kind="presentation" identifier="ShowRoles" modalTransitionStyle="crossDissolve" id="0BP-Mc-r4R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szG-dh-KKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="FzV-ee-t8s" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="793" y="36"/>
+            <point key="canvasLocation" x="1260" y="36"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="CvP-XR-Qwy">
@@ -521,7 +521,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y38-Xb-jv6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zK6-YP-Wg8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2409" y="36"/>
+            <point key="canvasLocation" x="3071" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X2L-47-tzq">
@@ -543,12 +543,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PT3-7p-nH4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="794" y="36"/>
+            <point key="canvasLocation" x="460" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A0N-vY-J4a">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="K7v-lS-eMm" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" id="K7v-lS-eMm" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="BT0-kv-rWe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -565,7 +565,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKA-9m-7c8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2409" y="36"/>
+            <point key="canvasLocation" x="2247" y="36"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="W2K-nK-Mu7">
@@ -694,7 +694,6 @@
                         <barButtonItem key="leftBarButtonItem" title="Назад" id="yyc-0R-Ii4">
                             <color key="tintColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="cancelButtonPush:" destination="F5K-P5-yfW" id="bY3-1X-hfU"/>
                                 <segue destination="0Xm-RQ-06J" kind="unwind" unwindAction="unwindCancelToMainScreenWithSender:" id="del-8T-ag5"/>
                             </connections>
                         </barButtonItem>
@@ -711,7 +710,7 @@
         <!--Navigation Controller-->
         <scene sceneID="xz7-jz-g8e">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g4X-Ma-46s" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" id="g4X-Ma-46s" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7o7-75-sGk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -728,7 +727,154 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbF-2i-LjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="889" y="1361"/>
+            <point key="canvasLocation" x="34" y="1361"/>
+        </scene>
+        <!--МАФИЯ-->
+        <scene sceneID="HQb-cx-q9d">
+            <objects>
+                <viewController id="pEc-ei-Lpq" customClass="ChooseRoleViewController" customModule="Mafia" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CnU-VM-c6f"/>
+                        <viewControllerLayoutGuide type="bottom" id="gh0-km-bjg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GSe-hX-oFp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rain" translatesAutoresizingMaskIntoConstraints="NO" id="bXQ-rm-U3s">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1RU-02-T9S">
+                                <rect key="frame" x="16" y="0.0" width="343" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChooseRatingTableViewCell" rowHeight="68" id="WZp-RA-tsq" customClass="ChooseRatingTableViewCell" customModule="Mafia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="68"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WZp-RA-tsq" id="dug-60-FFC">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="68"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4TN-lS-3QG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="68"/>
+                                                    <color key="tintColor" red="1" green="0.35589174639999999" blue="0.2884042268" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="chooseButton:" destination="pEc-ei-Lpq" eventType="touchUpInside" id="gPu-oW-fCl"/>
+                                                        <segue destination="n9y-9d-gBE" kind="unwind" unwindAction="unwindRolesToPlayerListWithSender:" id="pcD-IZ-OR6"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Заголовок" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRK-5k-Myw">
+                                                    <rect key="frame" x="72" y="4" width="231" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="E1k-hW-tjc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
+                                                    <color key="textColor" red="0.20392156859999999" green="0.1647058824" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Role icon sitizen" translatesAutoresizingMaskIntoConstraints="NO" id="lP9-YT-Jvv">
+                                                    <rect key="frame" x="3" y="4" width="59" height="59"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="59" id="La0-c2-jNW"/>
+                                                        <constraint firstAttribute="height" constant="59" id="xJh-lT-RA9"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uya-Qg-URq">
+                                                    <rect key="frame" x="72" y="26" width="231" height="39"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="39" id="76C-l0-c0K"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="10"/>
+                                                    <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Jg-90-Zxs">
+                                                    <rect key="frame" x="65" y="0.0" width="1" height="68"/>
+                                                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.089946831599999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="1" id="cpQ-NR-JqE"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon check point" translatesAutoresizingMaskIntoConstraints="NO" id="f1v-Yz-ibh">
+                                                    <rect key="frame" x="306" y="18" width="33" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="3Uw-1c-B5T"/>
+                                                        <constraint firstAttribute="width" constant="33" id="vcR-LR-hGT"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="f1v-Yz-ibh" secondAttribute="trailing" constant="4" id="2TT-hj-lFc"/>
+                                                <constraint firstItem="XRK-5k-Myw" firstAttribute="top" secondItem="dug-60-FFC" secondAttribute="top" constant="4" id="3zB-gT-voN"/>
+                                                <constraint firstItem="lP9-YT-Jvv" firstAttribute="leading" secondItem="dug-60-FFC" secondAttribute="leading" constant="3" id="BN9-5c-thu"/>
+                                                <constraint firstItem="0Jg-90-Zxs" firstAttribute="leading" secondItem="lP9-YT-Jvv" secondAttribute="trailing" constant="3" id="CVN-ZU-Qgp"/>
+                                                <constraint firstItem="4TN-lS-3QG" firstAttribute="leading" secondItem="dug-60-FFC" secondAttribute="leading" id="FwE-SR-d26"/>
+                                                <constraint firstItem="Uya-Qg-URq" firstAttribute="top" secondItem="XRK-5k-Myw" secondAttribute="bottom" constant="1" id="Ihn-oe-rX1"/>
+                                                <constraint firstItem="Uya-Qg-URq" firstAttribute="leading" secondItem="0Jg-90-Zxs" secondAttribute="trailing" constant="6" id="KIe-Tc-cpS"/>
+                                                <constraint firstAttribute="trailing" secondItem="4TN-lS-3QG" secondAttribute="trailing" id="Zgc-af-rtK"/>
+                                                <constraint firstAttribute="bottom" secondItem="4TN-lS-3QG" secondAttribute="bottom" id="aMM-K4-cwV"/>
+                                                <constraint firstItem="0Jg-90-Zxs" firstAttribute="top" secondItem="dug-60-FFC" secondAttribute="top" id="bkr-8m-HbW"/>
+                                                <constraint firstItem="f1v-Yz-ibh" firstAttribute="centerY" secondItem="dug-60-FFC" secondAttribute="centerY" id="cxf-TQ-cNg"/>
+                                                <constraint firstAttribute="bottom" secondItem="0Jg-90-Zxs" secondAttribute="bottom" id="eiG-HQ-2gz"/>
+                                                <constraint firstItem="f1v-Yz-ibh" firstAttribute="leading" secondItem="XRK-5k-Myw" secondAttribute="trailing" constant="3" id="m8B-S1-jK3"/>
+                                                <constraint firstItem="4TN-lS-3QG" firstAttribute="top" secondItem="dug-60-FFC" secondAttribute="top" id="nKU-as-CuE"/>
+                                                <constraint firstItem="f1v-Yz-ibh" firstAttribute="leading" secondItem="Uya-Qg-URq" secondAttribute="trailing" constant="3" id="ryw-ni-Zhy"/>
+                                                <constraint firstItem="lP9-YT-Jvv" firstAttribute="centerY" secondItem="dug-60-FFC" secondAttribute="centerY" id="vei-zY-qK3"/>
+                                                <constraint firstItem="XRK-5k-Myw" firstAttribute="leading" secondItem="0Jg-90-Zxs" secondAttribute="trailing" constant="6" id="xMn-Nq-bnK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="cellName" destination="XRK-5k-Myw" id="eFY-Kp-g6j"/>
+                                            <outlet property="checkButton" destination="f1v-Yz-ibh" id="T2g-P5-RWq"/>
+                                            <outlet property="chooseButton" destination="4TN-lS-3QG" id="HFk-UO-jmB"/>
+                                            <outlet property="descriptionLabel" destination="Uya-Qg-URq" id="Vt9-2E-zp3"/>
+                                            <outlet property="roleImage" destination="lP9-YT-Jvv" id="xC1-u5-LCO"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="pEc-ei-Lpq" id="DIX-cy-VEI"/>
+                                    <outlet property="delegate" destination="pEc-ei-Lpq" id="Se9-r2-m0n"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bXQ-rm-U3s" secondAttribute="trailing" id="4ly-dv-V3D"/>
+                            <constraint firstItem="1RU-02-T9S" firstAttribute="top" secondItem="GSe-hX-oFp" secondAttribute="topMargin" id="HUU-Pz-esE"/>
+                            <constraint firstItem="bXQ-rm-U3s" firstAttribute="top" secondItem="GSe-hX-oFp" secondAttribute="top" id="Lfw-d0-STj"/>
+                            <constraint firstItem="bXQ-rm-U3s" firstAttribute="leading" secondItem="GSe-hX-oFp" secondAttribute="leading" id="YEB-Ff-3CX"/>
+                            <constraint firstItem="1RU-02-T9S" firstAttribute="trailing" secondItem="GSe-hX-oFp" secondAttribute="trailingMargin" id="pop-sa-ore"/>
+                            <constraint firstItem="1RU-02-T9S" firstAttribute="leading" secondItem="GSe-hX-oFp" secondAttribute="leadingMargin" id="upD-w5-nul"/>
+                            <constraint firstItem="gh0-km-bjg" firstAttribute="top" secondItem="1RU-02-T9S" secondAttribute="bottom" constant="20" id="xF8-m6-cQL"/>
+                            <constraint firstItem="gh0-km-bjg" firstAttribute="top" secondItem="bXQ-rm-U3s" secondAttribute="bottom" id="yDL-da-Boq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="МАФИЯ" id="XUJ-sB-PoQ">
+                        <barButtonItem key="leftBarButtonItem" title="Отмена" id="Ry8-I2-DSc">
+                            <color key="tintColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="n9y-9d-gBE" kind="unwind" unwindAction="unwindCancelToPlayerListWithSender:" id="BRL-eA-kni"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="Qmf-Iz-Chg">
+                            <color key="tintColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="n9y-9d-gBE" kind="unwind" unwindAction="unwindToPlayerListWithSender:" id="ZNH-8k-1cm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="chooseTableView" destination="1RU-02-T9S" id="Bev-xh-WVQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hKD-pR-DFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="n9y-9d-gBE" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1260" y="-717.39130434782612"/>
         </scene>
     </scenes>
     <resources>
@@ -744,7 +890,4 @@
         <image name="icon little check point" width="33" height="32"/>
         <image name="icon ratin global big" width="8" height="15"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="s5s-Go-K6O"/>
-    </inferredMetricsTieBreakers>
 </document>

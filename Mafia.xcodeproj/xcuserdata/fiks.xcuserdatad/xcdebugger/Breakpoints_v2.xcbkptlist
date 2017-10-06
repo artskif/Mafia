@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mafia/PlayController.swift"
-            timestampString = "526225123.157541"
+            timestampString = "528983988.127142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "430"
-            endingLineNumber = "430"
+            startingLineNumber = "449"
+            endingLineNumber = "449"
             landmarkName = "finishCurrentGame(saveRating:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mafia/Game.swift"
-            timestampString = "526226711.438635"
+            timestampString = "528983988.127142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "checkEndOfGame()"
             landmarkType = "7">
          </BreakpointContent>
