@@ -53,15 +53,15 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         case "AddItem":
             os_log("Adding a new player.", log: OSLog.default, type: .debug)
             
-        case "ShowDetail":
-            guard let playerDetailViewController = segue.destination as? AddController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
+        case "ShowDetail": break
+            //guard let playerDetailViewController = segue.destination as? AddController else {
+            //    fatalError("Unexpected destination: \(segue.destination)")
+            //}
             
-            if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
-                let selectedPlayer = game.getPlayer(at: selectedIndexPath.section)
-                playerDetailViewController.editPlayer = selectedPlayer
-            }
+            //if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
+            //    let selectedPlayer = game.getPlayer(at: selectedIndexPath.section)
+            //    playerDetailViewController.editPlayer = selectedPlayer
+            //}
             
         default:
             break
@@ -287,20 +287,11 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func unwindToPlayerList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddController{
             
-            if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
-                // Обновляем пользователя в таблице
-                if let editPlayer = sourceViewController.editPlayer {
-                    game.setPlayer(at: selectedIndexPath.section, element: editPlayer)
-                    playersTableView.reloadRows(at: [selectedIndexPath], with: .none)
-                }
-            }
-            else {
-                // Добавляем нового пользователя в таблицу
-                let newPlayers = sourceViewController.newPlayers
-                
-                if newPlayers.count > 0 {
-                    game.addPlayers(players: newPlayers)
-                }
+            // Добавляем нового пользователя в таблицу
+            let newPlayers = sourceViewController.newPlayers
+            
+            if newPlayers.count > 0 {
+                game.addPlayers(players: newPlayers)
             }
             
             // Сортируем участников игры

@@ -29,10 +29,8 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     
     var playersForChoose: [Player] = []
     
-    var editPlayer: Player? // сюда записываем пользователя которого редактируем
     var newPlayers: [Player] = [] // а сюда запишем пользователей которых хотим добавить в таблицу
     
-    var choosedRole:Int?
     var choosedUsers:[Int] = []
     
     // MARK: - События контроллера
@@ -49,25 +47,10 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         }
         
 
-        // Настройка текстового поля если мы редактируем, а не добавляем пользователя
-        if let editPlayer = self.editPlayer {
-            nameTextField.text   = editPlayer.name
-            choosedRole = editPlayer.role.rawValue
-            addNewPlayer.isEnabled = false
-        }
-        
         // Включить кнопку Add только если контроллер содержит валидные данные для сохранения
         updateAddButtonState()
         
-        if game.isStarted {
-            chooseTableView.isHidden = true
-        }
-        
-        if editPlayer == nil {
-            chooseTableView.rowHeight = 50.0
-        } else {
-            chooseTableView.rowHeight = 68.0
-        }
+        chooseTableView.rowHeight = 50.0
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,17 +66,9 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             return
         }
         
-        let name = nameTextField.text ?? ""
-        
-        // заполняем данные для возврата их из контроллера
-        if let editPlayer = editPlayer {
-            editPlayer.name = name
-            editPlayer.role = Role(rawValue: choosedRole!)!
-        } else {
-            for selected in choosedUsers {
-                let newPlayer = playersForChoose[selected]
-                newPlayers.append(newPlayer)
-            }
+        for selected in choosedUsers {
+            let newPlayer = playersForChoose[selected]
+            newPlayers.append(newPlayer)
         }
     }
     
@@ -106,12 +81,8 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     
     // Количество секций в таблице
     func numberOfSections(in tableView: UITableView) -> Int {
-        // У нас в таблице или аккаунты пользователей или роли пользователя(если мы редактируем пользователя)
-        if editPlayer == nil {
-            return playersForChoose.count
-        } else {
-            return Role.count
-        }
+        // У нас в таблице аккаунты пользователей
+        return playersForChoose.count
     }
     
     // Расстояние между ячейками(секциями)
@@ -127,105 +98,51 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //self.performSegue(withIdentifier: "ShowDetail", sender: self)
+        // Ничего не делаем
     }
     
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы выбора поочередно
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifer = "ChooseTableViewCell"
-        let cellRoleIdentifer = "ChooseRatingTableViewCell"
         
-        if editPlayer == nil {
-            // В данном варианте мы не редактируем пользователя - мы выбираем  нового
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifer, for: indexPath) as? ChooseTableViewCell  else {
-                fatalError("The dequeued cell is not an instance of ChooseTableViewCell.")
-            }
-
-            // Визуально оформляем ячейку
-            cell.layer.cornerRadius = 8
-            let evenColor = UIColor(rgb: 0xD8D8D8, alpha: 0.1).cgColor
-            let oddColor = UIColor(rgb: 0xD8D8D8, alpha: 0.4).cgColor
-            
-            // Разноцвет между соседними ячейками
-            if indexPath.section % 2 == 0 {
-                cell.layer.backgroundColor = oddColor
-            } else {
-                cell.layer.backgroundColor = evenColor
-            }
-            cell.checkImage.isHidden = true
-            
-            let account = playersForChoose[indexPath.section]
-
-            // Задаем данные для ячейки
-            cell.cellName.text = account.name
-            cell.numbelLabel.text = "\(indexPath.section + 1)"
-            cell.chooseButton.tag = indexPath.section
-            cell.chooseButton.isEnabled = true
-            
-            // если мы уже добавили подобного игрока то его добавлять уже не нужно
-            if game.checkPlayerId(idItem: account.id) {
-                cell.chooseButton.isEnabled = false
-                cell.checkImage.isHidden = false
-            }
-            
-            // выбранных игроков выбирать не нужно
-            if choosedUsers.contains(indexPath.section) {
-                cell.chooseButton.isEnabled = false
-                cell.checkImage.isHidden = false
-            }
-            return cell
-        } else {
-            // В данном варианте мы редактируем пользователя,
-            // следовательно должны показать роли для возможности сменить роль(выбранного персонажа)
-            
-            guard let cellRole = tableView.dequeueReusableCell(withIdentifier: cellRoleIdentifer, for: indexPath) as? ChooseRatingTableViewCell  else {
-                fatalError("The dequeued cell is not an instance of ChooseRatingTableViewCell.")
-            }
-
-            let currentRole = Role(rawValue: indexPath.section)!
-
-            // Визуальное оформление ячейки
-            let bgColor = UIColor(rgb: 0xE8E8E8, alpha: 0.6).cgColor
-            cellRole.layer.backgroundColor = bgColor
-            
-            // Данные ячейки
-            cellRole.cellName.text = currentRole.title
-            cellRole.descriptionLabel.text = currentRole.description
-            cellRole.checkButton.isHidden = true
-            cellRole.chooseButton.tag = indexPath.section
-            cellRole.chooseButton.isEnabled = true
-        
-            // Меняем иконку текущей роли игрока
-            switch currentRole {
-            case .Citizen:
-                cellRole.roleImage.image = UIImage(named: "Role icon sitizen")
-            case .Doctor:
-                cellRole.roleImage.image = UIImage(named: "Role icon medic")
-            case .Mafia:
-                cellRole.roleImage.image = UIImage(named: "Role icon mafia")
-            case .Don:
-                cellRole.roleImage.image = UIImage(named: "Role icon don maffia")
-            case .Maniac:
-                cellRole.roleImage.image = UIImage(named: "Role icon maniac")
-            case .Prostitute:
-                cellRole.roleImage.image = UIImage(named: "Role icon putana")
-            case .Sherif:
-                cellRole.roleImage.image = UIImage(named: "Role icon sheriff")
-            case .Undead:
-                cellRole.roleImage.image = UIImage(named: "Role icon undead")
-            case .Yacuza:
-                cellRole.roleImage.image = UIImage(named: "Role icon yacuza")
-            case .Lawyer:
-                cellRole.roleImage.image = UIImage(named: "Role icon loyer")
-            }
-            
-            if let currentChoosedRole = choosedRole {
-                // Имеется выбранный вариант таблицы (выбора ролей)
-                // если нажата кнопка выбора то мы ее отключаем (во избежании дальнейших нажатий этой кнопки)
-                cellRole.checkButton.isHidden = currentChoosedRole != cellRole.chooseButton.tag
-            }
-            return cellRole
+        // В данном варианте мы не редактируем пользователя - мы выбираем  нового
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifer, for: indexPath) as? ChooseTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of ChooseTableViewCell.")
         }
+        
+        // Визуально оформляем ячейку
+        cell.layer.cornerRadius = 8
+        let evenColor = UIColor(rgb: 0xD8D8D8, alpha: 0.1).cgColor
+        let oddColor = UIColor(rgb: 0xD8D8D8, alpha: 0.4).cgColor
+        
+        // Разноцвет между соседними ячейками
+        if indexPath.section % 2 == 0 {
+            cell.layer.backgroundColor = oddColor
+        } else {
+            cell.layer.backgroundColor = evenColor
+        }
+        cell.checkImage.isHidden = true
+        
+        let account = playersForChoose[indexPath.section]
+        
+        // Задаем данные для ячейки
+        cell.cellName.text = account.name
+        cell.numbelLabel.text = "\(indexPath.section + 1)"
+        cell.chooseButton.tag = indexPath.section
+        cell.chooseButton.isEnabled = true
+        
+        // если мы уже добавили подобного игрока то его добавлять уже не нужно
+        if game.checkPlayerId(idItem: account.id) {
+            cell.chooseButton.isEnabled = false
+            cell.checkImage.isHidden = false
+        }
+        
+        // выбранных игроков выбирать не нужно
+        if choosedUsers.contains(indexPath.section) {
+            cell.chooseButton.isEnabled = false
+            cell.checkImage.isHidden = false
+        }
+        return cell
     }
     
     // Определяем возможность редактировать таблицу выбора участников
@@ -247,11 +164,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     
     // Нажата кнопка "Выбрать" в таблице выбора участников/ролей игры
     @IBAction func chooseButton(_ sender: UIButton) {
-        if editPlayer == nil {
-            choosedUsers.append(sender.tag)
-        } else {
-            choosedRole = sender.tag
-        }
+        choosedUsers.append(sender.tag)
         saveButton.isEnabled = true
         chooseTableView.reloadData()
     }
@@ -302,10 +215,6 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             addNewPlayer.isEnabled = false
         } else {
             addNewPlayer.isEnabled = true
-        }
-        
-        if self.editPlayer != nil {
-            addNewPlayer.isEnabled = false
         }
     }
 }
