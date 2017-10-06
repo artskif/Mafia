@@ -42,10 +42,19 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         nameTextField.delegate = self
         
         let accounts = game.accounts.sorted{$0.name! < $1.name!}
-        for acc in accounts {
-            self.playersForChoose.append(Player(baseObject: acc)!)
+        
+        // Необходимо вставить в таблицу выбора игроков которых мы добавили в прошлый раз
+        for p in game.getNewPlayers() {
+            playersForChoose.append(p)
+            choosedUsers.append(playersForChoose.count-1)
         }
         
+        for acc in accounts {
+            self.playersForChoose.append(Player(baseObject: acc)!)
+            if game.checkPlayerId(idItem: acc.id) {
+                choosedUsers.append(playersForChoose.count-1)
+            }
+        }
 
         // Включить кнопку Add только если контроллер содержит валидные данные для сохранения
         updateAddButtonState()
@@ -123,6 +132,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         }
         cell.checkImage.isHidden = true
         
+        // Начинаем отрисовку игроков
         let account = playersForChoose[indexPath.section]
         
         // Задаем данные для ячейки
@@ -132,14 +142,13 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         cell.chooseButton.isEnabled = true
         
         // если мы уже добавили подобного игрока то его добавлять уже не нужно
-        if game.checkPlayerId(idItem: account.id) {
-            cell.chooseButton.isEnabled = false
-            cell.checkImage.isHidden = false
-        }
+        //if game.checkPlayerId(idItem: account.id) {
+        //    cell.chooseButton.isEnabled = false
+        //    cell.checkImage.isHidden = false
+        //}
         
         // выбранных игроков выбирать не нужно
         if choosedUsers.contains(indexPath.section) {
-            cell.chooseButton.isEnabled = false
             cell.checkImage.isHidden = false
         }
         return cell
@@ -164,7 +173,13 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     
     // Нажата кнопка "Выбрать" в таблице выбора участников/ролей игры
     @IBAction func chooseButton(_ sender: UIButton) {
-        choosedUsers.append(sender.tag)
+        if choosedUsers.contains(sender.tag) {
+            if let index = choosedUsers.index(of: sender.tag) {
+                choosedUsers.remove(at: index)
+            }
+        } else {
+            choosedUsers.append(sender.tag)
+        }
         saveButton.isEnabled = true
         chooseTableView.reloadData()
     }
@@ -181,7 +196,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
                 for (key, value) in choosedUsers.enumerated() {
                     choosedUsers[key] = value + 1
                 }
-                //choosedUsers = []
+                choosedUsers.append(0)
                 
                 // Анимированно обновляем строки таблицы
                 let othersIndexPaths = chooseTableView.indexPathsForVisibleRows!

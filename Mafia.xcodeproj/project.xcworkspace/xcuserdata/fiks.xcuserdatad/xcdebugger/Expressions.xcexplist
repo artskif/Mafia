@@ -24,9 +24,19 @@
       </ContextState>
       <ContextState
          contextName = "AddController.chooseButton(UIButton) -&gt; ():AddController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.tag">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Game.reloadRoles() -&gt; ():Game.swift">
+         contextName = "Game.saveRating() -&gt; ():Game.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "game">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "PlayController.createAction(newAction : ActionType, cellRow : Int, ifState : DayNightState?) -&gt; ():PlayController.swift">
@@ -38,6 +48,9 @@
       </ContextState>
       <ContextState
          contextName = "Game.init() -&gt; Game:Game.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Game.reloadRoles() -&gt; ():Game.swift">
       </ContextState>
       <ContextState
          contextName = "Player.init(name : String, rating : Int) -&gt; Player?:Player.swift">
@@ -54,14 +67,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Game.saveRating() -&gt; ():Game.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "game">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "AddController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:AddController.swift">
          <PersistentStrings>
             <PersistentString
@@ -73,24 +78,13 @@
          contextName = "Game.getGameRoles() -&gt; [Int : Role]:Game.swift">
       </ContextState>
       <ContextState
-         contextName = "static Rating.calculateTurnRating(players : inout [Player], turnNumber : Int, whoDead : Player?, dayState : DayNightState) -&gt; ():Rating.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "p.role">
-            </PersistentString>
-            <PersistentString
-               value = "whoDead?.role != Role.Mafia &amp;&amp; p.role == Role.Mafia &amp;&amp; p.stateAlive == AliveState.Live &amp;&amp; dayState == DayNightState.Day">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "PlayController.tableView(UITableView, cellForRowAt : IndexPath) -&gt; UITableViewCell:PlayController.swift">
          <PersistentStrings>
             <PersistentString
                value = "cell.roleLabel.text!.hasSufix(&quot;&#x41c;&#x435;&#x440;&#x442;&#x432;&quot;)">
             </PersistentString>
             <PersistentString
-               value = "cell.roleLabel.text">
+               value = "game">
             </PersistentString>
             <PersistentString
                value = "indexPath.section">
@@ -99,15 +93,12 @@
                value = "indexPath.row">
             </PersistentString>
             <PersistentString
-               value = "player.name">
+               value = "cell.roleLabel.text">
             </PersistentString>
             <PersistentString
-               value = "game">
+               value = "player.name">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "PlayController.unwindToPlayerList(sender : UIStoryboardSegue) -&gt; ():PlayController.swift">
       </ContextState>
       <ContextState
          contextName = "PlayController.pushSherifCheck(UIButton) -&gt; ():PlayController.swift">
@@ -118,6 +109,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "PlayController.unwindToPlayerList(sender : UIStoryboardSegue) -&gt; ():PlayController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Player.init(name : String) -&gt; Player?:Player.swift">
+      </ContextState>
+      <ContextState
          contextName = "AddController.addNewPlayer(UIButton) -&gt; ():AddController.swift">
          <PersistentStrings>
             <PersistentString
@@ -126,7 +123,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Player.init(name : String) -&gt; Player?:Player.swift">
+         contextName = "static Rating.calculateTurnRating(players : inout [Player], turnNumber : Int, whoDead : Player?, dayState : DayNightState) -&gt; ():Rating.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "p.role">
+            </PersistentString>
+            <PersistentString
+               value = "whoDead?.role != Role.Mafia &amp;&amp; p.role == Role.Mafia &amp;&amp; p.stateAlive == AliveState.Live &amp;&amp; dayState == DayNightState.Day">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "PlayController.tapDayNightButton(UIBarButtonItem) -&gt; ():PlayController.swift">
@@ -164,10 +169,10 @@
          contextName = "Player.init(coder : NSCoder) -&gt; Player?:Player.swift">
          <PersistentStrings>
             <PersistentString
-               value = "aDecoder.decodeObject(forKey: &quot;rating&quot;)">
+               value = "aDecoder.decodeObject(forKey: &quot;name&quot;)">
             </PersistentString>
             <PersistentString
-               value = "aDecoder.decodeObject(forKey: &quot;name&quot;)">
+               value = "aDecoder.decodeObject(forKey: &quot;rating&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -290,6 +290,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             // Добавляем нового пользователя в таблицу
             let newPlayers = sourceViewController.newPlayers
             
+            game.clearPlayers() // сначала всех удаляем
             if newPlayers.count > 0 {
                 game.addPlayers(players: newPlayers)
             }

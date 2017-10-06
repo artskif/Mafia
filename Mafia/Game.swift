@@ -75,9 +75,26 @@ class Game {
         return self._players[at]
     }
     
+    // Получить всех новых игроков(которых только что добавили и у них еще нет id)
+    func getNewPlayers() -> [Player] {
+        var newPlayers:[Player] = []
+        for player in _players {
+            if player.id == 0 {
+                newPlayers.append(player)
+            }
+        }
+        return newPlayers
+    }
+    
     // Удаляем участника игры
     func removePlayer(at: Int) {
         self._players.remove(at: at)
+        self.reloadRoles()
+    }
+    
+    // Удаляем всех участников игры
+    func clearPlayers() {
+        self._players.removeAll()
         self.reloadRoles()
     }
     
