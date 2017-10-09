@@ -33,9 +33,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         let nib = UINib(nibName: "PlayTableViewCell", bundle: nil)
         playersTableView.register(nib, forCellReuseIdentifier: "PlayTableViewCell")
         
-        // Начинаем новую игру
-        game = Game()
-        
         // Сортируем участников игры
         game.sortPlayers()
     }
@@ -282,25 +279,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     //MARK: - Обработка действий пользователя
-    
-    // Нажали кнопку Save на странице добавления пользователя в игру
-    @IBAction func unwindToPlayerList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? AddController{
-            
-            // Добавляем нового пользователя в таблицу
-            let newPlayers = sourceViewController.newPlayers
-            
-            game.clearPlayers() // сначала всех удаляем
-            if newPlayers.count > 0 {
-                game.addPlayers(players: newPlayers)
-            }
-            
-            // Сортируем участников игры
-            game.sortPlayers()
-            
-            playersTableView.reloadData()
-        }
-    }
     
     // Выбрали роль на странице выбора ролей
     @IBAction func unwindRolesToPlayerList(sender: UIStoryboardSegue) {

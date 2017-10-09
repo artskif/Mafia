@@ -70,15 +70,32 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        guard let button = sender as? UIBarButtonItem, button === saveButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-            return
+        // обработка поведения нового контроллера в зависимости от того каким переходом(segue) мы пользуемся
+        switch(segue.identifier ?? "") {
+        case "AddButton":
+            game.clearPlayers() // сначала всех удаляем
+            newPlayers.removeAll()
+
+            for selected in choosedUsers {
+                let newPlayer = playersForChoose[selected]
+                newPlayers.append(newPlayer)
+            }
+            
+            // Что бы каждый раз не обновлять роли добавляем игроков один раз
+            if newPlayers.count > 0 {
+                game.addPlayers(players: newPlayers)
+            }
+            
+            // Сортируем участников игры
+            game.sortPlayers()
+
+        case "CancelButton":
+            break
+        default:
+            break
         }
         
-        for selected in choosedUsers {
-            let newPlayer = playersForChoose[selected]
-            newPlayers.append(newPlayer)
-        }
+        
     }
     
     // MARK: - Методы инициализации таблицы выбора участников
@@ -208,6 +225,13 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             }
         }
         
+    }
+    
+    // Нажали кнопку редактировать игроков на странице Игры
+    @IBAction func unwindAddPlayerFromPlayController(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? PlayController{
+            // Ничего не делаем
+        }
     }
     
     // Нажали кнопку Cancel в навигационной панели страницы

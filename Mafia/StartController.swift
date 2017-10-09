@@ -25,6 +25,10 @@ class StartController: UIViewController {
     
     //MARK: - Обработка действий пользователя
     
+    @IBAction func startNewGame(_ sender: Any) {
+        game = Game() // Стартуем!
+    }
+
     // Нажали Cancel в таблице рейтинга пользователей
     @IBAction func unwindCancelToMainScreen(sender: UIStoryboardSegue) {
     }
