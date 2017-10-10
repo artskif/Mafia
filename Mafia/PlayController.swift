@@ -25,6 +25,9 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var itemDayNightToolbar: UIBarButtonItem!
     @IBOutlet weak var bottomToolbar: UIToolbar!
+    
+    var endGame = false
+    
     // MARK: - События контроллера
     
     override func viewDidLoad() {
@@ -39,6 +42,24 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Сортируем участников игры
         game.sortPlayers()
+        
+        if endGame {
+            let alert = UIAlertController(title: "Завершение игры", message: "Хотите сохранить рейтинг?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "Да", style: UIAlertActionStyle.default, handler: { (action) in
+                self.finishCurrentGame(saveRating: true)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Нет", style: UIAlertActionStyle.default, handler: { (action) in
+                self.finishCurrentGame(saveRating: false)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertActionStyle.default, handler: { (action) in
+                
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -424,15 +445,15 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         if saveRating {game.saveRating()}
         
-        let isPresentingInAddPlayerMode = presentingViewController is UINavigationController
-        
-        if isPresentingInAddPlayerMode {
-            dismiss(animated: true, completion: nil)
-        } else if let owningNavigationController = navigationController{
-            owningNavigationController.popViewController(animated: true)
-        } else {
-            fatalError("The PlayController is not inside a navigation controller.")
-        }
+//        let isPresentingInAddPlayerMode = presentingViewController is UINavigationController
+//
+//        if isPresentingInAddPlayerMode {
+//            dismiss(animated: true, completion: nil)
+//        } else if let owningNavigationController = navigationController{
+//            owningNavigationController.popViewController(animated: true)
+//        } else {
+//            fatalError("The PlayController is not inside a navigation controller.")
+//        }
 
     }
     

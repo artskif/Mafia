@@ -158,6 +158,23 @@
          contextName = "Player.init(name : String) -&gt; Player?:Player.swift">
       </ContextState>
       <ContextState
+         contextName = "MenuTableViewController.prepare(for:sender:):MenuTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "segue.destination">
+            </PersistentString>
+            <PersistentString
+               value = "segue.destination.endGame">
+            </PersistentString>
+            <PersistentString
+               value = "segue.identifier">
+            </PersistentString>
+            <PersistentString
+               value = "playViewController.endGame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "PlayController.tapDayNightButton(UIBarButtonItem) -&gt; ():PlayController.swift">
          <PersistentStrings>
             <PersistentString
@@ -197,6 +214,14 @@
             </PersistentString>
             <PersistentString
                value = "aDecoder.decodeObject(forKey: &quot;name&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PlayController.viewDidLoad():PlayController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "endGame">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -20,6 +20,27 @@ class MenuTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
+    // Этот метод дает возможность сконфигурировать контроллер до того как он покажется пользователю
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        // обработка поведения нового контроллера в зависимости от того каким переходом(segue) мы пользуемся
+        switch(segue.identifier ?? "") {
+        case "end_game":
+            guard let nacPlayViewController = segue.destination as? UINavigationController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let playViewController = nacPlayViewController.viewControllers.first as? PlayController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            playViewController.endGame = true // Заверщаем игру в Игровом контроллере
+        default:
+            break
+        }
+    }
+    
     // MARK: - Методы инициализации таблицы рейтинга
     
     // Количество секций в таблице
@@ -56,5 +77,4 @@ class MenuTableViewController: UITableViewController {
         
         return cell
     }
-
 }
