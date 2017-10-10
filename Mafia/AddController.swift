@@ -88,9 +88,6 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             
             // Сортируем участников игры
             game.sortPlayers()
-
-        case "CancelButton":
-            break
         default:
             break
         }

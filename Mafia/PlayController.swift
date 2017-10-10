@@ -22,6 +22,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var addNewPlayerButton: UIBarButtonItem!
     @IBOutlet var mainView: UIView!
     
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var itemDayNightToolbar: UIBarButtonItem!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     // MARK: - События контроллера
@@ -29,6 +30,9 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        menuButton.target = self.revealViewController()
+        menuButton.action = Selector("revealToggle:")
+
         // Регистрируем собственную ячейку(cell) в таблице
         let nib = UINib(nibName: "PlayTableViewCell", bundle: nil)
         playersTableView.register(nib, forCellReuseIdentifier: "PlayTableViewCell")

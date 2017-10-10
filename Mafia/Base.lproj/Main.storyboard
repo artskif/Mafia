@@ -245,7 +245,11 @@
                             <constraint firstItem="mMH-H9-nnY" firstAttribute="leading" secondItem="LDo-YX-gZU" secondAttribute="leading" id="x0y-oN-aTK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="МАФИЯ" id="uiW-uU-I3i"/>
+                    <navigationItem key="navigationItem" title="МАФИЯ" id="uiW-uU-I3i">
+                        <barButtonItem key="leftBarButtonItem" title="Меню" id="r2t-kr-lnX">
+                            <color key="tintColor" red="1" green="0.0098039215690000001" blue="0.0098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addNewPlayerButton" destination="ups-YX-46y" id="CgA-UO-Ojy"/>
                         <outlet property="bottomToolbar" destination="XYU-Ow-JOM" id="yUA-Cm-zMg"/>
@@ -253,6 +257,7 @@
                         <outlet property="endOfTheGameButton" destination="I7d-Fu-rbj" id="uMo-SR-BDR"/>
                         <outlet property="itemDayNightToolbar" destination="ap6-I2-6Du" id="zgm-9j-DlJ"/>
                         <outlet property="mainView" destination="LDo-YX-gZU" id="TYD-cs-DHh"/>
+                        <outlet property="menuButton" destination="r2t-kr-lnX" id="0Oc-RC-6IF"/>
                         <outlet property="playersTableView" destination="cge-AA-EFm" id="hhU-Ea-7yY"/>
                         <segue destination="FzV-ee-t8s" kind="unwind" identifier="unwindToMainScreen" unwindAction="unwindCancelToMainScreenWithSender:" id="lSj-JX-Jfz"/>
                         <segue destination="pEc-ei-Lpq" kind="presentation" identifier="ShowRoles" modalTransitionStyle="crossDissolve" id="0BP-Mc-r4R"/>
@@ -261,7 +266,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szG-dh-KKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="FzV-ee-t8s" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2686" y="36"/>
+            <point key="canvasLocation" x="4288.8000000000002" y="135.38230884557723"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="CvP-XR-Qwy">
@@ -422,7 +427,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" id="pG3-vD-Mwn">
                             <color key="tintColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="Cvo-3B-IHr" kind="show" identifier="AddButton" id="5pl-mr-uSy"/>
+                                <segue destination="ADQ-D9-1HD" kind="show" identifier="AddButton" id="4qe-vO-Tda"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -436,7 +441,142 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y38-Xb-jv6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="36"/>
+            <point key="canvasLocation" x="700" y="36"/>
+        </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="dbj-tc-UsJ">
+            <objects>
+                <viewController id="uAF-1N-rZ1" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5TL-za-zig"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fvx-kC-V13"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wr8-H3-xoE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VNc-Gb-VXH"/>
+                    <connections>
+                        <segue destination="Cvo-3B-IHr" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="FJg-0H-raC"/>
+                        <segue destination="h28-CI-kYY" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="jFn-p4-F6f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1jT-tP-bLJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2192.8000000000002" y="35.532233883058474"/>
+        </scene>
+        <!--Menu Table View Controller-->
+        <scene sceneID="iAG-so-GWi">
+            <objects>
+                <tableViewController id="h28-CI-kYY" customClass="MenuTableViewController" customModule="Mafia" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lX5-Gc-RHI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="back_to_game" textLabel="UdN-Bb-wXQ" style="IBUITableViewCellStyleDefault" id="4oO-we-Qgx">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4oO-we-Qgx" id="Zte-0v-PBp">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Вернуться в игру" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UdN-Bb-wXQ">
+                                            <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Cvo-3B-IHr" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="04F-gc-sr6"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="settings" textLabel="97f-D9-EYe" style="IBUITableViewCellStyleDefault" id="QNw-sr-jLO">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QNw-sr-jLO" id="4Ak-lV-sA3">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Настройки" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="97f-D9-EYe">
+                                            <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="rating" textLabel="fAJ-r2-7LW" style="IBUITableViewCellStyleDefault" id="owF-fV-ib3">
+                                <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="owF-fV-ib3" id="kE2-NQ-Iu5">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Рейтинг" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fAJ-r2-7LW">
+                                            <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="players" textLabel="CtA-Q1-eOQ" style="IBUITableViewCellStyleDefault" id="EAv-Ls-FET">
+                                <rect key="frame" x="0.0" y="160" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EAv-Ls-FET" id="2ok-VM-Xal">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Редактировать игроков" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CtA-Q1-eOQ">
+                                            <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="dZh-Nc-l1E" kind="unwind" unwindAction="unwindAddPlayerFromPlayControllerWithSender:" id="Njv-8e-6eg"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="finish_game" textLabel="8gH-Xx-fF5" style="IBUITableViewCellStyleDefault" id="3cc-Ic-3zO">
+                                <rect key="frame" x="0.0" y="204" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3cc-Ic-3zO" id="TNu-zz-aVb">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Закончить игру" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8gH-Xx-fF5">
+                                            <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="h28-CI-kYY" id="34e-3M-EEb"/>
+                            <outlet property="delegate" destination="h28-CI-kYY" id="oxw-6S-JNu"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qw0-wr-DeG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dZh-Nc-l1E" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3116" y="-732"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X2L-47-tzq">
@@ -458,7 +598,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PT3-7p-nH4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1919" y="36"/>
+            <point key="canvasLocation" x="3116" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A0N-vY-J4a">
@@ -480,7 +620,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKA-9m-7c8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="36"/>
+            <point key="canvasLocation" x="-38" y="36"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="W2K-nK-Mu7">
@@ -620,7 +760,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdc-nN-2Ab" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="0Xm-RQ-06J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="889" y="1361"/>
+            <point key="canvasLocation" x="-55" y="941"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xz7-jz-g8e">
@@ -642,7 +782,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbF-2i-LjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34" y="1361"/>
+            <point key="canvasLocation" x="-802" y="942"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="HQb-cx-q9d">
@@ -789,7 +929,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKD-pR-DFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="n9y-9d-gBE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2246" y="-811"/>
+            <point key="canvasLocation" x="4241" y="-741"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TDD-eM-1Nv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ADQ-D9-1HD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FM5-HU-JiE">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uAF-1N-rZ1" kind="relationship" relationship="rootViewController" id="2pF-Nw-lTm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ttY-Xr-Cyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1535" y="36"/>
         </scene>
     </scenes>
     <resources>
@@ -805,4 +962,7 @@
         <image name="icon little check point" width="33" height="32"/>
         <image name="icon ratin global big" width="8" height="15"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="04F-gc-sr6"/>
+    </inferredMetricsTieBreakers>
 </document>

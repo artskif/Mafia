@@ -16,6 +16,8 @@
 		25605E961EF2761E0054F7F2 /* DatabaseInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25605E951EF2761E0054F7F2 /* DatabaseInit.swift */; };
 		25605EAD1EF2A3CB0054F7F2 /* UserAccount+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25605EAB1EF2A3CB0054F7F2 /* UserAccount+CoreDataClass.swift */; };
 		25605EAE1EF2A3CB0054F7F2 /* UserAccount+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25605EAC1EF2A3CB0054F7F2 /* UserAccount+CoreDataProperties.swift */; };
+		2565B53E1F8CDE0A00DDB9C9 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2565B53D1F8CDE0A00DDB9C9 /* MenuTableViewController.swift */; };
+		2565B53F1F8CED2800DDB9C9 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2565B53C1F8CDC4300DDB9C9 /* SWRevealViewController.m */; };
 		25C8653D1E72968F00B8134B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C8653C1E72968F00B8134B /* AppDelegate.swift */; };
 		25C8653F1E72968F00B8134B /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C8653E1E72968F00B8134B /* StartController.swift */; };
 		25C865421E72968F00B8134B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25C865401E72968F00B8134B /* Main.storyboard */; };
@@ -61,6 +63,10 @@
 		25605E951EF2761E0054F7F2 /* DatabaseInit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseInit.swift; sourceTree = "<group>"; };
 		25605EAB1EF2A3CB0054F7F2 /* UserAccount+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserAccount+CoreDataClass.swift"; sourceTree = "<group>"; };
 		25605EAC1EF2A3CB0054F7F2 /* UserAccount+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserAccount+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2565B53A1F8CDC4100DDB9C9 /* Mafia-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mafia-Bridging-Header.h"; sourceTree = "<group>"; };
+		2565B53B1F8CDC4200DDB9C9 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		2565B53C1F8CDC4300DDB9C9 /* SWRevealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		2565B53D1F8CDE0A00DDB9C9 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		25C865391E72968F00B8134B /* Mafia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mafia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C8653C1E72968F00B8134B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25C8653E1E72968F00B8134B /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
@@ -120,6 +126,7 @@
 				25FA28031E8A96D000CDF81F /* PopupViewController.swift */,
 				251221D71ECC7BB700C626C3 /* GlobalRatingController.swift */,
 				25441DEB1F878F9600943412 /* ChooseRoleViewController.swift */,
+				2565B53D1F8CDE0A00DDB9C9 /* MenuTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -150,6 +157,16 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		2565B5391F8CDC1C00DDB9C9 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				2565B53B1F8CDC4200DDB9C9 /* SWRevealViewController.h */,
+				2565B53C1F8CDC4300DDB9C9 /* SWRevealViewController.m */,
+				2565B53A1F8CDC4100DDB9C9 /* Mafia-Bridging-Header.h */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
 		25C865301E72968E00B8134B = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +190,7 @@
 		25C8653B1E72968F00B8134B /* Mafia */ = {
 			isa = PBXGroup;
 			children = (
+				2565B5391F8CDC1C00DDB9C9 /* External */,
 				252390F41E814B9E00474341 /* Model */,
 				252390F31E814B2A00474341 /* Controllers */,
 				25C8653C1E72968F00B8134B /* AppDelegate.swift */,
@@ -272,6 +290,7 @@
 					25C865381E72968E00B8134B = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 95HL8JHHKG;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					25C8654C1E72968F00B8134B = {
@@ -353,7 +372,9 @@
 				25605EAD1EF2A3CB0054F7F2 /* UserAccount+CoreDataClass.swift in Sources */,
 				25FA28021E84FD8D00CDF81F /* ChooseTableViewCell.swift in Sources */,
 				254E05161EC5B11B00ACF890 /* PlayTableViewCell.swift in Sources */,
+				2565B53E1F8CDE0A00DDB9C9 /* MenuTableViewController.swift in Sources */,
 				25605E961EF2761E0054F7F2 /* DatabaseInit.swift in Sources */,
+				2565B53F1F8CED2800DDB9C9 /* SWRevealViewController.m in Sources */,
 				25C865711E76AF1000B8134B /* Player.swift in Sources */,
 				25F0E44E1E82B6A100B0F17B /* RatingTableViewCell.swift in Sources */,
 				25C8653D1E72968F00B8134B /* AppDelegate.swift in Sources */,
@@ -510,11 +531,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 95HL8JHHKG;
 				INFOPLIST_FILE = Mafia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ivers18.Mafia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mafia/External/Mafia-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -525,11 +549,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 95HL8JHHKG;
 				INFOPLIST_FILE = Mafia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ivers18.Mafia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mafia/External/Mafia-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -94,6 +94,14 @@
          contextName = "Game.getGameRoles() -&gt; [Int : Role]:Game.swift">
       </ContextState>
       <ContextState
+         contextName = "MenuTableViewController.tableView(_:cellForRowAt:):MenuTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "static Rating.calculateTurnRating(players : inout [Player], turnNumber : Int, whoDead : Player?, dayState : DayNightState) -&gt; ():Rating.swift">
          <PersistentStrings>
             <PersistentString
