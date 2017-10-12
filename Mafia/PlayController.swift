@@ -18,21 +18,20 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var playersTableView: UITableView!
     @IBOutlet weak var dayNightButton: UIBarButtonItem!
-    @IBOutlet weak var endOfTheGameButton: UIBarButtonItem!
-    @IBOutlet weak var addNewPlayerButton: UIBarButtonItem!
     @IBOutlet var mainView: UIView!
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var itemDayNightToolbar: UIBarButtonItem!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     
-    var endGame = false
-    
     // MARK: - События контроллера
     
+    var endGame = false // флаг окончания игры
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Настраиваем кнопку меню
         menuButton.target = self.revealViewController()
         menuButton.action = Selector("revealToggle:")
 
@@ -43,6 +42,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Сортируем участников игры
         game.sortPlayers()
         
+        // Заканчиваем игру если выставлен флаг окончания игры
         if endGame {
             let alert = UIAlertController(title: "Завершение игры", message: "Хотите сохранить рейтинг?", preferredStyle: UIAlertControllerStyle.alert)
             
@@ -90,7 +90,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    // MARK: - Методы инициализации таблицы участников
+    // MARK: - Методы управления таблицей участников
     
     // Кличесто элементов в одной секции таблицы
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -410,31 +410,11 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         if !game.isStarted {self.startNewGame()} // Стартуем игру!
     }
     
-    // Нажали кнопку "Закончить игру" в панели инструментов
-    @IBAction func tapEndOfTheGameButton(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Завершение игры", message: "Хотите сохранить рейтинг?", preferredStyle: UIAlertControllerStyle.alert)
-        
-        alert.addAction(UIAlertAction(title: "Да", style: UIAlertActionStyle.default, handler: { (action) in
-            self.finishCurrentGame(saveRating: true)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Нет", style: UIAlertActionStyle.default, handler: { (action) in
-            self.finishCurrentGame(saveRating: false)
-        }))
-
-        alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertActionStyle.default, handler: { (action) in
-            
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     //MARK: - Методы управления страницей
     
     // Начали новую игру(сделали первый ход)
     func startNewGame(){
         game.isStarted = true
-        addNewPlayerButton.isEnabled = false
         playersTableView.isEditing = false
         playersTableView.reloadData()
     }
@@ -444,17 +424,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.performSegue(withIdentifier: "unwindToMainScreen", sender: self)
         
         if saveRating {game.saveRating()}
-        
-//        let isPresentingInAddPlayerMode = presentingViewController is UINavigationController
-//
-//        if isPresentingInAddPlayerMode {
-//            dismiss(animated: true, completion: nil)
-//        } else if let owningNavigationController = navigationController{
-//            owningNavigationController.popViewController(animated: true)
-//        } else {
-//            fatalError("The PlayController is not inside a navigation controller.")
-//        }
-
     }
     
     // Выполняем новое действие над пользователем (убить, вылечить, проверить и тд.)

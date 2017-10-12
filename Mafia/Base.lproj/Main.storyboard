@@ -207,12 +207,6 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <barButtonItem image="icon 2" width="60" id="ups-YX-46y">
-                                        <color key="tintColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="FzV-ee-t8s" kind="unwind" unwindAction="unwindAddPlayerFromPlayControllerWithSender:" id="KpF-JJ-0WU"/>
-                                        </connections>
-                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="eBp-xj-OiD"/>
                                     <barButtonItem title="Наступает ночь" width="60" id="ap6-I2-6Du">
                                         <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -221,12 +215,6 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="VGj-a0-NAY"/>
-                                    <barButtonItem image="icon 3" width="60" id="I7d-Fu-rbj">
-                                        <color key="tintColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <action selector="tapEndOfTheGameButton:" destination="oNQ-Ax-mL0" id="aE0-Vx-L5I"/>
-                                        </connections>
-                                    </barButtonItem>
                                 </items>
                                 <color key="barTintColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
@@ -251,10 +239,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addNewPlayerButton" destination="ups-YX-46y" id="CgA-UO-Ojy"/>
                         <outlet property="bottomToolbar" destination="XYU-Ow-JOM" id="yUA-Cm-zMg"/>
                         <outlet property="dayNightButton" destination="ap6-I2-6Du" id="hD4-Jd-tcR"/>
-                        <outlet property="endOfTheGameButton" destination="I7d-Fu-rbj" id="uMo-SR-BDR"/>
                         <outlet property="itemDayNightToolbar" destination="ap6-I2-6Du" id="zgm-9j-DlJ"/>
                         <outlet property="mainView" destination="LDo-YX-gZU" id="TYD-cs-DHh"/>
                         <outlet property="menuButton" destination="r2t-kr-lnX" id="0Oc-RC-6IF"/>
@@ -266,7 +252,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szG-dh-KKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="FzV-ee-t8s" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4241" y="36"/>
+            <point key="canvasLocation" x="4892" y="36"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="CvP-XR-Qwy">
@@ -528,6 +514,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="4gk-48-Fcq" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="vIA-e8-qaW"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="players" textLabel="CtA-Q1-eOQ" style="IBUITableViewCellStyleDefault" id="EAv-Ls-FET">
                                 <rect key="frame" x="0.0" y="160" width="375" height="44"/>
@@ -579,7 +568,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qw0-wr-DeG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="dZh-Nc-l1E" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3116" y="-732"/>
+            <point key="canvasLocation" x="3122" y="-331"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X2L-47-tzq">
@@ -604,7 +593,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PT3-7p-nH4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3116" y="36"/>
+            <point key="canvasLocation" x="4071" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A0N-vY-J4a">
@@ -935,7 +924,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKD-pR-DFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="n9y-9d-gBE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4241" y="-741"/>
+            <point key="canvasLocation" x="5671" y="-817"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TDD-eM-1Nv">
@@ -954,6 +943,180 @@
             </objects>
             <point key="canvasLocation" x="1535" y="36"/>
         </scene>
+        <!--МАФИЯ-->
+        <scene sceneID="6Ih-Sv-Z3u">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" id="Edk-1G-o7K" customClass="NightRolesViewController" customModule="Mafia" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3gl-hW-fOs"/>
+                        <viewControllerLayoutGuide type="bottom" id="muE-47-ETo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ito-U9-VPE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dea-xf-uua">
+                                <rect key="frame" x="0.0" y="64" width="375" height="551"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите действие" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBr-iz-kGu">
+                                        <rect key="frame" x="20" y="20" width="335" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20.5" id="6uV-bE-GbW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="67x-cz-uvQ">
+                                        <rect key="frame" x="20" y="66" width="335" height="183"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="183" id="syj-fV-WgC"/>
+                                        </constraints>
+                                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlayTableViewCell" textLabel="7JD-lN-6et" style="IBUITableViewCellStyleDefault" id="AJK-7Q-X23">
+                                                <rect key="frame" x="0.0" y="1" width="335" height="68"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AJK-7Q-X23" id="n5P-qo-uNY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="68"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7JD-lN-6et">
+                                                            <rect key="frame" x="15" y="0.0" width="305" height="68"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <sections/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Edk-1G-o7K" id="6QZ-4W-pRo"/>
+                                            <outlet property="delegate" destination="Edk-1G-o7K" id="Xo4-dJ-qI0"/>
+                                        </connections>
+                                    </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите роли" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsK-Y4-7fA">
+                                        <rect key="frame" x="20" y="302" width="335" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="d59-xT-3Af"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="UhK-jQ-KMk">
+                                        <rect key="frame" x="20" y="348" width="335" height="183"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="183" id="3DS-Jk-uml"/>
+                                        </constraints>
+                                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlayTableViewCell" textLabel="3bn-hU-JMb" style="IBUITableViewCellStyleDefault" id="IZB-fx-Lmo">
+                                                <rect key="frame" x="0.0" y="1" width="335" height="68"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IZB-fx-Lmo" id="zFv-XF-CRJ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="68"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3bn-hU-JMb">
+                                                            <rect key="frame" x="15" y="0.0" width="305" height="68"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <sections/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Edk-1G-o7K" id="eFU-Wr-Frd"/>
+                                            <outlet property="delegate" destination="Edk-1G-o7K" id="dxr-ef-VjO"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="wsK-Y4-7fA" firstAttribute="leading" secondItem="dea-xf-uua" secondAttribute="leading" constant="20" id="0a8-x7-SFH"/>
+                                    <constraint firstItem="uBr-iz-kGu" firstAttribute="top" secondItem="dea-xf-uua" secondAttribute="top" constant="20" id="DBe-ID-Yzj"/>
+                                    <constraint firstItem="UhK-jQ-KMk" firstAttribute="leading" secondItem="dea-xf-uua" secondAttribute="leading" constant="20" id="Flv-tO-NY7"/>
+                                    <constraint firstItem="67x-cz-uvQ" firstAttribute="top" secondItem="uBr-iz-kGu" secondAttribute="bottom" constant="25.5" id="Hjw-vc-l40"/>
+                                    <constraint firstItem="uBr-iz-kGu" firstAttribute="centerX" secondItem="dea-xf-uua" secondAttribute="centerX" id="IEh-1l-KIq"/>
+                                    <constraint firstItem="UhK-jQ-KMk" firstAttribute="centerX" secondItem="dea-xf-uua" secondAttribute="centerX" id="Mgu-n1-8Ym"/>
+                                    <constraint firstAttribute="trailing" secondItem="uBr-iz-kGu" secondAttribute="trailing" constant="20" id="RCk-Hy-neV"/>
+                                    <constraint firstAttribute="trailing" secondItem="wsK-Y4-7fA" secondAttribute="trailing" constant="20" id="Rt3-tg-dtA"/>
+                                    <constraint firstItem="uBr-iz-kGu" firstAttribute="leading" secondItem="dea-xf-uua" secondAttribute="leading" constant="20" id="T3U-rz-diy"/>
+                                    <constraint firstItem="67x-cz-uvQ" firstAttribute="leading" secondItem="dea-xf-uua" secondAttribute="leading" constant="20" id="Xpw-qq-34o"/>
+                                    <constraint firstAttribute="trailing" secondItem="UhK-jQ-KMk" secondAttribute="trailing" constant="20" id="YpX-jk-SMd"/>
+                                    <constraint firstItem="UhK-jQ-KMk" firstAttribute="top" secondItem="wsK-Y4-7fA" secondAttribute="bottom" constant="25" id="b1U-0q-meg"/>
+                                    <constraint firstAttribute="trailing" secondItem="67x-cz-uvQ" secondAttribute="trailing" constant="20" id="duU-JO-oGW"/>
+                                    <constraint firstItem="wsK-Y4-7fA" firstAttribute="top" secondItem="67x-cz-uvQ" secondAttribute="bottom" constant="53" id="kxI-s7-Ccg"/>
+                                    <constraint firstAttribute="bottom" secondItem="UhK-jQ-KMk" secondAttribute="bottom" constant="20" id="vCZ-rY-M2x"/>
+                                    <constraint firstItem="wsK-Y4-7fA" firstAttribute="centerX" secondItem="dea-xf-uua" secondAttribute="centerX" id="y0z-1Q-lnr"/>
+                                    <constraint firstItem="67x-cz-uvQ" firstAttribute="centerX" secondItem="dea-xf-uua" secondAttribute="centerX" id="yPa-KW-Mgh"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="muE-47-ETo" firstAttribute="top" secondItem="dea-xf-uua" secondAttribute="bottom" constant="52" id="2Qi-EB-F3x"/>
+                            <constraint firstAttribute="trailing" secondItem="dea-xf-uua" secondAttribute="trailing" id="EbL-n3-tdk"/>
+                            <constraint firstItem="dea-xf-uua" firstAttribute="top" secondItem="3gl-hW-fOs" secondAttribute="bottom" id="hHi-bs-FW7"/>
+                            <constraint firstItem="dea-xf-uua" firstAttribute="leading" secondItem="Ito-U9-VPE" secondAttribute="leading" id="xrh-KN-d72"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="МАФИЯ" id="7vq-jv-hCa">
+                        <barButtonItem key="leftBarButtonItem" title="Меню" id="PIB-d1-ogu">
+                            <color key="tintColor" red="0.59999999999999998" green="0.0039215686269999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="actionTableHeight" destination="syj-fV-WgC" id="f0Z-4A-udF"/>
+                        <outlet property="actionTableView" destination="67x-cz-uvQ" id="vga-zQ-H8C"/>
+                        <outlet property="mainView" destination="Ito-U9-VPE" id="ypW-eS-anw"/>
+                        <outlet property="menuButton" destination="PIB-d1-ogu" id="bDv-cY-dtL"/>
+                        <outlet property="playersTableHeight" destination="3DS-Jk-uml" id="AZa-vn-yYr"/>
+                        <outlet property="playersTableView" destination="UhK-jQ-KMk" id="8nS-XE-MBy"/>
+                        <segue destination="5X2-ja-wNb" kind="unwind" identifier="unwindToMainScreen" unwindAction="unwindCancelToMainScreenWithSender:" id="pDR-Co-Ydc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fnO-5r-XPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5X2-ja-wNb" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4892" y="731.78410794602701"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8Ms-O6-Enq">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YXO-97-q1W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" id="4gk-48-Fcq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Cgs-BQ-TKJ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.59999999999999998" green="0.0039215686269999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6aa-c2-dlx">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="Edk-1G-o7K" kind="relationship" relationship="rootViewController" id="XBg-mY-8hI"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="4070" y="732"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Bottom people" width="375" height="152"/>
@@ -962,8 +1125,6 @@
         <image name="Rectangle 3" width="343" height="75"/>
         <image name="Role icon sitizen" width="59" height="59"/>
         <image name="check" width="26" height="26"/>
-        <image name="icon 2" width="38" height="38"/>
-        <image name="icon 3" width="38" height="38"/>
         <image name="icon check point" width="33" height="32"/>
         <image name="icon little check point" width="33" height="32"/>
         <image name="icon ratin global big" width="8" height="15"/>
