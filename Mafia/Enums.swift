@@ -80,16 +80,67 @@ enum Role:Int, CustomStringConvertible {
             return "Адвокат"
         }
     }
+    
+    var roleNightActions:[ActionType]{
+        switch self {
+        case .Citizen:
+            return []
+        case .Doctor:
+            return [ActionType.Heal]
+        case .Mafia:
+            return [ActionType.MafiaKill]
+        case .Prostitute:
+            return [ActionType.ProstituteSilence]
+        case .Sherif:
+            return [ActionType.SherifCheck]
+        case .Undead:
+            return []
+        case .Don:
+            return [ActionType.DonCheck]
+        case .Maniac:
+            return [ActionType.ManiacKill, ActionType.ManiacSilence]
+        case .Yacuza:
+            return [ActionType.YacuzaKill]
+        case .Lawyer:
+            return [ActionType.LawyerGet]
+        }
+    }
 }
 
-enum ActionType {
-    case MafiaKill
-    case SherifCheck
-    case Heal
-    case CitizenKill
-    case ProstituteSilence
-    case ManiacKill
-    case DonCheck
-    case YacuzaKill
-    case LawyerGet
+enum ActionType:Int, CustomStringConvertible {
+    case MafiaKill = 0
+    case SherifCheck = 1
+    case Heal = 2
+    case CitizenKill = 3
+    case ProstituteSilence = 4
+    case ManiacKill = 5
+    case DonCheck = 6
+    case YacuzaKill = 7
+    case LawyerGet = 8
+    case ManiacSilence = 9
+
+    var description: String {
+        switch self {
+        case .MafiaKill:
+            return "убивает Мафия"
+        case .SherifCheck:
+            return "проверяет Комиссар"
+        case .Heal:
+            return "лечит Доктор"
+        case .CitizenKill:
+            return "убивают Мирные"
+        case .ProstituteSilence:
+            return "затыкает Путана"
+        case .ManiacKill:
+            return "убивает Маньяк"
+        case .DonCheck:
+            return "проверяет Дон"
+        case .YacuzaKill:
+            return "убивает Якудза"
+        case .LawyerGet:
+            return "защищает Адвокат"
+        case .ManiacSilence:
+            return "затыкает Маньяк"
+        }
+    }
 }
