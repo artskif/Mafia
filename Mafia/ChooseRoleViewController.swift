@@ -16,6 +16,7 @@ class ChooseRoleViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: - Свойства контроллера
 
     var choosedRole:Int?
+    var nameOfBackSegue:String?
     
     // MARK: - События контроллера
 
@@ -126,5 +127,7 @@ class ChooseRoleViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func chooseButton(_ sender: UIButton) {
         choosedRole = sender.tag
         chooseTableView.reloadData()
+        
+        self.performSegue(withIdentifier: self.nameOfBackSegue!, sender: self)
     }
 }

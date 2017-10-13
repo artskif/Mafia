@@ -812,7 +812,6 @@
                                                     <color key="tintColor" red="1" green="0.35589174639999999" blue="0.2884042268" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <action selector="chooseButton:" destination="pEc-ei-Lpq" eventType="touchUpInside" id="gPu-oW-fCl"/>
-                                                        <segue destination="n9y-9d-gBE" kind="unwind" unwindAction="unwindRolesToPlayerListWithSender:" id="pcD-IZ-OR6"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Заголовок" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRK-5k-Myw">
@@ -906,25 +905,21 @@
                     <navigationItem key="navigationItem" title="МАФИЯ" id="XUJ-sB-PoQ">
                         <barButtonItem key="leftBarButtonItem" title="Отмена" id="Ry8-I2-DSc">
                             <color key="tintColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="n9y-9d-gBE" kind="unwind" unwindAction="unwindCancelToPlayerListWithSender:" id="BRL-eA-kni"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" id="Qmf-Iz-Chg">
                             <color key="tintColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="n9y-9d-gBE" kind="unwind" unwindAction="unwindToPlayerListWithSender:" id="ZNH-8k-1cm"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="chooseTableView" destination="1RU-02-T9S" id="Bev-xh-WVQ"/>
+                        <segue destination="n9y-9d-gBE" kind="unwind" identifier="unwindRolesToNightPlayerList" unwindAction="unwindRolesToNightPlayerListWithSender:" id="pBz-XJ-W7S"/>
+                        <segue destination="n9y-9d-gBE" kind="unwind" identifier="unwindRolesToPlayerList" unwindAction="unwindRolesToPlayerListWithSender:" id="LWg-vn-MSE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKD-pR-DFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="n9y-9d-gBE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5671" y="-817"/>
+            <point key="canvasLocation" x="4900" y="1562"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TDD-eM-1Nv">
@@ -1018,6 +1013,7 @@
                                                     <outlet property="actionRoleImage" destination="Ewr-8b-YaR" id="YdJ-Ge-wQd"/>
                                                     <outlet property="chooseButton" destination="qk5-Fa-iXC" id="uAd-zI-Ur4"/>
                                                     <outlet property="nameLabel" destination="9By-Y6-Y8k" id="9mf-4N-INu"/>
+                                                    <segue destination="0zp-G1-1gg" kind="show" id="HD8-Xh-so0"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -1087,6 +1083,7 @@
                                                     <outlet property="chooseButton" destination="uP5-8D-dCJ" id="MoY-Pq-95C"/>
                                                     <outlet property="nameLabel" destination="EsM-0h-6SW" id="fUF-7e-JN4"/>
                                                     <outlet property="roleImage" destination="xdc-tI-31j" id="fxh-jy-vWA"/>
+                                                    <segue destination="pEc-ei-Lpq" kind="presentation" identifier="ShowRolesFromNight" id="oDS-m9-bvV"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -1146,15 +1143,43 @@
             </objects>
             <point key="canvasLocation" x="4892" y="731.78410794602701"/>
         </scene>
+        <!--МАФИЯ-->
+        <scene sceneID="lmz-PA-eae">
+            <objects>
+                <viewController id="0zp-G1-1gg" customClass="ActionChoosedViewController" customModule="Mafia" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tNB-Gh-rVe"/>
+                        <viewControllerLayoutGuide type="bottom" id="XQc-od-qoe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nys-Z6-jau">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="МАФИЯ" id="2pH-q7-ggt">
+                        <barButtonItem key="leftBarButtonItem" title="Назад" id="Htn-kK-sC0">
+                            <connections>
+                                <action selector="backButtonPush:" destination="0zp-G1-1gg" id="s8W-fh-CnX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backButton" destination="Htn-kK-sC0" id="aS3-Bk-SVQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vd7-vj-RX9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5834" y="732"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Ms-O6-Enq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YXO-97-q1W" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" id="4gk-48-Fcq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Cgs-BQ-TKJ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.59999999999999998" green="0.0039215686269999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.59999999999999998" green="0.0039215686269999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1168,6 +1193,7 @@
                         <segue destination="Edk-1G-o7K" kind="relationship" relationship="rootViewController" id="XBg-mY-8hI"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YXO-97-q1W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4070" y="732"/>
         </scene>
@@ -1184,6 +1210,7 @@
         <image name="icon ratin global big" width="8" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="0BP-Mc-r4R"/>
         <segue reference="M49-YN-jhb"/>
     </inferredMetricsTieBreakers>
 </document>

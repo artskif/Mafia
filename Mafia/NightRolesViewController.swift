@@ -45,6 +45,25 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
         super.didReceiveMemoryWarning()
     }
     
+    // Метод вызываемый непосредственно перед навигацией по контроллерам(служит для передачи данных между контроллерами)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        // обработка поведения нового контроллера в зависимости от того каким переходом(segue) мы пользуемся
+        switch(segue.identifier ?? "") {
+            
+        case "ShowRolesFromNight":
+        guard let сhooseRoleViewController = segue.destination as? ChooseRoleViewController else {
+            fatalError("Unexpected destination: \(segue.destination)")
+        }
+
+        сhooseRoleViewController.nameOfBackSegue = "unwindRolesToNightPlayerList"
+        
+        default:
+        break
+        }
+    }
+    
     // MARK: - Методы управления таблицей участников
     
     // Кличесто элементов в одной секции таблицы
@@ -135,5 +154,24 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
     // Определяем возможность редактировать таблицу участников
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
+    }
+    
+    // Выбрали роль на странице выбора ролей
+    @IBAction func unwindRolesToNightPlayerList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? ChooseRoleViewController{
+            
+            if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
+                // Обновляем пользователя в таблице
+                if let newRole = sourceViewController.choosedRole {
+                    game.setPlayerRole(at: selectedIndexPath.section, element: Role(rawValue: newRole)!)
+                    playersTableView.reloadRows(at: [selectedIndexPath], with: .none)
+                }
+            }
+            
+            // Сортируем участников игры
+            game.sortPlayers()
+            
+            playersTableView.reloadData()
+        }
     }
 }

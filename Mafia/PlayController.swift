@@ -85,6 +85,13 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             //    playerDetailViewController.editPlayer = selectedPlayer
             //}
             
+        case "ShowRoles": 
+            guard let сhooseRoleViewController = segue.destination as? ChooseRoleViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            сhooseRoleViewController.nameOfBackSegue = "unwindRolesToPlayerList"
+            
         default:
             break
         }
