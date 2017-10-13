@@ -14,6 +14,7 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var actionTableView: UITableView!
     @IBOutlet weak var playersTableView: UITableView!
+    @IBOutlet weak var topPlayersToActions: NSLayoutConstraint!
     @IBOutlet weak var topPlayersView: NSLayoutConstraint!
     @IBOutlet weak var actionTableHeight: NSLayoutConstraint!
     @IBOutlet weak var playersTableHeight: NSLayoutConstraint!
@@ -34,8 +35,9 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //actionView.removeFromSuperview()
-        //topPlayersView.priority = 1000
+        actionView.isHidden = true
+        topPlayersView.priority = 999
+        topPlayersToActions.priority = 900
         
         // Настраиваем кнопку меню
         menuButton.target = self.revealViewController()
@@ -188,20 +190,15 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
                 roleActions.append(contentsOf: r.value.roleNightActions)
             }
 
-            //self.view.addSubview(actionView)
+            actionView.isHidden = false
+            topPlayersView.priority = 900
+            topPlayersToActions.priority = 999
             
             actionTableView.reloadData()
             playersTableView.reloadData()
 
             actionTableHeight.constant = actionTableView.contentSize.height
             playersTableHeight.constant = playersTableView.contentSize.height
-            
-            //topPlayersView.priority = 900
-            //actionView.isHidden = false
-            //UIView.animate(withDuration: 1.0) { () -> Void in
-            //    self.actionView.isHidden = false
-            //}
-
         }
     }
 }

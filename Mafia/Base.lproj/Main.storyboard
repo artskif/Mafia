@@ -1132,7 +1132,7 @@
                                     <constraint firstItem="8oV-Nd-dPn" firstAttribute="top" secondItem="dea-xf-uua" secondAttribute="top" id="HyD-gI-J38"/>
                                     <constraint firstAttribute="trailing" secondItem="8oV-Nd-dPn" secondAttribute="trailing" id="K6M-qF-4EU"/>
                                     <constraint firstAttribute="trailing" secondItem="6cu-uS-tZW" secondAttribute="trailing" id="eIe-4s-cJ3"/>
-                                    <constraint firstItem="6cu-uS-tZW" firstAttribute="top" secondItem="8oV-Nd-dPn" secondAttribute="bottom" constant="1" id="eNd-AB-Uhn"/>
+                                    <constraint firstItem="6cu-uS-tZW" firstAttribute="top" secondItem="8oV-Nd-dPn" secondAttribute="bottom" priority="999" constant="1" id="eNd-AB-Uhn"/>
                                     <constraint firstItem="6cu-uS-tZW" firstAttribute="top" secondItem="dea-xf-uua" secondAttribute="top" priority="900" id="kua-fr-Ye1"/>
                                     <constraint firstItem="8oV-Nd-dPn" firstAttribute="centerX" secondItem="dea-xf-uua" secondAttribute="centerX" id="oaF-mI-oCy"/>
                                     <constraint firstAttribute="bottom" secondItem="6cu-uS-tZW" secondAttribute="bottom" id="vsN-gT-o6X"/>
@@ -1161,6 +1161,7 @@
                         <outlet property="playersTableHeight" destination="3DS-Jk-uml" id="AZa-vn-yYr"/>
                         <outlet property="playersTableView" destination="UhK-jQ-KMk" id="8nS-XE-MBy"/>
                         <outlet property="playersView" destination="6cu-uS-tZW" id="88a-de-4lO"/>
+                        <outlet property="topPlayersToActions" destination="eNd-AB-Uhn" id="HHv-UI-95T"/>
                         <outlet property="topPlayersView" destination="kua-fr-Ye1" id="cUQ-sR-cDb"/>
                         <segue destination="5X2-ja-wNb" kind="unwind" identifier="unwindToMainScreen" unwindAction="unwindCancelToMainScreenWithSender:" id="pDR-Co-Ydc"/>
                     </connections>
