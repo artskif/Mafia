@@ -14,9 +14,12 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var actionTableView: UITableView!
     @IBOutlet weak var playersTableView: UITableView!
+    @IBOutlet weak var topPlayersView: NSLayoutConstraint!
     @IBOutlet weak var actionTableHeight: NSLayoutConstraint!
     @IBOutlet weak var playersTableHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var playersView: UIView!
+    @IBOutlet weak var actionView: UIView!
     @IBOutlet weak var dayNightButton: UIBarButtonItem!
     @IBOutlet var mainView: UIView!
     
@@ -31,9 +34,18 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //actionView.removeFromSuperview()
+        //topPlayersView.priority = 1000
+        
         // Настраиваем кнопку меню
         menuButton.target = self.revealViewController()
         menuButton.action = Selector("revealToggle:")
+        
+        // Получаем активные действия
+        roleActions.removeAll()
+        for r in game.roles {
+            roleActions.append(contentsOf: r.value.roleNightActions)
+        }
         
     }
 
@@ -77,7 +89,6 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
             var numRoles: Int = 0
             for r in game.roles {
                 numRoles += Int(r.value.roleNightActions.count)
-                roleActions.append(contentsOf: r.value.roleNightActions)
             }
             
             return numRoles
@@ -170,8 +181,27 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
             
             // Сортируем участников игры
             game.sortPlayers()
+
+            // Получаем активные действия
+            roleActions.removeAll()
+            for r in game.roles {
+                roleActions.append(contentsOf: r.value.roleNightActions)
+            }
+
+            //self.view.addSubview(actionView)
             
+            actionTableView.reloadData()
             playersTableView.reloadData()
+
+            actionTableHeight.constant = actionTableView.contentSize.height
+            playersTableHeight.constant = playersTableView.contentSize.height
+            
+            //topPlayersView.priority = 900
+            //actionView.isHidden = false
+            //UIView.animate(withDuration: 1.0) { () -> Void in
+            //    self.actionView.isHidden = false
+            //}
+
         }
     }
 }

@@ -3,18 +3,7 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "NightRolesViewController.tableView(_:cellForRowAt:):NightRolesViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "cell">
-            </PersistentString>
-            <PersistentString
-               value = "cell.nameLabel">
-            </PersistentString>
-            <PersistentString
-               value = "game.roles">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "AddController.viewDidLoad() -&gt; ():AddController.swift">
       </ContextState>
       <ContextState
          contextName = "Player.encode(with : NSCoder) -&gt; ():Player.swift">
@@ -47,10 +36,10 @@
          contextName = "Player.init(coder : NSCoder) -&gt; Player?:Player.swift">
          <PersistentStrings>
             <PersistentString
-               value = "aDecoder.decodeObject(forKey: &quot;name&quot;)">
+               value = "aDecoder.decodeObject(forKey: &quot;rating&quot;)">
             </PersistentString>
             <PersistentString
-               value = "aDecoder.decodeObject(forKey: &quot;rating&quot;)">
+               value = "aDecoder.decodeObject(forKey: &quot;name&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -77,7 +66,7 @@
                value = "cell.roleLabel.text!.hasSufix(&quot;&#x41c;&#x435;&#x440;&#x442;&#x432;&quot;)">
             </PersistentString>
             <PersistentString
-               value = "cell.roleLabel.text">
+               value = "indexPath.row">
             </PersistentString>
             <PersistentString
                value = "indexPath.section">
@@ -86,18 +75,10 @@
                value = "game">
             </PersistentString>
             <PersistentString
+               value = "cell.roleLabel.text">
+            </PersistentString>
+            <PersistentString
                value = "player.name">
-            </PersistentString>
-            <PersistentString
-               value = "indexPath.row">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "PlayController.tableView(UITableView, commit : UITableViewCellEditingStyle, forRowAt : IndexPath) -&gt; ():PlayController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "playersTableView">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -106,6 +87,14 @@
          <PersistentStrings>
             <PersistentString
                value = "sender.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PlayController.tableView(UITableView, commit : UITableViewCellEditingStyle, forRowAt : IndexPath) -&gt; ():PlayController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "playersTableView">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -129,15 +118,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "AddController.prepare(for : UIStoryboardSegue, sender : Any?) -&gt; ():AddController.swift">
+      </ContextState>
+      <ContextState
          contextName = "PlayController.createAction(newAction : ActionType, cellRow : Int, ifState : DayNightState?) -&gt; ():PlayController.swift">
          <PersistentStrings>
             <PersistentString
                value = "ifState != nil &amp;&amp; game.state != ifState">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "AddController.prepare(for : UIStoryboardSegue, sender : Any?) -&gt; ():AddController.swift">
       </ContextState>
       <ContextState
          contextName = "NightRolesViewController.viewDidLoad():NightRolesViewController.swift">
@@ -156,6 +145,17 @@
             </PersistentString>
             <PersistentString
                value = "playersTableView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NightRolesViewController.numberOfSections(in:):NightRolesViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "roleActions">
+            </PersistentString>
+            <PersistentString
+               value = "game.roles">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -188,6 +188,14 @@
          <PersistentStrings>
             <PersistentString
                value = "game">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NightRolesViewController.unwindRolesToNightPlayerList(sender:):NightRolesViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "actionView">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -226,15 +234,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Game.checkEndOfGame() -&gt; Role?:Game.swift">
+         contextName = "ChooseRoleViewController.chooseButton(_:):ChooseRoleViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "PlayController.pushSherifCheck(UIButton) -&gt; ():PlayController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "sender.tag">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "Game.checkEndOfGame() -&gt; Role?:Game.swift">
       </ContextState>
       <ContextState
          contextName = "MenuTableViewController.prepare(for:sender:):MenuTableViewController.swift">
@@ -254,6 +257,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "PlayController.pushSherifCheck(UIButton) -&gt; ():PlayController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Game.init() -&gt; Game:Game.swift">
       </ContextState>
       <ContextState
@@ -265,7 +276,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AddController.viewDidLoad() -&gt; ():AddController.swift">
+         contextName = "NightRolesViewController.tableView(_:cellForRowAt:):NightRolesViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell">
+            </PersistentString>
+            <PersistentString
+               value = "roleActions">
+            </PersistentString>
+            <PersistentString
+               value = "cell.nameLabel">
+            </PersistentString>
+            <PersistentString
+               value = "game.roles">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>
