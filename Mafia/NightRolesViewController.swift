@@ -35,10 +35,6 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        actionView.isHidden = true
-        topPlayersView.priority = 999
-        topPlayersToActions.priority = 900
-        
         // Настраиваем кнопку меню
         menuButton.target = self.revealViewController()
         menuButton.action = Selector("revealToggle:")
@@ -47,6 +43,13 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
         roleActions.removeAll()
         for r in game.roles {
             roleActions.append(contentsOf: r.value.roleNightActions)
+        }
+        
+        // Скрываем действия игроков если таких нет
+        if (roleActions.count==0){
+            actionView.isHidden = true
+            topPlayersView.priority = 999
+            topPlayersToActions.priority = 900
         }
         
     }
@@ -190,9 +193,16 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
                 roleActions.append(contentsOf: r.value.roleNightActions)
             }
 
-            actionView.isHidden = false
-            topPlayersView.priority = 900
-            topPlayersToActions.priority = 999
+            // Скрываем или показываем действия игроков если таковые имеются
+            if (roleActions.count==0){
+                actionView.isHidden = true
+                topPlayersView.priority = 999
+                topPlayersToActions.priority = 900
+            } else {
+                actionView.isHidden = false
+                topPlayersView.priority = 900
+                topPlayersToActions.priority = 999
+            }
             
             actionTableView.reloadData()
             playersTableView.reloadData()
