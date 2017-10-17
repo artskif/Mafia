@@ -86,6 +86,51 @@ class Game {
         return newPlayers
     }
     
+    func getPlayersForAction(action: ActionType) -> [Player] {
+        var returnPlayers:[Player] = []
+        for player in _players {
+            if player.stateAlive == AliveState.Live {
+                switch action {
+                case ActionType.CitizenKill:
+                    returnPlayers.append(player)
+                case ActionType.DonCheck:
+                    if player.role != Role.Don && player.role != Role.Mafia {
+                        returnPlayers.append(player)
+                    }
+                case ActionType.Heal:
+                    returnPlayers.append(player)
+                case ActionType.LawyerGet:
+                    if player.role != Role.Lawyer {
+                        returnPlayers.append(player)
+                    }
+                case ActionType.MafiaKill:
+                    if player.role != Role.Don && player.role != Role.Mafia {
+                        returnPlayers.append(player)
+                    }
+                case ActionType.ManiacKill:
+                    if player.role != Role.Maniac {
+                        returnPlayers.append(player)
+                    }
+                case ActionType.ManiacSilence:
+                    returnPlayers.append(player)
+                case ActionType.ProstituteSilence:
+                    returnPlayers.append(player)
+                case ActionType.SherifCheck:
+                    if player.role != Role.Sherif {
+                        returnPlayers.append(player)
+                    }
+                case ActionType.YacuzaKill:
+                    if player.role != Role.Yacuza {
+                        returnPlayers.append(player)
+                    }
+                default:
+                    break
+                }
+            }
+        }
+        return returnPlayers
+    }
+    
     // Удаляем участника игры
     func removePlayer(at: Int) {
         self._players.remove(at: at)
@@ -207,9 +252,6 @@ class Game {
             }
         }
         
-        //if countMafia > 1 && countManiac > 1 {
-        //    return nil // Игра продолжается маньяк и мафия еще живы
-        //}
         if countMafia == countManiac && countCitizen < 1 {return Role.Maniac} // Маньяк победил
         if countMafia == countYacuza && countCitizen < 1 {return Role.Mafia} // Мафия победила
         if countManiac == countYacuza && countCitizen < 1 {return Role.Maniac} // Маньяк победил

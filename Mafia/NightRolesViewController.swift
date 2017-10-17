@@ -69,13 +69,21 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
         // обработка поведения нового контроллера в зависимости от того каким переходом(segue) мы пользуемся
         switch(segue.identifier ?? "") {
             
-        case "ShowRolesFromNight":
-        guard let сhooseRoleViewController = segue.destination as? ChooseRoleViewController else {
-            fatalError("Unexpected destination: \(segue.destination)")
-        }
-
-        сhooseRoleViewController.nameOfBackSegue = "unwindRolesToNightPlayerList"
-        
+        case "ShowRolesFromNight": // Показать роли для выбора роли
+            guard let сhooseRoleViewController = segue.destination as? ChooseRoleViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            сhooseRoleViewController.nameOfBackSegue = "unwindRolesToNightPlayerList"
+        case "ChoosePlayerForAction": // Показать игроков для выбора игрока
+            guard let actionChoosedViewController = segue.destination as? ActionChoosedViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            if let selectedIndexPath = actionTableView.indexPathForSelectedRow {
+                let selectedAction = roleActions[selectedIndexPath.section]
+                actionChoosedViewController.choosedAction = selectedAction
+            }
         default:
         break
         }
@@ -171,6 +179,8 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
+    
+    //MARK: - Обработка действий пользователя
     
     // Выбрали роль на странице выбора ролей
     @IBAction func unwindRolesToNightPlayerList(sender: UIStoryboardSegue) {

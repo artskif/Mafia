@@ -38,6 +38,7 @@
 		25FA28021E84FD8D00CDF81F /* ChooseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA28011E84FD8D00CDF81F /* ChooseTableViewCell.swift */; };
 		25FA28041E8A96D000CDF81F /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA28031E8A96D000CDF81F /* PopupViewController.swift */; };
 		25FA28061E8AD61000CDF81F /* RatingUtilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA28051E8AD61000CDF81F /* RatingUtilites.swift */; };
+		25FC16F41F95FA8600DC3A55 /* ActionPlayersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FC16F31F95FA8600DC3A55 /* ActionPlayersTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		25FA28011E84FD8D00CDF81F /* ChooseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTableViewCell.swift; sourceTree = "<group>"; };
 		25FA28031E8A96D000CDF81F /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		25FA28051E8AD61000CDF81F /* RatingUtilites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingUtilites.swift; sourceTree = "<group>"; };
+		25FC16F31F95FA8600DC3A55 /* ActionPlayersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPlayersTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				254E05151EC5B11B00ACF890 /* PlayTableViewCell.xib */,
 				252D4FFD1F8F8AC300CB5207 /* ActionsTableViewCell.swift */,
 				252D4FFF1F8FA1FF00CB5207 /* ChoosePlayerRoleTableViewCell.swift */,
+				25FC16F31F95FA8600DC3A55 /* ActionPlayersTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				25C8653D1E72968F00B8134B /* AppDelegate.swift in Sources */,
 				25605E571EF272430054F7F2 /* MafiaModel.xcdatamodeld in Sources */,
 				25FA28041E8A96D000CDF81F /* PopupViewController.swift in Sources */,
+				25FC16F41F95FA8600DC3A55 /* ActionPlayersTableViewCell.swift in Sources */,
 				25441DEC1F878F9600943412 /* ChooseRoleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
