@@ -252,7 +252,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szG-dh-KKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="FzV-ee-t8s" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4892" y="36"/>
+            <point key="canvasLocation" x="4871" y="-107"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="CvP-XR-Qwy">
@@ -444,13 +444,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="VNc-Gb-VXH"/>
                     <connections>
-                        <segue destination="Cvo-3B-IHr" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="FJg-0H-raC"/>
                         <segue destination="h28-CI-kYY" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="jFn-p4-F6f"/>
+                        <segue destination="4gk-48-Fcq" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="sM7-us-HSi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1jT-tP-bLJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2192.8000000000002" y="35.532233883058474"/>
+            <point key="canvasLocation" x="2145" y="-394"/>
         </scene>
         <!--Menu Table View Controller-->
         <scene sceneID="iAG-so-GWi">
@@ -478,7 +478,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Cvo-3B-IHr" kind="custom" identifier="continue_game" customClass="SWRevealViewControllerSeguePushController" id="04F-gc-sr6"/>
+                                    <segue destination="Cvo-3B-IHr" kind="custom" identifier="pushDayController" customClass="SWRevealViewControllerSeguePushController" id="04F-gc-sr6"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="settings" textLabel="97f-D9-EYe" style="IBUITableViewCellStyleDefault" id="QNw-sr-jLO">
@@ -514,9 +514,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="4gk-48-Fcq" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="vIA-e8-qaW"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="players" textLabel="CtA-Q1-eOQ" style="IBUITableViewCellStyleDefault" id="EAv-Ls-FET">
                                 <rect key="frame" x="0.0" y="160" width="375" height="44"/>
@@ -555,7 +552,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Cvo-3B-IHr" kind="custom" identifier="end_game" customClass="SWRevealViewControllerSeguePushController" id="M49-YN-jhb"/>
+                                    <segue destination="Cvo-3B-IHr" kind="custom" identifier="pushEndGameDayController" customClass="SWRevealViewControllerSeguePushController" id="M49-YN-jhb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -564,6 +561,9 @@
                             <outlet property="delegate" destination="h28-CI-kYY" id="oxw-6S-JNu"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="4gk-48-Fcq" kind="custom" identifier="pushNightController" customClass="SWRevealViewControllerSeguePushController" id="wF8-Cf-IkG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qw0-wr-DeG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="dZh-Nc-l1E" userLabel="Exit" sceneMemberID="exit"/>
@@ -573,7 +573,7 @@
         <!--Navigation Controller-->
         <scene sceneID="X2L-47-tzq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" id="Cvo-3B-IHr" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PlayController" automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" id="Cvo-3B-IHr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="SxL-RR-xZj">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -593,7 +593,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PT3-7p-nH4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4071" y="36"/>
+            <point key="canvasLocation" x="4116" y="-107"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A0N-vY-J4a">
@@ -919,7 +919,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKD-pR-DFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="n9y-9d-gBE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4900" y="1562"/>
+            <point key="canvasLocation" x="5758" y="-107"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TDD-eM-1Nv">
@@ -936,7 +936,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ttY-Xr-Cyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535" y="36"/>
+            <point key="canvasLocation" x="1361" y="-393"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="6Ih-Sv-Z3u">
@@ -1136,6 +1136,14 @@
                                     <constraint firstAttribute="bottom" secondItem="6cu-uS-tZW" secondAttribute="bottom" id="vsN-gT-o6X"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h29-Sd-9DV">
+                                <rect key="frame" x="130" y="629" width="115" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Наступает День"/>
+                                <connections>
+                                    <action selector="showDayButton:" destination="Edk-1G-o7K" eventType="touchUpInside" id="9GB-6a-xmR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1167,7 +1175,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnO-5r-XPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="5X2-ja-wNb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4892" y="731.78410794602701"/>
+            <point key="canvasLocation" x="4870" y="732"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="lmz-PA-eae">
@@ -1279,7 +1287,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YXO-97-q1W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4070" y="732"/>
+            <point key="canvasLocation" x="4116" y="732"/>
         </scene>
     </scenes>
     <resources>
@@ -1294,7 +1302,8 @@
         <image name="icon ratin global big" width="8" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oDS-m9-bvV"/>
-        <segue reference="M49-YN-jhb"/>
+        <segue reference="wF8-Cf-IkG"/>
+        <segue reference="0BP-Mc-r4R"/>
+        <segue reference="04F-gc-sr6"/>
     </inferredMetricsTieBreakers>
 </document>

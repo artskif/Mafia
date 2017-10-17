@@ -254,4 +254,23 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
         actionTableView.reloadData()
         
     }
+    
+    @IBAction func showDayButton(_ sender: Any) {
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PlayController") as! UINavigationController
+//        let  segue = SWRevealViewControllerSeguePushController.init(identifier: SWSegueRearIdentifier, source: self, destination: vc)
+//        segue.perform()
+        
+     //   self.revealViewController().performSegue(withIdentifier: "pushDayController", sender: self)
+        
+        if let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "PlayController") as? UINavigationController {
+
+            //let navController = UINavigationController(rootViewController: secondViewController)
+            //navController.setViewControllers([secondViewController], animated:true)
+            self.revealViewController().setFront(secondViewController, animated: true)
+
+        }
+        
+    }
+    
+    
 }
