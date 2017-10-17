@@ -14,6 +14,7 @@ class ActionChoosedViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var actionPlayersTable: UITableView!
+    @IBOutlet weak var actionLabel: UILabel!
     
     // MARK: - События контроллера
     
@@ -23,7 +24,10 @@ class ActionChoosedViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Определяем данные для заполнения таблицы
         actionPlayers = game.getPlayersForAction(action: choosedAction!)
+        
+        actionLabel.text = "Кого " + (choosedAction?.description)! + "?"
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +58,22 @@ class ActionChoosedViewController: UIViewController, UITableViewDataSource, UITa
         return headerView
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Удаляем для текущих пользователей все действия подобного типа
+        for p in self.actionPlayers {
+            p.removeAction(action: choosedAction!, turn: game.getCurrentTurnNumber())
+        }
+        
+        // А теперь для выбранного пользователя сохраняем имеющееся действие
+        let selectedPlayer = actionPlayers[indexPath.section]
+        selectedPlayer.addAction(action: choosedAction!, turn: game.getCurrentTurnNumber())
+        
+        
+        self.performSegue(withIdentifier: "ChoosedPlayer", sender: self)
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifer = "ActionPlayersTableViewCell"
@@ -64,6 +84,9 @@ class ActionChoosedViewController: UIViewController, UITableViewDataSource, UITa
         
         // Определяем дынные для заполнения ячейки таблицы
         let player = actionPlayers[indexPath.section]
+        if player.actionCheck(action: choosedAction!) {
+            cell.linkLabel.text = "Выбрано"
+        }
         
         cell.nameLabel.text = player.name
         
@@ -102,6 +125,9 @@ class ActionChoosedViewController: UIViewController, UITableViewDataSource, UITa
     //MARK: - Обработка действий пользователя
     
     @IBAction func backButtonPush(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "CancelChoose", sender: self)
+        
         self.navigationController?.popViewController(animated: true)
     }
     

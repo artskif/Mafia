@@ -226,7 +226,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     
     // Нажали кнопку редактировать игроков на странице Игры
     @IBAction func unwindAddPlayerFromPlayController(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? PlayController{
+        if let sourceViewController = sender.source as? PlayController {
             // Ничего не делаем
         }
     }

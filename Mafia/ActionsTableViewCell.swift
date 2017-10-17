@@ -12,9 +12,9 @@ class ActionsTableViewCell: UITableViewCell {
 
     // MARK: - Элементы управления ячейкой
     
-    @IBOutlet weak var chooseButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var actionRoleImage: UIImageView!
+    @IBOutlet weak var chooseButton: UILabel!
     
     // MARK: - События ячейки
     

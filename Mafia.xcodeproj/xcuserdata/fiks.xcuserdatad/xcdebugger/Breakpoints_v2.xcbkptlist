@@ -9,14 +9,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mafia/ActionChoosedViewController.swift"
-            timestampString = "529923199.19256"
+            filePath = "Mafia/NightRolesViewController.swift"
+            timestampString = "529931353.185141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "ActionChoosedViewController"
-            landmarkType = "3">
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "unwindActionPlayersToNightPlayerList(sender:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mafia/ActionChoosedViewController.swift"
-            timestampString = "529923199.19305"
+            filePath = "Mafia/NightRolesViewController.swift"
+            timestampString = "529931353.185517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -984,8 +984,8 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выбрать" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcn-kv-HCd">
-                                                                    <rect key="frame" x="258" y="23" width="69" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выбрать" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhf-0Y-4Qm">
+                                                                    <rect key="frame" x="249" y="24" width="69" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -993,16 +993,17 @@
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="Ewr-8b-YaR" firstAttribute="top" secondItem="n5P-qo-uNY" secondAttribute="topMargin" id="0fL-C2-pfm"/>
+                                                                <constraint firstItem="uhf-0Y-4Qm" firstAttribute="baseline" secondItem="9By-Y6-Y8k" secondAttribute="baseline" id="461-18-fib"/>
                                                                 <constraint firstItem="Ewr-8b-YaR" firstAttribute="centerY" secondItem="9By-Y6-Y8k" secondAttribute="centerY" id="61Q-T8-pHm"/>
                                                                 <constraint firstItem="Ewr-8b-YaR" firstAttribute="bottom" secondItem="n5P-qo-uNY" secondAttribute="bottomMargin" id="HYl-M5-Kza"/>
                                                                 <constraint firstItem="9By-Y6-Y8k" firstAttribute="leading" secondItem="Ewr-8b-YaR" secondAttribute="trailing" constant="15" id="PEP-oe-XME"/>
-                                                                <constraint firstItem="lcn-kv-HCd" firstAttribute="trailing" secondItem="n5P-qo-uNY" secondAttribute="trailingMargin" id="eUl-AG-qT4"/>
-                                                                <constraint firstItem="lcn-kv-HCd" firstAttribute="centerY" secondItem="Ewr-8b-YaR" secondAttribute="centerY" id="knO-Hi-sQg"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="uhf-0Y-4Qm" secondAttribute="trailing" constant="9" id="gXS-NI-uXO"/>
                                                                 <constraint firstItem="Ewr-8b-YaR" firstAttribute="leading" secondItem="n5P-qo-uNY" secondAttribute="leadingMargin" id="p4x-dO-gIR"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
                                                             <outlet property="actionRoleImage" destination="Ewr-8b-YaR" id="YdJ-Ge-wQd"/>
+                                                            <outlet property="chooseButton" destination="uhf-0Y-4Qm" id="wKD-CT-NuX"/>
                                                             <outlet property="nameLabel" destination="9By-Y6-Y8k" id="9mf-4N-INu"/>
                                                             <segue destination="0zp-G1-1gg" kind="show" identifier="ChoosePlayerForAction" id="HD8-Xh-so0"/>
                                                         </connections>
@@ -1181,7 +1182,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qan-qK-9Gt">
-                                <rect key="frame" x="16" y="72" width="343" height="575"/>
+                                <rect key="frame" x="16" y="127" width="343" height="520"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1204,7 +1205,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выбрать" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGX-3l-jx9">
-                                                    <rect key="frame" x="270" y="12" width="69" height="21"/>
+                                                    <rect key="frame" x="255" y="12" width="69" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1224,6 +1225,13 @@
                                     <outlet property="delegate" destination="0zp-G1-1gg" id="hQz-lL-4IC"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ночное действие" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIB-7c-Ifs">
+                                <rect key="frame" x="16" y="81" width="343" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1235,13 +1243,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="actionLabel" destination="zIB-7c-Ifs" id="Rlx-95-sSi"/>
                         <outlet property="actionPlayersTable" destination="qan-qK-9Gt" id="cNf-c6-CIJ"/>
                         <outlet property="backButton" destination="Htn-kK-sC0" id="aS3-Bk-SVQ"/>
+                        <segue destination="8QK-Rd-Ctz" kind="unwind" identifier="ChoosedPlayer" unwindAction="unwindActionPlayersToNightPlayerListWithSender:" id="3zU-fv-rxS"/>
+                        <segue destination="8QK-Rd-Ctz" kind="unwind" identifier="CancelChoose" unwindAction="unwindCancelToNightPlayerListWithSender:" id="bFe-sn-ZYK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vd7-vj-RX9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8QK-Rd-Ctz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5832.8000000000002" y="731.78410794602701"/>
+            <point key="canvasLocation" x="5759" y="732"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Ms-O6-Enq">

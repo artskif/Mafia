@@ -31,6 +31,7 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: - События контроллера
 
     var roleActions : [ActionType] = []
+    var chosedActions : [ActionType] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,7 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
             roleActions.append(contentsOf: r.value.roleNightActions)
         }
         
-        // Скрываем действия игроков если таких нет
+        // Скрываем действия игроков если активных ролей еще не выбрано
         if (roleActions.count==0){
             actionView.isHidden = true
             topPlayersView.priority = 999
@@ -134,6 +135,12 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
             
             let role = roleActions[indexPath.section]
             
+            if chosedActions.index(of: role) != nil {
+                cell.chooseButton.text = "Выбрано"
+            } else {
+                cell.chooseButton.text = "Выбрать"
+            }
+            
             cell.nameLabel?.text = role.description
             return cell
         } else {
@@ -220,5 +227,31 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
             actionTableHeight.constant = actionTableView.contentSize.height
             playersTableHeight.constant = playersTableView.contentSize.height
         }
+    }
+    
+    // Выбрали пользователя для ночного действия
+    @IBAction func unwindActionPlayersToNightPlayerList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? ActionChoosedViewController{
+            if chosedActions.index(of: sourceViewController.choosedAction!) == nil {
+                // Запоминаем выполненное над пользователем действие если таковое еще не производилось
+                chosedActions.append(sourceViewController.choosedAction!)
+            }
+            
+            // Снимаем выделение с выделенной ячейки
+            if let selectedIndexPath = actionTableView.indexPathForSelectedRow {
+                actionTableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
+            actionTableView.reloadData()
+        }
+    }
+    
+    // Отменили выбор пользователя для ночного действия
+    @IBAction func unwindCancelToNightPlayerList(sender: UIStoryboardSegue) {
+        // Снимаем выделение с выделенной ячейки
+        if let selectedIndexPath = actionTableView.indexPathForSelectedRow {
+            actionTableView.reloadRows(at: [selectedIndexPath], with: .none)
+        }
+        actionTableView.reloadData()
+        
     }
 }
