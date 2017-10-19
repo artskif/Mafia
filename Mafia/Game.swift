@@ -27,7 +27,7 @@ class Game {
     
     
     init(){
-        self.state = DayNightState.Day
+        self.state = DayNightState.Night
         self._players = []
         self.roles = [:]
         self.isStarted = false

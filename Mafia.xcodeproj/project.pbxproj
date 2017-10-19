@@ -44,6 +44,7 @@
 		25CA39311F98B2ED00F034AB /* SF-UI-Display-Thin_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 25CA39241F98A46200F034AB /* SF-UI-Display-Thin_0.ttf */; };
 		25CA39321F98B2ED00F034AB /* SF-UI-Display-Ultralight_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 25CA39231F98A45F00F034AB /* SF-UI-Display-Ultralight_0.ttf */; };
 		25CA39341F98C13E00F034AB /* DottedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CA39331F98C13E00F034AB /* DottedLineView.swift */; };
+		25CA39361F98DFED00F034AB /* MenuGlobalRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CA39351F98DFED00F034AB /* MenuGlobalRatingViewController.swift */; };
 		25F0E4441E8291B300B0F17B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F0E4431E8291B300B0F17B /* Game.swift */; };
 		25F0E4461E8291F100B0F17B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F0E4451E8291F100B0F17B /* Enums.swift */; };
 		25F0E44E1E82B6A100B0F17B /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F0E44D1E82B6A100B0F17B /* RatingTableViewCell.swift */; };
@@ -116,6 +117,7 @@
 		25CA39261F98A65200F034AB /* CLM45.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CLM45.ttf; sourceTree = "<group>"; };
 		25CA39271F98A65400F034AB /* CLM46.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CLM46.ttf; sourceTree = "<group>"; };
 		25CA39331F98C13E00F034AB /* DottedLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedLineView.swift; sourceTree = "<group>"; };
+		25CA39351F98DFED00F034AB /* MenuGlobalRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGlobalRatingViewController.swift; sourceTree = "<group>"; };
 		25F0E4431E8291B300B0F17B /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		25F0E4451E8291F100B0F17B /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		25F0E44D1E82B6A100B0F17B /* RatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				2565B53D1F8CDE0A00DDB9C9 /* MenuTableViewController.swift */,
 				252D676B1F8E0DB4009DC993 /* NightRolesViewController.swift */,
 				252D50011F8FA95300CB5207 /* ActionChoosedViewController.swift */,
+				25CA39351F98DFED00F034AB /* MenuGlobalRatingViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				25F0E4441E8291B300B0F17B /* Game.swift in Sources */,
 				25F0E4461E8291F100B0F17B /* Enums.swift in Sources */,
 				25C8653F1E72968F00B8134B /* StartController.swift in Sources */,
+				25CA39361F98DFED00F034AB /* MenuGlobalRatingViewController.swift in Sources */,
 				25C8656F1E76A1B500B8134B /* AddController.swift in Sources */,
 				25CA39341F98C13E00F034AB /* DottedLineView.swift in Sources */,
 				251221DA1ECF1A5400C626C3 /* ChooseRatingTableViewCell.swift in Sources */,

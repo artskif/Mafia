@@ -224,24 +224,40 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         
     }
     
+    // Сохраняем новых участников и переходим на экран игры
+    @IBAction func saveNewPlayers(_ sender: Any) {
+        game.clearPlayers() // сначала всех удаляем
+        newPlayers.removeAll()
+        
+        for selected in choosedUsers {
+            let newPlayer = playersForChoose[selected]
+            newPlayers.append(newPlayer)
+        }
+        
+        // Что бы каждый раз не обновлять роли добавляем игроков один раз
+        if newPlayers.count > 0 {
+            game.addPlayers(players: newPlayers)
+        }
+        
+        // Сортируем участников игры
+        game.sortPlayers()
+        
+        var nextController = ""
+        if game.state == DayNightState.Day {
+            nextController = "PlayController"
+        }else{
+            nextController = "NightController"
+        }
+        
+        if let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: nextController) as? UINavigationController {
+            self.revealViewController().setFront(secondViewController, animated: true)
+        }
+    }
+    
     // Нажали кнопку редактировать игроков на странице Игры
     @IBAction func unwindAddPlayerFromPlayController(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? PlayController {
             // Ничего не делаем
-        }
-    }
-    
-    // Нажали кнопку Cancel в навигационной панели страницы
-    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
-        // Обработка нажатия зависит от способа вызова контроллера (modal or push presentation), данные контроллер будет уничтожен 2 разными способами
-        let isPresentingInAddPlayerMode = presentingViewController is UINavigationController
-        
-        if isPresentingInAddPlayerMode {
-            dismiss(animated: true, completion: nil)
-        } else if let owningNavigationController = navigationController{
-            owningNavigationController.popViewController(animated: true)
-        } else {
-            fatalError("The AddController is not inside a navigation controller.")
         }
     }
     

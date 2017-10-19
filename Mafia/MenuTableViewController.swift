@@ -45,7 +45,7 @@ class MenuTableViewController: UITableViewController {
     
     // Количество секций в таблице
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 9
     }
     
     // Расстояние между ячейками(секциями)
@@ -72,7 +72,7 @@ class MenuTableViewController: UITableViewController {
     
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cells = ["back_to_game", "settings" , "rating" , "players" , "finish_game"]
+        let cells = ["back_to_game", "players" , "rating" , "settings" , "sinchronize" , "buy" , "send" , "help" , "finish_game"]
         let cell = tableView.dequeueReusableCell(withIdentifier: cells[indexPath.section], for: indexPath)
         
         return cell
