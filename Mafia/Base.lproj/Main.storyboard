@@ -11,6 +11,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="CLM45.ttf">
+            <string>ColiseumLightC</string>
+        </array>
         <array key="Helvetica.ttc">
             <string>Helvetica</string>
             <string>Helvetica-Bold</string>
@@ -29,27 +32,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bottom people" translatesAutoresizingMaskIntoConstraints="NO" id="Vdr-FM-k6h">
-                                <rect key="frame" x="0.0" y="493" width="375" height="174"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Vdr-FM-k6h" secondAttribute="height" multiplier="125:58" id="kVW-QX-1Ul"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rain" translatesAutoresizingMaskIntoConstraints="NO" id="10c-Su-GCD">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="599" id="04U-oY-lag"/>
-                                    <constraint firstAttribute="width" constant="375" id="Hgj-gP-y6X"/>
-                                    <constraint firstAttribute="width" secondItem="10c-Su-GCD" secondAttribute="height" multiplier="375:599" id="WuQ-Ug-BgP"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="uT1-E2-2DQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ooa-aY-LRU" userLabel="Начало игры">
-                                <rect key="frame" x="16" y="99" width="343" height="103"/>
+                                <rect key="frame" x="15.5" y="171" width="343" height="103"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ooa-aY-LRU" secondAttribute="height" multiplier="343:103" id="73R-a4-Ncy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <state key="normal" title="Новая игра" backgroundImage="Rectangle 3">
+                                <fontDescription key="fontDescription" name="ColiseumLightC" family="ColiseumLightC" pointSize="36"/>
+                                <state key="normal" title="Начать игру">
                                     <color key="titleColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -58,43 +50,51 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yj7-Q1-dJw" userLabel="Начало игры">
-                                <rect key="frame" x="16" y="205" width="343" height="103"/>
+                                <rect key="frame" x="15.5" y="282" width="343" height="103"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Yj7-Q1-dJw" secondAttribute="height" multiplier="343:103" id="Iqe-2d-imH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <state key="normal" title="Рейтинг" backgroundImage="Rectangle 3">
+                                <fontDescription key="fontDescription" name="ColiseumLightC" family="ColiseumLightC" pointSize="36"/>
+                                <state key="normal" title="Рейтинг">
                                     <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="g4X-Ma-46s" kind="show" id="4Cu-r5-uJN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Unv-7w-jPh" userLabel="Начало игры">
+                                <rect key="frame" x="15.5" y="393" width="343" height="103"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Unv-7w-jPh" secondAttribute="height" multiplier="343:103" id="aVH-cp-jdN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ColiseumLightC" family="ColiseumLightC" pointSize="36"/>
+                                <state key="normal" title="Настройки">
+                                    <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Vdr-FM-k6h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1MZ-sp-CEV"/>
-                            <constraint firstItem="Vdr-FM-k6h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5DU-gL-Wze"/>
-                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9lc-cw-JRI"/>
-                            <constraint firstItem="10c-Su-GCD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Agj-kv-ptg"/>
-                            <constraint firstItem="10c-Su-GCD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FLv-tv-3K9"/>
-                            <constraint firstItem="Ooa-aY-LRU" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="O4o-fZ-1SX"/>
-                            <constraint firstItem="Ooa-aY-LRU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="O7v-EM-b9V"/>
-                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Qk3-d8-k7b"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Vdr-FM-k6h" secondAttribute="bottom" id="TWz-Co-6ib"/>
-                            <constraint firstItem="Ooa-aY-LRU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UUS-xy-h51"/>
-                            <constraint firstAttribute="trailing" secondItem="Vdr-FM-k6h" secondAttribute="trailing" id="Vbu-gn-kqA"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="10c-Su-GCD" secondAttribute="bottom" constant="68" id="ZY2-VT-UP8"/>
-                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bTX-be-ncI"/>
-                            <constraint firstItem="Ooa-aY-LRU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="79" id="fEZ-Av-ef0"/>
-                            <constraint firstAttribute="trailing" secondItem="10c-Su-GCD" secondAttribute="trailing" id="meJ-0z-W8I"/>
-                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="top" secondItem="Ooa-aY-LRU" secondAttribute="bottom" constant="3" id="yUc-hG-wRV"/>
+                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="trailing" secondItem="Unv-7w-jPh" secondAttribute="trailing" id="7Dx-Wa-Hwj"/>
+                            <constraint firstItem="Ooa-aY-LRU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="151" id="BM1-0a-VIE"/>
+                            <constraint firstItem="uT1-E2-2DQ" firstAttribute="centerX" secondItem="Yj7-Q1-dJw" secondAttribute="centerX" id="Hfj-Se-op4"/>
+                            <constraint firstItem="uT1-E2-2DQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="RaQ-5H-v8w"/>
+                            <constraint firstItem="uT1-E2-2DQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TBO-dU-4zW"/>
+                            <constraint firstItem="uT1-E2-2DQ" firstAttribute="centerX" secondItem="Ooa-aY-LRU" secondAttribute="centerX" id="U6s-RJ-9pc"/>
+                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="leading" secondItem="Unv-7w-jPh" secondAttribute="leading" id="arb-Yx-unw"/>
+                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="top" secondItem="Ooa-aY-LRU" secondAttribute="bottom" constant="8" symbolic="YES" id="bQN-06-7DJ"/>
+                            <constraint firstItem="Unv-7w-jPh" firstAttribute="width" secondItem="Unv-7w-jPh" secondAttribute="height" multiplier="343:103" id="cRN-RU-qaI"/>
+                            <constraint firstAttribute="trailing" secondItem="uT1-E2-2DQ" secondAttribute="trailing" id="dDq-fQ-veA"/>
+                            <constraint firstItem="uT1-E2-2DQ" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="f8I-5M-PCh"/>
+                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="centerY" secondItem="uT1-E2-2DQ" secondAttribute="centerY" id="nbL-jo-6Re"/>
+                            <constraint firstItem="Ooa-aY-LRU" firstAttribute="leading" secondItem="Yj7-Q1-dJw" secondAttribute="leading" id="qBP-8a-dwo"/>
+                            <constraint firstItem="Unv-7w-jPh" firstAttribute="top" secondItem="Yj7-Q1-dJw" secondAttribute="bottom" constant="8" symbolic="YES" id="uUE-QB-bU8"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-801" y="36"/>
+            <point key="canvasLocation" x="-802.39999999999998" y="35.532233883058474"/>
         </scene>
         <!--Popup View Controller-->
         <scene sceneID="lsU-9O-bhE">
@@ -1291,11 +1291,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Bottom people" width="375" height="152"/>
         <image name="People rating icon" width="44" height="44"/>
         <image name="Rain" width="433" height="703"/>
-        <image name="Rectangle 3" width="343" height="75"/>
         <image name="Role icon sitizen" width="59" height="59"/>
+        <image name="bg" width="960" height="1704"/>
         <image name="check" width="26" height="26"/>
         <image name="icon check point" width="33" height="32"/>
         <image name="icon little check point" width="33" height="32"/>
