@@ -48,7 +48,7 @@
                                 </state>
                                 <connections>
                                     <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TZf-kF-WQj"/>
-                                    <segue destination="K7v-lS-eMm" kind="show" id="9M8-3P-prk"/>
+                                    <segue destination="ADQ-D9-1HD" kind="show" id="O1a-uM-0CP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yj7-Q1-dJw" userLabel="Начало игры">
@@ -134,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-802.39999999999998" y="35.532233883058474"/>
+            <point key="canvasLocation" x="647" y="-176"/>
         </scene>
         <!--Popup View Controller-->
         <scene sceneID="lsU-9O-bhE">
@@ -212,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ypI-oI-oZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-802" y="-678"/>
+            <point key="canvasLocation" x="6548" y="-620"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="3IL-xU-IR5">
@@ -292,7 +292,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szG-dh-KKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="FzV-ee-t8s" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4871" y="-107"/>
+            <point key="canvasLocation" x="4870" y="-940"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="CvP-XR-Qwy">
@@ -452,9 +452,6 @@
                     <navigationItem key="navigationItem" title="МАФИЯ" id="kW1-hf-RDV">
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" id="pG3-vD-Mwn">
                             <color key="tintColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="ADQ-D9-1HD" kind="show" identifier="AddButton" id="4qe-vO-Tda"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -467,7 +464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y38-Xb-jv6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="700" y="36"/>
+            <point key="canvasLocation" x="4870" y="509"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="dbj-tc-UsJ">
@@ -485,12 +482,12 @@
                     <navigationItem key="navigationItem" id="VNc-Gb-VXH"/>
                     <connections>
                         <segue destination="h28-CI-kYY" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="jFn-p4-F6f"/>
-                        <segue destination="4gk-48-Fcq" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="sM7-us-HSi"/>
+                        <segue destination="K7v-lS-eMm" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="z5b-k2-Ui4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1jT-tP-bLJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2145" y="-394"/>
+            <point key="canvasLocation" x="2202" y="-175"/>
         </scene>
         <!--Menu Table View Controller-->
         <scene sceneID="iAG-so-GWi">
@@ -572,7 +569,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="dZh-Nc-l1E" kind="unwind" unwindAction="unwindAddPlayerFromPlayControllerWithSender:" id="Njv-8e-6eg"/>
+                                    <segue destination="K7v-lS-eMm" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="KaB-mj-Enm"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="finish_game" textLabel="8gH-Xx-fF5" style="IBUITableViewCellStyleDefault" id="3cc-Ic-3zO">
@@ -606,9 +603,8 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qw0-wr-DeG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="dZh-Nc-l1E" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3122" y="-331"/>
+            <point key="canvasLocation" x="3022" y="-546"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X2L-47-tzq">
@@ -633,7 +629,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PT3-7p-nH4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4116" y="-107"/>
+            <point key="canvasLocation" x="4116" y="-940"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A0N-vY-J4a">
@@ -655,7 +651,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKA-9m-7c8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-38" y="36"/>
+            <point key="canvasLocation" x="4116" y="509"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="W2K-nK-Mu7">
@@ -795,7 +791,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdc-nN-2Ab" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="0Xm-RQ-06J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-55" y="941"/>
+            <point key="canvasLocation" x="2201" y="681"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xz7-jz-g8e">
@@ -817,7 +813,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbF-2i-LjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-802" y="942"/>
+            <point key="canvasLocation" x="1460" y="682"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="HQb-cx-q9d">
@@ -959,7 +955,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKD-pR-DFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="n9y-9d-gBE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5758" y="-107"/>
+            <point key="canvasLocation" x="5758" y="-940"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TDD-eM-1Nv">
@@ -976,7 +972,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ttY-Xr-Cyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1361" y="-393"/>
+            <point key="canvasLocation" x="1460" y="-176"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="6Ih-Sv-Z3u">
@@ -1215,7 +1211,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnO-5r-XPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="5X2-ja-wNb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4870" y="732"/>
+            <point key="canvasLocation" x="4870" y="-262"/>
         </scene>
         <!--МАФИЯ-->
         <scene sceneID="lmz-PA-eae">
@@ -1301,7 +1297,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vd7-vj-RX9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8QK-Rd-Ctz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5759" y="732"/>
+            <point key="canvasLocation" x="5758" y="-262"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Ms-O6-Enq">
@@ -1327,7 +1323,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YXO-97-q1W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4116" y="732"/>
+            <point key="canvasLocation" x="4116" y="-262"/>
         </scene>
     </scenes>
     <resources>
@@ -1341,8 +1337,8 @@
         <image name="icon ratin global big" width="8" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wF8-Cf-IkG"/>
-        <segue reference="0BP-Mc-r4R"/>
-        <segue reference="04F-gc-sr6"/>
+        <segue reference="oDS-m9-bvV"/>
+        <segue reference="KaB-mj-Enm"/>
+        <segue reference="M49-YN-jhb"/>
     </inferredMetricsTieBreakers>
 </document>
