@@ -32,17 +32,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="uT1-E2-2DQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="uT1-E2-2DQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ooa-aY-LRU" userLabel="Начало игры">
-                                <rect key="frame" x="15.5" y="171" width="343" height="103"/>
+                                <rect key="frame" x="16" y="213" width="343" height="62"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Ooa-aY-LRU" secondAttribute="height" multiplier="343:103" id="73R-a4-Ncy"/>
+                                    <constraint firstAttribute="height" constant="62" id="JE1-nZ-i33"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="62" id="W6c-QC-hZL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ColiseumLightC" family="ColiseumLightC" pointSize="36"/>
-                                <state key="normal" title="Начать игру">
-                                    <color key="titleColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="ColiseumLightC" family="ColiseumLightC" pointSize="28"/>
+                                <size key="titleShadowOffset" width="0.0" height="-1"/>
+                                <state key="normal" title="НАЧАТЬ ИГРУ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TZf-kF-WQj"/>
@@ -50,45 +52,83 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yj7-Q1-dJw" userLabel="Начало игры">
-                                <rect key="frame" x="15.5" y="282" width="343" height="103"/>
+                                <rect key="frame" x="16" y="302" width="343" height="62"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Yj7-Q1-dJw" secondAttribute="height" multiplier="343:103" id="Iqe-2d-imH"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="62" id="KPC-mH-2Sx"/>
+                                    <constraint firstAttribute="height" constant="62" id="e2M-Dv-pYd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ColiseumLightC" family="ColiseumLightC" pointSize="36"/>
-                                <state key="normal" title="Рейтинг">
-                                    <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="ColiseumLightC" family="ColiseumLightC" pointSize="28"/>
+                                <state key="normal" title="РЕЙТИНГ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="g4X-Ma-46s" kind="show" id="4Cu-r5-uJN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Unv-7w-jPh" userLabel="Начало игры">
-                                <rect key="frame" x="15.5" y="393" width="343" height="103"/>
+                                <rect key="frame" x="16" y="391" width="343" height="62"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Unv-7w-jPh" secondAttribute="height" multiplier="343:103" id="aVH-cp-jdN"/>
+                                    <constraint firstAttribute="height" constant="62" id="G4f-FZ-Qfk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ColiseumLightC" family="ColiseumLightC" pointSize="36"/>
-                                <state key="normal" title="Настройки">
-                                    <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="ColiseumLightC" family="ColiseumLightC" pointSize="28"/>
+                                <state key="normal" title="НАСТРОЙКИ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ou-2n-4EZ" customClass="DottedLineView" customModule="Mafia" customModuleProvider="target">
+                                <rect key="frame" x="76.5" y="372" width="222" height="11"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="222" id="B5n-td-HWV"/>
+                                    <constraint firstAttribute="height" constant="11" id="WJ3-aP-Kul"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="round" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TB2-fe-kQZ" customClass="DottedLineView" customModule="Mafia" customModuleProvider="target">
+                                <rect key="frame" x="76" y="283" width="222" height="11"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="222" id="DNU-VH-Pdf"/>
+                                    <constraint firstAttribute="height" constant="11" id="gA8-9H-jTE"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="round" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="trailing" secondItem="Unv-7w-jPh" secondAttribute="trailing" id="7Dx-Wa-Hwj"/>
-                            <constraint firstItem="Ooa-aY-LRU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="151" id="BM1-0a-VIE"/>
-                            <constraint firstItem="uT1-E2-2DQ" firstAttribute="centerX" secondItem="Yj7-Q1-dJw" secondAttribute="centerX" id="Hfj-Se-op4"/>
+                            <constraint firstItem="2ou-2n-4EZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Rh-pS-xu7"/>
+                            <constraint firstItem="TB2-fe-kQZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BTf-BN-K5P"/>
+                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="leading" secondItem="Unv-7w-jPh" secondAttribute="leading" id="Dgh-0X-n19"/>
+                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="trailing" secondItem="Unv-7w-jPh" secondAttribute="trailing" id="HlO-Ws-gTC"/>
+                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="centerY" secondItem="uT1-E2-2DQ" secondAttribute="centerY" id="IOe-9b-Xwf"/>
+                            <constraint firstItem="TB2-fe-kQZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ilh-Ai-34i"/>
+                            <constraint firstItem="2ou-2n-4EZ" firstAttribute="top" secondItem="Yj7-Q1-dJw" secondAttribute="bottom" constant="8" symbolic="YES" id="ORC-LC-JZB"/>
                             <constraint firstItem="uT1-E2-2DQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="RaQ-5H-v8w"/>
+                            <constraint firstItem="TB2-fe-kQZ" firstAttribute="centerX" secondItem="uT1-E2-2DQ" secondAttribute="centerX" id="RkH-Ar-hQL"/>
                             <constraint firstItem="uT1-E2-2DQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TBO-dU-4zW"/>
-                            <constraint firstItem="uT1-E2-2DQ" firstAttribute="centerX" secondItem="Ooa-aY-LRU" secondAttribute="centerX" id="U6s-RJ-9pc"/>
-                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="leading" secondItem="Unv-7w-jPh" secondAttribute="leading" id="arb-Yx-unw"/>
-                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="top" secondItem="Ooa-aY-LRU" secondAttribute="bottom" constant="8" symbolic="YES" id="bQN-06-7DJ"/>
-                            <constraint firstItem="Unv-7w-jPh" firstAttribute="width" secondItem="Unv-7w-jPh" secondAttribute="height" multiplier="343:103" id="cRN-RU-qaI"/>
+                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="top" secondItem="TB2-fe-kQZ" secondAttribute="bottom" constant="8" symbolic="YES" id="Uy6-rU-744"/>
                             <constraint firstAttribute="trailing" secondItem="uT1-E2-2DQ" secondAttribute="trailing" id="dDq-fQ-veA"/>
+                            <constraint firstItem="Ooa-aY-LRU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="dNM-Rb-OcR"/>
                             <constraint firstItem="uT1-E2-2DQ" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="f8I-5M-PCh"/>
-                            <constraint firstItem="Yj7-Q1-dJw" firstAttribute="centerY" secondItem="uT1-E2-2DQ" secondAttribute="centerY" id="nbL-jo-6Re"/>
-                            <constraint firstItem="Ooa-aY-LRU" firstAttribute="leading" secondItem="Yj7-Q1-dJw" secondAttribute="leading" id="qBP-8a-dwo"/>
-                            <constraint firstItem="Unv-7w-jPh" firstAttribute="top" secondItem="Yj7-Q1-dJw" secondAttribute="bottom" constant="8" symbolic="YES" id="uUE-QB-bU8"/>
+                            <constraint firstItem="TB2-fe-kQZ" firstAttribute="top" secondItem="Ooa-aY-LRU" secondAttribute="bottom" constant="8" symbolic="YES" id="gh5-5v-GLg"/>
+                            <constraint firstItem="Ooa-aY-LRU" firstAttribute="centerX" secondItem="TB2-fe-kQZ" secondAttribute="centerX" id="nMD-Po-FWr"/>
+                            <constraint firstItem="Ooa-aY-LRU" firstAttribute="leading" secondItem="Yj7-Q1-dJw" secondAttribute="leading" id="u8D-sI-6wR"/>
+                            <constraint firstItem="Ooa-aY-LRU" firstAttribute="trailing" secondItem="Yj7-Q1-dJw" secondAttribute="trailing" id="vtT-4H-O3I"/>
+                            <constraint firstItem="Unv-7w-jPh" firstAttribute="top" secondItem="2ou-2n-4EZ" secondAttribute="bottom" constant="8" symbolic="YES" id="zap-2c-KoI"/>
                         </constraints>
                     </view>
                 </viewController>
