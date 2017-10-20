@@ -111,15 +111,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         // Вешаем обработчики событий на кнопки
-        cell.killButton.addTarget(self, action: #selector(pushMafiaKill), for: UIControlEvents.touchUpInside)
-        cell.healButton.addTarget(self, action: #selector(pushDoctorHeal), for: UIControlEvents.touchUpInside)
-        cell.checkButton.addTarget(self, action: #selector(pushSherifCheck), for: UIControlEvents.touchUpInside)
-        cell.silenceButton.addTarget(self, action: #selector(pushProstituteSilence), for: UIControlEvents.touchUpInside)
-        cell.donmaffiaButton.addTarget(self, action: #selector(pushDonMaffia), for: UIControlEvents.touchUpInside)
-        cell.maniacButton.addTarget(self, action: #selector(pushManiacKill), for: UIControlEvents.touchUpInside)
-        cell.yacuzaButton.addTarget(self, action: #selector(pushYacuzaKill), for: UIControlEvents.touchUpInside)
-        cell.lawerButton.addTarget(self, action: #selector(pushLawyerGet), for: UIControlEvents.touchUpInside)
-        
+        cell.killButton.addTarget(self, action: #selector(pushCitizenKill), for: UIControlEvents.touchUpInside)
         
         // Определяем дынные для заполнения ячейки таблицы
         let player = game.getPlayer(at: indexPath.section)
@@ -127,17 +119,9 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Заполняем рейтинг ячейки
         let sum = player.currentRating.reduce(0, { x, y in x + y})
         cell.currentRating.text = "\(sum < 1 ? 1 : sum)"
-        cell.globalRating.text = "\(player.rating)"
         
         // Заполним данные для кнопок
         cell.killButton.tag = indexPath.section
-        cell.healButton.tag = indexPath.section
-        cell.checkButton.tag = indexPath.section
-        cell.silenceButton.tag = indexPath.section
-        cell.donmaffiaButton.tag = indexPath.section
-        cell.maniacButton.tag = indexPath.section
-        cell.yacuzaButton.tag = indexPath.section
-        cell.lawerButton.tag = indexPath.section
         cell.nameLabel.text = player.name
         cell.numberLaber.text = "\(indexPath.section + 1)"
         cell.killImage.isHidden = true
@@ -171,14 +155,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.killImage.isHidden = false
             cell.isUserInteractionEnabled = false
 
-            cell.healButton.isHidden = true
-            cell.checkButton.isHidden = true
-            cell.silenceButton.isHidden = true
             cell.killButton.isHidden = true
-            cell.maniacButton.isHidden = true
-            cell.donmaffiaButton.isHidden = true
-            cell.yacuzaButton.isHidden = true
-            cell.lawerButton.isHidden = true
             
             return cell
         } else {
@@ -186,14 +163,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         if game.state == DayNightState.Day { // Что показываем в ячейке Днем
-            cell.healButton.isHidden = true
-            cell.checkButton.isHidden = true
-            cell.silenceButton.isHidden = true
-            cell.donmaffiaButton.isHidden = true
-            cell.maniacButton.isHidden = true
-            cell.yacuzaButton.isHidden = true
-            cell.lawerButton.isHidden = true
-            cell.killButton.isHidden = game.roles[Role.Mafia.rawValue] == nil && game.roles[Role.Yacuza.rawValue] == nil && game.roles[Role.Don.rawValue] == nil && game.roles[Role.Maniac.rawValue] == nil
+            cell.killButton.isHidden = false
             
             // Отрисовываем нажатие кнопки "Убить"
             if player.actionCheck(action: ActionType.CitizenKill) {
@@ -201,71 +171,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             } else {
                 cell.killButton.alpha = 0.3
             }
-        } else { // А тут далее то что у нас показывается в ячейке ночью
-            // Отрисовываем нажатие кнопки "Полечить"
-            if player.actionCheck(action: ActionType.Heal) {
-                cell.healButton.alpha = 1
-            } else {
-                cell.healButton.alpha = 0.3
-            }
-            
-            // Отрисовываем нажатие кнопки "Убить"
-            if player.actionCheck(action: ActionType.MafiaKill) {
-                cell.killButton.alpha = 1
-            } else {
-                cell.killButton.alpha = 0.3
-            }
-            
-            // Отрисовываем нажатие кнопки "Заткнули"
-            if player.actionCheck(action: ActionType.ProstituteSilence) {
-                cell.silenceButton.alpha = 1
-            } else {
-                cell.silenceButton.alpha = 0.3
-            }
-            
-            // Отрисовываем нажатие кнопки "Проверили Комиссаром"
-            if player.actionCheck(action: ActionType.SherifCheck) {
-                cell.checkButton.alpha = 1
-            } else {
-                cell.checkButton.alpha = 0.3
-            }
-
-            // Отрисовываем нажатие кнопки "Убил маньяк"
-            if player.actionCheck(action: ActionType.ManiacKill) {
-                cell.maniacButton.alpha = 1
-            } else {
-                cell.maniacButton.alpha = 0.3
-            }
-
-            // Отрисовываем нажатие кнопки "Проверили Доном"
-            if player.actionCheck(action: ActionType.DonCheck) {
-                cell.donmaffiaButton.alpha = 1
-            } else {
-                cell.donmaffiaButton.alpha = 0.3
-            }
-
-            // Отрисовываем нажатие кнопки "Убили Якудза"
-            if player.actionCheck(action: ActionType.YacuzaKill) {
-                cell.yacuzaButton.alpha = 1
-            } else {
-                cell.yacuzaButton.alpha = 0.3
-            }
-
-            // Отрисовываем нажатие кнопки "Адвокат алиби"
-            if player.actionCheck(action: ActionType.LawyerGet) {
-                cell.lawerButton.alpha = 1
-            } else {
-                cell.lawerButton.alpha = 0.3
-            }
-
-            cell.healButton.isHidden = game.roles[Role.Doctor.rawValue] == nil
-            cell.maniacButton.isHidden = game.roles[Role.Maniac.rawValue] == nil || player.role == Role.Maniac
-            cell.donmaffiaButton.isHidden = game.roles[Role.Don.rawValue] == nil || player.role == Role.Mafia || player.role == Role.Don
-            cell.checkButton.isHidden = game.roles[Role.Sherif.rawValue] == nil || player.role == Role.Sherif
-            cell.silenceButton.isHidden = game.roles[Role.Prostitute.rawValue] == nil && game.roles[Role.Maniac.rawValue] == nil
-            cell.killButton.isHidden = (game.roles[Role.Mafia.rawValue] == nil && game.roles[Role.Don.rawValue] == nil) || player.role == Role.Mafia || player.role == Role.Don
-            cell.yacuzaButton.isHidden = game.roles[Role.Yacuza.rawValue] == nil || player.role == Role.Yacuza
-            cell.lawerButton.isHidden = game.roles[Role.Lawyer.rawValue] == nil || player.role == Role.Lawyer
         }
 
         return cell
@@ -317,46 +222,11 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // Нажали кнопку "Мафия убивает" в таблице
-    func pushMafiaKill(_ sender: UIButton) {
+    func pushCitizenKill(_ sender: UIButton) {
         // Если днем убили то горожане(с мафией) если ночью то мафия
-        let actionType = game.state == DayNightState.Day ? ActionType.CitizenKill : ActionType.MafiaKill
+        let actionType = ActionType.CitizenKill
         
         self.createAction(newAction: actionType, cellRow: sender.tag)
-    }
-    
-    // Нажали кнопку "Доктор вылечил" в таблице
-    @IBAction func pushDoctorHeal(_ sender: UIButton) {
-        self.createAction(newAction: ActionType.Heal, cellRow: sender.tag, ifState: DayNightState.Night)
-    }
-
-    // Нажали кнопку "Якудза убила" в таблице
-    @IBAction func pushYacuzaKill(_ sender: UIButton) {
-        self.createAction(newAction: ActionType.YacuzaKill, cellRow: sender.tag, ifState: DayNightState.Night)
-    }
-
-    // Нажали кнопку "Адвокат дал алиби" в таблице
-    @IBAction func pushLawyerGet(_ sender: UIButton) {
-        self.createAction(newAction: ActionType.LawyerGet, cellRow: sender.tag, ifState: DayNightState.Night)
-    }
-
-    // Нажали кнопку "Комисар проверил" в таблице
-    @IBAction func pushSherifCheck(_ sender: UIButton) {
-        self.createAction(newAction: ActionType.SherifCheck, cellRow: sender.tag, ifState: DayNightState.Night)
-    }
-    
-    // Нажали кнопку "Проститутка заткнула" в таблице
-    @IBAction func pushProstituteSilence(_ sender: UIButton) {
-        self.createAction(newAction: ActionType.ProstituteSilence, cellRow: sender.tag, ifState: DayNightState.Night)
-    }
-
-    // Нажали кнопку "Проверил дон мафии" в таблице
-    @IBAction func pushDonMaffia(_ sender: UIButton) {
-        self.createAction(newAction: ActionType.DonCheck, cellRow: sender.tag, ifState: DayNightState.Night)
-    }
-
-    // Нажали кнопку "Маньяк убивает" в таблице
-    @IBAction func pushManiacKill(_ sender: UIButton) {
-        self.createAction(newAction: ActionType.ManiacKill, cellRow: sender.tag, ifState: DayNightState.Night)
     }
 
     // Нажали кнопку "Смена дня и ночи" в панели инструментов
