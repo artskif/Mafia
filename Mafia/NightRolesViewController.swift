@@ -79,6 +79,10 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
             guard let сhooseRoleViewController = segue.destination as? ChooseRoleViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
+            if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
+                let selectedPlayer = game.getPlayer(at: selectedIndexPath.section)
+                сhooseRoleViewController.choosedRole = selectedPlayer.role.rawValue
+            }
             
             сhooseRoleViewController.nameOfBackSegue = "unwindRolesToNightPlayerList"
         case "ChoosePlayerForAction": // Показать игроков для выбора игрока

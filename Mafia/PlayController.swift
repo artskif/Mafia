@@ -67,8 +67,12 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
-            сhooseRoleViewController.nameOfBackSegue = "unwindRolesToPlayerList"
+            if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
+                let selectedPlayer = game.getPlayer(at: selectedIndexPath.section)
+                сhooseRoleViewController.choosedRole = selectedPlayer.role.rawValue
+            }
             
+            сhooseRoleViewController.nameOfBackSegue = "unwindRolesToPlayerList"
         default:
             break
         }
@@ -147,7 +151,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         case .Yacuza:
             cell.roleImage.image = UIImage(named: "Role icon yacuza")
         case .Lawyer:
-            cell.roleImage.image = UIImage(named: "Role icon loyer")
+            cell.roleImage.image = UIImage(named: "Lawyer")
         }
                 
         // Ячейка мертвого пользователя

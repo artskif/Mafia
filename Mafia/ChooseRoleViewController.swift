@@ -44,7 +44,7 @@ class ChooseRoleViewController: UIViewController, UITableViewDataSource, UITable
     
     // Расстояние между ячейками(секциями)
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0
     }
     
     // Описываем состояние заголовка секции
@@ -72,13 +72,20 @@ class ChooseRoleViewController: UIViewController, UITableViewDataSource, UITable
         
         let currentRole = Role(rawValue: indexPath.section)!
         
-        // Визуальное оформление ячейки
-        let bgColor = UIColor(rgb: 0xE8E8E8, alpha: 0.6).cgColor
-        cellRole.layer.backgroundColor = bgColor
+        // Визуально оформляем ячейку
+        cellRole.layer.cornerRadius = 0
+        let evenColor = UIColor(rgb: 0xB88E8E, alpha: 0.1).cgColor
+        let oddColor = UIColor(rgb: 0xB88E8E, alpha: 0).cgColor
+        
+        // Разноцвет между соседними ячейками
+        if indexPath.section % 2 == 0 {
+            cellRole.layer.backgroundColor = oddColor
+        } else {
+            cellRole.layer.backgroundColor = evenColor
+        }
         
         // Данные ячейки
         cellRole.cellName.text = currentRole.title
-        cellRole.descriptionLabel.text = currentRole.description
         cellRole.checkButton.isHidden = true
         cellRole.chooseButton.tag = indexPath.section
         cellRole.chooseButton.isEnabled = true
@@ -86,25 +93,25 @@ class ChooseRoleViewController: UIViewController, UITableViewDataSource, UITable
         // Меняем иконку текущей роли игрока
         switch currentRole {
         case .Citizen:
-            cellRole.roleImage.image = UIImage(named: "Role icon sitizen")
+            cellRole.roleImage.image = UIImage(named: "Citizen")
         case .Doctor:
-            cellRole.roleImage.image = UIImage(named: "Role icon medic")
+            cellRole.roleImage.image = UIImage(named: "Doctor")
         case .Mafia:
-            cellRole.roleImage.image = UIImage(named: "Role icon mafia")
+            cellRole.roleImage.image = UIImage(named: "Mafia")
         case .Don:
-            cellRole.roleImage.image = UIImage(named: "Role icon don maffia")
+            cellRole.roleImage.image = UIImage(named: "Don")
         case .Maniac:
-            cellRole.roleImage.image = UIImage(named: "Role icon maniac")
+            cellRole.roleImage.image = UIImage(named: "Maniac")
         case .Prostitute:
-            cellRole.roleImage.image = UIImage(named: "Role icon putana")
+            cellRole.roleImage.image = UIImage(named: "Putana")
         case .Sherif:
-            cellRole.roleImage.image = UIImage(named: "Role icon sheriff")
+            cellRole.roleImage.image = UIImage(named: "Sheriff")
         case .Undead:
-            cellRole.roleImage.image = UIImage(named: "Role icon undead")
+            cellRole.roleImage.image = UIImage(named: "Undead")
         case .Yacuza:
-            cellRole.roleImage.image = UIImage(named: "Role icon yacuza")
+            cellRole.roleImage.image = UIImage(named: "Yakudza")
         case .Lawyer:
-            cellRole.roleImage.image = UIImage(named: "Role icon loyer")
+            cellRole.roleImage.image = UIImage(named: "Lawyer")
         }
         
         if let currentChoosedRole = choosedRole {
