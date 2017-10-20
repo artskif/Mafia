@@ -38,7 +38,7 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
     
     // Расстояние между ячейками(секциями)
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0
     }
 
     // Кличесто элементов в одной секции таблицы
@@ -68,9 +68,9 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
         let account = game.accounts[indexPath.section]
         
         // Визуально оформляем ячейку
-        cell.layer.cornerRadius = 8
-        let evenColor = UIColor(rgb: 0xD8D8D8, alpha: 0.1).cgColor
-        let oddColor = UIColor(rgb: 0xD8D8D8, alpha: 0.4).cgColor
+        cell.layer.cornerRadius = 0
+        let evenColor = UIColor(rgb: 0xB88E8E, alpha: 0.1).cgColor
+        let oddColor = UIColor(rgb: 0xB88E8E, alpha: 0).cgColor
         
         if indexPath.section % 2 == 0 {
             cell.layer.backgroundColor = oddColor
@@ -106,6 +106,4 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
         
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
 }

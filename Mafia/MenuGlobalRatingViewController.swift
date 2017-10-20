@@ -22,6 +22,7 @@ class MenuGlobalRatingViewController: UIViewController {
         // Настраиваем кнопку меню
         menuButton.target = self.revealViewController()
         menuButton.action = Selector("revealToggle:")
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navbar_bg_dark"), for: .default)
     }
 
     override func didReceiveMemoryWarning() {
