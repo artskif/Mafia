@@ -58,8 +58,11 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
 
         // Включить кнопку Add только если контроллер содержит валидные данные для сохранения
         updateAddButtonState()
+       
         
-        chooseTableView.rowHeight = 50.0
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navbar_bg_dark"), for: .default)
+        
+        chooseTableView.rowHeight = 44.0
     }
     
     override func didReceiveMemoryWarning() {
@@ -110,7 +113,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
     
     // Расстояние между ячейками(секциями)
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0
     }
     
     // Описываем состояние заголовка секции
@@ -134,9 +137,9 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         }
         
         // Визуально оформляем ячейку
-        cell.layer.cornerRadius = 8
-        let evenColor = UIColor(rgb: 0xD8D8D8, alpha: 0.1).cgColor
-        let oddColor = UIColor(rgb: 0xD8D8D8, alpha: 0.4).cgColor
+        cell.layer.cornerRadius = 0
+        let evenColor = UIColor(rgb: 0xB88E8E, alpha: 0.1).cgColor
+        let oddColor = UIColor(rgb: 0xB88E8E, alpha: 0).cgColor
         
         // Разноцвет между соседними ячейками
         if indexPath.section % 2 == 0 {
