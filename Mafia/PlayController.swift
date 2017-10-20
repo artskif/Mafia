@@ -14,7 +14,7 @@ import os.log
 //
 class PlayController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    // MARK: - Элементы управления контроллера
+    // MARK: - Свойства контроллера
     
     @IBOutlet weak var playersTableView: UITableView!
     @IBOutlet weak var dayNightButton: UIBarButtonItem!
@@ -23,11 +23,11 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var itemDayNightToolbar: UIBarButtonItem!
     @IBOutlet weak var bottomToolbar: UIToolbar!
-    
-    // MARK: - События контроллера
-    
+
     var endGame = false // флаг окончания игры
 
+    // MARK: - События контроллера
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,23 +42,10 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Сортируем участников игры
         game.sortPlayers()
         
-        // Заканчиваем игру если выставлен флаг окончания игры
-        if endGame {
-            let alert = UIAlertController(title: "Завершение игры", message: "Хотите сохранить рейтинг?", preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction(UIAlertAction(title: "Да", style: UIAlertActionStyle.default, handler: { (action) in
-                self.finishCurrentGame(saveRating: true)
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Нет", style: UIAlertActionStyle.default, handler: { (action) in
-                self.finishCurrentGame(saveRating: false)
-            }))
-            
-            alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertActionStyle.default, handler: { (action) in
-                
-            }))
-            
-            self.present(alert, animated: true, completion: nil)
+        // Показываем сообщение хода если нужно
+        if !game.turnMessageDidShow {
+            showTurnMessages()
+            game.turnMessageDidShow = true
         }
     }
     
@@ -74,16 +61,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         switch(segue.identifier ?? "") {
         case "AddItem":
             os_log("Adding a new player.", log: OSLog.default, type: .debug)
-            
-        case "ShowDetail": break
-            //guard let playerDetailViewController = segue.destination as? AddController else {
-            //    fatalError("Unexpected destination: \(segue.destination)")
-            //}
-            
-            //if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
-            //    let selectedPlayer = game.getPlayer(at: selectedIndexPath.section)
-            //    playerDetailViewController.editPlayer = selectedPlayer
-            //}
             
         case "ShowRoles": 
             guard let сhooseRoleViewController = segue.destination as? ChooseRoleViewController else {
@@ -307,7 +284,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Определяем возможность редактировать таблицу участников
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return !game.isStarted
+        return false
     }
     
     //MARK: - Обработка действий пользователя
@@ -345,8 +322,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         let actionType = game.state == DayNightState.Day ? ActionType.CitizenKill : ActionType.MafiaKill
         
         self.createAction(newAction: actionType, cellRow: sender.tag)
-
-        if !game.isStarted {self.startNewGame()} // Стартуем!
     }
     
     // Нажали кнопку "Доктор вылечил" в таблице
@@ -386,51 +361,30 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     // Нажали кнопку "Смена дня и ночи" в панели инструментов
     @IBAction func tapDayNightButton(_ sender: UIBarButtonItem) {
+        
+        game.handleTurnActions() // Обрабатываем событие окончания хода
+        game.startNewTurn() // Начинаем новый ход
+        game.turnMessageDidShow = false // Метка о непоказанном сообщении
+
+        // Далее переходим на экран ночи
+        if let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "NightController") as? UINavigationController {
+            self.revealViewController().setFront(secondViewController, animated: true)
+        }
+    }
+    
+    //MARK: - Методы управления страницей
+    
+    // Показываем сообщение о событиях дня или ночи
+    func showTurnMessages(){
         let popOverVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popupStoriboardID") as! PopupViewController
         self.addChildViewController(popOverVC)
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParentViewController: self)
         
-        game.handleTurnActions() // Обрабатываем событие окончания хода
-        
-        if game.isFinished {self.dayNightButton.isEnabled = false} // Если игра закончилась нет смысла начинать новый ход
-        
         // Показываем игровые собщения окончания хода
         popOverVC.textMessageLabel.text = game.turnTextMessage
         popOverVC.titleLabel.text = game.state == DayNightState.Day ? "НАСТУПИЛА НОЧЬ" : "НАСТУПИЛ ДЕНЬ"
-        
-        // Меняем интерфейс приложения для обозначения смены дня и ночи
-        if game.state == DayNightState.Night {
-            bottomToolbar.barTintColor = UIColor(rgb: 0xF6F6F6, alpha: 1)
-            itemDayNightToolbar.tintColor = UIColor(rgb: 0x333333, alpha: 1)
-            itemDayNightToolbar.title = "Наступает ночь"
-        } else {
-            bottomToolbar.barTintColor = UIColor(rgb: 0x333333, alpha: 1)
-            itemDayNightToolbar.tintColor = UIColor(rgb: 0xF6F6F6, alpha: 1)
-            itemDayNightToolbar.title = "Наступает день"
-        }
-        game.startNewTurn() // Начинаем новый ход
-        
-        playersTableView.reloadData() // Обновляем таблицу
-        
-        if !game.isStarted {self.startNewGame()} // Стартуем игру!
-    }
-    
-    //MARK: - Методы управления страницей
-    
-    // Начали новую игру(сделали первый ход)
-    func startNewGame(){
-        game.isStarted = true
-        playersTableView.isEditing = false
-        playersTableView.reloadData()
-    }
-    
-    // Завершаем текущую игру
-    func finishCurrentGame(saveRating: Bool) {
-        self.performSegue(withIdentifier: "unwindToMainScreen", sender: self)
-        
-        if saveRating {game.saveRating()}
     }
     
     // Выполняем новое действие над пользователем (убить, вылечить, проверить и тд.)

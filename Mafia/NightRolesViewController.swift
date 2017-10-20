@@ -53,6 +53,11 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
             topPlayersToActions.priority = 900
         }
         
+        // Показываем сообщение хода если нужно
+        if !game.turnMessageDidShow {
+            showTurnMessages()
+            game.turnMessageDidShow = true
+        }
     }
 
     override func viewDidLayoutSubviews(){
@@ -256,21 +261,30 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func showDayButton(_ sender: Any) {
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PlayController") as! UINavigationController
-//        let  segue = SWRevealViewControllerSeguePushController.init(identifier: SWSegueRearIdentifier, source: self, destination: vc)
-//        segue.perform()
-        
-     //   self.revealViewController().performSegue(withIdentifier: "pushDayController", sender: self)
-        
-        if let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "PlayController") as? UINavigationController {
+        game.handleTurnActions() // Обрабатываем событие окончания хода
+        game.startNewTurn() // Начинаем новый ход
+        game.turnMessageDidShow = false // Метка о непоказанном сообщении
 
-            //let navController = UINavigationController(rootViewController: secondViewController)
-            //navController.setViewControllers([secondViewController], animated:true)
+        // Далее переходим на экран ночи
+        if let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "PlayController") as? UINavigationController {
             self.revealViewController().setFront(secondViewController, animated: true)
 
         }
-        
     }
     
+    //MARK: - Методы управления страницей
+    
+    // Показываем сообщение о событиях дня или ночи
+    func showTurnMessages(){
+        let popOverVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popupStoriboardID") as! PopupViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
+        
+        // Показываем игровые собщения окончания хода
+        popOverVC.textMessageLabel.text = game.turnTextMessage
+        popOverVC.titleLabel.text = game.state == DayNightState.Day ? "НАСТУПИЛА НОЧЬ" : "НАСТУПИЛ ДЕНЬ"
+    }
     
 }

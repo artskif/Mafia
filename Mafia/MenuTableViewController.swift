@@ -10,12 +10,19 @@ import UIKit
 
 class MenuTableViewController: UITableViewController {
 
+    let cells = ["back_to_day", "players" , "rating" , "settings" , "sinchronize" , "buy" , "send" , "help" , "finish_game"]
+    
     // MARK: - События контроллера
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        self.tableView.reloadData() // Обновляем меню каждый раз как показываем
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -70,11 +77,51 @@ class MenuTableViewController: UITableViewController {
         return false
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Реагируем на нажатия меню
+        let cellName = cells[indexPath.section]
+        switch cellName {
+        case "finish_game":
+            // Заканчиваем игру если выставлен флаг окончания игры
+            let alert = UIAlertController(title: "Завершение игры", message: "Хотите сохранить рейтинг?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "Да", style: UIAlertActionStyle.default, handler: { (action) in
+                self.finishCurrentGame(saveRating: true)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Нет", style: UIAlertActionStyle.default, handler: { (action) in
+                self.finishCurrentGame(saveRating: false)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertActionStyle.default, handler: { (action) in
+                
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        default:
+            break
+        }
+    }
+    
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cells = ["back_to_game", "players" , "rating" , "settings" , "sinchronize" , "buy" , "send" , "help" , "finish_game"]
-        let cell = tableView.dequeueReusableCell(withIdentifier: cells[indexPath.section], for: indexPath)
+        
+        var cellName = cells[indexPath.section]
+        if cellName == "back_to_day" && game.state == DayNightState.Night {
+            cellName = "back_to_night"
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellName, for: indexPath)
         
         return cell
     }
+    
+    // Завершаем текущую игру
+    func finishCurrentGame(saveRating: Bool) {
+        self.performSegue(withIdentifier: "unwindToMainScreen", sender: self)
+        
+        if saveRating {game.saveRating()}
+    }
+    
 }

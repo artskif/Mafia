@@ -19,8 +19,8 @@ class Game {
     private var _players:[Player] // Участники игры
     var accounts:[UserAccount] // Зарегистрированные пользователи игры
     var roles:Dictionary<Int, Role> // Роли игры
-    var isStarted:Bool // Игра началась
     var isFinished:Bool // Игра закончилась
+    var turnMessageDidShow:Bool // Показали ли сообщение хода
     var turnNumber:Int // Номер хода
     var turnTextMessage:String // Сообщение конца хода
     var currentTurnDead:[Player] // Текущие мертвые пользователи(для подсчета рейтинга текущего хода, в конце хода)
@@ -30,9 +30,9 @@ class Game {
         self.state = DayNightState.Night
         self._players = []
         self.roles = [:]
-        self.isStarted = false
         self.turnNumber = 1
         self.turnTextMessage = "Никто не умер"
+        self.turnMessageDidShow = true
         self.currentTurnDead = []
         self.isFinished = false
         self.accounts = []

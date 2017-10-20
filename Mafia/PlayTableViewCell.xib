@@ -42,31 +42,11 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="ABd-NU-ukh">
-                        <rect key="frame" x="73" y="36" width="194" height="24"/>
+                        <rect key="frame" x="243" y="37" width="24" height="23"/>
                         <subviews>
-                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHi-Kd-01W">
-                                <rect key="frame" x="0.0" y="0.0" width="28" height="24"/>
-                                <state key="normal" image="icon night love"/>
-                            </button>
-                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Cv-3I-Pqz">
-                                <rect key="frame" x="37" y="0.0" width="25" height="24"/>
-                                <state key="normal" image="icon loop"/>
-                            </button>
                             <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijN-ej-izS">
-                                <rect key="frame" x="71" y="0.0" width="24" height="24"/>
+                                <rect key="frame" x="0.0" y="0.0" width="24" height="23"/>
                                 <state key="normal" image="icon kill"/>
-                            </button>
-                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O51-Ut-LpD">
-                                <rect key="frame" x="104" y="0.0" width="24" height="24"/>
-                                <state key="normal" image="icon medic"/>
-                            </button>
-                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPh-dv-P0F">
-                                <rect key="frame" x="137" y="0.0" width="19" height="24"/>
-                                <state key="normal" image="icon maniac"/>
-                            </button>
-                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="raQ-9Z-PSN">
-                                <rect key="frame" x="165" y="0.0" width="29" height="24"/>
-                                <state key="normal" image="icon boss check"/>
                             </button>
                         </subviews>
                     </stackView>
@@ -126,29 +106,11 @@
                             <constraint firstAttribute="height" constant="53" id="au2-xN-d2E"/>
                         </constraints>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="a9D-wo-8JK">
-                        <rect key="frame" x="214" y="5" width="55" height="23"/>
-                        <subviews>
-                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PpV-Xv-5xv" userLabel="Lawer Button">
-                                <rect key="frame" x="0.0" y="0.0" width="23" height="23"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="23" id="KHr-7k-EP2"/>
-                                    <constraint firstAttribute="width" constant="23" id="X2E-MV-HEs"/>
-                                </constraints>
-                                <state key="normal" image="icon loyer"/>
-                            </button>
-                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nj6-bx-Fxt" userLabel="Yacuza Button">
-                                <rect key="frame" x="32" y="0.0" width="23" height="23"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="23" id="KiN-vo-ZIh"/>
-                                    <constraint firstAttribute="width" constant="23" id="kL3-dc-HB8"/>
-                                </constraints>
-                                <state key="normal" image="icon yacuza kill"/>
-                            </button>
-                        </subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="a9D-wo-8JK">
+                        <rect key="frame" x="147.5" y="5" width="121.5" height="23"/>
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4d-Xw-hc8">
-                        <rect key="frame" x="93" y="4" width="115" height="21"/>
+                        <rect key="frame" x="93" y="4" width="48.5" height="21"/>
                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                         <color key="textColor" red="0.20392156862745098" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -186,20 +148,13 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
-                <outlet property="checkButton" destination="4Cv-3I-Pqz" id="gqk-HO-Z1N"/>
                 <outlet property="currentRating" destination="cpC-VJ-2dk" id="cuc-a2-bvb"/>
-                <outlet property="donmaffiaButton" destination="raQ-9Z-PSN" id="NSR-zF-1FI"/>
                 <outlet property="globalRating" destination="Mee-tX-5aq" id="8Dw-v0-HYE"/>
-                <outlet property="healButton" destination="O51-Ut-LpD" id="uvE-2y-2V5"/>
                 <outlet property="killButton" destination="ijN-ej-izS" id="nXM-fE-dsd"/>
                 <outlet property="killImage" destination="Bf7-wW-1cd" id="D9Z-09-62a"/>
-                <outlet property="lawerButton" destination="PpV-Xv-5xv" id="lxw-Og-yIw"/>
-                <outlet property="maniacButton" destination="lPh-dv-P0F" id="tDm-OL-heO"/>
                 <outlet property="nameLabel" destination="E4d-Xw-hc8" id="mAD-OR-6fB"/>
                 <outlet property="numberLaber" destination="hL8-9W-9ro" id="OmH-NF-CzZ"/>
                 <outlet property="roleImage" destination="ua6-s5-tQN" id="bbM-55-6GT"/>
-                <outlet property="silenceButton" destination="xHi-Kd-01W" id="j8q-sg-4SH"/>
-                <outlet property="yacuzaButton" destination="Nj6-bx-Fxt" id="l17-hx-qxl"/>
             </connections>
             <point key="canvasLocation" x="-172" y="20.5"/>
         </tableViewCell>
@@ -208,14 +163,7 @@
         <image name="Role icon sitizen" width="59" height="59"/>
         <image name="cross icon" width="56" height="53"/>
         <image name="icon Rating global" width="5" height="9"/>
-        <image name="icon boss check" width="29" height="23"/>
         <image name="icon kill" width="24" height="23"/>
-        <image name="icon loop" width="25" height="24"/>
-        <image name="icon loyer" width="20" height="22"/>
-        <image name="icon maniac" width="19" height="24"/>
-        <image name="icon medic" width="24" height="23"/>
-        <image name="icon night love" width="28" height="23"/>
         <image name="icon star" width="10" height="10"/>
-        <image name="icon yacuza kill" width="23" height="23"/>
     </resources>
 </document>
