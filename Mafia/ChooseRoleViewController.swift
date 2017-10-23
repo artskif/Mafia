@@ -66,61 +66,61 @@ class ChooseRoleViewController: UIViewController, UITableViewDataSource, UITable
         // В данном варианте мы выбираем роли,
         // следовательно должны показать роли для возможности сменить роль(выбранного персонажа)
         
-        guard let cellRole = tableView.dequeueReusableCell(withIdentifier: cellRoleIdentifer, for: indexPath) as? ChooseRatingTableViewCell  else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellRoleIdentifer, for: indexPath) as? ChooseRatingTableViewCell  else {
             fatalError("The dequeued cell is not an instance of ChooseRatingTableViewCell.")
         }
         
         let currentRole = Role(rawValue: indexPath.section)!
         
         // Визуально оформляем ячейку
-        cellRole.layer.cornerRadius = 0
+        cell.layer.cornerRadius = 0
         let evenColor = UIColor(rgb: 0xB88E8E, alpha: 0.1).cgColor
         let oddColor = UIColor(rgb: 0xB88E8E, alpha: 0).cgColor
         
         // Разноцвет между соседними ячейками
         if indexPath.section % 2 == 0 {
-            cellRole.layer.backgroundColor = oddColor
+            cell.layer.backgroundColor = oddColor
         } else {
-            cellRole.layer.backgroundColor = evenColor
+            cell.layer.backgroundColor = evenColor
         }
         
         // Данные ячейки
-        cellRole.cellName.text = currentRole.title
-        cellRole.checkButton.isHidden = true
-        cellRole.chooseButton.tag = indexPath.section
-        cellRole.chooseButton.isEnabled = true
+        cell.cellName.text = currentRole.title
+        cell.checkButton.isHidden = true
+        cell.chooseButton.tag = indexPath.section
+        cell.chooseButton.isEnabled = true
         
         // Меняем иконку текущей роли игрока
         switch currentRole {
         case .Citizen:
-            cellRole.roleImage.image = UIImage(named: "Citizen")
+            cell.roleImage.image = UIImage(named: "Citizen")
         case .Doctor:
-            cellRole.roleImage.image = UIImage(named: "Doctor")
+            cell.roleImage.image = UIImage(named: "Doctor")
         case .Mafia:
-            cellRole.roleImage.image = UIImage(named: "Mafia")
+            cell.roleImage.image = UIImage(named: "Mafia")
         case .Don:
-            cellRole.roleImage.image = UIImage(named: "Don")
+            cell.roleImage.image = UIImage(named: "Don")
         case .Maniac:
-            cellRole.roleImage.image = UIImage(named: "Maniac")
+            cell.roleImage.image = UIImage(named: "Maniac")
         case .Prostitute:
-            cellRole.roleImage.image = UIImage(named: "Putana")
+            cell.roleImage.image = UIImage(named: "Putana")
         case .Sherif:
-            cellRole.roleImage.image = UIImage(named: "Sheriff")
+            cell.roleImage.image = UIImage(named: "Sheriff")
         case .Undead:
-            cellRole.roleImage.image = UIImage(named: "Undead")
+            cell.roleImage.image = UIImage(named: "Undead")
         case .Yacuza:
-            cellRole.roleImage.image = UIImage(named: "Yakudza")
+            cell.roleImage.image = UIImage(named: "Yakudza")
         case .Lawyer:
-            cellRole.roleImage.image = UIImage(named: "Lawyer")
+            cell.roleImage.image = UIImage(named: "Lawyer")
         }
         
         if let currentChoosedRole = choosedRole {
             // Имеется выбранный вариант таблицы (выбора ролей)
             // если нажата кнопка выбора то мы ее отключаем (во избежании дальнейших нажатий этой кнопки)
-            cellRole.checkButton.isHidden = currentChoosedRole != cellRole.chooseButton.tag
+            cell.checkButton.isHidden = currentChoosedRole != cell.chooseButton.tag
         }
         
-        return cellRole
+        return cell
     }
     
     // Определяем возможность редактировать таблицу выбора участников

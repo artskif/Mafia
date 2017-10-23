@@ -154,7 +154,7 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         
         // Задаем данные для ячейки
         cell.cellName.text = account.name
-        cell.numbelLabel.text = "\(indexPath.section + 1)"
+        cell.numbelLabel.text = "\(indexPath.section + 1)."
         cell.chooseButton.tag = indexPath.section
         cell.chooseButton.isEnabled = true
         

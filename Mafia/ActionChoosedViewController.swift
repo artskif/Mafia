@@ -27,6 +27,12 @@ class ActionChoosedViewController: UIViewController, UITableViewDataSource, UITa
         // Определяем данные для заполнения таблицы
         actionPlayers = game.getPlayersForAction(action: choosedAction!)
         
+        // Делаем навигационную панель прозрачной
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        
         actionLabel.text = "Кого " + (choosedAction?.description)! + "?"
     }
 
@@ -48,7 +54,7 @@ class ActionChoosedViewController: UIViewController, UITableViewDataSource, UITa
     
     // Расстояние между ячейками(секциями)
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0
     }
     
     // Описываем состояние заголовка секции
@@ -84,34 +90,56 @@ class ActionChoosedViewController: UIViewController, UITableViewDataSource, UITa
         
         // Определяем дынные для заполнения ячейки таблицы
         let player = actionPlayers[indexPath.section]
-        if player.actionCheck(action: choosedAction!) {
-            cell.linkLabel.text = "Выбрано"
+        
+        // Визуально оформляем ячейку
+        cell.layer.cornerRadius = 0
+        let evenColor = UIColor(rgb: 0xB88E8E, alpha: 0.1).cgColor
+        let oddColor = UIColor(rgb: 0xB88E8E, alpha: 0).cgColor
+        
+        // Разноцвет между соседними ячейками
+        if indexPath.section % 2 == 0 {
+            cell.layer.backgroundColor = oddColor
+        } else {
+            cell.layer.backgroundColor = evenColor
         }
         
+        // Заполняем рейтинг ячейки
+        let sum = player.currentRating.reduce(0, { x, y in x + y})
+        cell.ratingLabel.text = "\(sum < 1 ? 1 : sum)"
+        
+        // Заполним данные для кнопок
+        cell.numberLabel.text = "\(indexPath.section + 1)."
         cell.nameLabel.text = player.name
+        if player.actionCheck(action: choosedAction!) {
+            cell.choosedImage.isHidden = false
+            cell.linkLabel.isHidden = true
+        } else {
+            cell.choosedImage.isHidden = true
+            cell.linkLabel.isHidden = false
+        }
         
         // Меняем иконку текущей роли игрока
         switch player.role {
         case .Citizen:
-            cell.roleImage.image = UIImage(named: "Role icon sitizen")
+            cell.roleImage.image = UIImage(named: "Citizen")
         case .Doctor:
-            cell.roleImage.image = UIImage(named: "Role icon medic")
+            cell.roleImage.image = UIImage(named: "Doctor")
         case .Mafia:
-            cell.roleImage.image = UIImage(named: "Role icon mafia")
+            cell.roleImage.image = UIImage(named: "Mafia")
         case .Don:
-            cell.roleImage.image = UIImage(named: "Role icon don maffia")
+            cell.roleImage.image = UIImage(named: "Don")
         case .Maniac:
-            cell.roleImage.image = UIImage(named: "Role icon maniac")
+            cell.roleImage.image = UIImage(named: "Maniac")
         case .Prostitute:
-            cell.roleImage.image = UIImage(named: "Role icon putana")
+            cell.roleImage.image = UIImage(named: "Putana")
         case .Sherif:
-            cell.roleImage.image = UIImage(named: "Role icon sheriff")
+            cell.roleImage.image = UIImage(named: "Sheriff")
         case .Undead:
-            cell.roleImage.image = UIImage(named: "Role icon undead")
+            cell.roleImage.image = UIImage(named: "Undead")
         case .Yacuza:
-            cell.roleImage.image = UIImage(named: "Role icon yacuza")
+            cell.roleImage.image = UIImage(named: "Yakudza")
         case .Lawyer:
-            cell.roleImage.image = UIImage(named: "Role icon loyer")
+            cell.roleImage.image = UIImage(named: "Lawyer")
         }
         
         return cell
