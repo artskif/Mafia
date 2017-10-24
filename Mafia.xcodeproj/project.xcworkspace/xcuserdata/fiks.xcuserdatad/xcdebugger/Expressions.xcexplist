@@ -3,7 +3,12 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "AddController.viewDidLoad() -&gt; ():AddController.swift">
+         contextName = "PlayController.savePlayers() -&gt; ():PlayController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Account.ArchiveURL.path">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "Player.encode(with : NSCoder) -&gt; ():Player.swift">
@@ -17,14 +22,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "PlayController.savePlayers() -&gt; ():PlayController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "Account.ArchiveURL.path">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "static Game.loadAccounts() -&gt; ():Game.swift">
          <PersistentStrings>
             <PersistentString
@@ -33,13 +30,30 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "NightRolesViewController.tableView(_:cellForRowAt:):NightRolesViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell">
+            </PersistentString>
+            <PersistentString
+               value = "game.roles">
+            </PersistentString>
+            <PersistentString
+               value = "cell.nameLabel">
+            </PersistentString>
+            <PersistentString
+               value = "roleActions">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Player.init(coder : NSCoder) -&gt; Player?:Player.swift">
          <PersistentStrings>
             <PersistentString
-               value = "aDecoder.decodeObject(forKey: &quot;rating&quot;)">
+               value = "aDecoder.decodeObject(forKey: &quot;name&quot;)">
             </PersistentString>
             <PersistentString
-               value = "aDecoder.decodeObject(forKey: &quot;name&quot;)">
+               value = "aDecoder.decodeObject(forKey: &quot;rating&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -66,19 +80,19 @@
                value = "cell.roleLabel.text!.hasSufix(&quot;&#x41c;&#x435;&#x440;&#x442;&#x432;&quot;)">
             </PersistentString>
             <PersistentString
-               value = "indexPath.row">
+               value = "player.name">
             </PersistentString>
             <PersistentString
                value = "indexPath.section">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
             </PersistentString>
             <PersistentString
                value = "game">
             </PersistentString>
             <PersistentString
                value = "cell.roleLabel.text">
-            </PersistentString>
-            <PersistentString
-               value = "player.name">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -136,6 +150,9 @@
             </PersistentString>
             <PersistentString
                value = "actionTableView">
+            </PersistentString>
+            <PersistentString
+               value = "topPlayersToActions">
             </PersistentString>
             <PersistentString
                value = "actionTableView.contentSize.height">
@@ -276,21 +293,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NightRolesViewController.tableView(_:cellForRowAt:):NightRolesViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "cell">
-            </PersistentString>
-            <PersistentString
-               value = "roleActions">
-            </PersistentString>
-            <PersistentString
-               value = "cell.nameLabel">
-            </PersistentString>
-            <PersistentString
-               value = "game.roles">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "AddController.viewDidLoad() -&gt; ():AddController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

@@ -1189,8 +1189,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="C76-6E-i3f">
+                                <rect key="frame" x="0.0" y="37" width="375" height="630"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dea-xf-uua">
-                                <rect key="frame" x="0.0" y="64" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="510"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8oV-Nd-dPn">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="269"/>
@@ -1254,17 +1258,17 @@
                                                     <outlet property="delegate" destination="Edk-1G-o7K" id="Xo4-dJ-qI0"/>
                                                 </connections>
                                             </tableView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите действие" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBr-iz-kGu">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите действие" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBr-iz-kGu">
                                                 <rect key="frame" x="20" y="20" width="335" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.5" id="6uV-bE-GbW"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                                <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.59828225260000001" green="0.9827048182" blue="0.51830429330000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="uBr-iz-kGu" firstAttribute="leading" secondItem="8oV-Nd-dPn" secondAttribute="leading" constant="20" id="I3o-D6-cQb"/>
                                             <constraint firstAttribute="trailing" secondItem="uBr-iz-kGu" secondAttribute="trailing" constant="20" id="O5g-ds-8lc"/>
@@ -1278,31 +1282,31 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cu-uS-tZW">
-                                        <rect key="frame" x="0.0" y="270" width="375" height="269"/>
+                                        <rect key="frame" x="0.0" y="270" width="375" height="240"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите роли" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsK-Y4-7fA">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите роли" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsK-Y4-7fA">
                                                 <rect key="frame" x="20" y="20" width="335" height="21"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="d59-xT-3Af"/>
+                                                    <constraint firstAttribute="height" constant="21" id="OQD-O3-kRS"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                                <color key="textColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="UhK-jQ-KMk">
-                                                <rect key="frame" x="20" y="66" width="335" height="183"/>
+                                                <rect key="frame" x="0.0" y="55" width="375" height="184"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="183" id="3DS-Jk-uml"/>
+                                                    <constraint firstAttribute="height" constant="184" id="0V6-UA-1TX"/>
                                                 </constraints>
                                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChoosePlayerRoleTableViewCell" id="IZB-fx-Lmo" customClass="ChoosePlayerRoleTableViewCell" customModule="Mafia" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="1" width="335" height="68"/>
+                                                        <rect key="frame" x="0.0" y="1" width="375" height="68"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IZB-fx-Lmo" id="zFv-XF-CRJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="335" height="68"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Role icon sitizen" translatesAutoresizingMaskIntoConstraints="NO" id="xdc-tI-31j">
@@ -1318,7 +1322,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выбрать" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaz-YJ-E3s">
-                                                                    <rect key="frame" x="258" y="23" width="69" height="21"/>
+                                                                    <rect key="frame" x="298" y="23" width="69" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1348,23 +1352,21 @@
                                                 </connections>
                                             </tableView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.96470588239999999" green="0.2923595363" blue="0.31529628780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="wsK-Y4-7fA" firstAttribute="leading" secondItem="6cu-uS-tZW" secondAttribute="leading" constant="20" id="4Rs-M6-3xo"/>
-                                            <constraint firstItem="wsK-Y4-7fA" firstAttribute="top" secondItem="6cu-uS-tZW" secondAttribute="top" constant="20" id="7Rr-hm-fAc"/>
-                                            <constraint firstItem="UhK-jQ-KMk" firstAttribute="centerX" secondItem="6cu-uS-tZW" secondAttribute="centerX" id="8px-b8-pEa"/>
-                                            <constraint firstAttribute="trailing" secondItem="UhK-jQ-KMk" secondAttribute="trailing" constant="20" id="Pg9-59-Y9D"/>
-                                            <constraint firstItem="UhK-jQ-KMk" firstAttribute="top" secondItem="wsK-Y4-7fA" secondAttribute="bottom" constant="25" id="QQG-K2-Vj9"/>
-                                            <constraint firstItem="UhK-jQ-KMk" firstAttribute="leading" secondItem="6cu-uS-tZW" secondAttribute="leading" constant="20" id="TfN-5I-22v"/>
-                                            <constraint firstAttribute="bottom" secondItem="UhK-jQ-KMk" secondAttribute="bottom" constant="20" id="Uf7-p4-ZhO"/>
-                                            <constraint firstAttribute="trailing" secondItem="wsK-Y4-7fA" secondAttribute="trailing" constant="20" id="aFZ-st-BVl"/>
-                                            <constraint firstItem="wsK-Y4-7fA" firstAttribute="centerX" secondItem="6cu-uS-tZW" secondAttribute="centerX" id="uPn-4p-B9l"/>
+                                            <constraint firstItem="UhK-jQ-KMk" firstAttribute="top" secondItem="wsK-Y4-7fA" secondAttribute="bottom" constant="14" id="6FW-Sc-8BG"/>
+                                            <constraint firstItem="UhK-jQ-KMk" firstAttribute="leading" secondItem="6cu-uS-tZW" secondAttribute="leading" id="AeG-Pe-CRa"/>
+                                            <constraint firstAttribute="bottom" secondItem="UhK-jQ-KMk" secondAttribute="bottom" constant="1" id="D24-Qw-YEL"/>
+                                            <constraint firstItem="UhK-jQ-KMk" firstAttribute="centerX" secondItem="6cu-uS-tZW" secondAttribute="centerX" id="D8a-N1-22h"/>
+                                            <constraint firstAttribute="trailing" secondItem="UhK-jQ-KMk" secondAttribute="trailing" id="QVe-6A-wD0"/>
+                                            <constraint firstItem="wsK-Y4-7fA" firstAttribute="top" secondItem="6cu-uS-tZW" secondAttribute="top" constant="20" id="Uo0-Z9-9VS"/>
+                                            <constraint firstAttribute="trailing" secondItem="wsK-Y4-7fA" secondAttribute="trailing" constant="20" id="jmi-cR-tzB"/>
+                                            <constraint firstItem="wsK-Y4-7fA" firstAttribute="leading" secondItem="6cu-uS-tZW" secondAttribute="leading" constant="20" id="kh6-Ux-nNw"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="6cu-uS-tZW" firstAttribute="leading" secondItem="dea-xf-uua" secondAttribute="leading" id="4J6-Jg-wNP"/>
-                                    <constraint firstItem="6cu-uS-tZW" firstAttribute="centerX" secondItem="dea-xf-uua" secondAttribute="centerX" id="Btl-CJ-chr"/>
                                     <constraint firstItem="8oV-Nd-dPn" firstAttribute="leading" secondItem="dea-xf-uua" secondAttribute="leading" id="Epz-76-UCB"/>
                                     <constraint firstItem="8oV-Nd-dPn" firstAttribute="top" secondItem="dea-xf-uua" secondAttribute="top" id="HyD-gI-J38"/>
                                     <constraint firstAttribute="trailing" secondItem="8oV-Nd-dPn" secondAttribute="trailing" id="K6M-qF-4EU"/>
@@ -1375,20 +1377,36 @@
                                     <constraint firstAttribute="bottom" secondItem="6cu-uS-tZW" secondAttribute="bottom" id="vsN-gT-o6X"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h29-Sd-9DV">
-                                <rect key="frame" x="130" y="629" width="115" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Наступает День"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h29-Sd-9DV">
+                                <rect key="frame" x="123.5" y="629" width="128" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0Ta-2a-CAN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                <state key="normal" title="Наступает День">
+                                    <color key="titleColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="showDayButton:" destination="Edk-1G-o7K" eventType="touchUpInside" id="9GB-6a-xmR"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun_link" translatesAutoresizingMaskIntoConstraints="NO" id="aTh-Qv-Biy">
+                                <rect key="frame" x="165" y="582" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="4Jq-VA-mBr"/>
+                                    <constraint firstAttribute="height" constant="45" id="LEq-rO-fbE"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="muE-47-ETo" firstAttribute="top" secondItem="dea-xf-uua" secondAttribute="bottom" constant="52" id="2Qi-EB-F3x"/>
+                            <constraint firstItem="aTh-Qv-Biy" firstAttribute="centerX" secondItem="Ito-U9-VPE" secondAttribute="centerX" id="0Tn-di-JSR"/>
+                            <constraint firstItem="h29-Sd-9DV" firstAttribute="centerX" secondItem="Ito-U9-VPE" secondAttribute="centerX" id="5Oa-vP-XMM"/>
                             <constraint firstAttribute="trailing" secondItem="dea-xf-uua" secondAttribute="trailing" id="EbL-n3-tdk"/>
+                            <constraint firstItem="aTh-Qv-Biy" firstAttribute="top" secondItem="dea-xf-uua" secondAttribute="bottom" constant="8" id="KKW-vX-Md2"/>
+                            <constraint firstItem="h29-Sd-9DV" firstAttribute="top" secondItem="aTh-Qv-Biy" secondAttribute="bottom" constant="2" id="ZP4-Lt-FbC"/>
                             <constraint firstItem="dea-xf-uua" firstAttribute="top" secondItem="3gl-hW-fOs" secondAttribute="bottom" id="hHi-bs-FW7"/>
+                            <constraint firstItem="muE-47-ETo" firstAttribute="top" secondItem="h29-Sd-9DV" secondAttribute="bottom" constant="8" id="qLb-JT-2p8"/>
                             <constraint firstItem="dea-xf-uua" firstAttribute="leading" secondItem="Ito-U9-VPE" secondAttribute="leading" id="xrh-KN-d72"/>
                         </constraints>
                     </view>
@@ -1403,7 +1421,7 @@
                         <outlet property="actionView" destination="8oV-Nd-dPn" id="eSN-5V-oOB"/>
                         <outlet property="mainView" destination="Ito-U9-VPE" id="ypW-eS-anw"/>
                         <outlet property="menuButton" destination="PIB-d1-ogu" id="bDv-cY-dtL"/>
-                        <outlet property="playersTableHeight" destination="3DS-Jk-uml" id="AZa-vn-yYr"/>
+                        <outlet property="playersTableHeight" destination="0V6-UA-1TX" id="Dkh-tg-shm"/>
                         <outlet property="playersTableView" destination="UhK-jQ-KMk" id="8nS-XE-MBy"/>
                         <outlet property="playersView" destination="6cu-uS-tZW" id="88a-de-4lO"/>
                         <outlet property="topPlayersToActions" destination="eNd-AB-Uhn" id="HHv-UI-95T"/>
@@ -1414,7 +1432,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnO-5r-XPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="5X2-ja-wNb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4870" y="-262"/>
+            <point key="canvasLocation" x="4869.6000000000004" y="-262.21889055472263"/>
         </scene>
         <!--Ночные действия-->
         <scene sceneID="lmz-PA-eae">
@@ -1713,6 +1731,7 @@
         <image name="bg_day" width="960" height="1704"/>
         <image name="checked_player" width="66" height="66"/>
         <image name="rating_border" width="76" height="76"/>
+        <image name="sun_link" width="120" height="120"/>
         <image name="target" width="77" height="77"/>
         <image name="unchecked_player" width="66" height="66"/>
     </resources>
