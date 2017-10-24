@@ -143,4 +143,29 @@ enum ActionType:Int, CustomStringConvertible {
             return "затыкает Маньяк"
         }
     }
+    
+    var correspondingRole:Role{
+        switch self {
+        case .MafiaKill:
+            return Role.Mafia
+        case .SherifCheck:
+            return Role.Sherif
+        case .Heal:
+            return Role.Doctor
+        case .CitizenKill:
+            return Role.Citizen
+        case .ProstituteSilence:
+            return Role.Prostitute
+        case .ManiacKill:
+            return Role.Maniac
+        case .DonCheck:
+            return Role.Don
+        case .YacuzaKill:
+            return Role.Yacuza
+        case .LawyerGet:
+            return Role.Lawyer
+        case .ManiacSilence:
+            return Role.Maniac
+        }
+    }
 }

@@ -46,6 +46,12 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
             roleActions.append(contentsOf: r.value.roleNightActions)
         }
         
+        // Делаем навигационную панель прозрачной
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        
         // Скрываем действия игроков если активных ролей еще не выбрано
         if (roleActions.count==0){
             actionView.isHidden = true
@@ -122,7 +128,7 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
     
     // Расстояние между ячейками(секциями)
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0
     }
     
     // Описываем состояние заголовка секции
@@ -144,13 +150,59 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
             
             let role = roleActions[indexPath.section]
             
-            if chosedActions.index(of: role) != nil {
-                cell.chooseButton.text = "Выбрано"
+            // Визуально оформляем ячейку
+            cell.layer.cornerRadius = 0
+            let evenColor = UIColor(rgb: 0xB88E8E, alpha: 0.1).cgColor
+            let oddColor = UIColor(rgb: 0xB88E8E, alpha: 0).cgColor
+            
+            // Разноцвет между соседними ячейками
+            if indexPath.section % 2 == 0 {
+                cell.layer.backgroundColor = oddColor
             } else {
-                cell.chooseButton.text = "Выбрать"
+                cell.layer.backgroundColor = evenColor
             }
             
+            // Заполним данные для кнопок и текста
+            if chosedActions.index(of: role) != nil {
+                cell.chooseButton.isHidden = true
+                cell.choosedLabel.isHidden = false
+            } else {
+                cell.chooseButton.isHidden = false
+                cell.choosedLabel.isHidden = true
+            }
             cell.nameLabel?.text = role.description
+            
+            // Меняем иконку текущей роли игрока
+            switch role.correspondingRole {
+            case .Citizen:
+                cell.roleImage.image = UIImage(named: "Citizen")
+            case .Doctor:
+                cell.roleImage.image = UIImage(named: "Doctor")
+            case .Mafia:
+                cell.roleImage.image = UIImage(named: "Mafia")
+            case .Don:
+                cell.roleImage.image = UIImage(named: "Don")
+            case .Maniac:
+                cell.roleImage.image = UIImage(named: "Maniac")
+            case .Prostitute:
+                cell.roleImage.image = UIImage(named: "Putana")
+            case .Sherif:
+                cell.roleImage.image = UIImage(named: "Sheriff")
+            case .Undead:
+                cell.roleImage.image = UIImage(named: "Undead")
+            case .Yacuza:
+                cell.roleImage.image = UIImage(named: "Yakudza")
+            case .Lawyer:
+                cell.roleImage.image = UIImage(named: "Lawyer")
+            }
+            
+            // Последнюю красную прерывистую линию не показываем
+            if (indexPath.section + 1) == tableView.numberOfSections {
+                cell.dottedLine.isHidden = true
+            } else {
+                cell.dottedLine.isHidden = false
+            }
+            
             return cell
         } else {
             let cellIdentifer = "ChoosePlayerRoleTableViewCell"
@@ -162,31 +214,53 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
             // Определяем дынные для заполнения ячейки таблицы
             let player = game.getPlayer(at: indexPath.section)
             
+            // Визуально оформляем ячейку
+            cell.layer.cornerRadius = 0
+            let evenColor = UIColor(rgb: 0xB88E8E, alpha: 0.1).cgColor
+            let oddColor = UIColor(rgb: 0xB88E8E, alpha: 0).cgColor
+            
+            // Разноцвет между соседними ячейками
+            if indexPath.section % 2 == 0 {
+                cell.layer.backgroundColor = oddColor
+            } else {
+                cell.layer.backgroundColor = evenColor
+            }
+            
+            // Заполним данные для кнопок и текста
             cell.nameLabel.text = player.name
             
             // Меняем иконку текущей роли игрока
             switch player.role {
             case .Citizen:
-                cell.roleImage.image = UIImage(named: "Role icon sitizen")
+                cell.roleImage.image = UIImage(named: "Citizen")
             case .Doctor:
-                cell.roleImage.image = UIImage(named: "Role icon medic")
+                cell.roleImage.image = UIImage(named: "Doctor")
             case .Mafia:
-                cell.roleImage.image = UIImage(named: "Role icon mafia")
+                cell.roleImage.image = UIImage(named: "Mafia")
             case .Don:
-                cell.roleImage.image = UIImage(named: "Role icon don maffia")
+                cell.roleImage.image = UIImage(named: "Don")
             case .Maniac:
-                cell.roleImage.image = UIImage(named: "Role icon maniac")
+                cell.roleImage.image = UIImage(named: "Maniac")
             case .Prostitute:
-                cell.roleImage.image = UIImage(named: "Role icon putana")
+                cell.roleImage.image = UIImage(named: "Putana")
             case .Sherif:
-                cell.roleImage.image = UIImage(named: "Role icon sheriff")
+                cell.roleImage.image = UIImage(named: "Sheriff")
             case .Undead:
-                cell.roleImage.image = UIImage(named: "Role icon undead")
+                cell.roleImage.image = UIImage(named: "Undead")
             case .Yacuza:
-                cell.roleImage.image = UIImage(named: "Role icon yacuza")
+                cell.roleImage.image = UIImage(named: "Yakudza")
             case .Lawyer:
-                cell.roleImage.image = UIImage(named: "Role icon loyer")
+                cell.roleImage.image = UIImage(named: "Lawyer")
             }
+            
+            // Последнюю красную прерывистую линию не показываем
+            if (indexPath.section + 1) == tableView.numberOfSections {
+                cell.dottedLine.isHidden = true
+            } else {
+                cell.dottedLine.isHidden = false
+            }
+
+            
             return cell
         }
     }

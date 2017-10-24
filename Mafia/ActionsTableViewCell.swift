@@ -13,8 +13,10 @@ class ActionsTableViewCell: UITableViewCell {
     // MARK: - Элементы управления ячейкой
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var actionRoleImage: UIImageView!
+    @IBOutlet weak var roleImage: UIImageView!
     @IBOutlet weak var chooseButton: UILabel!
+    @IBOutlet weak var choosedLabel: UIImageView!
+    @IBOutlet weak var dottedLine: DottedLineView!
     
     // MARK: - События ячейки
     

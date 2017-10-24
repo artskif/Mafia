@@ -107,7 +107,7 @@ class ActionChoosedViewController: UIViewController, UITableViewDataSource, UITa
         let sum = player.currentRating.reduce(0, { x, y in x + y})
         cell.ratingLabel.text = "\(sum < 1 ? 1 : sum)"
         
-        // Заполним данные для кнопок
+        // Заполним данные для кнопок и текста
         cell.numberLabel.text = "\(indexPath.section + 1)."
         cell.nameLabel.text = player.name
         if player.actionCheck(action: choosedAction!) {

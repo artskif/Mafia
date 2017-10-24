@@ -42,6 +42,12 @@
                value = "cell.nameLabel">
             </PersistentString>
             <PersistentString
+               value = "tableView.numberOfSections">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.section">
+            </PersistentString>
+            <PersistentString
                value = "roleActions">
             </PersistentString>
          </PersistentStrings>
