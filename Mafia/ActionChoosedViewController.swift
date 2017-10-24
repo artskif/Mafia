@@ -142,6 +142,13 @@ class ActionChoosedViewController: UIViewController, UITableViewDataSource, UITa
             cell.roleImage.image = UIImage(named: "Lawyer")
         }
         
+        // Последнюю красную прерывистую линию не показываем
+        if (indexPath.section + 1) == tableView.numberOfSections {
+            cell.dottedLine.isHidden = true
+        } else {
+            cell.dottedLine.isHidden = false
+        }
+        
         return cell
     }
     

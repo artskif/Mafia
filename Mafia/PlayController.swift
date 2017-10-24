@@ -92,7 +92,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Расстояние между ячейками(секциями)
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0
     }
     
     // Описываем состояние заголовка секции
@@ -117,6 +117,18 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Вешаем обработчики событий на кнопки
         cell.killButton.addTarget(self, action: #selector(pushCitizenKill), for: UIControlEvents.touchUpInside)
         
+        // Визуально оформляем ячейку
+        cell.layer.cornerRadius = 0
+        let evenColor = UIColor(rgb: 0xB88E8E, alpha: 0.1).cgColor
+        let oddColor = UIColor(rgb: 0xB88E8E, alpha: 0).cgColor
+        
+        // Разноцвет между соседними ячейками
+        if indexPath.section % 2 == 0 {
+            cell.layer.backgroundColor = oddColor
+        } else {
+            cell.layer.backgroundColor = evenColor
+        }
+        
         // Определяем дынные для заполнения ячейки таблицы
         let player = game.getPlayer(at: indexPath.section)
         
@@ -127,56 +139,63 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Заполним данные для кнопок
         cell.killButton.tag = indexPath.section
         cell.nameLabel.text = player.name
-        cell.numberLaber.text = "\(indexPath.section + 1)"
-        cell.killImage.isHidden = true
+        cell.numberLaber.text = "\(indexPath.section + 1)."
+        cell.ripLabel.isHidden = true
         
         // Меняем иконку текущей роли игрока
         switch player.role {
         case .Citizen:
-            cell.roleImage.image = UIImage(named: "Role icon sitizen")
+            cell.roleImage.image = UIImage(named: "Citizen")
         case .Doctor:
-            cell.roleImage.image = UIImage(named: "Role icon medic")
+            cell.roleImage.image = UIImage(named: "Doctor")
         case .Mafia:
-            cell.roleImage.image = UIImage(named: "Role icon mafia")
+            cell.roleImage.image = UIImage(named: "Mafia")
         case .Don:
-            cell.roleImage.image = UIImage(named: "Role icon don maffia")
+            cell.roleImage.image = UIImage(named: "Don")
         case .Maniac:
-            cell.roleImage.image = UIImage(named: "Role icon maniac")
+            cell.roleImage.image = UIImage(named: "Maniac")
         case .Prostitute:
-            cell.roleImage.image = UIImage(named: "Role icon putana")
+            cell.roleImage.image = UIImage(named: "Putana")
         case .Sherif:
-            cell.roleImage.image = UIImage(named: "Role icon sheriff")
+            cell.roleImage.image = UIImage(named: "Sheriff")
         case .Undead:
-            cell.roleImage.image = UIImage(named: "Role icon undead")
+            cell.roleImage.image = UIImage(named: "Undead")
         case .Yacuza:
-            cell.roleImage.image = UIImage(named: "Role icon yacuza")
+            cell.roleImage.image = UIImage(named: "Yakudza")
         case .Lawyer:
             cell.roleImage.image = UIImage(named: "Lawyer")
         }
                 
         // Ячейка мертвого пользователя
         if player.stateAlive == AliveState.Dead {
-            cell.killImage.isHidden = false
+            cell.ripLabel.isHidden = false
             cell.isUserInteractionEnabled = false
-
             cell.killButton.isHidden = true
+            cell.choosedImage.isHidden = true
+            cell.linkLabel.isHidden = true
             
             return cell
         } else {
             cell.isUserInteractionEnabled = true
-        }
-        
-        if game.state == DayNightState.Day { // Что показываем в ячейке Днем
-            cell.killButton.isHidden = false
+            cell.ripLabel.isHidden = true
             
             // Отрисовываем нажатие кнопки "Убить"
             if player.actionCheck(action: ActionType.CitizenKill) {
-                cell.killButton.alpha = 1
+                cell.choosedImage.isHidden = false
+                cell.linkLabel.isHidden = true
             } else {
-                cell.killButton.alpha = 0.3
+                cell.choosedImage.isHidden = true
+                cell.linkLabel.isHidden = false
             }
         }
 
+        // Последнюю красную прерывистую линию не показываем
+        if (indexPath.section + 1) == tableView.numberOfSections {
+            cell.dottedLine.isHidden = true
+        } else {
+            cell.dottedLine.isHidden = false
+        }
+        
         return cell
     }
     
@@ -235,7 +254,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     // Нажали кнопку "Смена дня и ночи" в панели инструментов
     @IBAction func tapDayNightButton(_ sender: UIBarButtonItem) {
-        
         game.handleTurnActions() // Обрабатываем событие окончания хода
         game.startNewTurn() // Начинаем новый ход
         game.turnMessageDidShow = false // Метка о непоказанном сообщении

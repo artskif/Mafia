@@ -17,7 +17,8 @@ class ChooseTableViewCell: UITableViewCell {
     @IBOutlet weak var numbelLabel: UILabel!
     @IBOutlet weak var checkImage: UIImageView!
     @IBOutlet weak var rectangleImage: UIImageView!
-
+    @IBOutlet weak var dottedLine: DottedLineView!
+    
     // MARK: - События ячейки
     
     override func awakeFromNib() {

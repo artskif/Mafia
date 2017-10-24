@@ -164,6 +164,13 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         //    cell.checkImage.isHidden = false
         //}
         
+        // Последнюю красную прерывистую линию не показываем
+        if (indexPath.section + 1) == tableView.numberOfSections {
+            cell.dottedLine.isHidden = true
+        } else {
+            cell.dottedLine.isHidden = false
+        }
+        
         // выбранных игроков выбирать не нужно
         if choosedUsers.contains(indexPath.section) {
             cell.checkImage.isHidden = false

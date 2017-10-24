@@ -16,6 +16,7 @@ class ActionPlayersTableViewCell: UITableViewCell {
     @IBOutlet weak var choosedImage: UIImageView!
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var dottedLine: DottedLineView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

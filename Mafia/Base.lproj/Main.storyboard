@@ -235,51 +235,84 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rain" translatesAutoresizingMaskIntoConstraints="NO" id="mMH-H9-nnY">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_day" translatesAutoresizingMaskIntoConstraints="NO" id="mMH-H9-nnY">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mMH-H9-nnY" secondAttribute="height" multiplier="125:206" constant="-29.733009708737825" id="BK1-FY-pCQ"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="cge-AA-EFm">
-                                <rect key="frame" x="16" y="72" width="343" height="546"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="68" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="cge-AA-EFm">
+                                <rect key="frame" x="0.0" y="129" width="375" height="445"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="oNQ-Ax-mL0" id="X68-On-5m3"/>
                                     <outlet property="delegate" destination="oNQ-Ax-mL0" id="DYG-Fo-Zzj"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYU-Ow-JOM">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eBp-xj-OiD"/>
-                                    <barButtonItem title="Наступает ночь" width="60" id="ap6-I2-6Du">
-                                        <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <action selector="tapDayNightButton:" destination="oNQ-Ax-mL0" id="zY3-oJ-Zhl"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="VGj-a0-NAY"/>
-                                </items>
-                                <color key="barTintColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кого убиваем днем?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilj-M9-9xm">
+                                <rect key="frame" x="16" y="84" width="343" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="wRY-eL-PWu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKq-Jf-BuW">
+                                <rect key="frame" x="124" y="582" width="127" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="127" id="1N3-XI-DtO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapDayNightButton:" destination="oNQ-Ax-mL0" eventType="touchUpInside" id="Ch5-6n-4w8"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moon_link" translatesAutoresizingMaskIntoConstraints="NO" id="ksq-Ui-vcb">
+                                <rect key="frame" x="165" y="582" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="MXL-A6-fqX"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="gVt-8U-yhu"/>
+                                    <constraint firstAttribute="width" constant="45" id="rxE-uc-IHG"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="yyc-gx-q6M"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наступает ночь" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrI-62-CSJ">
+                                <rect key="frame" x="126.5" y="635" width="122" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="qFv-GX-DaQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mMH-H9-nnY" firstAttribute="top" secondItem="LDo-YX-gZU" secondAttribute="top" id="1id-YA-SmB"/>
-                            <constraint firstItem="XYU-Ow-JOM" firstAttribute="leading" secondItem="LDo-YX-gZU" secondAttribute="leading" id="2ww-tr-ODJ"/>
-                            <constraint firstItem="XYU-Ow-JOM" firstAttribute="bottom" secondItem="BbS-iF-QQF" secondAttribute="top" id="Dvy-DP-3TL"/>
-                            <constraint firstItem="XYU-Ow-JOM" firstAttribute="top" secondItem="cge-AA-EFm" secondAttribute="bottom" constant="5" id="Jq5-2H-gmC"/>
-                            <constraint firstAttribute="trailing" secondItem="XYU-Ow-JOM" secondAttribute="trailing" id="Nie-dD-hP3"/>
+                            <constraint firstItem="ilj-M9-9xm" firstAttribute="trailing" secondItem="LDo-YX-gZU" secondAttribute="trailingMargin" id="7bS-Lt-fzO"/>
+                            <constraint firstItem="ksq-Ui-vcb" firstAttribute="top" secondItem="cge-AA-EFm" secondAttribute="bottom" constant="8" id="Ah8-7Q-wNK"/>
+                            <constraint firstItem="LKq-Jf-BuW" firstAttribute="top" secondItem="cge-AA-EFm" secondAttribute="bottom" constant="8" id="FLC-wA-5cR"/>
+                            <constraint firstItem="ilj-M9-9xm" firstAttribute="top" secondItem="Ry8-rd-x5f" secondAttribute="bottom" constant="20" id="Mb3-Ww-T5t"/>
+                            <constraint firstItem="ksq-Ui-vcb" firstAttribute="centerX" secondItem="LDo-YX-gZU" secondAttribute="centerX" id="Vi1-rZ-vfD"/>
+                            <constraint firstItem="LKq-Jf-BuW" firstAttribute="centerX" secondItem="LDo-YX-gZU" secondAttribute="centerX" id="VmH-Bf-dxy"/>
+                            <constraint firstAttribute="trailing" secondItem="cge-AA-EFm" secondAttribute="trailing" id="YOP-OW-QUL"/>
+                            <constraint firstAttribute="trailing" secondItem="cge-AA-EFm" secondAttribute="trailing" id="Z5M-ge-6UX"/>
+                            <constraint firstItem="BbS-iF-QQF" firstAttribute="top" secondItem="lrI-62-CSJ" secondAttribute="bottom" constant="2" id="c7Z-WI-Ez9"/>
+                            <constraint firstItem="lrI-62-CSJ" firstAttribute="centerX" secondItem="LDo-YX-gZU" secondAttribute="centerX" id="eCk-1H-cgo"/>
+                            <constraint firstItem="cge-AA-EFm" firstAttribute="top" secondItem="ilj-M9-9xm" secondAttribute="bottom" constant="25" id="fa5-YX-TAQ"/>
+                            <constraint firstItem="BbS-iF-QQF" firstAttribute="top" secondItem="LKq-Jf-BuW" secondAttribute="bottom" constant="8" id="iGE-SC-dQR"/>
                             <constraint firstAttribute="trailing" secondItem="mMH-H9-nnY" secondAttribute="trailing" id="iqz-dN-zZv"/>
-                            <constraint firstItem="cge-AA-EFm" firstAttribute="leading" secondItem="LDo-YX-gZU" secondAttribute="leadingMargin" id="oHP-fW-pRi"/>
-                            <constraint firstItem="cge-AA-EFm" firstAttribute="trailing" secondItem="LDo-YX-gZU" secondAttribute="trailingMargin" id="oJ3-qa-XaC"/>
-                            <constraint firstItem="cge-AA-EFm" firstAttribute="top" secondItem="Ry8-rd-x5f" secondAttribute="bottom" constant="8" id="tBt-t0-oc3"/>
+                            <constraint firstItem="cge-AA-EFm" firstAttribute="leading" secondItem="LDo-YX-gZU" secondAttribute="leading" id="qBB-P3-Eaa"/>
+                            <constraint firstItem="lrI-62-CSJ" firstAttribute="top" secondItem="ksq-Ui-vcb" secondAttribute="bottom" constant="8" id="ukg-Wf-m7U"/>
+                            <constraint firstItem="ilj-M9-9xm" firstAttribute="leading" secondItem="LDo-YX-gZU" secondAttribute="leadingMargin" id="wmU-px-ged"/>
                             <constraint firstItem="mMH-H9-nnY" firstAttribute="leading" secondItem="LDo-YX-gZU" secondAttribute="leading" id="x0y-oN-aTK"/>
+                            <constraint firstItem="cge-AA-EFm" firstAttribute="leading" secondItem="LDo-YX-gZU" secondAttribute="leading" id="yXG-GY-zXW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Наступил день" id="uiW-uU-I3i">
@@ -288,9 +321,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bottomToolbar" destination="XYU-Ow-JOM" id="yUA-Cm-zMg"/>
-                        <outlet property="dayNightButton" destination="ap6-I2-6Du" id="hD4-Jd-tcR"/>
-                        <outlet property="itemDayNightToolbar" destination="ap6-I2-6Du" id="zgm-9j-DlJ"/>
                         <outlet property="mainView" destination="LDo-YX-gZU" id="TYD-cs-DHh"/>
                         <outlet property="menuButton" destination="r2t-kr-lnX" id="0Oc-RC-6IF"/>
                         <outlet property="playersTableView" destination="cge-AA-EFm" id="hhU-Ea-7yY"/>
@@ -301,7 +331,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szG-dh-KKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="FzV-ee-t8s" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4870" y="-940"/>
+            <point key="canvasLocation" x="4869.6000000000004" y="-940.47976011994012"/>
         </scene>
         <!--Игроки-->
         <scene sceneID="CvP-XR-Qwy">
@@ -316,10 +346,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_day" translatesAutoresizingMaskIntoConstraints="NO" id="WCS-yf-ABv">
-                                <rect key="frame" x="0.0" y="84" width="375" height="583"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите игроков" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9KR-YA-JId">
-                                <rect key="frame" x="16" y="92" width="343" height="40"/>
+                                <rect key="frame" x="16" y="72" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Avk-wS-rho"/>
                                 </constraints>
@@ -328,7 +358,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Имя игрока" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Lv-qH-zmP">
-                                <rect key="frame" x="13" y="185" width="295" height="30"/>
+                                <rect key="frame" x="13" y="165" width="295" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WBQ-j3-c90"/>
                                 </constraints>
@@ -341,7 +371,7 @@
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jC6-Tv-qA9">
-                                <rect key="frame" x="13" y="214" width="295" height="1"/>
+                                <rect key="frame" x="13" y="194" width="295" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="tl6-WA-E9C"/>
@@ -354,7 +384,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hTs-0E-AWg">
-                                <rect key="frame" x="0.0" y="287" width="375" height="380"/>
+                                <rect key="frame" x="0.0" y="267" width="375" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -450,6 +480,7 @@
                                             <outlet property="cellName" destination="mBo-Lr-hgo" id="8n5-LK-w8a"/>
                                             <outlet property="checkImage" destination="Coh-ZZ-1Ib" id="ZQT-eD-XEN"/>
                                             <outlet property="chooseButton" destination="4fA-HY-7m0" id="rkb-9K-vaa"/>
+                                            <outlet property="dottedLine" destination="idz-7f-Y16" id="0kH-PU-A4Z"/>
                                             <outlet property="numbelLabel" destination="zub-cn-Zgf" id="lD4-fD-enc"/>
                                             <outlet property="rectangleImage" destination="Coh-ZZ-1Ib" id="iBi-WP-ltQ"/>
                                         </connections>
@@ -461,7 +492,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGI-qB-AjB">
-                                <rect key="frame" x="327" y="183" width="25" height="25"/>
+                                <rect key="frame" x="327" y="163" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="Tg1-eF-c9m"/>
                                     <constraint firstAttribute="height" constant="25" id="jX0-pd-h7Z"/>
@@ -473,7 +504,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавить нового игрока" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0L-Pc-Met">
-                                <rect key="frame" x="13" y="147" width="343" height="30"/>
+                                <rect key="frame" x="13" y="127" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="fGB-p6-xJY"/>
                                 </constraints>
@@ -482,7 +513,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выбрать игрока из существующих" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqv-qM-Kjk">
-                                <rect key="frame" x="13" y="249" width="343" height="30"/>
+                                <rect key="frame" x="13" y="229" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="eu2-yA-WrU"/>
                                 </constraints>
@@ -1436,12 +1467,12 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h29-Sd-9DV">
-                                <rect key="frame" x="123.5" y="629" width="128" height="30"/>
+                                <rect key="frame" x="124" y="582" width="127" height="77"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="0Ta-2a-CAN"/>
+                                    <constraint firstAttribute="width" constant="127" id="dat-M6-Lrt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                <state key="normal" title="Наступает День">
+                                <state key="normal">
                                     <color key="titleColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -1455,20 +1486,32 @@
                                     <constraint firstAttribute="height" constant="45" id="LEq-rO-fbE"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наступает день" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtF-Nr-V7k">
+                                <rect key="frame" x="126" y="629" width="123" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HDy-fV-Bjo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="aTh-Qv-Biy" firstAttribute="centerX" secondItem="Ito-U9-VPE" secondAttribute="centerX" id="0Tn-di-JSR"/>
-                            <constraint firstItem="h29-Sd-9DV" firstAttribute="centerX" secondItem="Ito-U9-VPE" secondAttribute="centerX" id="5Oa-vP-XMM"/>
+                            <constraint firstItem="h29-Sd-9DV" firstAttribute="centerX" secondItem="Ito-U9-VPE" secondAttribute="centerX" id="0ns-eF-YTZ"/>
                             <constraint firstAttribute="trailing" secondItem="C76-6E-i3f" secondAttribute="trailing" id="ACG-gJ-Tr7"/>
                             <constraint firstAttribute="trailing" secondItem="dea-xf-uua" secondAttribute="trailing" id="EbL-n3-tdk"/>
                             <constraint firstItem="C76-6E-i3f" firstAttribute="top" secondItem="Ito-U9-VPE" secondAttribute="top" id="Eg1-4i-fO8"/>
                             <constraint firstItem="muE-47-ETo" firstAttribute="top" secondItem="C76-6E-i3f" secondAttribute="bottom" id="F9h-ag-nzL"/>
                             <constraint firstItem="aTh-Qv-Biy" firstAttribute="top" secondItem="dea-xf-uua" secondAttribute="bottom" constant="8" id="KKW-vX-Md2"/>
                             <constraint firstItem="C76-6E-i3f" firstAttribute="leading" secondItem="Ito-U9-VPE" secondAttribute="leading" id="Lef-4B-3W3"/>
-                            <constraint firstItem="h29-Sd-9DV" firstAttribute="top" secondItem="aTh-Qv-Biy" secondAttribute="bottom" constant="2" id="ZP4-Lt-FbC"/>
+                            <constraint firstItem="h29-Sd-9DV" firstAttribute="top" secondItem="dea-xf-uua" secondAttribute="bottom" constant="8" id="Sdc-LN-Upd"/>
                             <constraint firstItem="dea-xf-uua" firstAttribute="top" secondItem="3gl-hW-fOs" secondAttribute="bottom" id="hHi-bs-FW7"/>
-                            <constraint firstItem="muE-47-ETo" firstAttribute="top" secondItem="h29-Sd-9DV" secondAttribute="bottom" constant="8" id="qLb-JT-2p8"/>
+                            <constraint firstItem="QtF-Nr-V7k" firstAttribute="top" secondItem="aTh-Qv-Biy" secondAttribute="bottom" constant="2" id="pZ3-uP-saM"/>
+                            <constraint firstItem="QtF-Nr-V7k" firstAttribute="centerX" secondItem="Ito-U9-VPE" secondAttribute="centerX" id="paJ-Ov-PUN"/>
+                            <constraint firstItem="muE-47-ETo" firstAttribute="top" secondItem="h29-Sd-9DV" secondAttribute="bottom" constant="8" id="sd4-ux-psE"/>
+                            <constraint firstItem="muE-47-ETo" firstAttribute="top" secondItem="QtF-Nr-V7k" secondAttribute="bottom" constant="8" id="tPU-o8-IZF"/>
                             <constraint firstItem="dea-xf-uua" firstAttribute="leading" secondItem="Ito-U9-VPE" secondAttribute="leading" id="xrh-KN-d72"/>
                         </constraints>
                     </view>
@@ -1510,21 +1553,18 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="w2C-t2-V7u">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="d5g-T5-VeL"/>
-                                    <constraint firstAttribute="height" constant="667" id="ohu-Qb-e35"/>
-                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ночное действие" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIB-7c-Ifs">
-                                <rect key="frame" x="16" y="81" width="343" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="17"/>
-                                <color key="textColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ночное действие" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIB-7c-Ifs">
+                                <rect key="frame" x="16" y="84" width="343" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ygo-w7-tPI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="22"/>
+                                <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qan-qK-9Gt">
-                                <rect key="frame" x="0.0" y="131" width="375" height="516"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qan-qK-9Gt">
+                                <rect key="frame" x="0.0" y="129" width="375" height="518"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1562,12 +1602,12 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="KMI-fy-ksl"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выбрать" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGX-3l-jx9">
-                                                    <rect key="frame" x="298" y="23.5" width="69" height="20"/>
+                                                    <rect key="frame" x="298" y="24" width="69" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="69" id="oRT-jp-XNb"/>
                                                     </constraints>
@@ -1597,7 +1637,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="UjP-ZO-j13"/>
                                                         <constraint firstAttribute="width" constant="24" id="p3T-by-UZO"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
                                                     <color key="textColor" red="0.85098039219999999" green="0.29411764709999999" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1629,7 +1669,6 @@
                                                 <constraint firstItem="UFu-bp-93g" firstAttribute="centerY" secondItem="x83-B2-UVN" secondAttribute="centerY" id="oAa-U1-cjy"/>
                                                 <constraint firstItem="ZGX-3l-jx9" firstAttribute="leading" secondItem="9Uk-B5-l2X" secondAttribute="trailing" constant="19" id="ulg-AL-OQS"/>
                                                 <constraint firstItem="BoW-RL-CaS" firstAttribute="centerY" secondItem="x83-B2-UVN" secondAttribute="centerY" id="uvU-1c-dWh"/>
-                                                <constraint firstItem="yt4-Rf-Whn" firstAttribute="leading" secondItem="BoW-RL-CaS" secondAttribute="trailing" constant="3" id="yna-Za-Yl8"/>
                                                 <constraint firstItem="UFu-bp-93g" firstAttribute="leading" secondItem="x83-B2-UVN" secondAttribute="leading" constant="20" id="zZG-0M-vs6"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1637,6 +1676,7 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="choosedImage" destination="WqC-g5-2lp" id="gAl-wG-wSl"/>
+                                            <outlet property="dottedLine" destination="Mi7-vE-j7P" id="Zib-7p-3PA"/>
                                             <outlet property="linkLabel" destination="ZGX-3l-jx9" id="G6I-r1-Mga"/>
                                             <outlet property="nameLabel" destination="yt4-Rf-Whn" id="3ya-jd-XjB"/>
                                             <outlet property="numberLabel" destination="BoW-RL-CaS" id="8eR-gH-RoB"/>
@@ -1653,22 +1693,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="w2C-t2-V7u" secondAttribute="bottom" id="0gC-N7-zoP"/>
-                            <constraint firstItem="w2C-t2-V7u" firstAttribute="centerY" secondItem="nys-Z6-jau" secondAttribute="centerY" id="4k2-Ny-1xo"/>
-                            <constraint firstItem="w2C-t2-V7u" firstAttribute="leading" secondItem="nys-Z6-jau" secondAttribute="leading" id="5kZ-BX-uTP"/>
-                            <constraint firstItem="w2C-t2-V7u" firstAttribute="bottom" secondItem="nys-Z6-jau" secondAttribute="bottomMargin" id="5yp-nb-jXZ"/>
-                            <constraint firstItem="w2C-t2-V7u" firstAttribute="top" secondItem="nys-Z6-jau" secondAttribute="top" id="7hX-Di-581"/>
-                            <constraint firstItem="w2C-t2-V7u" firstAttribute="top" secondItem="nys-Z6-jau" secondAttribute="top" id="8eT-1p-nyh"/>
-                            <constraint firstItem="w2C-t2-V7u" firstAttribute="leading" secondItem="nys-Z6-jau" secondAttribute="leading" id="958-KC-c9d"/>
-                            <constraint firstItem="w2C-t2-V7u" firstAttribute="leading" secondItem="nys-Z6-jau" secondAttribute="leading" id="CaP-a5-Cbc"/>
-                            <constraint firstItem="w2C-t2-V7u" firstAttribute="bottom" secondItem="XQc-od-qoe" secondAttribute="top" id="IoZ-pE-Cfm"/>
-                            <constraint firstItem="w2C-t2-V7u" firstAttribute="top" secondItem="nys-Z6-jau" secondAttribute="top" id="O6Y-Oy-C61"/>
-                            <constraint firstItem="XQc-od-qoe" firstAttribute="top" secondItem="w2C-t2-V7u" secondAttribute="bottom" id="Ves-HM-nRE"/>
-                            <constraint firstItem="w2C-t2-V7u" firstAttribute="top" secondItem="nys-Z6-jau" secondAttribute="topMargin" constant="-64" id="XJu-Nm-Xgo"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="w2C-t2-V7u" secondAttribute="trailing" constant="-16" id="bbc-26-gV2"/>
-                            <constraint firstAttribute="trailing" secondItem="w2C-t2-V7u" secondAttribute="trailing" id="e5L-4A-pGT"/>
-                            <constraint firstItem="w2C-t2-V7u" firstAttribute="centerX" secondItem="nys-Z6-jau" secondAttribute="centerX" id="hPh-JQ-BuI"/>
-                            <constraint firstItem="w2C-t2-V7u" firstAttribute="leading" secondItem="nys-Z6-jau" secondAttribute="leadingMargin" constant="-16" id="yCW-vp-8dC"/>
+                            <constraint firstItem="qan-qK-9Gt" firstAttribute="top" secondItem="zIB-7c-Ifs" secondAttribute="bottom" constant="25" id="3aT-6V-jnc"/>
+                            <constraint firstItem="zIB-7c-Ifs" firstAttribute="trailing" secondItem="nys-Z6-jau" secondAttribute="trailingMargin" id="FRl-GF-ac1"/>
+                            <constraint firstItem="w2C-t2-V7u" firstAttribute="leading" secondItem="nys-Z6-jau" secondAttribute="leading" id="Ml3-y8-M2K"/>
+                            <constraint firstItem="w2C-t2-V7u" firstAttribute="top" secondItem="nys-Z6-jau" secondAttribute="top" id="V1P-68-3xg"/>
+                            <constraint firstItem="XQc-od-qoe" firstAttribute="top" secondItem="w2C-t2-V7u" secondAttribute="bottom" id="XKI-YJ-mRP"/>
+                            <constraint firstItem="qan-qK-9Gt" firstAttribute="leading" secondItem="nys-Z6-jau" secondAttribute="leading" id="Yqt-IJ-Ll7"/>
+                            <constraint firstItem="zIB-7c-Ifs" firstAttribute="leading" secondItem="nys-Z6-jau" secondAttribute="leadingMargin" id="dyz-Jw-fBP"/>
+                            <constraint firstItem="XQc-od-qoe" firstAttribute="top" secondItem="qan-qK-9Gt" secondAttribute="bottom" constant="20" id="ePl-t2-PqY"/>
+                            <constraint firstAttribute="trailing" secondItem="qan-qK-9Gt" secondAttribute="trailing" id="h9v-5B-4Rj"/>
+                            <constraint firstItem="zIB-7c-Ifs" firstAttribute="top" secondItem="tNB-Gh-rVe" secondAttribute="bottom" constant="20" id="x0L-aM-l0j"/>
+                            <constraint firstAttribute="trailing" secondItem="w2C-t2-V7u" secondAttribute="trailing" id="y0g-Y2-aHo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ночные действия" id="2pH-q7-ggt">
@@ -1690,7 +1725,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vd7-vj-RX9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8QK-Rd-Ctz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5757.6000000000004" y="-262.21889055472263"/>
+            <point key="canvasLocation" x="5758" y="-262"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Ms-O6-Enq">
@@ -1786,18 +1821,18 @@
     </scenes>
     <resources>
         <image name="Citizen" width="111" height="111"/>
-        <image name="Rain" width="433" height="703"/>
         <image name="add_player" width="66" height="66"/>
         <image name="bg" width="960" height="1704"/>
         <image name="bg_day" width="960" height="1704"/>
         <image name="checked_player" width="66" height="66"/>
+        <image name="moon_link" width="92" height="91"/>
         <image name="rating_border" width="76" height="76"/>
         <image name="sun_link" width="120" height="120"/>
         <image name="target" width="77" height="77"/>
         <image name="unchecked_player" width="66" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oDS-m9-bvV"/>
+        <segue reference="0BP-Mc-r4R"/>
         <segue reference="q4y-1V-dvO"/>
         <segue reference="KaB-mj-Enm"/>
     </inferredMetricsTieBreakers>
