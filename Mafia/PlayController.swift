@@ -47,6 +47,9 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             showTurnMessages()
             game.turnMessageDidShow = true
         }
+        
+        // Меняем фон навигационной панели
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navbar_bg_dark"), for: .default)
     }
     
     override func didReceiveMemoryWarning() {
