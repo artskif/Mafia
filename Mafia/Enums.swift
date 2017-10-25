@@ -96,7 +96,7 @@ enum Role:Int, CustomStringConvertible {
         case .Undead:
             return []
         case .Don:
-            return [ActionType.DonCheck]
+            return [ActionType.DonCheck, ActionType.MafiaKill]
         case .Maniac:
             return [ActionType.ManiacKill, ActionType.ManiacSilence]
         case .Yacuza:

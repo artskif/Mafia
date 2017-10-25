@@ -40,11 +40,8 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
         menuButton.target = self.revealViewController()
         menuButton.action = Selector("revealToggle:")
         
-        // Получаем активные действия
-        roleActions.removeAll()
-        for r in game.roles {
-            roleActions.append(contentsOf: r.value.roleNightActions)
-        }
+        // Получаем активные действия которые могут делать пользователи
+        roleActions = game.getRoleActions()
         
         // Делаем навигационную панель прозрачной
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -87,7 +84,7 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
             }
             if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
                 let selectedPlayer = game.getPlayer(at: selectedIndexPath.section)
-                сhooseRoleViewController.choosedRole = selectedPlayer.role.rawValue
+                сhooseRoleViewController.choosedPlayer = selectedPlayer
             }
             
             сhooseRoleViewController.nameOfBackSegue = "unwindRolesToNightPlayerList"
@@ -115,12 +112,7 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
     // Количество секций в таблице
     func numberOfSections(in tableView: UITableView) -> Int {
         if tableView == actionTableView {
-            var numRoles: Int = 0
-            for r in game.roles {
-                numRoles += Int(r.value.roleNightActions.count)
-            }
-            
-            return numRoles
+            return roleActions.count
         } else {
             return game.countPlayers()
         }
@@ -274,42 +266,35 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
     
     // Выбрали роль на странице выбора ролей
     @IBAction func unwindRolesToNightPlayerList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? ChooseRoleViewController{
-            
-            if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
-                // Обновляем пользователя в таблице
-                if let newRole = sourceViewController.choosedRole {
-                    game.setPlayerRole(at: selectedIndexPath.section, element: Role(rawValue: newRole)!)
-                    playersTableView.reloadRows(at: [selectedIndexPath], with: .none)
-                }
-            }
-            
-            // Сортируем участников игры
-            game.sortPlayers()
-
-            // Получаем активные действия
-            roleActions.removeAll()
-            for r in game.roles {
-                roleActions.append(contentsOf: r.value.roleNightActions)
-            }
-
-            // Скрываем или показываем действия игроков если таковые имеются
-            if (roleActions.count==0){
-                actionView.isHidden = true
-                topPlayersView.priority = 999
-                topPlayersToActions.priority = 900
-            } else {
-                actionView.isHidden = false
-                topPlayersView.priority = 900
-                topPlayersToActions.priority = 999
-            }
-            
-            actionTableView.reloadData()
-            playersTableView.reloadData()
-
-            actionTableHeight.constant = actionTableView.contentSize.height
-            playersTableHeight.constant = playersTableView.contentSize.height
+        if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
+            // Обновляем пользователя в таблице
+            playersTableView.reloadRows(at: [selectedIndexPath], with: .none)
         }
+        
+        // Сортируем участников игры
+        game.sortPlayers()
+        
+        // Получаем активные действия которые могут делать пользователи
+        game.reloadRoles()
+        roleActions = game.getRoleActions()
+        
+        // Скрываем или показываем действия игроков если таковые имеются
+        if (roleActions.count==0){
+            actionView.isHidden = true
+            topPlayersView.priority = 999
+            topPlayersToActions.priority = 900
+        } else {
+            actionView.isHidden = false
+            topPlayersView.priority = 900
+            topPlayersToActions.priority = 999
+        }
+        
+        actionTableView.reloadData()
+        playersTableView.reloadData()
+        
+        actionTableHeight.constant = actionTableView.contentSize.height
+        playersTableHeight.constant = playersTableView.contentSize.height
+        
     }
     
     // Выбрали пользователя для ночного действия

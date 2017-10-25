@@ -112,6 +112,12 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RK1-bU-J7Q">
                         <rect key="frame" x="282" y="8" width="83" height="52.5"/>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAh-WF-JfT">
+                        <rect key="frame" x="0.0" y="0.0" width="80" height="69"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="x7p-LF-BPg"/>
+                        </constraints>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
@@ -130,15 +136,18 @@
                     <constraint firstItem="BAE-DL-X1C" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RgU-xr-L5b"/>
                     <constraint firstItem="hL8-9W-9ro" firstAttribute="leading" secondItem="ua6-s5-tQN" secondAttribute="trailing" constant="8" id="YED-bm-p9d"/>
                     <constraint firstItem="E4d-Xw-hc8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="YSN-Zt-GYs"/>
+                    <constraint firstItem="mAh-WF-JfT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="anu-1B-Gxb"/>
                     <constraint firstItem="E4d-Xw-hc8" firstAttribute="leading" secondItem="hL8-9W-9ro" secondAttribute="trailing" constant="3" id="dFW-gn-U4v"/>
                     <constraint firstAttribute="bottom" secondItem="RK1-bU-J7Q" secondAttribute="bottom" constant="8" id="gGm-ej-YBC"/>
                     <constraint firstItem="ua6-s5-tQN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="i5W-bf-dSq"/>
                     <constraint firstItem="BAE-DL-X1C" firstAttribute="leading" secondItem="E4d-Xw-hc8" secondAttribute="trailing" constant="5" id="l3a-rR-SWs"/>
                     <constraint firstAttribute="trailing" secondItem="kUv-Gi-qDG" secondAttribute="trailing" id="mhs-SA-kAy"/>
+                    <constraint firstAttribute="bottom" secondItem="mAh-WF-JfT" secondAttribute="bottom" id="nNg-Zk-vdT"/>
                     <constraint firstAttribute="bottom" secondItem="kUv-Gi-qDG" secondAttribute="bottom" id="o7Z-FH-kwt"/>
                     <constraint firstItem="GBt-A2-n3i" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pZU-jt-nFJ"/>
                     <constraint firstItem="dlr-7e-Qtn" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="rsO-gq-ud1"/>
                     <constraint firstItem="DtL-d3-cck" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vab-qW-3ns"/>
+                    <constraint firstItem="mAh-WF-JfT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wfu-LB-LWx"/>
                     <constraint firstItem="cpC-VJ-2dk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zXC-Id-WJx"/>
                 </constraints>
             </tableViewCellContentView>
@@ -153,6 +162,7 @@
                 <outlet property="numberLaber" destination="hL8-9W-9ro" id="OmH-NF-CzZ"/>
                 <outlet property="ripLabel" destination="GBt-A2-n3i" id="0bh-ju-ha3"/>
                 <outlet property="roleImage" destination="ua6-s5-tQN" id="bbM-55-6GT"/>
+                <outlet property="showRoleButton" destination="mAh-WF-JfT" id="Rhp-o2-oYD"/>
             </connections>
             <point key="canvasLocation" x="-130.5" y="20.5"/>
         </tableViewCell>

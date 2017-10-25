@@ -15,7 +15,8 @@ class ChooseRoleViewController: UIViewController, UITableViewDataSource, UITable
 
     // MARK: - Свойства контроллера
 
-    var choosedRole:Int?
+    //var choosedRole:Int?
+    var choosedPlayer:Player?
     var nameOfBackSegue:String?
     
     // MARK: - События контроллера
@@ -114,7 +115,7 @@ class ChooseRoleViewController: UIViewController, UITableViewDataSource, UITable
             cell.roleImage.image = UIImage(named: "Lawyer")
         }
         
-        if let currentChoosedRole = choosedRole {
+        if let currentChoosedRole = choosedPlayer?.role.rawValue {
             // Имеется выбранный вариант таблицы (выбора ролей)
             // если нажата кнопка выбора то мы ее отключаем (во избежании дальнейших нажатий этой кнопки)
             cell.checkButton.isHidden = currentChoosedRole != cell.chooseButton.tag
@@ -132,9 +133,8 @@ class ChooseRoleViewController: UIViewController, UITableViewDataSource, UITable
     
     // Нажата кнопка "Выбрать" в таблице выбора ролей игры
     @IBAction func chooseButton(_ sender: UIButton) {
-        choosedRole = sender.tag
         chooseTableView.reloadData()
-        
+        choosedPlayer?.role = Role(rawValue: sender.tag)!
         self.performSegue(withIdentifier: self.nameOfBackSegue!, sender: self)
     }
 }

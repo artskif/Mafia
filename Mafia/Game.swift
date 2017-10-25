@@ -162,7 +162,14 @@ class Game {
     
     // Отсортировать игроков
     func sortPlayers() {
-        self._players = self._players.sorted(by: {$0.name < $1.name})
+        self._players = self._players.sorted(by: {
+            switch ($0.stateAlive, $1.stateAlive){
+            case (AliveState.Dead, AliveState.Live): return false
+            case (AliveState.Live, AliveState.Dead): return true
+            case (AliveState.Dead, AliveState.Dead): return $0.name < $1.name
+            case (AliveState.Live, AliveState.Live): return $0.name < $1.name
+            }
+        })
     }
     
     // Обработать конец хода (высчитываем кто убит, кто молчит и тд)
@@ -280,6 +287,18 @@ class Game {
     // Пересчитываем оставшиеся игровые роли
     func reloadRoles(){
         self.roles = self.getGameRoles()
+    }
+    
+    func getRoleActions() -> [ActionType]{
+        var roleActions : [ActionType] = []
+        for r in game.roles {
+            for a in r.value.roleNightActions {
+                if roleActions.index(of: a) == nil {
+                    roleActions.append(a)
+                }
+            }
+        }
+        return roleActions
     }
     
     // MARK: - Методы Ходов(Turn)

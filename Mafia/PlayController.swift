@@ -70,10 +70,13 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
-            if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
-                let selectedPlayer = game.getPlayer(at: selectedIndexPath.section)
-                сhooseRoleViewController.choosedRole = selectedPlayer.role.rawValue
+            guard let roleButton = sender as? UIButton else {
+                fatalError("Unexpected sender: \(sender.debugDescription)")
             }
+            
+            let selectedPlayer = game.getPlayer(at: roleButton.tag)
+            сhooseRoleViewController.choosedPlayer = selectedPlayer
+            
             
             сhooseRoleViewController.nameOfBackSegue = "unwindRolesToPlayerList"
         default:
@@ -105,10 +108,6 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         return headerView
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "ShowRoles", sender: self)
-    }
-    
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifer = "PlayTableViewCell"
@@ -119,6 +118,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Вешаем обработчики событий на кнопки
         cell.killButton.addTarget(self, action: #selector(pushCitizenKill), for: UIControlEvents.touchUpInside)
+        cell.showRoleButton.addTarget(self, action: #selector(pushShowRole), for: UIControlEvents.touchUpInside)
         
         // Визуально оформляем ячейку
         cell.layer.cornerRadius = 0
@@ -140,6 +140,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.currentRating.text = "\(sum < 1 ? 1 : sum)"
         
         // Заполним данные для кнопок
+        cell.showRoleButton.tag = indexPath.section
         cell.killButton.tag = indexPath.section
         cell.nameLabel.text = player.name
         cell.numberLaber.text = "\(indexPath.section + 1)."
@@ -186,6 +187,10 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             if player.actionCheck(action: ActionType.CitizenKill) {
                 cell.choosedImage.isHidden = false
                 cell.linkLabel.isHidden = true
+                
+                let choosedColor = UIColor(rgb: 0xB88E8E, alpha: 0.4).cgColor
+                // Выделяем цветом наминированного игрока
+                cell.layer.backgroundColor = choosedColor
             } else {
                 cell.choosedImage.isHidden = true
                 cell.linkLabel.isHidden = false
@@ -222,21 +227,17 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Выбрали роль на странице выбора ролей
     @IBAction func unwindRolesToPlayerList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? ChooseRoleViewController{
+        if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
+            // Обновляем пользователя в таблице
+            playersTableView.reloadRows(at: [selectedIndexPath], with: .none)
             
-            if let selectedIndexPath = playersTableView.indexPathForSelectedRow {
-                // Обновляем пользователя в таблице
-                if let newRole = sourceViewController.choosedRole {
-                    game.setPlayerRole(at: selectedIndexPath.section, element: Role(rawValue: newRole)!)
-                    playersTableView.reloadRows(at: [selectedIndexPath], with: .none)
-                }
-            }
-            
-            // Сортируем участников игры
-            game.sortPlayers()
-            
-            playersTableView.reloadData()
         }
+        
+        // Сортируем участников игры
+        game.sortPlayers()
+        
+        playersTableView.reloadData()
+        
     }
     
     // Нажали кнопку Cancel на странице добавления пользователя в игру
@@ -246,13 +247,15 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             playersTableView.deselectRow(at: selectedIndexPath, animated: false)
         }
     }
+
+    // Нажали кнопку "Выбрать роль" в таблице
+    func pushShowRole(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "ShowRoles", sender: sender)
+    }
     
-    // Нажали кнопку "Мафия убивает" в таблице
+    // Нажали кнопку "Горожане убивают" в таблице
     func pushCitizenKill(_ sender: UIButton) {
-        // Если днем убили то горожане(с мафией) если ночью то мафия
-        let actionType = ActionType.CitizenKill
-        
-        self.createAction(newAction: actionType, cellRow: sender.tag)
+        self.createAction(newAction: ActionType.CitizenKill, cellRow: sender.tag)
     }
 
     // Нажали кнопку "Смена дня и ночи" в панели инструментов
