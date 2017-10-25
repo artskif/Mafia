@@ -21,6 +21,7 @@ import UIKit
     @IBOutlet weak var killButton: UIButton!
     @IBOutlet weak var dottedLine: DottedLineView!
     @IBOutlet weak var showRoleButton: UIButton!
+    @IBOutlet weak var showPropertiesButton: UIButton!
     
     // MARK: - События ячейки
     override func awakeFromNib() {

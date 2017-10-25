@@ -15,7 +15,6 @@ class ChooseRoleViewController: UIViewController, UITableViewDataSource, UITable
 
     // MARK: - Свойства контроллера
 
-    //var choosedRole:Int?
     var choosedPlayer:Player?
     var nameOfBackSegue:String?
     

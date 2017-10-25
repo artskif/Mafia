@@ -118,6 +118,10 @@
                             <constraint firstAttribute="width" constant="80" id="x7p-LF-BPg"/>
                         </constraints>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvN-wG-xbZ">
+                        <rect key="frame" x="83" y="7" width="205" height="55"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
@@ -162,6 +166,7 @@
                 <outlet property="numberLaber" destination="hL8-9W-9ro" id="OmH-NF-CzZ"/>
                 <outlet property="ripLabel" destination="GBt-A2-n3i" id="0bh-ju-ha3"/>
                 <outlet property="roleImage" destination="ua6-s5-tQN" id="bbM-55-6GT"/>
+                <outlet property="showPropertiesButton" destination="QvN-wG-xbZ" id="8tN-0L-ycH"/>
                 <outlet property="showRoleButton" destination="mAh-WF-JfT" id="Rhp-o2-oYD"/>
             </connections>
             <point key="canvasLocation" x="-130.5" y="20.5"/>

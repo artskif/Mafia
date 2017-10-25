@@ -332,7 +332,7 @@ class Game {
         for p in self._players {
             // Подсчитываем рейтинг игрока текущей законченной игры(не может быть меньше 1)
             var sumRatingOfGame = p.currentRating.reduce(0, { x, y in x + y})
-            sumRatingOfGame = sumRatingOfGame < 1 ? 1 : sumRatingOfGame
+            sumRatingOfGame = sumRatingOfGame < 0 ? 0 : sumRatingOfGame
             
             if p.id > 0 {
                 if let findedAccount = self.findAccountById(id: p.id) {

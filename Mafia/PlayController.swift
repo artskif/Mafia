@@ -76,10 +76,19 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             let selectedPlayer = game.getPlayer(at: roleButton.tag)
             сhooseRoleViewController.choosedPlayer = selectedPlayer
-            
-            
             сhooseRoleViewController.nameOfBackSegue = "unwindRolesToPlayerList"
-        default:
+        case "ShowProperties":
+            guard let propertiesViewController = segue.destination as? PropertiesController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let propertiesButton = sender as? UIButton else {
+                fatalError("Unexpected sender: \(sender.debugDescription)")
+            }
+            
+            let selectedPlayer = game.getPlayer(at: propertiesButton.tag)
+            propertiesViewController.choosedPlayer = selectedPlayer
+         default:
             break
         }
     }
@@ -118,6 +127,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Вешаем обработчики событий на кнопки
         cell.killButton.addTarget(self, action: #selector(pushCitizenKill), for: UIControlEvents.touchUpInside)
+        cell.showPropertiesButton.addTarget(self, action: #selector(pushPropertiesButton), for: UIControlEvents.touchUpInside)
         cell.showRoleButton.addTarget(self, action: #selector(pushShowRole), for: UIControlEvents.touchUpInside)
         
         // Визуально оформляем ячейку
@@ -137,10 +147,11 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Заполняем рейтинг ячейки
         let sum = player.currentRating.reduce(0, { x, y in x + y})
-        cell.currentRating.text = "\(sum < 1 ? 1 : sum)"
+        cell.currentRating.text = "\(sum)"
         
         // Заполним данные для кнопок
         cell.showRoleButton.tag = indexPath.section
+        cell.showPropertiesButton.tag = indexPath.section
         cell.killButton.tag = indexPath.section
         cell.nameLabel.text = player.name
         cell.numberLaber.text = "\(indexPath.section + 1)."
@@ -235,9 +246,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Сортируем участников игры
         game.sortPlayers()
-        
         playersTableView.reloadData()
-        
     }
     
     // Нажали кнопку Cancel на странице добавления пользователя в игру
@@ -253,6 +262,11 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.performSegue(withIdentifier: "ShowRoles", sender: sender)
     }
     
+    // Нажали кнопку "Показать параметры" в таблице
+    func pushPropertiesButton(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "ShowProperties", sender: sender)
+    }
+
     // Нажали кнопку "Горожане убивают" в таблице
     func pushCitizenKill(_ sender: UIButton) {
         self.createAction(newAction: ActionType.CitizenKill, cellRow: sender.tag)
