@@ -296,7 +296,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Показываем игровые собщения окончания хода
         popOverVC.textMessageLabel.text = game.turnTextMessage
-        popOverVC.titleLabel.text = game.state == DayNightState.Day ? "НАСТУПИЛА НОЧЬ" : "НАСТУПИЛ ДЕНЬ"
+        popOverVC.titleLabel.text = game.state == DayNightState.Night ? "НАСТУПИЛА НОЧЬ" : "НАСТУПИЛ ДЕНЬ"
     }
     
     // Выполняем новое действие над пользователем (убить, вылечить, проверить и тд.)

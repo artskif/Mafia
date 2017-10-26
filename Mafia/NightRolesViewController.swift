@@ -56,6 +56,12 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
             topPlayersToActions.priority = 900
         }
         
+        // Если игра уже началась то пользователей для выбора роли не показыв
+        if game.turnNumber > 1 {
+            playersView.isHidden = true
+            playersTableHeight.constant = 0
+        }
+        
         // Показываем сообщение хода если нужно
         if !game.turnMessageDidShow {
             showTurnMessages()
@@ -65,7 +71,7 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLayoutSubviews(){
         actionTableHeight.constant = actionTableView.contentSize.height
-        playersTableHeight.constant = playersTableView.contentSize.height
+        if game.turnNumber < 2 { playersTableHeight.constant = playersTableView.contentSize.height }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -293,7 +299,7 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
         playersTableView.reloadData()
         
         actionTableHeight.constant = actionTableView.contentSize.height
-        playersTableHeight.constant = playersTableView.contentSize.height
+        if game.turnNumber < 2 { playersTableHeight.constant = playersTableView.contentSize.height }
         
     }
     
@@ -347,7 +353,7 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
         
         // Показываем игровые собщения окончания хода
         popOverVC.textMessageLabel.text = game.turnTextMessage
-        popOverVC.titleLabel.text = game.state == DayNightState.Day ? "НАСТУПИЛА НОЧЬ" : "НАСТУПИЛ ДЕНЬ"
+        popOverVC.titleLabel.text = game.state == DayNightState.Night ? "НАСТУПИЛА НОЧЬ" : "НАСТУПИЛ ДЕНЬ"
     }
     
 }

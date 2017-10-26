@@ -286,7 +286,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наступает ночь" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrI-62-CSJ">
-                                <rect key="frame" x="127" y="635" width="122" height="30"/>
+                                <rect key="frame" x="126" y="635" width="124.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="qFv-GX-DaQ"/>
                                 </constraints>
@@ -1004,7 +1004,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqo-de-p7G" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="cnc-fS-x6V" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3336.8000000000002" y="-748.87556221889065"/>
+            <point key="canvasLocation" x="3337" y="-176"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X2L-47-tzq">
@@ -1693,7 +1693,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наступает день" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtF-Nr-V7k">
-                                <rect key="frame" x="126" y="629" width="123" height="30"/>
+                                <rect key="frame" x="125" y="629" width="125" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="HDy-fV-Bjo"/>
                                 </constraints>
