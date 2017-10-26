@@ -13,7 +13,7 @@ import CoreData
 //
 // Это контроллер добавления новых игроков, а так же выбора роли в случае если игра началась
 //
-class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
+class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
     
     // MARK: - Элементы управления контроллера
     
@@ -58,10 +58,13 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             }
         }
 
+        if (playersForChoose.count == 0) {
+            self.performSegue(withIdentifier: "showPopover1", sender: self)
+        }
+        
         // Включить кнопку Add только если контроллер содержит валидные данные для сохранения
         updateAddButtonState()
        
-        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navbar_bg_dark"), for: .default)
         
         chooseTableView.rowHeight = 44.0
@@ -93,11 +96,19 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
             
             // Сортируем участников игры
             game.sortPlayers()
+        case "showPopover1":
+            let popVC = segue.destination
+            popVC.popoverPresentationController?.delegate = self
+        case "showPopover2":
+            let popVC = segue.destination
+            popVC.popoverPresentationController?.delegate = self
         default:
             break
         }
-        
-        
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
     // MARK: - Методы инициализации таблицы выбора участников
@@ -231,6 +242,10 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
                 addUserTableView.insertSections(indexes, with: .automatic)
                 chooseTableView.reloadRows(at: othersIndexPaths, with: .fade)
                 chooseTableView.endUpdates()
+                
+                if (playersForChoose.count == 1) {
+                    self.performSegue(withIdentifier: "showPopover2", sender: self)
+                }
             }
         }
         

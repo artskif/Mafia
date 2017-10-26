@@ -286,7 +286,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наступает ночь" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrI-62-CSJ">
-                                <rect key="frame" x="126" y="635" width="124.5" height="30"/>
+                                <rect key="frame" x="125.5" y="635" width="124.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="qFv-GX-DaQ"/>
                                 </constraints>
@@ -575,11 +575,52 @@
                         <outlet property="chooseTableView" destination="hTs-0E-AWg" id="OUp-lw-YR9"/>
                         <outlet property="nameTextField" destination="6Lv-qH-zmP" id="SLw-FV-WYc"/>
                         <outlet property="saveButton" destination="pG3-vD-Mwn" id="Zwm-Xt-6CR"/>
+                        <segue destination="2PC-KD-2iZ" kind="popoverPresentation" identifier="showPopover1" popoverAnchorView="eGI-qB-AjB" id="302-Wz-8GA">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                        <segue destination="Cxf-8t-ilE" kind="popoverPresentation" identifier="showPopover2" popoverAnchorBarButtonItem="pG3-vD-Mwn" id="Afm-fr-EKp">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y38-Xb-jv6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5209" y="448"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="NuV-fk-Yo8">
+            <objects>
+                <viewController id="2PC-KD-2iZ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dcm-gl-VIO"/>
+                        <viewControllerLayoutGuide type="bottom" id="LKM-Ca-Vai"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V5m-lI-mFA">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавить нового игрока можно только после того, как введете его имя" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qed-tm-aa8">
+                                <rect key="frame" x="10" y="8" width="180" height="84"/>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qed-tm-aa8" firstAttribute="leading" secondItem="V5m-lI-mFA" secondAttribute="leading" constant="10" id="8Kc-3S-vAP"/>
+                            <constraint firstItem="qed-tm-aa8" firstAttribute="top" secondItem="dcm-gl-VIO" secondAttribute="bottom" constant="8" id="dot-WQ-RTv"/>
+                            <constraint firstItem="LKM-Ca-Vai" firstAttribute="top" secondItem="qed-tm-aa8" secondAttribute="bottom" constant="8" id="or4-m4-g4Y"/>
+                            <constraint firstAttribute="trailing" secondItem="qed-tm-aa8" secondAttribute="trailing" constant="10" id="xUY-1J-ICm"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="200" height="100"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="100"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FAh-WE-xJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5821" y="368"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="dbj-tc-UsJ">
@@ -1743,6 +1784,9 @@
                         <outlet property="topPlayersToActions" destination="eNd-AB-Uhn" id="HHv-UI-95T"/>
                         <outlet property="topPlayersView" destination="kua-fr-Ye1" id="cUQ-sR-cDb"/>
                         <segue destination="5X2-ja-wNb" kind="unwind" identifier="unwindToMainScreen" unwindAction="unwindCancelToMainScreenWithSender:" id="pDR-Co-Ydc"/>
+                        <segue destination="qO6-1w-HUb" kind="popoverPresentation" identifier="showPopover1" popoverAnchorView="aTh-Qv-Biy" id="TVe-3W-jFx">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnO-5r-XPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2370,6 +2414,76 @@
                 <exit id="zAH-n6-rV4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6872.8000000000002" y="-930.58470764617698"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gNt-yK-Cjt">
+            <objects>
+                <viewController id="Cxf-8t-ilE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XMb-BN-fGk"/>
+                        <viewControllerLayoutGuide type="bottom" id="X4Y-El-RVI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VH8-ta-AVo">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Когда добавите всех игроков, нажмите Сохранить для продолжения" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8we-1g-3lk">
+                                <rect key="frame" x="16" y="8" width="168" height="84"/>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8we-1g-3lk" firstAttribute="top" secondItem="XMb-BN-fGk" secondAttribute="bottom" constant="8" id="Zgt-7p-kpe"/>
+                            <constraint firstItem="X4Y-El-RVI" firstAttribute="top" secondItem="8we-1g-3lk" secondAttribute="bottom" constant="8" id="mNb-0X-zM3"/>
+                            <constraint firstItem="8we-1g-3lk" firstAttribute="trailing" secondItem="VH8-ta-AVo" secondAttribute="trailingMargin" id="nBa-jT-Xok"/>
+                            <constraint firstItem="8we-1g-3lk" firstAttribute="leading" secondItem="VH8-ta-AVo" secondAttribute="leadingMargin" id="u2Z-Fs-kPf"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="200" height="100"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="100"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Zn-sv-qSE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5821" y="570"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="y54-5v-3r6">
+            <objects>
+                <viewController id="qO6-1w-HUb" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KHw-aD-XHi"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gb0-kn-GYQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="H11-su-AzE">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="160"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Игра всегда начинается с ночи. После выбора всех ролей и выполнения ночных действий нажмите кнопку Наступает день" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7X-yU-kYW">
+                                <rect key="frame" x="10" y="8" width="180" height="144"/>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="U7X-yU-kYW" secondAttribute="trailing" constant="10" id="Ccb-UD-PMY"/>
+                            <constraint firstItem="Gb0-kn-GYQ" firstAttribute="top" secondItem="U7X-yU-kYW" secondAttribute="bottom" constant="8" id="JKt-3c-p3M"/>
+                            <constraint firstItem="U7X-yU-kYW" firstAttribute="leading" secondItem="H11-su-AzE" secondAttribute="leading" constant="10" id="cHQ-cA-r8U"/>
+                            <constraint firstItem="U7X-yU-kYW" firstAttribute="top" secondItem="KHw-aD-XHi" secondAttribute="bottom" constant="8" id="fLb-f1-DIf"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="200" height="160"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="160"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="29c-U0-cIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5821" y="184"/>
         </scene>
     </scenes>
     <resources>

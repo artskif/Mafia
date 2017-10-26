@@ -12,7 +12,7 @@ import os.log
 //
 //  Контроллер окна главного игрового процесса(окно где выведены списки игроков с действиями)
 //
-class PlayController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class PlayController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Свойства контроллера
     
@@ -88,7 +88,7 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             let selectedPlayer = game.getPlayer(at: propertiesButton.tag)
             propertiesViewController.choosedPlayer = selectedPlayer
-         default:
+        default:
             break
         }
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NightRolesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class NightRolesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
 
     // MARK: - Элементы управления контроллера
     
@@ -67,6 +67,10 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
             showTurnMessages()
             game.turnMessageDidShow = true
         }
+        
+        if (game.accounts.count == 0 && game.turnNumber == 1) {
+            self.performSegue(withIdentifier: "showPopover1", sender: self)
+        }
     }
 
     override func viewDidLayoutSubviews(){
@@ -103,9 +107,16 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
                 let selectedAction = roleActions[selectedIndexPath.section]
                 actionChoosedViewController.choosedAction = selectedAction
             }
+        case "showPopover1":
+            let popVC = segue.destination
+            popVC.popoverPresentationController?.delegate = self
         default:
         break
         }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
     // MARK: - Методы управления таблицей участников
