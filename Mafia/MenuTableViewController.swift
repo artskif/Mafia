@@ -8,8 +8,12 @@
 
 import UIKit
 
-class MenuTableViewController: UITableViewController {
+class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    // MARK: - Свойства контроллера
+    
+    @IBOutlet weak var menuTable: UITableView!
+    
     let cells = ["back_to_day", "players" , "rating" , "settings" , "sinchronize" , "buy" , "send" , "help" , "finish_game"]
     
     // MARK: - События контроллера
@@ -20,7 +24,7 @@ class MenuTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
-        self.tableView.reloadData() // Обновляем меню каждый раз как показываем
+        menuTable.reloadData() // Обновляем меню каждый раз как показываем
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,33 +55,33 @@ class MenuTableViewController: UITableViewController {
     // MARK: - Методы инициализации таблицы рейтинга
     
     // Количество секций в таблице
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 9
     }
     
     // Расстояние между ячейками(секциями)
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
     
     // Кличесто элементов в одной секции таблицы
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     // Описываем состояние заголовка секции
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clear
         return headerView
     }
     
     // Определяем возможность редактировать таблицу участников
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Реагируем на нажатия меню
         let cellName = cells[indexPath.section]
         switch cellName {
@@ -105,7 +109,7 @@ class MenuTableViewController: UITableViewController {
     }
     
     // Обрабатываем внешний вид и содержимое каждой ячейки таблицы поочередно
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cellName = cells[indexPath.section]
         if cellName == "back_to_day" && game.state == DayNightState.Night {
