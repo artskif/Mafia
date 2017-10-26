@@ -33,6 +33,7 @@ class StartController: UIViewController {
     
     @IBAction func startNewGame(_ sender: Any) {
         game = Game() // Стартуем!
+        self.performSegue(withIdentifier: "newGame", sender: self)
     }
 
     // Нажали Cancel в таблице рейтинга пользователей

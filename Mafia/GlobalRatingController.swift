@@ -82,6 +82,13 @@ class GlobalRatingController: UIViewController, UITableViewDataSource, UITableVi
         cell.labelRating.text = "\(account.rating)"
         cell.labelPosition.text = "\(indexPath.section + 1)"
         
+        // Последнюю красную прерывистую линию не показываем
+        if (indexPath.section + 1) == tableView.numberOfSections {
+            cell.dottedLine.isHidden = true
+        } else {
+            cell.dottedLine.isHidden = false
+        }
+        
         return cell
 
     }

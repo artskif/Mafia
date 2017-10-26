@@ -32,20 +32,20 @@ class MenuTableViewController: UITableViewController {
         super.prepare(for: segue, sender: sender)
         
         // обработка поведения нового контроллера в зависимости от того каким переходом(segue) мы пользуемся
-        switch(segue.identifier ?? "") {
-        case "end_game":
-            guard let nacPlayViewController = segue.destination as? UINavigationController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            
-            guard let playViewController = nacPlayViewController.viewControllers.first as? PlayController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            
-            playViewController.endGame = true // Заверщаем игру в Игровом контроллере
-        default:
-            break
-        }
+//        switch(segue.identifier ?? "") {
+//        case "end_game":
+//            guard let nacPlayViewController = segue.destination as? UINavigationController else {
+//                fatalError("Unexpected destination: \(segue.destination)")
+//            }
+//
+//            guard let playViewController = nacPlayViewController.viewControllers.first as? PlayController else {
+//                fatalError("Unexpected destination: \(segue.destination)")
+//            }
+//
+//            playViewController.endGame = true // Заверщаем игру в Игровом контроллере
+//        default:
+//            break
+//        }
     }
     
     // MARK: - Методы инициализации таблицы рейтинга
@@ -82,7 +82,7 @@ class MenuTableViewController: UITableViewController {
         let cellName = cells[indexPath.section]
         switch cellName {
         case "finish_game":
-            // Заканчиваем игру если выставлен флаг окончания игры
+            // Заканчиваем игру
             let alert = UIAlertController(title: "Завершение игры", message: "Хотите сохранить рейтинг?", preferredStyle: UIAlertControllerStyle.alert)
             
             alert.addAction(UIAlertAction(title: "Да", style: UIAlertActionStyle.default, handler: { (action) in

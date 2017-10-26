@@ -15,7 +15,7 @@ class RatingTableViewCell: UITableViewCell {
     @IBOutlet weak var labelPosition: UILabel!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var labelRating: UILabel!
-
+    @IBOutlet weak var dottedLine: DottedLineView!
     
     // MARK: - События ячейки
 

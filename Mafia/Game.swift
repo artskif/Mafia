@@ -76,6 +76,11 @@ class Game {
     }
     
     // Получить всех новых игроков(которых только что добавили и у них еще нет id)
+    func getPlayerBy(id: Int32) -> Player? {
+        return self._players.first(where: {$0.id == id})
+    }
+    
+    // Получить всех новых игроков(которых только что добавили и у них еще нет id)
     func getNewPlayers() -> [Player] {
         var newPlayers:[Player] = []
         for player in _players {

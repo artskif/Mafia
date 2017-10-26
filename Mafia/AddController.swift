@@ -50,9 +50,11 @@ class AddController: UIViewController, UITextFieldDelegate, UITableViewDataSourc
         }
         
         for acc in accounts {
-            self.playersForChoose.append(Player(baseObject: acc)!)
             if game.checkPlayerId(idItem: acc.id) {
+                self.playersForChoose.append(game.getPlayerBy(id: acc.id)!)
                 choosedUsers.append(playersForChoose.count-1)
+            } else {
+                self.playersForChoose.append(Player(baseObject: acc)!)
             }
         }
 

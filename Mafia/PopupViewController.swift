@@ -51,5 +51,26 @@ class PopupViewController: UIViewController {
                 self.view.removeFromSuperview()
             }
         })
+        
+        if game.isFinished {
+            // Заканчиваем игру если выставлен флаг окончания игры
+            let alert = UIAlertController(title: "Завершение игры", message: "Хотите сохранить рейтинг?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "Да", style: UIAlertActionStyle.default, handler: { (action) in
+                game.saveRating()
+                self.performSegue(withIdentifier: "backToMain", sender: self)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Нет", style: UIAlertActionStyle.default, handler: { (action) in
+                self.performSegue(withIdentifier: "backToMain", sender: self)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertActionStyle.default, handler: { (action) in
+                
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
 }

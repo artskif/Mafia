@@ -110,7 +110,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ADQ-D9-1HD" kind="show" id="SNE-4z-wwz"/>
+                                    <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CqC-eR-qXc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -138,6 +138,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ezr-57-WLK"/>
+                    <connections>
+                        <segue destination="ADQ-D9-1HD" kind="show" identifier="newGame" id="b84-RZ-MU7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -215,9 +218,11 @@
                     <connections>
                         <outlet property="textMessageLabel" destination="Hjj-Er-mLy" id="a1L-V7-cBJ"/>
                         <outlet property="titleLabel" destination="PB5-Kr-Re2" id="EEl-Aa-cg4"/>
+                        <segue destination="1Rp-2W-4Uz" kind="unwind" identifier="backToMain" unwindAction="unwindCancelToMainScreenWithSender:" id="L9J-zc-0DS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ypI-oI-oZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="1Rp-2W-4Uz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6874" y="-262"/>
         </scene>
@@ -281,7 +286,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наступает ночь" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrI-62-CSJ">
-                                <rect key="frame" x="126.5" y="635" width="122" height="30"/>
+                                <rect key="frame" x="127" y="635" width="122" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="qFv-GX-DaQ"/>
                                 </constraints>
@@ -984,6 +989,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
+                                            <outlet property="dottedLine" destination="YHs-1M-KXP" id="pdB-kf-A3q"/>
                                             <outlet property="labelName" destination="Bq9-e1-A7P" id="4Ks-xF-U41"/>
                                             <outlet property="labelPosition" destination="0vt-3n-eYl" id="yMw-wA-Ilq"/>
                                             <outlet property="labelRating" destination="EdA-GM-9gU" id="2Fq-Dd-4rM"/>
@@ -1567,7 +1573,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ночное действие" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIB-7c-Ifs">
-                                <rect key="frame" x="16" y="104" width="343" height="20"/>
+                                <rect key="frame" x="16" y="84" width="343" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ygo-w7-tPI"/>
                                 </constraints>
@@ -1576,7 +1582,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qan-qK-9Gt">
-                                <rect key="frame" x="0.0" y="149" width="375" height="498"/>
+                                <rect key="frame" x="0.0" y="129" width="375" height="518"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
