@@ -345,6 +345,8 @@ class NightRolesViewController: UIViewController, UITableViewDataSource, UITable
         game.startNewTurn() // Начинаем новый ход
         game.turnMessageDidShow = false // Метка о непоказанном сообщении
 
+        game.refreshStatPlayers() // Обновляем статистику игроков
+        
         // Далее переходим на экран ночи
         if let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "PlayController") as? UINavigationController {
             self.revealViewController().setFront(secondViewController, animated: true)

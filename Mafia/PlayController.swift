@@ -278,6 +278,8 @@ class PlayController: UIViewController, UITableViewDataSource, UITableViewDelega
         game.startNewTurn() // Начинаем новый ход
         game.turnMessageDidShow = false // Метка о непоказанном сообщении
 
+        game.refreshStatPlayers() // Обновляем статистику игроков
+        
         // Далее переходим на экран ночи
         if let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "NightController") as? UINavigationController {
             self.revealViewController().setFront(secondViewController, animated: true)

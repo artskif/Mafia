@@ -30,36 +30,16 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NightRolesViewController.tableView(_:cellForRowAt:):NightRolesViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "cell">
-            </PersistentString>
-            <PersistentString
-               value = "game.roles">
-            </PersistentString>
-            <PersistentString
-               value = "cell.nameLabel">
-            </PersistentString>
-            <PersistentString
-               value = "tableView.numberOfSections">
-            </PersistentString>
-            <PersistentString
-               value = "indexPath.section">
-            </PersistentString>
-            <PersistentString
-               value = "roleActions">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "AddController.viewDidLoad() -&gt; ():AddController.swift">
       </ContextState>
       <ContextState
          contextName = "Player.init(coder : NSCoder) -&gt; Player?:Player.swift">
          <PersistentStrings>
             <PersistentString
-               value = "aDecoder.decodeObject(forKey: &quot;name&quot;)">
+               value = "aDecoder.decodeObject(forKey: &quot;rating&quot;)">
             </PersistentString>
             <PersistentString
-               value = "aDecoder.decodeObject(forKey: &quot;rating&quot;)">
+               value = "aDecoder.decodeObject(forKey: &quot;name&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -86,7 +66,7 @@
                value = "cell.roleLabel.text!.hasSufix(&quot;&#x41c;&#x435;&#x440;&#x442;&#x432;&quot;)">
             </PersistentString>
             <PersistentString
-               value = "player.name">
+               value = "cell.roleLabel.text">
             </PersistentString>
             <PersistentString
                value = "indexPath.section">
@@ -95,10 +75,10 @@
                value = "indexPath.row">
             </PersistentString>
             <PersistentString
-               value = "game">
+               value = "player.name">
             </PersistentString>
             <PersistentString
-               value = "cell.roleLabel.text">
+               value = "game">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -260,6 +240,14 @@
          contextName = "ChooseRoleViewController.chooseButton(_:):ChooseRoleViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "GlobalRatingController.numberOfSections(in:):GlobalRatingController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "game.accounts.filter({$0.numberOfGames&gt;5}).count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Game.checkEndOfGame() -&gt; Role?:Game.swift">
       </ContextState>
       <ContextState
@@ -299,7 +287,27 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AddController.viewDidLoad() -&gt; ():AddController.swift">
+         contextName = "NightRolesViewController.tableView(_:cellForRowAt:):NightRolesViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell">
+            </PersistentString>
+            <PersistentString
+               value = "tableView.numberOfSections">
+            </PersistentString>
+            <PersistentString
+               value = "cell.nameLabel">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.section">
+            </PersistentString>
+            <PersistentString
+               value = "roleActions">
+            </PersistentString>
+            <PersistentString
+               value = "game.roles">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

@@ -58,7 +58,7 @@ class Game {
     }
     
     // Проверить существование игрока по id
-    func checkPlayerId(idItem:Int32) -> Bool {
+    func checkPlayerId(idItem:Int16) -> Bool {
         if idItem < 1 { return false }
         let playersCheck =  self._players.contains { $0.id == idItem }
         return playersCheck
@@ -76,7 +76,7 @@ class Game {
     }
     
     // Получить всех новых игроков(которых только что добавили и у них еще нет id)
-    func getPlayerBy(id: Int32) -> Player? {
+    func getPlayerBy(id: Int16) -> Player? {
         return self._players.first(where: {$0.id == id})
     }
     
@@ -91,6 +91,7 @@ class Game {
         return newPlayers
     }
     
+    // Получить игроков над которыми было выполнено то или иное действие
     func getPlayersForAction(action: ActionType) -> [Player] {
         var returnPlayers:[Player] = []
         for player in _players {
@@ -175,6 +176,15 @@ class Game {
             case (AliveState.Live, AliveState.Live): return $0.name < $1.name
             }
         })
+    }
+    
+    // Обновляем статистику игроков
+    func refreshStatPlayers() {
+        for player in _players {
+            if player.stateAlive == .Live {
+                player.turnsOfLife = Int16(game.turnNumber)
+            }
+        }
     }
     
     // Обработать конец хода (высчитываем кто убит, кто молчит и тд)
@@ -342,17 +352,23 @@ class Game {
             if p.id > 0 {
                 if let findedAccount = self.findAccountById(id: p.id) {
                     findedAccount.name = p.name
-                    findedAccount.rating += Int32(sumRatingOfGame)
+                    findedAccount.rating += Int16(sumRatingOfGame)
+                    findedAccount.numberOfGames += 1
+                    findedAccount.numberOfWins += p.isWin ? 1 : 0
+                    findedAccount.numberOfTurns += Int16(p.turnsOfLife)
                 }
             } else {
-                var newId:Int32 = 1
+                var newId:Int16 = 1
                 if let maxAccount = self.accounts.max(by: { (a1, a2) -> Bool in a1.id < a2.id}) {
                     newId = maxAccount.id + 1
                 }
                 let account:UserAccount = NSEntityDescription.insertNewObject(forEntityName: "UserAccount", into: DatabaseInit.getContext()) as! UserAccount
                 account.id = newId
                 account.name = p.name
-                account.rating = Int32(sumRatingOfGame)
+                account.rating = Int16(sumRatingOfGame)
+                account.numberOfGames += 1
+                account.numberOfWins += p.isWin ? 1 : 0
+                account.numberOfTurns += Int16(p.turnsOfLife)
                 self.accounts.append(account)
             }
         }
@@ -360,7 +376,7 @@ class Game {
         self.saveAccounts() // Сохраняем в постоянное хранилище
     }
     
-    func findAccountById(id: Int32) -> UserAccount? {
+    func findAccountById(id: Int16) -> UserAccount? {
         return self.accounts.first(where: { $0.id == id })
     }
     

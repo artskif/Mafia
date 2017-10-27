@@ -14,24 +14,30 @@ class RatingUtilites {
     // Подсчитываем рейтинг в конце игры
     static func calculateGameRating(players:inout [Player], whoWins: Role) {
         for p in players {
+            p.isWin = false // Признако того что игрок играл за выигравшуб группировку
+            
             // Записываем очки мафии если победили +5
             if whoWins == Role.Mafia && (p.role == Role.Mafia || p.role == Role.Don) {
                 p.currentRating.append(5)
+                p.isWin = true
             }
 
             // Записываем очки якудза если победили +5
             if whoWins == Role.Yacuza && p.role == Role.Yacuza {
                 p.currentRating.append(5)
+                p.isWin = true
             }
             
             // Записываем очки маньякам если победили +5
             if whoWins == Role.Maniac && p.role == Role.Maniac {
                 p.currentRating.append(5)
+                p.isWin = true
             }
 
             // Записываем очки мирным если победили +5
-            if whoWins == Role.Citizen && p.role != Role.Mafia && p.role != Role.Don && p.role != Role.Maniac{
+            if whoWins == Role.Citizen && p.role != Role.Mafia && p.role != Role.Don && p.role != Role.Maniac && p.role != Role.Yacuza{
                 p.currentRating.append(5)
+                p.isWin = true
             }
         }
     }

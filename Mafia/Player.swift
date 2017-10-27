@@ -11,32 +11,36 @@ import os.log
 
 // класс описывающий одного игрока приложения Мафия
 class Player {
-    var name:String
-    var rating:Int32
-    var id:Int32
-    var role:Role
-    var stateAlive:AliveState
-    var currentRating:[Int]
-    // TODO: Возможны варианты совершенствования конструкции
-    // Конструкция вида [Действие(проверен, убит, исцелен): На каких ходах(1 - да, 3 - нет, 6 - да)] - многомерный массив
+    var name:String // Имя
+    var rating:Int16 // Сумма очков рейтинга
+    var id:Int16 // Id
+    var role:Role // Роль в игре
+    var isWin:Bool // Флажок выиграл игрок или нет
+    var turnsOfLife:Int16 // Количество ходов которое игрок прожил (Ночь 1 ход и День тоже 1 ход)
+    var stateAlive:AliveState // Живой игрок или мертвый
+    var currentRating:[Int] // Рейтинг текущего хода
+    // Конструкция вида [Действие(проверен, убит, исцелен), На каких ходах(1 - да, 3 - нет, 6 - да)] - многомерный массив
     var actions:Dictionary<ActionType, Dictionary<Int,Bool>>
     
-    init?(name:String){
+    init() {
         self.role = Role.Citizen
         self.currentRating = [1]
         self.stateAlive = AliveState.Live
+        self.turnsOfLife = 1
         self.actions = [:]
         self.id = 0
         self.rating = 0
+        self.name = ""
+        self.isWin = false
+    }
+    
+    convenience init?(name:String){
+        self.init()
         self.name = name
     }
     
-    init?(id: Int32, name:String, rating: Int32){
-        self.role = Role.Citizen
-        self.currentRating = [1]
-        self.stateAlive = AliveState.Live
-        self.actions = [:]
-        
+    convenience init?(id: Int16, name:String, rating: Int16){
+        self.init()
         self.id = id
         self.rating = rating
         self.name = name
@@ -44,11 +48,6 @@ class Player {
     
     convenience init?(baseObject: UserAccount) {
         self.init(id: baseObject.id, name: baseObject.name!, rating: baseObject.rating)
-        
-        self.role = Role.Citizen
-        self.currentRating = [1]
-        self.stateAlive = AliveState.Live
-        self.actions = [:]
     }
     
     // MARK: - Методы управления Действиями(Action)

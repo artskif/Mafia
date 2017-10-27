@@ -286,7 +286,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наступает ночь" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrI-62-CSJ">
-                                <rect key="frame" x="125.5" y="635" width="124.5" height="30"/>
+                                <rect key="frame" x="127.5" y="635" width="122" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="qFv-GX-DaQ"/>
                                 </constraints>
@@ -1150,13 +1150,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </imageView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMb-D8-MOO">
-                                <rect key="frame" x="16" y="16" width="343" height="65"/>
+                                <rect key="frame" x="16" y="16" width="343" height="75"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="zlq-fg-p0o"/>
+                                    <constraint firstAttribute="height" constant="75" id="zlq-fg-p0o"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="F5K-P5-yfW" id="xXi-OE-Vsw"/>
+                                    <outlet property="delegate" destination="F5K-P5-yfW" id="KXt-yy-Bbh"/>
+                                </connections>
                             </pickerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Twk-F6-aew">
-                                <rect key="frame" x="0.0" y="89" width="375" height="463"/>
+                                <rect key="frame" x="0.0" y="128" width="375" height="424"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1247,19 +1251,31 @@
                                     <action selector="clearStatistics:" destination="F5K-P5-yfW" eventType="touchUpInside" id="oVU-3h-TQs"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Показывается с первой игры" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NV-4z-bYG">
+                                <rect key="frame" x="16" y="99" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="QaI-Nh-yjQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Twk-F6-aew" firstAttribute="top" secondItem="2NV-4z-bYG" secondAttribute="bottom" constant="8" id="1BW-OI-PhT"/>
                             <constraint firstItem="SMb-D8-MOO" firstAttribute="leading" secondItem="waF-qr-R3c" secondAttribute="leading" constant="16" id="2Sc-c5-fKN"/>
+                            <constraint firstItem="2NV-4z-bYG" firstAttribute="leading" secondItem="waF-qr-R3c" secondAttribute="leadingMargin" id="2g6-NT-yiA"/>
                             <constraint firstAttribute="trailing" secondItem="Twk-F6-aew" secondAttribute="trailing" id="3HW-NW-r6y"/>
                             <constraint firstItem="u2U-eU-ZoT" firstAttribute="centerX" secondItem="waF-qr-R3c" secondAttribute="centerX" id="Aei-oM-anL"/>
                             <constraint firstItem="Twk-F6-aew" firstAttribute="leading" secondItem="waF-qr-R3c" secondAttribute="leading" id="BQU-zF-meK"/>
                             <constraint firstItem="36V-vg-I64" firstAttribute="top" secondItem="waF-qr-R3c" secondAttribute="top" id="D0M-mk-em4"/>
                             <constraint firstAttribute="trailing" secondItem="36V-vg-I64" secondAttribute="trailing" id="FCS-zM-ZVm"/>
+                            <constraint firstItem="2NV-4z-bYG" firstAttribute="trailing" secondItem="waF-qr-R3c" secondAttribute="trailingMargin" id="KLw-jN-vMC"/>
                             <constraint firstItem="1vM-Yz-Nz6" firstAttribute="top" secondItem="36V-vg-I64" secondAttribute="bottom" id="Ka6-Sc-sZf"/>
-                            <constraint firstItem="Twk-F6-aew" firstAttribute="top" secondItem="SMb-D8-MOO" secondAttribute="bottom" constant="8" id="RTv-gs-j1r"/>
                             <constraint firstAttribute="trailing" secondItem="SMb-D8-MOO" secondAttribute="trailing" constant="16" id="WS6-gb-KYZ"/>
                             <constraint firstItem="1vM-Yz-Nz6" firstAttribute="top" secondItem="u2U-eU-ZoT" secondAttribute="bottom" constant="8" id="ec9-iO-5D4"/>
+                            <constraint firstItem="2NV-4z-bYG" firstAttribute="top" secondItem="SMb-D8-MOO" secondAttribute="bottom" constant="8" id="fCD-YC-Hci"/>
                             <constraint firstItem="u2U-eU-ZoT" firstAttribute="top" secondItem="Twk-F6-aew" secondAttribute="bottom" constant="13" id="pu6-mf-bOH"/>
                             <constraint firstItem="36V-vg-I64" firstAttribute="leading" secondItem="waF-qr-R3c" secondAttribute="leading" id="rjc-4R-b8i"/>
                             <constraint firstItem="SMb-D8-MOO" firstAttribute="top" secondItem="waF-qr-R3c" secondAttribute="top" constant="16" id="vUr-7h-PNT"/>
@@ -1267,12 +1283,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="infoLabel" destination="2NV-4z-bYG" id="WRc-0R-WxJ"/>
                         <outlet property="ratingTable" destination="Twk-F6-aew" id="gaI-0U-eTa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdc-nN-2Ab" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3337" y="864"/>
+            <point key="canvasLocation" x="3336.8000000000002" y="863.1184407796103"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xz7-jz-g8e">
@@ -1734,7 +1751,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наступает день" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtF-Nr-V7k">
-                                <rect key="frame" x="125" y="629" width="125" height="30"/>
+                                <rect key="frame" x="126" y="629" width="123" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="HDy-fV-Bjo"/>
                                 </constraints>
@@ -1810,7 +1827,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ночное действие" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIB-7c-Ifs">
-                                <rect key="frame" x="16" y="104" width="343" height="20"/>
+                                <rect key="frame" x="16" y="84" width="343" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ygo-w7-tPI"/>
                                 </constraints>
@@ -1819,7 +1836,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qan-qK-9Gt">
-                                <rect key="frame" x="0.0" y="149" width="375" height="498"/>
+                                <rect key="frame" x="0.0" y="129" width="375" height="518"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>

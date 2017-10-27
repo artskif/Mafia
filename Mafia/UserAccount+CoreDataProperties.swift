@@ -17,7 +17,9 @@ extension UserAccount {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var rating: Int32
-    @NSManaged public var id: Int32
-
+    @NSManaged public var rating: Int16
+    @NSManaged public var id: Int16
+    @NSManaged public var numberOfGames: Int16
+    @NSManaged public var numberOfTurns: Int16
+    @NSManaged public var numberOfWins: Int16
 }
