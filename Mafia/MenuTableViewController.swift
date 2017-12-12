@@ -14,7 +14,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var menuTable: UITableView!
     
-    let cells = ["back_to_day", "players" , "rating" , "settings" , "sinchronize" , "buy" , "send" , "help" , "finish_game"]
+    let cells = ["back_to_day", "players" , "rating" , "help" , "finish_game"]
     
     // MARK: - События контроллера
     
@@ -35,7 +35,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // Количество секций в таблице
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 9
+        return 5
     }
     
     // Расстояние между ячейками(секциями)

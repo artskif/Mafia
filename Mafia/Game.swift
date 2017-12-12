@@ -274,10 +274,16 @@ class Game {
             }
         }
         
-        if countMafia == countManiac && countCitizen < 1 {return Role.Maniac} // Маньяк победил
-        if countMafia == countYacuza && countCitizen < 1 {return Role.Mafia} // Мафия победила
-        if countManiac == countYacuza && countCitizen < 1 {return Role.Maniac} // Маньяк победил
-
+        if (countCitizen < 1) {
+            if countMafia > 0 && countManiac < 1  && countYacuza < 1 {return Role.Mafia} // Мафия победила
+            if countManiac > 0 && countMafia < 1  && countYacuza < 1 {return Role.Maniac} // Маньяк победил
+            if countYacuza > 0 && countManiac < 1  && countMafia < 1 {return Role.Yacuza} // Якудза победили
+            if countYacuza < 1 && countManiac < 1  && countMafia < 1 {return Role.Citizen} // Мирные победили
+            
+            if countMafia == countManiac {return Role.Maniac} // Маньяк победил
+            if countMafia == countYacuza {return Role.Mafia} // Мафия победила
+            if countManiac == countYacuza {return Role.Maniac} // Маньяк победил
+        }
         if countMafia >= countCitizen && countManiac < 1  && countYacuza < 1 {return Role.Mafia} // Мафия победила
         if countManiac >= countCitizen && countMafia < 1  && countYacuza < 1 {return Role.Maniac} // Маньяк победил
         if countYacuza >= countCitizen && countMafia < 1  && countManiac < 1 {return Role.Yacuza} // Якудза победили
